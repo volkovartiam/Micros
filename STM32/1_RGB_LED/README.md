@@ -2,8 +2,8 @@
 
 ## Замечание по работе
 - Для работы в Proteus и железе (в моем случае) требуется выбирать чип<br> 
-<span style="color:green">Stm32F103C6 (Proteus)</span> и <br> 
-STM32F103C8 (Железо) соответственно. <br>
+<span style="color:green"> STM32F103C6 (Proteus) [datasheet](https://www.st.com/en/microcontrollers-microprocessors/stm32f103c6.html )</span>  и <br> 
+STM32F103C8 (Железо) [datasheet](https://www.st.com/en/microcontrollers-microprocessors/stm32f103c8.html) соответственно. <br>
 - Версия Proteus 8.13 (Ранее была 8.16 не удавалось подцепить Blue Pill к библиотеке).
 
 - Если не ограничивать ток по цепям (установкой резисторов) то могут вылезать ошибки
