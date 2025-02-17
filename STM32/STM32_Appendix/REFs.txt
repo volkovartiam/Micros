@@ -1,0 +1,7 @@
+https://microdigisoft.com/getting-started-stm32-blue-pill-develop-board/
+
+https://deepbluembedded.com/stm32-proteus-library-bluepill-simulation-stm32f103c6/
+
+https://stm32res.ru/ru/newsarhivprog?ysclid=m64iugr6vm188134856
+
+https://github.com/satyamkr80/STM32-BluePill-Library-For-Proteus

@@ -1,0 +1,27 @@
+!SESSION 2025-02-17 08:50:50.655 -----------------------------------------------
+eclipse.buildId=Version 1.17.0
+java.version=21.0.3
+java.vendor=Eclipse Adoptium
+BootLoader constants: OS=win32, ARCH=x86_64, WS=win32, NL=ru_RU
+Command-line arguments:  -os win32 -ws win32 -arch x86_64
+
+!ENTRY com.st.stm32cube.ide.mcu.informationcenter 4 4 2025-02-17 08:51:09.296
+!MESSAGE CubeMX plugin appears to be active, Log4j initialization might be too late.
+
+!ENTRY com.st.stm32cube.ide.mcu.informationcenter 1 1 2025-02-17 08:51:09.296
+!MESSAGE Log4j2 initialized with config file D:\MGU\Micros\Micros\STM32\2_Run_LEDs\STM32_Proteus\.metadata\.log4j2.xml
+
+!ENTRY com.st.stm32cube.ide.mcu.ide 1 1 2025-02-17 08:51:11.867
+!MESSAGE Started RMI Server, listening on port 41337
+
+!ENTRY org.eclipse.equinox.p2.metadata.repository 4 1000 2025-02-17 08:51:46.446
+!MESSAGE No repository found at https://sw-center.st.com/stm32cubeide/updatesite1.
+
+!ENTRY org.eclipse.equinox.p2.metadata.repository 4 1000 2025-02-17 08:51:52.003
+!MESSAGE No repository found at https://sw-center.st.com/stm32cubeide/openstlinux/updatesite1.
+
+!ENTRY org.eclipse.cdt.core 1 0 2025-02-17 08:53:10.236
+!MESSAGE Indexed 'Run_LEDs_Proteus' (17 sources, 78 headers) in 3.01 sec: 3,632 declarations; 13,141 references; 0 unresolved inclusions; 1 syntax errors; 2 unresolved names (0.012%)
+
+!ENTRY org.eclipse.cdt.core 1 0 2025-02-17 09:00:11.187
+!MESSAGE Indexed 'Run_LEDs_Proteus' (17 sources, 78 headers) in 5.64 sec: 3,638 declarations; 13,244 references; 0 unresolved inclusions; 1 syntax errors; 2 unresolved names (0.012%)
