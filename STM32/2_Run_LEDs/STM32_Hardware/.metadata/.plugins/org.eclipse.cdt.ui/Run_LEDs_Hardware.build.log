@@ -1,0 +1,10 @@
+08:49:12 **** Incremental Build of configuration Debug for project Run_LEDs_Hardware ****
+make -j12 all 
+arm-none-eabi-size  Run_LEDs_Hardware.elf 
+   text	   data	    bss	    dec	    hex	filename
+   4664	     12	   1572	   6248	   1868	Run_LEDs_Hardware.elf
+Finished building: default.size.stdout
+ 
+
+08:49:13 Build Finished. 0 errors, 0 warnings. (took 298ms)
+

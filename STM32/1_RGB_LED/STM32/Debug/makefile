@@ -58,37 +58,37 @@ $(wildcard ../makefile.init) \
 $(wildcard ../makefile.targets) \
 
 
-BUILD_ARTIFACT_NAME := RGB_LED
+BUILD_ARTIFACT_NAME := RGB_LED_Hard
 BUILD_ARTIFACT_EXTENSION := elf
 BUILD_ARTIFACT_PREFIX :=
 BUILD_ARTIFACT := $(BUILD_ARTIFACT_PREFIX)$(BUILD_ARTIFACT_NAME)$(if $(BUILD_ARTIFACT_EXTENSION),.$(BUILD_ARTIFACT_EXTENSION),)
 
 # Add inputs and outputs from these tool invocations to the build variables 
 EXECUTABLES += \
-RGB_LED.elf \
+RGB_LED_Hard.elf \
 
 MAP_FILES += \
-RGB_LED.map \
+RGB_LED_Hard.map \
 
 SIZE_OUTPUT += \
 default.size.stdout \
 
 OBJDUMP_LIST += \
-RGB_LED.list \
+RGB_LED_Hard.list \
 
 OBJCOPY_HEX += \
-RGB_LED.hex \
+RGB_LED_Hard.hex \
 
 
 # All Target
 all: main-build
 
 # Main-build Target
-main-build: RGB_LED.elf secondary-outputs
+main-build: RGB_LED_Hard.elf secondary-outputs
 
 # Tool invocations
-RGB_LED.elf RGB_LED.map: $(OBJS) $(USER_OBJS) E:\Projects\Micros\Micros\STM32\1_RGB_LED\STM32\STM32F103C8TX_FLASH.ld makefile objects.list $(OPTIONAL_TOOL_DEPS)
-	arm-none-eabi-g++ -o "RGB_LED.elf" @"objects.list" $(USER_OBJS) $(LIBS) -mcpu=cortex-m3 -T"E:\Projects\Micros\Micros\STM32\1_RGB_LED\STM32\STM32F103C8TX_FLASH.ld" --specs=nosys.specs -Wl,-Map="RGB_LED.map" -Wl,--gc-sections -static --specs=nano.specs -mfloat-abi=soft -mthumb -Wl,--start-group -lc -lm -lstdc++ -lsupc++ -Wl,--end-group
+RGB_LED_Hard.elf RGB_LED_Hard.map: $(OBJS) $(USER_OBJS) D:\MGU\Micros\Micros\STM32\1_RGB_LED\STM32\STM32F103C8TX_FLASH.ld makefile objects.list $(OPTIONAL_TOOL_DEPS)
+	arm-none-eabi-g++ -o "RGB_LED_Hard.elf" @"objects.list" $(USER_OBJS) $(LIBS) -mcpu=cortex-m3 -T"D:\MGU\Micros\Micros\STM32\1_RGB_LED\STM32\STM32F103C8TX_FLASH.ld" --specs=nosys.specs -Wl,-Map="RGB_LED_Hard.map" -Wl,--gc-sections -static --specs=nano.specs -mfloat-abi=soft -mthumb -Wl,--start-group -lc -lm -lstdc++ -lsupc++ -Wl,--end-group
 	@echo 'Finished building target: $@'
 	@echo ' '
 
@@ -97,19 +97,19 @@ default.size.stdout: $(EXECUTABLES) makefile objects.list $(OPTIONAL_TOOL_DEPS)
 	@echo 'Finished building: $@'
 	@echo ' '
 
-RGB_LED.list: $(EXECUTABLES) makefile objects.list $(OPTIONAL_TOOL_DEPS)
-	arm-none-eabi-objdump -h -S $(EXECUTABLES) > "RGB_LED.list"
+RGB_LED_Hard.list: $(EXECUTABLES) makefile objects.list $(OPTIONAL_TOOL_DEPS)
+	arm-none-eabi-objdump -h -S $(EXECUTABLES) > "RGB_LED_Hard.list"
 	@echo 'Finished building: $@'
 	@echo ' '
 
-RGB_LED.hex: $(EXECUTABLES) makefile objects.list $(OPTIONAL_TOOL_DEPS)
-	arm-none-eabi-objcopy  -O ihex $(EXECUTABLES) "RGB_LED.hex"
+RGB_LED_Hard.hex: $(EXECUTABLES) makefile objects.list $(OPTIONAL_TOOL_DEPS)
+	arm-none-eabi-objcopy  -O ihex $(EXECUTABLES) "RGB_LED_Hard.hex"
 	@echo 'Finished building: $@'
 	@echo ' '
 
 # Other Targets
 clean:
-	-$(RM) RGB_LED.elf RGB_LED.hex RGB_LED.list RGB_LED.map default.size.stdout
+	-$(RM) RGB_LED_Hard.elf RGB_LED_Hard.hex RGB_LED_Hard.list RGB_LED_Hard.map default.size.stdout
 	-@echo ' '
 
 secondary-outputs: $(SIZE_OUTPUT) $(OBJDUMP_LIST) $(OBJCOPY_HEX)
