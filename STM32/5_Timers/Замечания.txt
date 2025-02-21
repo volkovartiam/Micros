@@ -1,0 +1,7 @@
+Формулу расчета значения таймера
+Регистры таймера
+CallBack - дать определения и ссылки на них
+Перестало программироваться в режиме BOOT0 и BOOT1
+таймер не отрабатывает как нужно
+
+https://deepbluembedded.com/stm32-timer-interrupt-hal-example-timer-mode-lab/
