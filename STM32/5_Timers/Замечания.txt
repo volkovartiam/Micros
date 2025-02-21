@@ -5,3 +5,7 @@ CallBack - дать определения и ссылки на них
 таймер не отрабатывает как нужно
 
 https://deepbluembedded.com/stm32-timer-interrupt-hal-example-timer-mode-lab/
+
+https://rutube.ru/video/394743c2c455bdee3bfd907ab8d603d3/?ysclid=m7eypfucif575103177
+
+https://narodstream.ru/stm-urok-5-biblioteka-hal-stm32-cube-mx-tajmery/
