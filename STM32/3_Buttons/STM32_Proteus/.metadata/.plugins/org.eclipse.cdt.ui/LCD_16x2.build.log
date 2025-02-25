@@ -1,0 +1,19 @@
+20:29:03 **** Incremental Build of configuration Debug for project LCD_16x2 ****
+make -j4 all 
+arm-none-eabi-g++ -o "LCD_16x2.elf" @"objects.list"   -mcpu=cortex-m3 -T"E:\Projects\Micros\Micros\STM32\6_7_LCD 20x4 4bit\LCD_16x2\STM32F103C6TX_FLASH.ld" --specs=nosys.specs -Wl,-Map="LCD_16x2.map" -Wl,--gc-sections -static --specs=nano.specs -mfloat-abi=soft -mthumb -Wl,--start-group -lc -lm -lstdc++ -lsupc++ -Wl,--end-group
+Finished building target: LCD_16x2.elf
+ 
+arm-none-eabi-size  LCD_16x2.elf 
+arm-none-eabi-objdump -h -S LCD_16x2.elf  > "LCD_16x2.list"
+   text	   data	    bss	    dec	    hex	filename
+   7172	     12	   1572	   8756	   2234	LCD_16x2.elf
+arm-none-eabi-objcopy  -O ihex LCD_16x2.elf  "LCD_16x2.hex"
+Finished building: default.size.stdout
+ 
+Finished building: LCD_16x2.list
+ 
+Finished building: LCD_16x2.hex
+ 
+
+20:29:04 Build Finished. 0 errors, 0 warnings. (took 1s.368ms)
+
