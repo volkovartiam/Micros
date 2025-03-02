@@ -127,11 +127,26 @@ int main(void)
 }
 
 /*
-void HAL_TIM_PeriodElapsedCallback(TIM_HandleTypeDef* htim)
-{
-    HAL_GPIO_TogglePin(GPIOA, A9_Pin);
+void TIM2_IRQHandler(void){
+
+  HAL_TIM_IRQHandler(&htim2);
+  HAL_GPIO_TogglePin(GPIOA, A9_Pin);
+
 }
 */
+
+/**/
+void HAL_TIM_PeriodElapsedCallback(TIM_HandleTypeDef* htim)
+{
+
+    if(htim->Instance == TIM2) //check if the interrupt comes from TIM1
+    {
+        HAL_GPIO_TogglePin(GPIOA, A9_Pin);
+    }
+
+
+}
+/**/
 
 /**
   * @brief System Clock Configuration
