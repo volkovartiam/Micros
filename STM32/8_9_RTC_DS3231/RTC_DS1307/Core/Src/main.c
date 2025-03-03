@@ -23,71 +23,6 @@
 
 #define MyLCD LCD16X2_1
 
-
-uint8_t aTxBuffer[8];
-
-extern uint8_t aTxBuffer[8];
-
-//——————————————
-
-char str[100];
-
-//——————————————
-
-void I2C_WriteBuffer(I2C_HandleTypeDef hi, uint8_t DEV_ADDR, uint8_t sizebuf)
-
-{
-
-        while(HAL_I2C_Master_Transmit(&hi, (uint16_t)DEV_ADDR,(uint8_t*) &aTxBuffer, (uint16_t)sizebuf, (uint32_t)1000)!= HAL_OK)
-
-        {
-
-                        if (HAL_I2C_GetError(&hi) != HAL_I2C_ERROR_AF)
-
-                        {
-
-                                sprintf(str, "Buffer error");
-
-                                LCD_SetPos(8, 0);
-
-                                LCD16X2_Write_String(MyLCD, str);
-
-                        }
-
-        }
-
-}
-
-//——————————————
-
-void I2C_ReadBuffer(I2C_HandleTypeDef hi, uint8_t DEV_ADDR, uint8_t sizebuf)
-
-{
-
-        while(HAL_I2C_Master_Receive(&hi, (uint16_t)DEV_ADDR, (uint8_t*) &aTxBuffer, (uint16_t)sizebuf, (uint32_t)1000)!= HAL_OK)
-
-        {
-
-                        if (HAL_I2C_GetError(&hi) != HAL_I2C_ERROR_AF)
-
-                        {
-
-                            sprintf(str, "Buffer error");
-
-                                LCD_SetPos(8, 0);
-
-                                LCD16X2_Write_String(MyLCD, str);
-
-                        }
-
-        }
-
-}
-
-
-
-
-
 I2C_HandleTypeDef hi2c1;
 
 
@@ -95,9 +30,17 @@ void SystemClock_Config(void);
 static void MX_GPIO_Init(void);
 static void MX_I2C1_Init(void);
 
+
+#define I2C_ADDRESS 0x68
+#define I2C_ID_ADDRESS 0x01
+#define I2C_TIMEOUT 10
+
+uint8_t regData = 0;
+uint8_t regAddress = I2C_ID_ADDRESS;
+
+
 int main(void)
 {
-
 
   HAL_Init();
 
@@ -116,6 +59,7 @@ int main(void)
 
   while (1)
   {
+	  /*
       LCD16X2_SR(MyLCD);  HAL_Delay(1500);
       LCD16X2_SR(MyLCD);  HAL_Delay(1500);
       LCD16X2_SR(MyLCD);  HAL_Delay(1500);
@@ -125,6 +69,16 @@ int main(void)
       LCD16X2_SL(MyLCD);  HAL_Delay(1500);
       LCD16X2_SL(MyLCD);  HAL_Delay(1500);
       LCD16X2_SL(MyLCD);  HAL_Delay(1500);
+	  */
+
+	  HAL_I2C_Master_Transmit(&hi2c1, (I2C_ADDRESS << 1), &regAddress, 1,  I2C_TIMEOUT);
+	  HAL_I2C_Master_Receive(&hi2c1, (I2C_ADDRESS << 1), &regData, 1,  I2C_TIMEOUT);
+	  LCD16X2_Clear(MyLCD);
+	  LCD16X2_Set_Cursor(MyLCD, 1, 1);
+	  //String data = (char*)regData;
+	  LCD16X2_Write_String(MyLCD, regData);
+      HAL_Delay(1000);
+
   }
   /* USER CODE END 3 */
 }
