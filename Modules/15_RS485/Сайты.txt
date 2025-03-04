@@ -1,0 +1,10 @@
+программы для работы с com портом
+
+
+https://www.gammon.com.au/forum/?id=11428
+https://forum.arduino.cc/t/rs485-working-example/554190
+https://arduinogetstarted.com/tutorials/arduino-rs485			+++
+https://circuitdigest.com/microcontroller-projects/rs485-serial-communication-between-arduino-uno-and-arduino-nano
+
+
+rs485 proteus
