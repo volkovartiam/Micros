@@ -1,5 +1,43 @@
 #include "led.h"
 
+void ledprint(int number)
+{
+	int R0 = number%10;			
+  int R1 = number%100/10;
+  int R2 = number%1000/100;
+  int R3 = number/1000;
+  int delayTimer = 200;
+
+	segchar(R0);
+	reset_ON_LED_0;
+	reset_ON_LED_1;
+	reset_ON_LED_2;
+	set_ON_LED_3;
+  delay(delayTimer);
+
+  segchar(R1);
+  reset_ON_LED_0;
+  reset_ON_LED_1;
+  set_ON_LED_2;
+  reset_ON_LED_3;
+  delay(delayTimer);
+
+  segchar(R2);
+  reset_ON_LED_0;
+  set_ON_LED_1;
+  reset_ON_LED_2;
+  reset_ON_LED_3;
+  delay(delayTimer);
+  
+  segchar(R3);
+  set_ON_LED_0;
+  reset_ON_LED_1;
+  reset_ON_LED_2;
+  reset_ON_LED_3;
+  delay(delayTimer);
+	
+}
+
 void segchar(int seg)
 {
         switch (seg)
