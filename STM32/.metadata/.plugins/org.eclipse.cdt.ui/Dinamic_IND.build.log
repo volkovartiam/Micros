@@ -1,0 +1,23 @@
+23:18:50 **** Incremental Build of configuration Debug for project Dinamic_IND ****
+make -j4 all 
+arm-none-eabi-gcc "../Core/Src/led.c" -mcpu=cortex-m3 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F103x6 -c -I../Core/Inc -I../Drivers/STM32F1xx_HAL_Driver/Inc/Legacy -I../Drivers/STM32F1xx_HAL_Driver/Inc -I../Drivers/CMSIS/Device/ST/STM32F1xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/Src/led.d" -MT"Core/Src/led.o" --specs=nano.specs -mfloat-abi=soft -mthumb -o "Core/Src/led.o"
+../Core/Src/led.c:4:17: warning: unsigned conversion from 'int' to 'uint8_t' {aka 'unsigned char'} changes value from '500' to '244' [-Woverflow]
+    4 | uint8_t delay = 500;
+      |                 ^~~
+arm-none-eabi-g++ -o "Dinamic_IND.elf" @"objects.list"   -mcpu=cortex-m3 -T"E:\Projects\Micros\Micros\STM32\12_Dinamic_IND\Dinamic_IND\STM32F103C6TX_FLASH.ld" --specs=nosys.specs -Wl,-Map="Dinamic_IND.map" -Wl,--gc-sections -static --specs=nano.specs -mfloat-abi=soft -mthumb -Wl,--start-group -lc -lm -lstdc++ -lsupc++ -Wl,--end-group
+Finished building target: Dinamic_IND.elf
+ 
+arm-none-eabi-size  Dinamic_IND.elf 
+arm-none-eabi-objdump -h -S Dinamic_IND.elf  > "Dinamic_IND.list"
+   text	   data	    bss	    dec	    hex	filename
+  10060	     16	   1648	  11724	   2dcc	Dinamic_IND.elf
+arm-none-eabi-objcopy  -O ihex Dinamic_IND.elf  "Dinamic_IND.hex"
+Finished building: default.size.stdout
+ 
+Finished building: Dinamic_IND.list
+Finished building: Dinamic_IND.hex
+ 
+ 
+
+23:18:52 Build Finished. 0 errors, 1 warnings. (took 2s.800ms)
+

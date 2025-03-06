@@ -1,5 +1,10 @@
 #include "led.c"
 
+uint32_t timer;
+uint32_t timerDelay = 1000;
+
+int i = 9998;
+
 void setup() {
 
   pinMode(a, OUTPUT);
@@ -34,14 +39,22 @@ void setup() {
 
 void loop() {
 
-  for(int i = 0; i < 9999; i++){
-    ledprint(i);
-    //delay(500);
+  if(millis() - timer >= timerDelay){
+    timer = millis();  
+    change_i();
   }
+  ledprint(i);
   
 }
 
+void change_i(){
+  if(i >= 9999){
+    i = 0;
+  } else {
+    i++;
+  }
 
+}
 
 
 

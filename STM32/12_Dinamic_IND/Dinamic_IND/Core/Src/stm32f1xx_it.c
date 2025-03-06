@@ -25,12 +25,8 @@
 uint8_t n_count=0;
 extern uint8_t R1, R2, R3, R4;
 
-
-
 extern TIM_HandleTypeDef htim2;
-/* USER CODE BEGIN EV */
 
-/* USER CODE END EV */
 
 /******************************************************************************/
 /*           Cortex-M3 Processor Interruption and Exception Handlers          */
@@ -178,23 +174,40 @@ void TIM2_IRQHandler(void)
 
   HAL_TIM_IRQHandler(&htim2);
 
+  /*
   if(n_count==0){
+	  LED_ON_1_RESET;
+	  LED_ON_2_SET;
+	  LED_ON_3_SET;
+	  LED_ON_4_SET;
 	  segchar(R1);
   }
   if(n_count==1){
+	  LED_ON_1_SET;
+	  LED_ON_2_RESET;
+	  LED_ON_3_SET;
+	  LED_ON_4_SET;
 	  segchar(R2);
   }
   if(n_count==2){
+	  LED_ON_1_SET;
+	  LED_ON_2_SET;
+	  LED_ON_3_RESET;
+	  LED_ON_4_SET;
 	  segchar(R3);
   }
   if(n_count==3){
+	  LED_ON_1_SET;
+	  LED_ON_2_SET;
+	  LED_ON_3_SET;
+	  LED_ON_4_RESET;
 	  segchar(R4);
   }
-
   n_count++;
   if (n_count>3){
 	  n_count=0;
   }
+  */
 
 }
 
