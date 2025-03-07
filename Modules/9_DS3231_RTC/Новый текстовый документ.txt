@@ -1,0 +1,3 @@
+ft24c256a – модуль памяти EEPROM.
+DS3231 HW-84 – модуль часов реального времени. Отдельным скетчем забивается начало отсчёта (дата и время) и хранится в памяти до того момента, пока не села батарейка. Скетч со считыванием текущего времени – HW-084_DS3231_RealTime_Clock, скетч с заданием начала отсчёта – set_Time_on_HW-084.
+https://soltau.ru/index.php/arduino/item/524-kak-podklyuchit-chasy-realnogo-vremeni-rtc-k-arduino?ysclid=lvan4o1538398325998
