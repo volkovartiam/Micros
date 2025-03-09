@@ -29,7 +29,7 @@ static void MX_GPIO_Init(void);
 static void MX_TIM2_Init(void);
 
 
-uint32_t i=0;
+uint32_t i=9996;
 
 
 int main(void)
@@ -45,61 +45,28 @@ int main(void)
 
   HAL_TIM_Base_Start_IT(&htim2);
 
-  /*
-  HAL_TIM_PWM_Start(&htim2, TIM_CHANNEL_1);
-  HAL_TIM_PWM_Start(&htim2, TIM_CHANNEL_2);
-  HAL_TIM_PWM_Start(&htim2, TIM_CHANNEL_3);
-  HAL_TIM_PWM_Start(&htim2, TIM_CHANNEL_4);
-  */
-
-  /*
-  LED_ON_1_SET;
-  LED_ON_2_RESET;
-  LED_ON_3_RESET;
-  LED_ON_4_RESET;
-  */
-
   while (1)
   {
-	  ledprint(1);
-	  /*
-	  for(int i = 0; i < 10000; i++){
-		  ledprint(1234);
-	  }
-	  */
+	  ledprint(i);
   }
 
 }
 
 
-/*
+/**/
 void HAL_TIM_PeriodElapsedCallback(TIM_HandleTypeDef* htim)
 {
 
 	if(htim->Instance == TIM2) //check if the interrupt comes from TIM1
     {
-
-		HAL_GPIO_TogglePin(GPIOA, GPIO_PIN_8);
-		HAL_GPIO_TogglePin(GPIOA, GPIO_PIN_9);
-		HAL_GPIO_TogglePin(GPIOA, GPIO_PIN_10);
-		HAL_GPIO_TogglePin(GPIOA, GPIO_PIN_11);
-
-
-
-		LED_ON_1_SET;
-		LED_ON_2_SET;
-		LED_ON_3_SET;
-		LED_ON_4_SET;
-
 		if(i >= 9999){
 		i = 0;
 		} else {
 		i++;
 		}
-
     }
+
 }
-*/
 
 
 /**
@@ -148,21 +115,14 @@ void SystemClock_Config(void)
 static void MX_TIM2_Init(void)
 {
 
-  /* USER CODE BEGIN TIM2_Init 0 */
-
-  /* USER CODE END TIM2_Init 0 */
-
   TIM_ClockConfigTypeDef sClockSourceConfig = {0};
   TIM_MasterConfigTypeDef sMasterConfig = {0};
   TIM_OC_InitTypeDef sConfigOC = {0};
 
-  /* USER CODE BEGIN TIM2_Init 1 */
-
-  /* USER CODE END TIM2_Init 1 */
   htim2.Instance = TIM2;
-  htim2.Init.Prescaler = 250;
+  htim2.Init.Prescaler = 41000;
   htim2.Init.CounterMode = TIM_COUNTERMODE_UP;
-  htim2.Init.Period = 750;
+  htim2.Init.Period = 1600;
   htim2.Init.ClockDivision = TIM_CLOCKDIVISION_DIV1;
   htim2.Init.AutoReloadPreload = TIM_AUTORELOAD_PRELOAD_DISABLE;
   if (HAL_TIM_Base_Init(&htim2) != HAL_OK)

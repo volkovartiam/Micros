@@ -1,7 +1,7 @@
 #include "led.h"
 
 uint8_t R1=0, R2=0, R3=0, R4=0;
-uint8_t delay = 500;
+uint8_t delay = 5;
 
 void ledprint(uint16_t number)
 {
@@ -10,31 +10,31 @@ void ledprint(uint16_t number)
 	R3 = number%1000/100;
 	R4 = number/1000;
 
-	LED_ON_1_RESET;
-	LED_ON_2_SET;
-	LED_ON_3_SET;
-	LED_ON_4_SET;
+	LED_ON_1_SET;
+	LED_ON_2_RESET;
+	LED_ON_3_RESET;
+	LED_ON_4_RESET;
 	segchar(R4);
 	HAL_Delay(delay);
 
-	LED_ON_1_SET;
-	LED_ON_2_RESET;
-	LED_ON_3_SET;
-	LED_ON_4_SET;
+	LED_ON_1_RESET;
+	LED_ON_2_SET;
+	LED_ON_3_RESET;
+	LED_ON_4_RESET;
 	segchar(R3);
 	HAL_Delay(delay);
 
-	LED_ON_1_SET;
-	LED_ON_2_SET;
-	LED_ON_3_RESET;
-	LED_ON_4_SET;
+	LED_ON_1_RESET;
+	LED_ON_2_RESET;
+	LED_ON_3_SET;
+	LED_ON_4_RESET;
 	segchar(R2);
 	HAL_Delay(delay);
 
-	LED_ON_1_SET;
-	LED_ON_2_SET;
-	LED_ON_3_SET;
-	LED_ON_4_RESET;
+	LED_ON_1_RESET;
+	LED_ON_2_RESET;
+	LED_ON_3_RESET;
+	LED_ON_4_SET;
 	segchar(R1);
 	HAL_Delay(delay);
 

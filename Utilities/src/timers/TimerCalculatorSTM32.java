@@ -5,9 +5,9 @@ public class TimerCalculatorSTM32 {
 	public static void main(String[] args) {
 
 		// Counter Period (AutoReload Register - 16 bits value ) must be between 0 and 65 535
-		double ARR = 499;
+		double ARR = 41000;
 		// Prescaler (PSC - 16 bits value) must be between 0 and 65 535.
-		double PSC = 750;
+		double PSC = 1600;
 		//Тактовая частота	
 		double F_CLK_MHZ = 64;
 		
