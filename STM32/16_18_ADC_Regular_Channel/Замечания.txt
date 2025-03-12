@@ -1,0 +1,11 @@
+
+
+https://istarik.ru/blog/stm32/113.html
+
+https://www.programmerall.com/article/12712447329/
+
+https://programmersought.com/article/86139346303/
+
+https://deepbluembedded.com/stm32-adc-tutorial-complete-guide-with-examples/
+
+https://deepbluembedded.com/stm32-adc-read-example-dma-interrupt-polling/
