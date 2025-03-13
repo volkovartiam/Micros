@@ -89,8 +89,10 @@ int main(void)
   /* Initialize all configured peripherals */
   MX_GPIO_Init();
   MX_USART1_UART_Init();
+  /* USER CODE BEGIN 2 */
 
   /* USER CODE END 2 */
+
   uint8_t str[]= "USART Transmit";
   /* Infinite loop */
   /* USER CODE BEGIN WHILE */
@@ -99,8 +101,8 @@ int main(void)
       HAL_UART_Transmit(&huart1,str,16,0xFFFF);
       // HAL_UART_Transmit(&huart1,str,16,200);
       HAL_Delay(100);
-
   }
+  /* USER CODE END 3 */
 }
 
 /**

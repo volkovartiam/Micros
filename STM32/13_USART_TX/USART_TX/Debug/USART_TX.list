@@ -37,11 +37,11 @@ Idx Name          Size      VMA       LMA       File off  Algn
                   CONTENTS, READONLY, DEBUGGING, OCTETS
  16 .debug_macro  00015b2c  00000000  00000000  0000d070  2**0
                   CONTENTS, READONLY, DEBUGGING, OCTETS
- 17 .debug_line   000080fe  00000000  00000000  00022b9c  2**0
+ 17 .debug_line   000080ff  00000000  00000000  00022b9c  2**0
                   CONTENTS, READONLY, DEBUGGING, OCTETS
- 18 .debug_str    0007c049  00000000  00000000  0002ac9a  2**0
+ 18 .debug_str    0007c049  00000000  00000000  0002ac9b  2**0
                   CONTENTS, READONLY, DEBUGGING, OCTETS
- 19 .comment      00000043  00000000  00000000  000a6ce3  2**0
+ 19 .comment      00000043  00000000  00000000  000a6ce4  2**0
                   CONTENTS, READONLY
  20 .debug_frame  00001900  00000000  00000000  000a6d28  2**2
                   CONTENTS, READONLY, DEBUGGING, OCTETS
@@ -111,8 +111,10 @@ int main(void)
  800015a:	f000 f881 	bl	8000260 <MX_GPIO_Init>
   MX_USART1_UART_Init();
  800015e:	f000 f855 	bl	800020c <MX_USART1_UART_Init>
+  /* USER CODE BEGIN 2 */
 
   /* USER CODE END 2 */
+
   uint8_t str[]= "USART Transmit";
  8000162:	4b0a      	ldr	r3, [pc, #40]	@ (800018c <main+0x40>)
  8000164:	463c      	mov	r4, r7
@@ -401,9 +403,9 @@ void HAL_MspInit(void)
 
   /* System interrupt init*/
 
-  /** DISABLE: JTAG-DP Disabled and SW-DP Disabled
+  /** NOJTAG: JTAG-DP Disabled and SW-DP Enabled
   */
-  __HAL_AFIO_REMAP_SWJ_DISABLE();
+  __HAL_AFIO_REMAP_SWJ_NOJTAG();
  80002ce:	4b0a      	ldr	r3, [pc, #40]	@ (80002f8 <HAL_MspInit+0x60>)
  80002d0:	685b      	ldr	r3, [r3, #4]
  80002d2:	60fb      	str	r3, [r7, #12]
@@ -411,7 +413,7 @@ void HAL_MspInit(void)
  80002d6:	f023 63e0 	bic.w	r3, r3, #117440512	@ 0x7000000
  80002da:	60fb      	str	r3, [r7, #12]
  80002dc:	68fb      	ldr	r3, [r7, #12]
- 80002de:	f043 6380 	orr.w	r3, r3, #67108864	@ 0x4000000
+ 80002de:	f043 7300 	orr.w	r3, r3, #33554432	@ 0x2000000
  80002e2:	60fb      	str	r3, [r7, #12]
  80002e4:	4a04      	ldr	r2, [pc, #16]	@ (80002f8 <HAL_MspInit+0x60>)
  80002e6:	68fb      	ldr	r3, [r7, #12]
