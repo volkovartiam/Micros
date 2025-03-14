@@ -1,6 +1,12 @@
 В Proteus при работе с интерфейсом I2C при установке резисторов "подтяжки" по цепям SDA и SCL адрес устройств не отображается (МК не видит устройств по шине, для Arduino и STM32).
 Симуляцию проводить без установки резисторов.
 
+I2C Scanner нашел устройство с адресом 0x20 (в железе, при работе в Proteus найденных адресов нет).
+
+
+https://github.com/alixahedi/PCF8574-STM32?ysclid=m88el15shs679501460
+
+https://github.com/xreef/PCF8574_library
 
 https://deepbluembedded.com/stm32-i2c-scanner-hal-code-example/
 

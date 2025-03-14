@@ -18,6 +18,11 @@
 /* USER CODE END Header */
 /* Includes ------------------------------------------------------------------*/
 #include "main.h"
+#include "pcf8574.h"
+
+// Create a handle for PCF8574
+PCF8574_HandleTypeDef pcf8574;
+
 
 /* Private includes ----------------------------------------------------------*/
 /* USER CODE BEGIN Includes */
@@ -95,21 +100,38 @@ int main(void)
 
   /* Infinite loop */
   /* USER CODE BEGIN WHILE */
-  uint8_t TX_Buffer[1] = {1} ; // DATA to receive
+  uint8_t TX_Buffer[1] = {1,1} ; // DATA to receive
+
+  PCF8574_Init(&pcf8574, &hi2c1, 0, 0, 0);
+
+// Set Pin 0 to HIGH (1)
+  PCF8574_WritePin(&pcf8574, 0, GPIO_PIN_SET);
+
+// Read the state of Pin 0
+  GPIO_PinState state = PCF8574_ReadPin(&pcf8574, 0);
 
   while (1)
   {
 
-	  for(int i = 0; i < 255; i++){
-		  HAL_I2C_Master_Transmit(&hi2c1,0x20 >> 1 ,i,1,200);
-	  }
+	  //for(int i = 0; i < 255; i++){
+		  //HAL_I2C_Master_Transmit(&hi2c1,0x20,i,1,200);
+		  //HAL_I2C_Master_Transmit(&hi2c1, (uint16_t)0x20,TX_Buffer,2,200);
+	  //}
 	  //HAL_I2C_Master_Transmit(&hi2c1,0x20,TX_Buffer,1,1000); //Sending in Blocking mode
-	  HAL_Delay(100);
-	  HAL_GPIO_TogglePin(GPIOA, GPIO_PIN_0);
-	  HAL_Delay(100);
+	  //HAL_Delay(250);
+	  //HAL_GPIO_TogglePin(GPIOA, GPIO_PIN_0);
+	  //HAL_Delay(250);
 
     /* USER CODE END WHILE */
 
+
+
+
+    // Toggle Pin 0
+    PCF8574_TogglePin(&pcf8574, 0);
+
+    // Delay for 500 ms
+    HAL_Delay(500);
     /* USER CODE BEGIN 3 */
   }
   /* USER CODE END 3 */
