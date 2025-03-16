@@ -1,8 +1,8 @@
 #include <OneWire.h>
 #include <DallasTemperature.h>
 
-// Data wire is plugged into digital pin 2 on the Arduino
-#define ONE_WIRE_BUS 2
+// Data wire is plugged into digital pin 8 on the Arduino
+#define ONE_WIRE_BUS 8
 
 // Setup a oneWire instance to communicate with any OneWire device
 OneWire oneWire(ONE_WIRE_BUS);  
@@ -25,6 +25,7 @@ void setup(void)
   Serial.print(deviceCount, DEC);
   Serial.println(" devices.");
   Serial.println("");
+  delay(1000);
 }
 
 void loop(void)

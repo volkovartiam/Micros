@@ -1,8 +1,8 @@
 #include <OneWire.h>
 #include <DallasTemperature.h>
 
-// Data wire is plugged into port 2 on the Arduino
-#define ONE_WIRE_BUS 2
+// Data wire is plugged into port 8 on the Arduino
+#define ONE_WIRE_BUS 8
 
 // Setup a oneWire instance to communicate with any OneWire devices
 OneWire oneWire(ONE_WIRE_BUS);
