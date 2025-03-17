@@ -120,6 +120,7 @@ int main(void)
  8000162:	2301      	movs	r3, #1
  8000164:	713b      	strb	r3, [r7, #4]
 
+  /**/
   PCF8574_Init(&pcf8574, &hi2c1, 0, 0, 0);
  8000166:	2300      	movs	r3, #0
  8000168:	9300      	str	r3, [sp, #0]
@@ -128,36 +129,30 @@ int main(void)
  800016e:	490c      	ldr	r1, [pc, #48]	@ (80001a0 <main+0x54>)
  8000170:	480c      	ldr	r0, [pc, #48]	@ (80001a4 <main+0x58>)
  8000172:	f000 f8c7 	bl	8000304 <PCF8574_Init>
-
-// Set Pin 0 to HIGH (1)
-  PCF8574_WritePin(&pcf8574, 0, GPIO_PIN_SET);
+  PCF8574_WritePin(&pcf8574, 0, GPIO_PIN_SET);				// Set Pin 0 to HIGH (1)
  8000176:	2201      	movs	r2, #1
  8000178:	2100      	movs	r1, #0
  800017a:	480a      	ldr	r0, [pc, #40]	@ (80001a4 <main+0x58>)
  800017c:	f000 f8f0 	bl	8000360 <PCF8574_WritePin>
-
-// Read the state of Pin 0
-  GPIO_PinState state = PCF8574_ReadPin(&pcf8574, 0);
+  GPIO_PinState state = PCF8574_ReadPin(&pcf8574, 0);		// Read the state of Pin 0
  8000180:	2100      	movs	r1, #0
  8000182:	4808      	ldr	r0, [pc, #32]	@ (80001a4 <main+0x58>)
  8000184:	f000 f91e 	bl	80003c4 <PCF8574_ReadPin>
  8000188:	4603      	mov	r3, r0
  800018a:	71fb      	strb	r3, [r7, #7]
+	  HAL_Delay(500);
+	  HAL_I2C_Master_Transmit(&hi2c1, (uint16_t)0x40, (1 << GPIO_PIN_SET), 1, 200);
+	  */
 
-
-
-
-    // Toggle Pin 0
-    PCF8574_TogglePin(&pcf8574, 0);
+	  /**/
+	  PCF8574_TogglePin(&pcf8574, 0);					   		 // Toggle Pin 0
  800018c:	2100      	movs	r1, #0
  800018e:	4805      	ldr	r0, [pc, #20]	@ (80001a4 <main+0x58>)
  8000190:	f000 f92f 	bl	80003f2 <PCF8574_TogglePin>
-
-    // Delay for 500 ms
-    HAL_Delay(500);
+	  HAL_Delay(500);
  8000194:	f44f 70fa 	mov.w	r0, #500	@ 0x1f4
  8000198:	f000 faca 	bl	8000730 <HAL_Delay>
-    PCF8574_TogglePin(&pcf8574, 0);
+	  PCF8574_TogglePin(&pcf8574, 0);					   		 // Toggle Pin 0
  800019c:	bf00      	nop
  800019e:	e7f5      	b.n	800018c <main+0x40>
  80001a0:	20000030 	.word	0x20000030
