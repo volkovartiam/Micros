@@ -1,0 +1,7 @@
+
+
+https://github.com/JhonControl/Simulino-Arduino-Proteus--ISIS-?ysclid=m8cs1rkmgq612418034
+
+https://arduinokitproject.com/adc-in-arduino/
+
+https://deepbluembedded.com/arduino-adc-analogread-analog-input/

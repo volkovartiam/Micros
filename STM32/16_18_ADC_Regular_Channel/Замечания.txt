@@ -1,5 +1,8 @@
 
 
+https://deepbluembedded.com/stm32-adc-continuous-conversion-mode-dma-poll-interrupt-single-channel/
+
+
 https://istarik.ru/blog/stm32/113.html
 
 https://www.programmerall.com/article/12712447329/
