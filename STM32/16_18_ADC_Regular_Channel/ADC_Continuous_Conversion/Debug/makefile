@@ -76,6 +76,9 @@ default.size.stdout \
 OBJDUMP_LIST += \
 ADC_Continuous_Conversion.list \
 
+OBJCOPY_HEX += \
+ADC_Continuous_Conversion.hex \
+
 
 # All Target
 all: main-build
@@ -84,8 +87,8 @@ all: main-build
 main-build: ADC_Continuous_Conversion.elf secondary-outputs
 
 # Tool invocations
-ADC_Continuous_Conversion.elf ADC_Continuous_Conversion.map: $(OBJS) $(USER_OBJS) D:\MGU\Micros\Micros\STM32\16_18_ADC_Regular_Channel\ADC_Continuous_Conversion\STM32F103C6TX_FLASH.ld makefile objects.list $(OPTIONAL_TOOL_DEPS)
-	arm-none-eabi-g++ -o "ADC_Continuous_Conversion.elf" @"objects.list" $(USER_OBJS) $(LIBS) -mcpu=cortex-m3 -T"D:\MGU\Micros\Micros\STM32\16_18_ADC_Regular_Channel\ADC_Continuous_Conversion\STM32F103C6TX_FLASH.ld" --specs=nosys.specs -Wl,-Map="ADC_Continuous_Conversion.map" -Wl,--gc-sections -static --specs=nano.specs -mfloat-abi=soft -mthumb -Wl,--start-group -lc -lm -lstdc++ -lsupc++ -Wl,--end-group
+ADC_Continuous_Conversion.elf ADC_Continuous_Conversion.map: $(OBJS) $(USER_OBJS) E:\Projects\Micros\Micros\STM32\16_18_ADC_Regular_Channel\ADC_Continuous_Conversion\STM32F103C6TX_FLASH.ld makefile objects.list $(OPTIONAL_TOOL_DEPS)
+	arm-none-eabi-g++ -o "ADC_Continuous_Conversion.elf" @"objects.list" $(USER_OBJS) $(LIBS) -mcpu=cortex-m3 -T"E:\Projects\Micros\Micros\STM32\16_18_ADC_Regular_Channel\ADC_Continuous_Conversion\STM32F103C6TX_FLASH.ld" --specs=nosys.specs -Wl,-Map="ADC_Continuous_Conversion.map" -Wl,--gc-sections -static --specs=nano.specs -mfloat-abi=soft -mthumb -Wl,--start-group -lc -lm -lstdc++ -lsupc++ -Wl,--end-group
 	@echo 'Finished building target: $@'
 	@echo ' '
 
@@ -99,12 +102,17 @@ ADC_Continuous_Conversion.list: $(EXECUTABLES) makefile objects.list $(OPTIONAL_
 	@echo 'Finished building: $@'
 	@echo ' '
 
+ADC_Continuous_Conversion.hex: $(EXECUTABLES) makefile objects.list $(OPTIONAL_TOOL_DEPS)
+	arm-none-eabi-objcopy  -O ihex $(EXECUTABLES) "ADC_Continuous_Conversion.hex"
+	@echo 'Finished building: $@'
+	@echo ' '
+
 # Other Targets
 clean:
-	-$(RM) ADC_Continuous_Conversion.elf ADC_Continuous_Conversion.list ADC_Continuous_Conversion.map default.size.stdout
+	-$(RM) ADC_Continuous_Conversion.elf ADC_Continuous_Conversion.hex ADC_Continuous_Conversion.list ADC_Continuous_Conversion.map default.size.stdout
 	-@echo ' '
 
-secondary-outputs: $(SIZE_OUTPUT) $(OBJDUMP_LIST)
+secondary-outputs: $(SIZE_OUTPUT) $(OBJDUMP_LIST) $(OBJCOPY_HEX)
 
 fail-specified-linker-script-missing:
 	@echo 'Error: Cannot find the specified linker script. Check the linker settings in the build configuration.'
