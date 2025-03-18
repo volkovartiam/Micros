@@ -1,0 +1,5 @@
+https://microkontroller.ru/arduino-projects/rukovodstvo-po-preryvaniyam-v-arduino-dlya-nachinayushhih/
+
+https://alexgyver.ru/lessons/interrupts/?ysclid=m8e62vhj9y651729233
+
+https://deepbluembedded.com/arduino-interrupts-tutorial-examples/
