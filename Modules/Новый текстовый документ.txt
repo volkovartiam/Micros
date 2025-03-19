@@ -1,0 +1,7 @@
+https://lesson.iarduino.ru/page/Altimeter/?ysclid=m8fpq4wvcv382575771
+
+https://microtechnics.ru/pid-regulyator-primer-pid-regulyatora-temperatury-na-stm32/?ysclid=m8flj8lud2322766570
+
+https://soltau.ru/index.php/arduino/item/508-chtenie-i-zapis-flesh-pamyati-s-pomoshchyu-arduino-na-primere-mikroskhemy-25l8005
+
+https://mischianti.org/arduino-fast-external-spi-flash-memory/?ysclid=m8fm1q2aj0154580552
