@@ -1,0 +1,24 @@
+!SESSION 2025-03-21 10:39:55.562 -----------------------------------------------
+eclipse.buildId=Version 1.17.0
+java.version=21.0.3
+java.vendor=Eclipse Adoptium
+BootLoader constants: OS=win32, ARCH=x86_64, WS=win32, NL=ru_RU
+Command-line arguments:  -os win32 -ws win32 -arch x86_64
+
+!ENTRY com.st.stm32cube.ide.mcu.informationcenter 4 4 2025-03-21 10:40:44.469
+!MESSAGE CubeMX plugin appears to be active, Log4j initialization might be too late.
+
+!ENTRY com.st.stm32cube.ide.mcu.informationcenter 1 1 2025-03-21 10:40:44.470
+!MESSAGE Log4j2 initialized with config file D:\MGU\Micros\Micros\Deepbluembedded\Learn STM32 Basics\11_12_Interrupts\External_Interrupt_Example\.metadata\.log4j2.xml
+
+!ENTRY com.st.stm32cube.ide.mcu.ide 1 1 2025-03-21 10:40:47.334
+!MESSAGE Started RMI Server, listening on port 41337
+
+!ENTRY org.eclipse.equinox.p2.metadata.repository 4 1000 2025-03-21 10:41:14.810
+!MESSAGE No repository found at https://sw-center.st.com/stm32cubeide/updatesite1.
+
+!ENTRY org.eclipse.equinox.p2.metadata.repository 4 1000 2025-03-21 10:41:19.063
+!MESSAGE No repository found at https://sw-center.st.com/stm32cubeide/openstlinux/updatesite1.
+
+!ENTRY org.eclipse.cdt.core 1 0 2025-03-21 10:42:45.603
+!MESSAGE Indexed 'External_Interrupt_Example' (17 sources, 78 headers) in 1.5 sec: 3,632 declarations; 13,141 references; 0 unresolved inclusions; 1 syntax errors; 2 unresolved names (0.012%)
