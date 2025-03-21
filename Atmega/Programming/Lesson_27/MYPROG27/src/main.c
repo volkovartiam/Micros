@@ -31,26 +31,22 @@ int main()
 {
   unsigned int a[10] = {0x33333333, 0x44444444, 0x55555555, 0x66666666, 0x77777777, \
                         0x88888888, 0x99999999, 0xAAAAAAAA, 0xBBBBBBBB, 0xCCCCCCCC};
-  printf("Element addresses a:\n");
+  printf("Element addresses a\n");
   for(int i=0; i<10;i++)
   {
     printf("%08X ",(unsigned int) &a[i]);
   }
-  printf("\nValue a:\n");
+  printf("\nValue a\n");
   for(int i=0; i<10;i++)
   {
     printf("%08X ",a[i]);
   }
-
-
   printf("\n--------------------------------------------\n");
   unsigned int *p0_a, *p5_a;
   p0_a = &a[0];
   p5_a = &a[5];
   printf("Value *p0_a is %08X\tp0_a is %08X\n", *p0_a, (unsigned int) p0_a);
   printf("Value *p5_a is %08X\tp5_a is %08X\n", *p5_a, (unsigned int) p5_a);
-
-
   printf("--------------------------------------------\n");
   //Pointer increment
   p0_a++;  p5_a++;
@@ -58,8 +54,6 @@ int main()
   printf("--------------------------------------------\n");
   printf("Value *p0_a is %08X\tp0_a is %08X\n", *p0_a, (unsigned int) p0_a);
   printf("Value *p5_a is %08X\tp5_a is %08X\n", *p5_a, (unsigned int) p5_a);
-
-
   printf("--------------------------------------------\n");
   //Pointer decrement
   p0_a--;  p5_a--;
@@ -67,55 +61,48 @@ int main()
   printf("--------------------------------------------\n");
   printf("Value *p0_a is %08X\tp0_a is %08X\n", *p0_a, (unsigned int) p0_a);
   printf("Value *p5_a is %08X\tp5_a is %08X\n", *p5_a, (unsigned int) p5_a);
-
-
   //Constant addition
   printf("--------------------------------------------\n");
   p0_a+=4;  p5_a+=2;
   printf("p0_a+=4; p5_a+=2;\n");
   printf("Value *p0_a is %08X\tp0_a is %08X\n", *p0_a, (unsigned int) p0_a);
   printf("Value *p5_a is %08X\tp5_a is %08X\n", *p5_a, (unsigned int) p5_a);
-
-
   //Constant subtraction
   printf("--------------------------------------------\n");
   p0_a-=4;  p5_a-=2;
   printf("p0_a-=4; p5_a-=2;\n");
   printf("Value *p0_a is %08X\tp0_a is %08X\n", *p0_a, (unsigned int) p0_a);
   printf("Value *p5_a is %08X\tp5_a is %08X\n", *p5_a, (unsigned int) p5_a);
-
-
   //Subtraction for two pointers
   printf("--------------------------------------------\n");
   unsigned int n = p5_a - p0_a;
   printf("p5_a - p0_a is %u\n", n);
   //Special expression
   printf("--------------------------------------------\n");
-
-
+  /*
   n = *++p5_a;
   printf("*++p5_a is %08X\n", n);
   printf("Value *p0_a is %08X\tp0_a is %08X\n", *p0_a, (unsigned int) p0_a);
   printf("Value *p5_a is %08X\tp5_a is %08X\n", *p5_a, (unsigned int) p5_a);
-    /**/
-
+  */
+  /*
   n = ++*p5_a; //(equ ++(*p5_a))
   printf("++*p5_a is %08X\n", n);
   printf("Value *p0_a is %08X\tp0_a is %08X\n", *p0_a, (unsigned int) p0_a);
   printf("Value *p5_a is %08X\tp5_a is %08X\n", *p5_a, (unsigned int) p5_a);
-
+  */
+  /*
   n = *p5_a++;
   printf("*p5_a++ is %08X\n", n);
   printf("Value *p0_a is %08X\tp0_a is %08X\n", *p0_a, (unsigned int) p0_a);
   printf("Value *p5_a is %08X\tp5_a is %08X\n", *p5_a, (unsigned int) p5_a);
-
+  */
+  /*
   n = (*p5_a)++;
   printf("(*p5_a)++ is %08X\n", n);
   printf("Value *p0_a is %08X\tp0_a is %08X\n", *p0_a, (unsigned int) p0_a);
   printf("Value *p5_a is %08X\tp5_a is %08X\n", *p5_a, (unsigned int) p5_a);
-
-
-  /*
+  */
   unsigned int b[4] = {0x00112233, 0x44556677, 0x8899AABB, 0xCCDDEEFF};
   printf("Element addresses b\n");
   for(int i=0; i<4;i++)
@@ -161,8 +148,6 @@ int main()
   {
     printf("%02X ", *(((unsigned char*)b)+i));
   }
-  */
-
   return 0; //Return an integer from a function
 }
 //--------------------------------------------------------

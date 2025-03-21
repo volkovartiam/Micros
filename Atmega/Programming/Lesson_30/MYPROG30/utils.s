@@ -1,121 +1,16 @@
-	.file	"main.c"
+	.file	"utils.c"
 	.intel_syntax noprefix
 	.text
 .Ltext0:
 	.cfi_sections	.debug_frame
-	.file 0 "D:/MGU/Micros/Micros/Atmega/Programming/Lesson_27/MYPROG27" "src/main.c"
-	.globl	student_counter
-	.bss
-student_counter:
-	.space 1
-	.globl	res
-	.align 4
-res:
-	.space 4
-	.globl	str1
-	.align 16
-str1:
-	.space 30
-	.globl	yf
-	.align 4
-yf:
-	.space 4
-	.globl	zf
-	.align 4
-zf:
-	.space 4
-	.section .rdata,"dr"
-.LC0:
-	.ascii "Element addresses a\0"
-.LC1:
-	.ascii "%08X \0"
-.LC2:
-	.ascii "\12Value a\0"
-	.align 8
-.LC3:
-	.ascii "\12--------------------------------------------\0"
-	.align 8
-.LC4:
-	.ascii "Value *p0_a is %08X\11p0_a is %08X\12\0"
-	.align 8
-.LC5:
-	.ascii "Value *p5_a is %08X\11p5_a is %08X\12\0"
-	.align 8
-.LC6:
-	.ascii "--------------------------------------------\0"
-.LC7:
-	.ascii "p0_a++; p5_a++;\0"
-.LC8:
-	.ascii "p0_a--; p5_a--;\0"
-.LC9:
-	.ascii "p0_a+=4; p5_a+=2;\0"
-.LC10:
-	.ascii "p0_a-=4; p5_a-=2;\0"
-.LC11:
-	.ascii "p5_a - p0_a is %u\12\0"
-.LC12:
-	.ascii "Element addresses b\0"
-.LC13:
-	.ascii "\12Value b\0"
-	.align 8
-.LC14:
-	.ascii "Value *p0_b is %08X\11p0_a is %08X\12\0"
-	.align 8
-.LC15:
-	.ascii "Value *p2_b is %08X\11p5_a is %08X\12\0"
-.LC16:
-	.ascii "Value p0_b[0] is %08X\12\0"
-.LC17:
-	.ascii "Value p0_b[1] is %08X\12\0"
-.LC18:
-	.ascii "Value p2_b[0] is %08X\12\0"
-.LC19:
-	.ascii "Value p2_b[1] is %08X\12\0"
-.LC20:
-	.ascii "Value p2_b[2] is %08X\12\0"
-.LC21:
-	.ascii "Value p2_b[-1] is %08X\12\0"
-.LC22:
-	.ascii "Value p0_b[-1] is %08X\12\0"
-.LC23:
-	.ascii "Value *b is %08X\12\0"
-.LC24:
-	.ascii "Value *(b+2) is %08X\12\0"
-	.align 8
-.LC25:
-	.ascii "Value (unsigned int)(unsigned char*)b is %08X\12\0"
-	.align 8
-.LC26:
-	.ascii "Value *(unsigned char*)b is %02X\12\0"
-	.align 8
-.LC27:
-	.ascii "Value *(unsigned char*)(b+1) is %02X\12\0"
-	.align 8
-.LC28:
-	.ascii "Value *(unsigned char*)(b+2) is %02X\12\0"
-	.align 8
-.LC29:
-	.ascii "Value *(((unsigned char*)b)+1) is %02X\12\0"
-	.align 8
-.LC30:
-	.ascii "Value *(((unsigned char*)b)+2) is %02X\12\0"
-	.align 8
-.LC31:
-	.ascii "Value *(((unsigned char*)b)+3) is %02X\12\0"
-.LC32:
-	.ascii "bytes of b\0"
-.LC33:
-	.ascii "0x%08X\12\0"
-.LC34:
-	.ascii "%02X \0"
-	.text
-	.globl	main
-	.def	main;	.scl	2;	.type	32;	.endef
-	.seh_proc	main
-main:
-.LFB129:
-	.file 1 "src/main.c"
-	.loc 1 31 1
+	.file 0 "D:/MGU/Micros/Micros/Atmega/Programming/Lesson_30/MYPROG30" "src/utils.c"
+	.globl	int_to_binary
+	.def	int_to_binary;	.scl	2;	.type	32;	.endef
+	.seh_proc	int_to_binary
+int_to_binary:
+.LFB4:
+	.file 1 "src/utils.c"
+	.loc 1 4 1
 	.cfi_startproc
 	push	rbp
 	.seh_pushreg	rbp
@@ -124,654 +19,160 @@ main:
 	mov	rbp, rsp
 	.seh_setframe	rbp, 0
 	.cfi_def_cfa_register 6
-	sub	rsp, 160
-	.seh_stackalloc	160
+	sub	rsp, 48
+	.seh_stackalloc	48
 	.seh_endprologue
-	.loc 1 31 1
-	call	__main
-	.loc 1 32 16
-	mov	DWORD PTR -112[rbp], 858993459
-	mov	DWORD PTR -108[rbp], 1145324612
-	mov	DWORD PTR -104[rbp], 1431655765
-	mov	DWORD PTR -100[rbp], 1717986918
-	mov	DWORD PTR -96[rbp], 2004318071
-	mov	DWORD PTR -92[rbp], -2004318072
-	mov	DWORD PTR -88[rbp], -1717986919
-	mov	DWORD PTR -84[rbp], -1431655766
-	mov	DWORD PTR -80[rbp], -1145324613
-	mov	DWORD PTR -76[rbp], -858993460
-	.loc 1 34 3
-	lea	rax, .LC0[rip]
-	mov	rcx, rax
-	call	puts
-.LBB2:
-	.loc 1 35 11
-	mov	DWORD PTR -4[rbp], 0
-	.loc 1 35 3
-	jmp	.L2
-.L3:
-	.loc 1 37 35
-	lea	rax, -112[rbp]
-	mov	edx, DWORD PTR -4[rbp]
-	movsx	rdx, edx
-	sal	rdx, 2
-	add	rax, rdx
-	.loc 1 37 5
-	mov	edx, eax
-	lea	rax, .LC1[rip]
-	mov	rcx, rax
-	call	printf
-	.loc 1 35 22 discriminator 3
-	add	DWORD PTR -4[rbp], 1
-.L2:
-	.loc 1 35 17 discriminator 1
-	cmp	DWORD PTR -4[rbp], 9
-	jle	.L3
-.LBE2:
-	.loc 1 39 3
-	lea	rax, .LC2[rip]
-	mov	rcx, rax
-	call	puts
-.LBB3:
-	.loc 1 40 11
-	mov	DWORD PTR -8[rbp], 0
-	.loc 1 40 3
-	jmp	.L4
-.L5:
-	.loc 1 42 5
-	mov	eax, DWORD PTR -8[rbp]
-	cdqe
-	mov	eax, DWORD PTR -112[rbp+rax*4]
-	mov	edx, eax
-	lea	rax, .LC1[rip]
-	mov	rcx, rax
-	call	printf
-	.loc 1 40 22 discriminator 3
-	add	DWORD PTR -8[rbp], 1
-.L4:
-	.loc 1 40 17 discriminator 1
-	cmp	DWORD PTR -8[rbp], 9
-	jle	.L5
-.LBE3:
-	.loc 1 44 3
-	lea	rax, .LC3[rip]
-	mov	rcx, rax
-	call	puts
-	.loc 1 46 8
-	lea	rax, -112[rbp]
-	mov	QWORD PTR -32[rbp], rax
-	.loc 1 47 8
-	lea	rax, -112[rbp]
-	add	rax, 20
-	mov	QWORD PTR -40[rbp], rax
-	.loc 1 48 3
-	mov	rax, QWORD PTR -32[rbp]
-	mov	edx, eax
-	mov	rax, QWORD PTR -32[rbp]
-	mov	eax, DWORD PTR [rax]
-	mov	r8d, edx
-	mov	edx, eax
-	lea	rax, .LC4[rip]
-	mov	rcx, rax
-	call	printf
-	.loc 1 49 3
-	mov	rax, QWORD PTR -40[rbp]
-	mov	edx, eax
-	mov	rax, QWORD PTR -40[rbp]
-	mov	eax, DWORD PTR [rax]
-	mov	r8d, edx
-	mov	edx, eax
-	lea	rax, .LC5[rip]
-	mov	rcx, rax
-	call	printf
-	.loc 1 50 3
-	lea	rax, .LC6[rip]
-	mov	rcx, rax
-	call	puts
-	.loc 1 52 7
-	add	QWORD PTR -32[rbp], 4
-	.loc 1 52 16
-	add	QWORD PTR -40[rbp], 4
-	.loc 1 53 3
-	lea	rax, .LC7[rip]
-	mov	rcx, rax
-	call	puts
-	.loc 1 54 3
-	lea	rax, .LC6[rip]
-	mov	rcx, rax
-	call	puts
-	.loc 1 55 3
-	mov	rax, QWORD PTR -32[rbp]
-	mov	edx, eax
-	mov	rax, QWORD PTR -32[rbp]
-	mov	eax, DWORD PTR [rax]
-	mov	r8d, edx
-	mov	edx, eax
-	lea	rax, .LC4[rip]
-	mov	rcx, rax
-	call	printf
-	.loc 1 56 3
-	mov	rax, QWORD PTR -40[rbp]
-	mov	edx, eax
-	mov	rax, QWORD PTR -40[rbp]
-	mov	eax, DWORD PTR [rax]
-	mov	r8d, edx
-	mov	edx, eax
-	lea	rax, .LC5[rip]
-	mov	rcx, rax
-	call	printf
-	.loc 1 57 3
-	lea	rax, .LC6[rip]
-	mov	rcx, rax
-	call	puts
-	.loc 1 59 7
-	sub	QWORD PTR -32[rbp], 4
-	.loc 1 59 16
-	sub	QWORD PTR -40[rbp], 4
-	.loc 1 60 3
-	lea	rax, .LC8[rip]
-	mov	rcx, rax
-	call	puts
-	.loc 1 61 3
-	lea	rax, .LC6[rip]
-	mov	rcx, rax
-	call	puts
-	.loc 1 62 3
-	mov	rax, QWORD PTR -32[rbp]
-	mov	edx, eax
-	mov	rax, QWORD PTR -32[rbp]
-	mov	eax, DWORD PTR [rax]
-	mov	r8d, edx
-	mov	edx, eax
-	lea	rax, .LC4[rip]
-	mov	rcx, rax
-	call	printf
-	.loc 1 63 3
-	mov	rax, QWORD PTR -40[rbp]
-	mov	edx, eax
-	mov	rax, QWORD PTR -40[rbp]
-	mov	eax, DWORD PTR [rax]
-	mov	r8d, edx
-	mov	edx, eax
-	lea	rax, .LC5[rip]
-	mov	rcx, rax
-	call	printf
-	.loc 1 65 3
-	lea	rax, .LC6[rip]
-	mov	rcx, rax
-	call	puts
-	.loc 1 66 7
-	add	QWORD PTR -32[rbp], 16
-	.loc 1 66 17
-	add	QWORD PTR -40[rbp], 8
-	.loc 1 67 3
-	lea	rax, .LC9[rip]
-	mov	rcx, rax
-	call	puts
-	.loc 1 68 3
-	mov	rax, QWORD PTR -32[rbp]
-	mov	edx, eax
-	mov	rax, QWORD PTR -32[rbp]
-	mov	eax, DWORD PTR [rax]
-	mov	r8d, edx
-	mov	edx, eax
-	lea	rax, .LC4[rip]
-	mov	rcx, rax
-	call	printf
-	.loc 1 69 3
-	mov	rax, QWORD PTR -40[rbp]
-	mov	edx, eax
-	mov	rax, QWORD PTR -40[rbp]
-	mov	eax, DWORD PTR [rax]
-	mov	r8d, edx
-	mov	edx, eax
-	lea	rax, .LC5[rip]
-	mov	rcx, rax
-	call	printf
-	.loc 1 71 3
-	lea	rax, .LC6[rip]
-	mov	rcx, rax
-	call	puts
-	.loc 1 72 7
-	sub	QWORD PTR -32[rbp], 16
-	.loc 1 72 17
-	sub	QWORD PTR -40[rbp], 8
-	.loc 1 73 3
-	lea	rax, .LC10[rip]
-	mov	rcx, rax
-	call	puts
-	.loc 1 74 3
-	mov	rax, QWORD PTR -32[rbp]
-	mov	edx, eax
-	mov	rax, QWORD PTR -32[rbp]
-	mov	eax, DWORD PTR [rax]
-	mov	r8d, edx
-	mov	edx, eax
-	lea	rax, .LC4[rip]
-	mov	rcx, rax
-	call	printf
-	.loc 1 75 3
-	mov	rax, QWORD PTR -40[rbp]
-	mov	edx, eax
-	mov	rax, QWORD PTR -40[rbp]
-	mov	eax, DWORD PTR [rax]
-	mov	r8d, edx
-	mov	edx, eax
-	lea	rax, .LC5[rip]
-	mov	rcx, rax
-	call	printf
-	.loc 1 77 3
-	lea	rax, .LC6[rip]
-	mov	rcx, rax
-	call	puts
-	.loc 1 78 25
-	mov	rax, QWORD PTR -40[rbp]
-	sub	rax, QWORD PTR -32[rbp]
-	sar	rax, 2
-	.loc 1 78 16
-	mov	DWORD PTR -44[rbp], eax
-	.loc 1 79 3
-	mov	eax, DWORD PTR -44[rbp]
-	mov	edx, eax
-	lea	rax, .LC11[rip]
-	mov	rcx, rax
-	call	printf
-	.loc 1 81 3
-	lea	rax, .LC6[rip]
-	mov	rcx, rax
-	call	puts
-	.loc 1 106 16
-	mov	DWORD PTR -128[rbp], 1122867
-	mov	DWORD PTR -124[rbp], 1146447479
-	mov	DWORD PTR -120[rbp], -2003195205
-	mov	DWORD PTR -116[rbp], -857870593
-	.loc 1 107 3
-	lea	rax, .LC12[rip]
-	mov	rcx, rax
-	call	puts
-.LBB4:
-	.loc 1 108 11
-	mov	DWORD PTR -12[rbp], 0
-	.loc 1 108 3
-	jmp	.L6
-.L7:
-	.loc 1 110 35
-	lea	rax, -128[rbp]
-	mov	edx, DWORD PTR -12[rbp]
-	movsx	rdx, edx
-	sal	rdx, 2
-	add	rax, rdx
-	.loc 1 110 5
-	mov	edx, eax
-	lea	rax, .LC1[rip]
-	mov	rcx, rax
-	call	printf
-	.loc 1 108 21 discriminator 3
-	add	DWORD PTR -12[rbp], 1
-.L6:
-	.loc 1 108 17 discriminator 1
-	cmp	DWORD PTR -12[rbp], 3
-	jle	.L7
-.LBE4:
-	.loc 1 112 3
-	lea	rax, .LC13[rip]
-	mov	rcx, rax
-	call	puts
-.LBB5:
-	.loc 1 113 11
-	mov	DWORD PTR -16[rbp], 0
-	.loc 1 113 3
-	jmp	.L8
-.L9:
-	.loc 1 115 5
-	mov	eax, DWORD PTR -16[rbp]
-	cdqe
-	mov	eax, DWORD PTR -128[rbp+rax*4]
-	mov	edx, eax
-	lea	rax, .LC1[rip]
-	mov	rcx, rax
-	call	printf
-	.loc 1 113 21 discriminator 3
-	add	DWORD PTR -16[rbp], 1
-.L8:
-	.loc 1 113 17 discriminator 1
-	cmp	DWORD PTR -16[rbp], 3
-	jle	.L9
-.LBE5:
-	.loc 1 117 3
-	lea	rax, .LC3[rip]
-	mov	rcx, rax
-	call	puts
-	.loc 1 118 17
-	lea	rax, -128[rbp]
-	mov	QWORD PTR -56[rbp], rax
-	.loc 1 118 32
-	lea	rax, -128[rbp]
-	add	rax, 8
-	mov	QWORD PTR -64[rbp], rax
-	.loc 1 119 3
-	mov	rax, QWORD PTR -56[rbp]
-	mov	edx, eax
-	mov	rax, QWORD PTR -56[rbp]
-	mov	eax, DWORD PTR [rax]
-	mov	r8d, edx
-	mov	edx, eax
-	lea	rax, .LC14[rip]
-	mov	rcx, rax
-	call	printf
-	.loc 1 120 3
-	mov	rax, QWORD PTR -64[rbp]
-	mov	edx, eax
-	mov	rax, QWORD PTR -64[rbp]
-	mov	eax, DWORD PTR [rax]
-	mov	r8d, edx
-	mov	edx, eax
-	lea	rax, .LC15[rip]
-	mov	rcx, rax
-	call	printf
-	.loc 1 121 3
-	lea	rax, .LC6[rip]
-	mov	rcx, rax
-	call	puts
-	.loc 1 122 3
-	mov	rax, QWORD PTR -56[rbp]
-	mov	eax, DWORD PTR [rax]
-	mov	edx, eax
-	lea	rax, .LC16[rip]
-	mov	rcx, rax
-	call	printf
-	.loc 1 123 41
-	mov	rax, QWORD PTR -56[rbp]
-	add	rax, 4
-	.loc 1 123 3
-	mov	eax, DWORD PTR [rax]
-	mov	edx, eax
-	lea	rax, .LC17[rip]
-	mov	rcx, rax
-	call	printf
-	.loc 1 124 3
-	mov	rax, QWORD PTR -64[rbp]
-	mov	eax, DWORD PTR [rax]
-	mov	edx, eax
-	lea	rax, .LC18[rip]
-	mov	rcx, rax
-	call	printf
-	.loc 1 125 41
-	mov	rax, QWORD PTR -64[rbp]
-	add	rax, 4
-	.loc 1 125 3
-	mov	eax, DWORD PTR [rax]
-	mov	edx, eax
-	lea	rax, .LC19[rip]
-	mov	rcx, rax
-	call	printf
-	.loc 1 126 41
-	mov	rax, QWORD PTR -64[rbp]
-	add	rax, 8
-	.loc 1 126 3
-	mov	eax, DWORD PTR [rax]
-	mov	edx, eax
-	lea	rax, .LC20[rip]
-	mov	rcx, rax
-	call	printf
-	.loc 1 127 42
-	mov	rax, QWORD PTR -64[rbp]
-	sub	rax, 4
-	.loc 1 127 3
-	mov	eax, DWORD PTR [rax]
-	mov	edx, eax
-	lea	rax, .LC21[rip]
-	mov	rcx, rax
-	call	printf
-	.loc 1 128 42
-	mov	rax, QWORD PTR -56[rbp]
-	sub	rax, 4
-	.loc 1 128 3
-	mov	eax, DWORD PTR [rax]
-	mov	edx, eax
-	lea	rax, .LC22[rip]
-	mov	rcx, rax
-	call	printf
-	.loc 1 129 3
-	lea	rax, .LC3[rip]
-	mov	rcx, rax
-	call	puts
-	.loc 1 130 3
-	mov	eax, DWORD PTR -128[rbp]
-	mov	edx, eax
-	lea	rax, .LC23[rip]
-	mov	rcx, rax
-	call	printf
-	.loc 1 131 3
-	mov	eax, DWORD PTR -120[rbp]
-	mov	edx, eax
-	lea	rax, .LC24[rip]
-	mov	rcx, rax
-	call	printf
-	.loc 1 132 3
-	lea	rax, -128[rbp]
-	mov	edx, eax
-	lea	rax, .LC25[rip]
-	mov	rcx, rax
-	call	printf
-	.loc 1 133 65
-	lea	rax, -128[rbp]
-	.loc 1 133 48
-	movzx	eax, BYTE PTR [rax]
-	.loc 1 133 3
-	movzx	eax, al
-	mov	edx, eax
-	lea	rax, .LC26[rip]
-	mov	rcx, rax
-	call	printf
-	.loc 1 134 53
-	lea	rax, -128[rbp]
-	add	rax, 4
-	.loc 1 134 52
-	movzx	eax, BYTE PTR [rax]
-	.loc 1 134 3
-	movzx	eax, al
-	mov	edx, eax
-	lea	rax, .LC27[rip]
-	mov	rcx, rax
-	call	printf
-	.loc 1 135 53
-	lea	rax, -128[rbp]
-	add	rax, 8
-	.loc 1 135 52
-	movzx	eax, BYTE PTR [rax]
-	.loc 1 135 3
-	movzx	eax, al
-	mov	edx, eax
-	lea	rax, .LC28[rip]
-	mov	rcx, rax
-	call	printf
-	.loc 1 136 75
-	lea	rax, -128[rbp]
-	add	rax, 1
-	.loc 1 136 54
-	movzx	eax, BYTE PTR [rax]
-	.loc 1 136 3
-	movzx	eax, al
-	mov	edx, eax
-	lea	rax, .LC29[rip]
-	mov	rcx, rax
-	call	printf
-	.loc 1 137 75
-	lea	rax, -128[rbp]
-	add	rax, 2
-	.loc 1 137 54
-	movzx	eax, BYTE PTR [rax]
-	.loc 1 137 3
-	movzx	eax, al
-	mov	edx, eax
-	lea	rax, .LC30[rip]
-	mov	rcx, rax
-	call	printf
-	.loc 1 138 75
-	lea	rax, -128[rbp]
-	add	rax, 3
-	.loc 1 138 54
-	movzx	eax, BYTE PTR [rax]
-	.loc 1 138 3
-	movzx	eax, al
-	mov	edx, eax
-	lea	rax, .LC31[rip]
-	mov	rcx, rax
-	call	printf
-	.loc 1 139 3
-	lea	rax, .LC3[rip]
-	mov	rcx, rax
-	call	puts
-	.loc 1 140 3
-	lea	rax, .LC32[rip]
-	mov	rcx, rax
-	call	puts
-	.loc 1 141 3
-	lea	rax, -128[rbp]
-	mov	edx, eax
-	lea	rax, .LC33[rip]
-	mov	rcx, rax
-	call	printf
-.LBB6:
-	.loc 1 142 11
-	mov	DWORD PTR -20[rbp], 0
-	.loc 1 142 3
-	jmp	.L10
-.L11:
-	.loc 1 144 55
-	mov	eax, DWORD PTR -20[rbp]
-	cdqe
-	lea	rdx, -128[rbp]
-	add	rax, rdx
-	.loc 1 144 5
-	movzx	eax, al
-	mov	edx, eax
-	lea	rax, .LC34[rip]
-	mov	rcx, rax
-	call	printf
-	.loc 1 142 23 discriminator 3
-	add	DWORD PTR -20[rbp], 1
-.L10:
-	.loc 1 142 17 discriminator 1
-	cmp	DWORD PTR -20[rbp], 15
-	jle	.L11
-.LBE6:
-	.loc 1 146 3
-	mov	ecx, 10
-	call	putchar
-.LBB7:
-	.loc 1 147 11
-	mov	DWORD PTR -24[rbp], 0
-	.loc 1 147 3
-	jmp	.L12
-.L13:
-	.loc 1 149 42
-	mov	eax, DWORD PTR -24[rbp]
-	cdqe
-	lea	rdx, -128[rbp]
-	add	rax, rdx
-	.loc 1 149 21
-	movzx	eax, BYTE PTR [rax]
-	.loc 1 149 5
-	movzx	eax, al
-	mov	edx, eax
-	lea	rax, .LC34[rip]
-	mov	rcx, rax
-	call	printf
-	.loc 1 147 23 discriminator 3
-	add	DWORD PTR -24[rbp], 1
-.L12:
-	.loc 1 147 17 discriminator 1
-	cmp	DWORD PTR -24[rbp], 15
-	jle	.L13
-.LBE7:
-	.loc 1 151 10
-	mov	eax, 0
-	.loc 1 152 1
-	add	rsp, 160
-	pop	rbp
-	.cfi_restore 6
-	.cfi_def_cfa 7, 8
-	ret
-	.cfi_endproc
-.LFE129:
-	.seh_endproc
-	.globl	addStudent
-	.def	addStudent;	.scl	2;	.type	32;	.endef
-	.seh_proc	addStudent
-addStudent:
-.LFB130:
-	.loc 1 155 1
-	.cfi_startproc
-	push	rbp
-	.seh_pushreg	rbp
-	.cfi_def_cfa_offset 16
-	.cfi_offset 6, -16
-	mov	rbp, rsp
-	.seh_setframe	rbp, 0
-	.cfi_def_cfa_register 6
-	sub	rsp, 96
-	.seh_stackalloc	96
-	.seh_endprologue
-	mov	QWORD PTR 16[rbp], rcx
+	mov	DWORD PTR 16[rbp], ecx
 	mov	QWORD PTR 24[rbp], rdx
-	mov	DWORD PTR 32[rbp], r8d
-	mov	DWORD PTR 40[rbp], r9d
-	.loc 1 157 3
-	mov	rdx, QWORD PTR 24[rbp]
-	lea	rax, -64[rbp]
-	mov	rcx, rax
-	call	strcpy
-	.loc 1 158 17
-	mov	eax, DWORD PTR 32[rbp]
-	mov	BYTE PTR -3[rbp], al
-	.loc 1 159 14
-	mov	eax, DWORD PTR 40[rbp]
-	mov	BYTE PTR -4[rbp], al
-	.loc 1 160 18
-	movzx	eax, BYTE PTR student_counter[rip]
+	.loc 1 5 8
+	mov	QWORD PTR -12[rbp], 0
+	mov	BYTE PTR -4[rbp], 0
+	.loc 1 7 17
+	mov	DWORD PTR -16[rbp], 0
+	.loc 1 8 9
+	mov	BYTE PTR -2[rbp], 0
+	.loc 1 8 3
+	jmp	.L2
+.L5:
+	.loc 1 10 16
+	movzx	eax, BYTE PTR -2[rbp]
+	sal	eax, 3
+	.loc 1 10 12
+	mov	edx, DWORD PTR 16[rbp]
+	mov	ecx, eax
+	sar	edx, cl
+	mov	eax, edx
+	.loc 1 10 7
+	test	eax, eax
+	jne	.L3
+	.loc 1 10 24 discriminator 1
+	cmp	BYTE PTR -2[rbp], 0
+	jne	.L12
+.L3:
+	.loc 1 11 36
+	movzx	eax, BYTE PTR -2[rbp]
+	sal	eax, 3
+	.loc 1 11 32
+	mov	edx, DWORD PTR 16[rbp]
+	mov	ecx, eax
+	sar	edx, cl
+	.loc 1 11 7
+	movzx	eax, BYTE PTR -2[rbp]
+	.loc 1 11 11
+	cdqe
+	mov	BYTE PTR -16[rbp+rax], dl
+	.loc 1 8 19 discriminator 2
+	movzx	eax, BYTE PTR -2[rbp]
 	add	eax, 1
-	mov	BYTE PTR student_counter[rip], al
-	.loc 1 161 10
-	mov	rax, QWORD PTR 16[rbp]
-	mov	rdx, QWORD PTR -64[rbp]
-	mov	QWORD PTR [rax], rdx
-	mov	rdx, QWORD PTR -56[rbp]
-	mov	QWORD PTR 8[rax], rdx
-	mov	rdx, QWORD PTR -48[rbp]
-	mov	QWORD PTR 16[rax], rdx
-	mov	rdx, QWORD PTR -40[rbp]
-	mov	QWORD PTR 24[rax], rdx
-	mov	rdx, QWORD PTR -32[rbp]
-	mov	QWORD PTR 32[rax], rdx
-	mov	rdx, QWORD PTR -24[rbp]
-	mov	QWORD PTR 40[rax], rdx
-	mov	rdx, QWORD PTR -16[rbp]
-	mov	QWORD PTR 48[rax], rdx
-	mov	rdx, QWORD PTR -10[rbp]
-	mov	QWORD PTR 54[rax], rdx
-	.loc 1 162 1
-	mov	rax, QWORD PTR 16[rbp]
-	add	rsp, 96
+	mov	BYTE PTR -2[rbp], al
+.L2:
+	.loc 1 8 14 discriminator 1
+	cmp	BYTE PTR -2[rbp], 3
+	jbe	.L5
+	jmp	.L4
+.L12:
+	.loc 1 10 36
+	nop
+.L4:
+	.loc 1 13 3
+	mov	rax, QWORD PTR 24[rbp]
+	mov	WORD PTR [rax], 25136
+	mov	BYTE PTR 2[rax], 0
+	.loc 1 14 9
+	mov	BYTE PTR -3[rbp], 0
+	.loc 1 14 3
+	jmp	.L6
+.L11:
+	.loc 1 16 11
+	mov	BYTE PTR -1[rbp], 0
+	.loc 1 16 5
+	jmp	.L7
+.L10:
+	.loc 1 18 20
+	movzx	edx, BYTE PTR -2[rbp]
+	movzx	eax, BYTE PTR -3[rbp]
+	sub	edx, eax
+	.loc 1 18 22
+	lea	eax, -1[rdx]
+	.loc 1 18 18
+	cdqe
+	movzx	eax, BYTE PTR -16[rbp+rax]
+	movzx	edx, al
+	.loc 1 18 26
+	movzx	eax, BYTE PTR -1[rbp]
+	mov	ecx, eax
+	sar	edx, cl
+	mov	eax, edx
+	.loc 1 18 32
+	and	eax, 1
+	.loc 1 18 7
+	test	eax, eax
+	je	.L8
+	cmp	eax, 1
+	jne	.L9
+	.loc 1 20 27
+	movzx	eax, BYTE PTR -1[rbp]
+	mov	edx, 7
+	sub	edx, eax
+	.loc 1 20 31
+	movsx	rax, edx
+	mov	BYTE PTR -12[rbp+rax], 49
+	.loc 1 20 38
+	jmp	.L9
+.L8:
+	.loc 1 21 27
+	movzx	eax, BYTE PTR -1[rbp]
+	mov	edx, 7
+	sub	edx, eax
+	.loc 1 21 31
+	movsx	rax, edx
+	mov	BYTE PTR -12[rbp+rax], 48
+	.loc 1 21 38
+	nop
+.L9:
+	.loc 1 16 21 discriminator 2
+	movzx	eax, BYTE PTR -1[rbp]
+	add	eax, 1
+	mov	BYTE PTR -1[rbp], al
+.L7:
+	.loc 1 16 16 discriminator 1
+	cmp	BYTE PTR -1[rbp], 7
+	jbe	.L10
+	.loc 1 24 5
+	lea	rax, -12[rbp]
+	mov	rcx, QWORD PTR 24[rbp]
+	mov	rdx, rax
+	call	strcat
+	.loc 1 14 19 discriminator 2
+	movzx	eax, BYTE PTR -3[rbp]
+	add	eax, 1
+	mov	BYTE PTR -3[rbp], al
+.L6:
+	.loc 1 14 14 discriminator 1
+	movzx	eax, BYTE PTR -3[rbp]
+	cmp	al, BYTE PTR -2[rbp]
+	jb	.L11
+	.loc 1 26 1
+	nop
+	nop
+	add	rsp, 48
 	pop	rbp
 	.cfi_restore 6
 	.cfi_def_cfa 7, 8
 	ret
 	.cfi_endproc
-.LFE130:
+.LFE4:
 	.seh_endproc
 .Letext0:
 	.file 2 "D:/mingw64/x86_64-w64-mingw32/include/string.h"
-	.file 3 "D:/mingw64/x86_64-w64-mingw32/include/stdio.h"
 	.section	.debug_info,"dr"
 .Ldebug_info0:
-	.long	0x3f1
+	.long	0x1b2
 	.word	0x5
 	.byte	0x1
 	.byte	0x8
 	.secrel32	.Ldebug_abbrev0
-	.uleb128 0xb
+	.uleb128 0x7
 	.ascii "GNU C17 14.2.0 -masm=intel -mtune=core2 -march=nocona -g3\0"
 	.byte	0x1d
 	.secrel32	.LASF0
@@ -780,362 +181,131 @@ addStudent:
 	.quad	.Letext0-.Ltext0
 	.secrel32	.Ldebug_line0
 	.secrel32	.Ldebug_macro0
-	.uleb128 0x2
+	.uleb128 0x1
 	.byte	0x1
 	.byte	0x6
 	.ascii "char\0"
-	.uleb128 0xc
+	.uleb128 0x8
 	.long	0x68
-	.uleb128 0x2
+	.uleb128 0x1
 	.byte	0x8
 	.byte	0x7
 	.ascii "long long unsigned int\0"
-	.uleb128 0x2
+	.uleb128 0x1
 	.byte	0x8
 	.byte	0x5
 	.ascii "long long int\0"
-	.uleb128 0x2
+	.uleb128 0x1
 	.byte	0x2
 	.byte	0x7
 	.ascii "short unsigned int\0"
-	.uleb128 0x2
+	.uleb128 0x1
 	.byte	0x4
 	.byte	0x5
 	.ascii "int\0"
-	.uleb128 0x2
+	.uleb128 0x1
 	.byte	0x4
 	.byte	0x5
 	.ascii "long int\0"
-	.uleb128 0x2
+	.uleb128 0x1
 	.byte	0x4
 	.byte	0x7
 	.ascii "unsigned int\0"
-	.uleb128 0x2
-	.byte	0x1
-	.byte	0x8
-	.ascii "unsigned char\0"
-	.uleb128 0x2
-	.byte	0x8
-	.byte	0x4
-	.ascii "double\0"
-	.uleb128 0x2
-	.byte	0x4
-	.byte	0x4
-	.ascii "float\0"
-	.uleb128 0x2
-	.byte	0x10
-	.byte	0x4
-	.ascii "long double\0"
-	.uleb128 0xd
-	.byte	0x3e
-	.byte	0x1
-	.byte	0xd
-	.byte	0x9
-	.long	0x13c
-	.uleb128 0x6
-	.ascii "nm\0"
-	.byte	0xf
-	.byte	0x8
-	.long	0x13c
-	.byte	0
-	.uleb128 0x6
-	.ascii "age\0"
-	.byte	0x10
-	.byte	0x11
-	.long	0xd9
-	.byte	0x3c
-	.uleb128 0x6
-	.ascii "course\0"
-	.byte	0x11
-	.byte	0x11
-	.long	0xd9
-	.byte	0x3d
-	.byte	0
-	.uleb128 0x7
-	.long	0x68
-	.long	0x14c
-	.uleb128 0x5
-	.long	0x75
-	.byte	0x3b
-	.byte	0
-	.uleb128 0xe
-	.ascii "student\0"
-	.byte	0x1
-	.byte	0x12
-	.byte	0x3
-	.long	0x10c
-	.uleb128 0x3
-	.ascii "student_counter\0"
-	.byte	0x14
-	.byte	0xf
-	.long	0xd9
 	.uleb128 0x9
-	.byte	0x3
-	.quad	student_counter
-	.uleb128 0x3
-	.ascii "res\0"
-	.byte	0x18
-	.byte	0x7
-	.long	0xf4
-	.uleb128 0x9
-	.byte	0x3
-	.quad	res
-	.uleb128 0x7
-	.long	0x68
-	.long	0x1a2
-	.uleb128 0x5
-	.long	0x75
-	.byte	0x1d
-	.byte	0
-	.uleb128 0x3
-	.ascii "str1\0"
-	.byte	0x19
-	.byte	0x6
-	.long	0x192
-	.uleb128 0x9
-	.byte	0x3
-	.quad	str1
-	.uleb128 0x3
-	.ascii "yf\0"
-	.byte	0x1a
-	.byte	0x7
-	.long	0xf4
-	.uleb128 0x9
-	.byte	0x3
-	.quad	yf
-	.uleb128 0x3
-	.ascii "zf\0"
-	.byte	0x1a
-	.byte	0xb
-	.long	0xf4
-	.uleb128 0x9
-	.byte	0x3
-	.quad	zf
-	.uleb128 0xf
-	.ascii "strcpy\0"
+	.ascii "strcat\0"
 	.byte	0x2
-	.byte	0x3d
+	.byte	0x3e
 	.byte	0x12
-	.long	0x1fe
-	.long	0x1fe
-	.uleb128 0x8
-	.long	0x1fe
-	.uleb128 0x8
-	.long	0x203
+	.long	0xf7
+	.long	0xf7
+	.uleb128 0x3
+	.long	0xf7
+	.uleb128 0x3
+	.long	0xfc
 	.byte	0
-	.uleb128 0x9
+	.uleb128 0x4
 	.long	0x68
-	.uleb128 0x9
+	.uleb128 0x4
 	.long	0x70
-	.uleb128 0x10
-	.ascii "printf\0"
-	.byte	0x3
-	.word	0x201
-	.byte	0xf
-	.long	0xb6
-	.long	0x223
-	.uleb128 0x8
-	.long	0x203
-	.uleb128 0x11
-	.byte	0
-	.uleb128 0x12
-	.ascii "addStudent\0"
+	.uleb128 0xa
+	.ascii "int_to_binary\0"
 	.byte	0x1
-	.byte	0x9a
-	.byte	0x9
-	.long	0x14c
-	.quad	.LFB130
-	.quad	.LFE130-.LFB130
+	.byte	0x3
+	.byte	0x6
+	.quad	.LFB4
+	.quad	.LFE4-.LFB4
 	.uleb128 0x1
 	.byte	0x9c
-	.long	0x283
-	.uleb128 0xa
-	.ascii "ch\0"
-	.byte	0x1a
-	.long	0x1fe
+	.long	0x188
+	.uleb128 0x5
+	.ascii "x\0"
+	.byte	0x18
+	.long	0xb6
+	.uleb128 0x2
+	.byte	0x91
+	.sleb128 0
+	.uleb128 0x5
+	.ascii "in_str\0"
+	.byte	0x21
+	.long	0xf7
 	.uleb128 0x2
 	.byte	0x91
 	.sleb128 8
-	.uleb128 0xa
-	.ascii "cr\0"
-	.byte	0x2d
-	.long	0xc9
 	.uleb128 0x2
-	.byte	0x91
-	.sleb128 16
-	.uleb128 0xa
-	.ascii "ag\0"
-	.byte	0x3e
-	.long	0xc9
-	.uleb128 0x2
-	.byte	0x91
-	.sleb128 24
-	.uleb128 0x1
-	.ascii "res_st\0"
-	.byte	0x9c
-	.byte	0xb
-	.long	0x14c
-	.uleb128 0x3
-	.byte	0x91
-	.sleb128 -80
-	.byte	0
-	.uleb128 0x13
-	.ascii "main\0"
-	.byte	0x1
-	.byte	0x1e
+	.ascii "str_tmp\0"
 	.byte	0x5
-	.long	0xb6
-	.quad	.LFB129
-	.quad	.LFE129-.LFB129
-	.uleb128 0x1
-	.byte	0x9c
-	.long	0x3d3
-	.uleb128 0x1
-	.ascii "a\0"
-	.byte	0x20
-	.byte	0x10
-	.long	0x3d3
-	.uleb128 0x3
-	.byte	0x91
-	.sleb128 -128
-	.uleb128 0x1
-	.ascii "p0_a\0"
-	.byte	0x2d
-	.byte	0x11
-	.long	0x3e3
-	.uleb128 0x2
-	.byte	0x91
-	.sleb128 -48
-	.uleb128 0x1
-	.ascii "p5_a\0"
-	.byte	0x2d
-	.byte	0x18
-	.long	0x3e3
-	.uleb128 0x2
-	.byte	0x91
-	.sleb128 -56
-	.uleb128 0x1
-	.ascii "n\0"
-	.byte	0x4e
-	.byte	0x10
-	.long	0xc9
-	.uleb128 0x2
-	.byte	0x91
-	.sleb128 -60
-	.uleb128 0x1
-	.ascii "b\0"
-	.byte	0x6a
-	.byte	0x10
-	.long	0x3e8
-	.uleb128 0x3
-	.byte	0x91
-	.sleb128 -144
-	.uleb128 0x1
-	.ascii "p0_b\0"
-	.byte	0x76
-	.byte	0x11
-	.long	0x3e3
-	.uleb128 0x3
-	.byte	0x91
-	.sleb128 -72
-	.uleb128 0x1
-	.ascii "p2_b\0"
-	.byte	0x76
-	.byte	0x20
-	.long	0x3e3
-	.uleb128 0x3
-	.byte	0x91
-	.sleb128 -80
-	.uleb128 0x4
-	.quad	.LBB2
-	.quad	.LBE2-.LBB2
-	.long	0x32c
-	.uleb128 0x1
-	.ascii "i\0"
-	.byte	0x23
-	.byte	0xb
-	.long	0xb6
-	.uleb128 0x2
-	.byte	0x91
-	.sleb128 -20
-	.byte	0
-	.uleb128 0x4
-	.quad	.LBB3
-	.quad	.LBE3-.LBB3
-	.long	0x34e
-	.uleb128 0x1
-	.ascii "i\0"
-	.byte	0x28
-	.byte	0xb
-	.long	0xb6
-	.uleb128 0x2
-	.byte	0x91
-	.sleb128 -24
-	.byte	0
-	.uleb128 0x4
-	.quad	.LBB4
-	.quad	.LBE4-.LBB4
-	.long	0x370
-	.uleb128 0x1
-	.ascii "i\0"
-	.byte	0x6c
-	.byte	0xb
-	.long	0xb6
+	.byte	0x8
+	.long	0x188
 	.uleb128 0x2
 	.byte	0x91
 	.sleb128 -28
-	.byte	0
-	.uleb128 0x4
-	.quad	.LBB5
-	.quad	.LBE5-.LBB5
-	.long	0x392
-	.uleb128 0x1
+	.uleb128 0x2
 	.ascii "i\0"
-	.byte	0x71
-	.byte	0xb
-	.long	0xb6
+	.byte	0x6
+	.byte	0x11
+	.long	0x198
+	.uleb128 0x2
+	.byte	0x91
+	.sleb128 -17
+	.uleb128 0x2
+	.ascii "j\0"
+	.byte	0x6
+	.byte	0x14
+	.long	0x198
+	.uleb128 0x2
+	.byte	0x91
+	.sleb128 -18
+	.uleb128 0x2
+	.ascii "k\0"
+	.byte	0x6
+	.byte	0x17
+	.long	0x198
+	.uleb128 0x2
+	.byte	0x91
+	.sleb128 -19
+	.uleb128 0x2
+	.ascii "bt\0"
+	.byte	0x7
+	.byte	0x11
+	.long	0x1a9
 	.uleb128 0x2
 	.byte	0x91
 	.sleb128 -32
 	.byte	0
-	.uleb128 0x4
-	.quad	.LBB6
-	.quad	.LBE6-.LBB6
-	.long	0x3b4
-	.uleb128 0x1
-	.ascii "i\0"
-	.byte	0x8e
-	.byte	0xb
-	.long	0xb6
-	.uleb128 0x2
-	.byte	0x91
-	.sleb128 -36
-	.byte	0
-	.uleb128 0x14
-	.quad	.LBB7
-	.quad	.LBE7-.LBB7
-	.uleb128 0x1
-	.ascii "i\0"
-	.byte	0x93
-	.byte	0xb
-	.long	0xb6
-	.uleb128 0x2
-	.byte	0x91
-	.sleb128 -40
-	.byte	0
-	.byte	0
-	.uleb128 0x7
-	.long	0xc9
-	.long	0x3e3
-	.uleb128 0x5
+	.uleb128 0xb
+	.long	0x68
+	.long	0x198
+	.uleb128 0x6
 	.long	0x75
-	.byte	0x9
+	.byte	0x8
 	.byte	0
-	.uleb128 0x9
-	.long	0xc9
-	.uleb128 0x15
-	.long	0xc9
-	.uleb128 0x5
+	.uleb128 0x1
+	.byte	0x1
+	.byte	0x8
+	.ascii "unsigned char\0"
+	.uleb128 0xc
+	.long	0x198
+	.uleb128 0x6
 	.long	0x75
 	.byte	0x3
 	.byte	0
@@ -1143,24 +313,6 @@ addStudent:
 	.section	.debug_abbrev,"dr"
 .Ldebug_abbrev0:
 	.uleb128 0x1
-	.uleb128 0x34
-	.byte	0
-	.uleb128 0x3
-	.uleb128 0x8
-	.uleb128 0x3a
-	.uleb128 0x21
-	.sleb128 1
-	.uleb128 0x3b
-	.uleb128 0xb
-	.uleb128 0x39
-	.uleb128 0xb
-	.uleb128 0x49
-	.uleb128 0x13
-	.uleb128 0x2
-	.uleb128 0x18
-	.byte	0
-	.byte	0
-	.uleb128 0x2
 	.uleb128 0x24
 	.byte	0
 	.uleb128 0xb
@@ -1171,7 +323,7 @@ addStudent:
 	.uleb128 0x8
 	.byte	0
 	.byte	0
-	.uleb128 0x3
+	.uleb128 0x2
 	.uleb128 0x34
 	.byte	0
 	.uleb128 0x3
@@ -1185,67 +337,18 @@ addStudent:
 	.uleb128 0xb
 	.uleb128 0x49
 	.uleb128 0x13
-	.uleb128 0x3f
-	.uleb128 0x19
 	.uleb128 0x2
 	.uleb128 0x18
 	.byte	0
 	.byte	0
-	.uleb128 0x4
-	.uleb128 0xb
-	.byte	0x1
-	.uleb128 0x11
-	.uleb128 0x1
-	.uleb128 0x12
-	.uleb128 0x7
-	.uleb128 0x1
-	.uleb128 0x13
-	.byte	0
-	.byte	0
-	.uleb128 0x5
-	.uleb128 0x21
-	.byte	0
-	.uleb128 0x49
-	.uleb128 0x13
-	.uleb128 0x2f
-	.uleb128 0xb
-	.byte	0
-	.byte	0
-	.uleb128 0x6
-	.uleb128 0xd
-	.byte	0
 	.uleb128 0x3
-	.uleb128 0x8
-	.uleb128 0x3a
-	.uleb128 0x21
-	.sleb128 1
-	.uleb128 0x3b
-	.uleb128 0xb
-	.uleb128 0x39
-	.uleb128 0xb
-	.uleb128 0x49
-	.uleb128 0x13
-	.uleb128 0x38
-	.uleb128 0xb
-	.byte	0
-	.byte	0
-	.uleb128 0x7
-	.uleb128 0x1
-	.byte	0x1
-	.uleb128 0x49
-	.uleb128 0x13
-	.uleb128 0x1
-	.uleb128 0x13
-	.byte	0
-	.byte	0
-	.uleb128 0x8
 	.uleb128 0x5
 	.byte	0
 	.uleb128 0x49
 	.uleb128 0x13
 	.byte	0
 	.byte	0
-	.uleb128 0x9
+	.uleb128 0x4
 	.uleb128 0xf
 	.byte	0
 	.uleb128 0xb
@@ -1255,7 +358,7 @@ addStudent:
 	.uleb128 0x13
 	.byte	0
 	.byte	0
-	.uleb128 0xa
+	.uleb128 0x5
 	.uleb128 0x5
 	.byte	0
 	.uleb128 0x3
@@ -1265,7 +368,7 @@ addStudent:
 	.sleb128 1
 	.uleb128 0x3b
 	.uleb128 0x21
-	.sleb128 154
+	.sleb128 3
 	.uleb128 0x39
 	.uleb128 0xb
 	.uleb128 0x49
@@ -1274,7 +377,16 @@ addStudent:
 	.uleb128 0x18
 	.byte	0
 	.byte	0
+	.uleb128 0x6
+	.uleb128 0x21
+	.byte	0
+	.uleb128 0x49
+	.uleb128 0x13
+	.uleb128 0x2f
 	.uleb128 0xb
+	.byte	0
+	.byte	0
+	.uleb128 0x7
 	.uleb128 0x11
 	.byte	0x1
 	.uleb128 0x25
@@ -1295,44 +407,14 @@ addStudent:
 	.uleb128 0x17
 	.byte	0
 	.byte	0
-	.uleb128 0xc
+	.uleb128 0x8
 	.uleb128 0x26
 	.byte	0
 	.uleb128 0x49
 	.uleb128 0x13
 	.byte	0
 	.byte	0
-	.uleb128 0xd
-	.uleb128 0x13
-	.byte	0x1
-	.uleb128 0xb
-	.uleb128 0xb
-	.uleb128 0x3a
-	.uleb128 0xb
-	.uleb128 0x3b
-	.uleb128 0xb
-	.uleb128 0x39
-	.uleb128 0xb
-	.uleb128 0x1
-	.uleb128 0x13
-	.byte	0
-	.byte	0
-	.uleb128 0xe
-	.uleb128 0x16
-	.byte	0
-	.uleb128 0x3
-	.uleb128 0x8
-	.uleb128 0x3a
-	.uleb128 0xb
-	.uleb128 0x3b
-	.uleb128 0xb
-	.uleb128 0x39
-	.uleb128 0xb
-	.uleb128 0x49
-	.uleb128 0x13
-	.byte	0
-	.byte	0
-	.uleb128 0xf
+	.uleb128 0x9
 	.uleb128 0x2e
 	.byte	0x1
 	.uleb128 0x3f
@@ -1355,35 +437,7 @@ addStudent:
 	.uleb128 0x13
 	.byte	0
 	.byte	0
-	.uleb128 0x10
-	.uleb128 0x2e
-	.byte	0x1
-	.uleb128 0x3f
-	.uleb128 0x19
-	.uleb128 0x3
-	.uleb128 0x8
-	.uleb128 0x3a
-	.uleb128 0xb
-	.uleb128 0x3b
-	.uleb128 0x5
-	.uleb128 0x39
-	.uleb128 0xb
-	.uleb128 0x27
-	.uleb128 0x19
-	.uleb128 0x49
-	.uleb128 0x13
-	.uleb128 0x3c
-	.uleb128 0x19
-	.uleb128 0x1
-	.uleb128 0x13
-	.byte	0
-	.byte	0
-	.uleb128 0x11
-	.uleb128 0x18
-	.byte	0
-	.byte	0
-	.byte	0
-	.uleb128 0x12
+	.uleb128 0xa
 	.uleb128 0x2e
 	.byte	0x1
 	.uleb128 0x3f
@@ -1398,8 +452,6 @@ addStudent:
 	.uleb128 0xb
 	.uleb128 0x27
 	.uleb128 0x19
-	.uleb128 0x49
-	.uleb128 0x13
 	.uleb128 0x11
 	.uleb128 0x1
 	.uleb128 0x12
@@ -1412,43 +464,16 @@ addStudent:
 	.uleb128 0x13
 	.byte	0
 	.byte	0
-	.uleb128 0x13
-	.uleb128 0x2e
+	.uleb128 0xb
+	.uleb128 0x1
 	.byte	0x1
-	.uleb128 0x3f
-	.uleb128 0x19
-	.uleb128 0x3
-	.uleb128 0x8
-	.uleb128 0x3a
-	.uleb128 0xb
-	.uleb128 0x3b
-	.uleb128 0xb
-	.uleb128 0x39
-	.uleb128 0xb
 	.uleb128 0x49
 	.uleb128 0x13
-	.uleb128 0x11
-	.uleb128 0x1
-	.uleb128 0x12
-	.uleb128 0x7
-	.uleb128 0x40
-	.uleb128 0x18
-	.uleb128 0x7c
-	.uleb128 0x19
 	.uleb128 0x1
 	.uleb128 0x13
 	.byte	0
 	.byte	0
-	.uleb128 0x14
-	.uleb128 0xb
-	.byte	0x1
-	.uleb128 0x11
-	.uleb128 0x1
-	.uleb128 0x12
-	.uleb128 0x7
-	.byte	0
-	.byte	0
-	.uleb128 0x15
+	.uleb128 0xc
 	.uleb128 0x1
 	.byte	0x1
 	.uleb128 0x49
@@ -2715,44 +1740,44 @@ addStudent:
 	.byte	0x3
 	.uleb128 0
 	.uleb128 0x1
-	.file 4 "inc/main.h"
+	.file 3 "inc/utils.h"
 	.byte	0x3
 	.uleb128 0x1
-	.uleb128 0x4
-	.byte	0x1
-	.uleb128 0x2
-	.ascii "MAIN_H_ \0"
-	.byte	0x3
-	.uleb128 0x4
 	.uleb128 0x3
 	.byte	0x1
+	.uleb128 0x2
+	.ascii "UTILS_H_ \0"
+	.byte	0x3
+	.uleb128 0x4
+	.uleb128 0x2
+	.byte	0x1
 	.uleb128 0x7
-	.ascii "_INC_STDIO \0"
-	.file 5 "D:/mingw64/x86_64-w64-mingw32/include/corecrt_stdio_config.h"
+	.ascii "_INC_STRING \0"
+	.file 4 "D:/mingw64/x86_64-w64-mingw32/include/crtdefs.h"
 	.byte	0x3
 	.uleb128 0x9
+	.uleb128 0x4
+	.byte	0x1
+	.uleb128 0x8
+	.ascii "_INC_CRTDEFS \0"
+	.file 5 "D:/mingw64/x86_64-w64-mingw32/include/corecrt.h"
+	.byte	0x3
+	.uleb128 0xa
 	.uleb128 0x5
 	.byte	0x1
 	.uleb128 0x8
-	.ascii "_STDIO_CONFIG_DEFINED \0"
-	.file 6 "D:/mingw64/x86_64-w64-mingw32/include/corecrt.h"
+	.ascii "_INC_CORECRT \0"
+	.file 6 "D:/mingw64/x86_64-w64-mingw32/include/_mingw.h"
 	.byte	0x3
 	.uleb128 0xa
 	.uleb128 0x6
 	.byte	0x1
 	.uleb128 0x8
-	.ascii "_INC_CORECRT \0"
-	.file 7 "D:/mingw64/x86_64-w64-mingw32/include/_mingw.h"
+	.ascii "_INC__MINGW_H \0"
+	.file 7 "D:/mingw64/x86_64-w64-mingw32/include/_mingw_mac.h"
 	.byte	0x3
 	.uleb128 0xa
 	.uleb128 0x7
-	.byte	0x1
-	.uleb128 0x8
-	.ascii "_INC__MINGW_H \0"
-	.file 8 "D:/mingw64/x86_64-w64-mingw32/include/_mingw_mac.h"
-	.byte	0x3
-	.uleb128 0xa
-	.uleb128 0x8
 	.byte	0x1
 	.uleb128 0x8
 	.ascii "_INC_CRTDEFS_MACRO \0"
@@ -2958,10 +1983,10 @@ addStudent:
 	.uleb128 0x18b
 	.ascii "__has_builtin\0"
 	.byte	0x4
-	.file 9 "D:/mingw64/x86_64-w64-mingw32/include/_mingw_secapi.h"
+	.file 8 "D:/mingw64/x86_64-w64-mingw32/include/_mingw_secapi.h"
 	.byte	0x3
 	.uleb128 0xb
-	.uleb128 0x9
+	.uleb128 0x8
 	.byte	0x1
 	.uleb128 0x8
 	.ascii "_INC_MINGW_SECAPI \0"
@@ -3125,16 +2150,16 @@ addStudent:
 	.byte	0x1
 	.uleb128 0x116
 	.ascii "__nothrow \0"
-	.file 10 "D:/mingw64/x86_64-w64-mingw32/include/vadefs.h"
+	.file 9 "D:/mingw64/x86_64-w64-mingw32/include/vadefs.h"
 	.byte	0x3
 	.uleb128 0x11a
-	.uleb128 0xa
+	.uleb128 0x9
 	.byte	0x1
 	.uleb128 0x7
 	.ascii "_INC_VADEFS \0"
 	.byte	0x3
 	.uleb128 0x9
-	.uleb128 0x7
+	.uleb128 0x6
 	.byte	0x1
 	.uleb128 0x28a
 	.ascii "MINGW_SDK_INIT \0"
@@ -3147,10 +2172,10 @@ addStudent:
 	.byte	0x1
 	.uleb128 0x292
 	.ascii "__GOT_SECURE_LIB__ __STDC_SECURE_LIB__\0"
-	.file 11 "D:/mingw64/x86_64-w64-mingw32/include/sdks/_mingw_ddk.h"
+	.file 10 "D:/mingw64/x86_64-w64-mingw32/include/sdks/_mingw_ddk.h"
 	.byte	0x3
 	.uleb128 0x295
-	.uleb128 0xb
+	.uleb128 0xa
 	.byte	0x1
 	.uleb128 0x2
 	.ascii "MINGW_DDK_H \0"
@@ -3516,338 +2541,19 @@ addStudent:
 	.uleb128 0x1f0
 	.ascii "_CRT_USE_WINAPI_FAMILY_DESKTOP_APP \0"
 	.byte	0x4
-	.byte	0x1
-	.uleb128 0xc
-	.ascii "_CRT_INTERNAL_PRINTF_LEGACY_VSPRINTF_NULL_TERMINATION 0x0001ULL\0"
-	.byte	0x1
-	.uleb128 0xd
-	.ascii "_CRT_INTERNAL_PRINTF_STANDARD_SNPRINTF_BEHAVIOR 0x0002ULL\0"
-	.byte	0x1
-	.uleb128 0xe
-	.ascii "_CRT_INTERNAL_PRINTF_LEGACY_WIDE_SPECIFIERS 0x0004ULL\0"
-	.byte	0x1
-	.uleb128 0xf
-	.ascii "_CRT_INTERNAL_PRINTF_LEGACY_MSVCRT_COMPATIBILITY 0x0008ULL\0"
-	.byte	0x1
-	.uleb128 0x10
-	.ascii "_CRT_INTERNAL_PRINTF_LEGACY_THREE_DIGIT_EXPONENTS 0x0010ULL\0"
-	.byte	0x1
-	.uleb128 0x12
-	.ascii "_CRT_INTERNAL_SCANF_SECURECRT 0x0001ULL\0"
-	.byte	0x1
-	.uleb128 0x13
-	.ascii "_CRT_INTERNAL_SCANF_LEGACY_WIDE_SPECIFIERS 0x0002ULL\0"
-	.byte	0x1
-	.uleb128 0x14
-	.ascii "_CRT_INTERNAL_SCANF_LEGACY_MSVCRT_COMPATIBILITY 0x0004ULL\0"
-	.byte	0x1
-	.uleb128 0x17
-	.ascii "_CRT_INTERNAL_LOCAL_PRINTF_OPTIONS _CRT_INTERNAL_PRINTF_LEGACY_WIDE_SPECIFIERS\0"
-	.byte	0x1
-	.uleb128 0x1b
-	.ascii "_CRT_INTERNAL_LOCAL_SCANF_OPTIONS _CRT_INTERNAL_SCANF_LEGACY_WIDE_SPECIFIERS\0"
-	.byte	0x4
-	.byte	0x2
-	.uleb128 0xe
-	.ascii "snprintf\0"
-	.byte	0x2
-	.uleb128 0x10
-	.ascii "vsnprintf\0"
-	.byte	0x2
-	.uleb128 0x12
-	.ascii "snwprintf\0"
-	.byte	0x2
-	.uleb128 0x14
-	.ascii "vsnwprintf\0"
-	.byte	0x1
-	.uleb128 0x1a
-	.ascii "BUFSIZ 512\0"
-	.byte	0x1
-	.uleb128 0x1b
-	.ascii "_NFILE _NSTREAM_\0"
-	.byte	0x1
-	.uleb128 0x1c
-	.ascii "_NSTREAM_ 512\0"
-	.byte	0x1
-	.uleb128 0x1d
-	.ascii "_IOB_ENTRIES 20\0"
-	.byte	0x1
-	.uleb128 0x1e
-	.ascii "EOF (-1)\0"
-	.byte	0x1
-	.uleb128 0x30
-	.ascii "_FILE_DEFINED \0"
-	.byte	0x1
-	.uleb128 0x37
-	.ascii "_P_tmpdir \"\\\\\"\0"
-	.byte	0x1
-	.uleb128 0x38
-	.ascii "_wP_tmpdir L\"\\\\\"\0"
-	.byte	0x1
-	.uleb128 0x3c
-	.ascii "L_tmpnam 260\0"
-	.byte	0x1
-	.uleb128 0x46
-	.ascii "SEEK_CUR 1\0"
-	.byte	0x1
-	.uleb128 0x47
-	.ascii "SEEK_END 2\0"
-	.byte	0x1
-	.uleb128 0x48
-	.ascii "SEEK_SET 0\0"
-	.byte	0x1
-	.uleb128 0x4a
-	.ascii "STDIN_FILENO 0\0"
-	.byte	0x1
-	.uleb128 0x4b
-	.ascii "STDOUT_FILENO 1\0"
-	.byte	0x1
-	.uleb128 0x4c
-	.ascii "STDERR_FILENO 2\0"
-	.byte	0x1
-	.uleb128 0x4e
-	.ascii "FILENAME_MAX 260\0"
-	.byte	0x1
-	.uleb128 0x4f
-	.ascii "FOPEN_MAX 20\0"
-	.byte	0x1
-	.uleb128 0x50
-	.ascii "_SYS_OPEN 20\0"
-	.byte	0x1
-	.uleb128 0x52
-	.ascii "TMP_MAX 2147483647\0"
-	.byte	0x1
-	.uleb128 0x5f
-	.ascii "NULL ((void *)0)\0"
-	.file 12 "D:/mingw64/x86_64-w64-mingw32/include/_mingw_off_t.h"
-	.byte	0x3
-	.uleb128 0x63
-	.uleb128 0xc
-	.byte	0x1
-	.uleb128 0x2
-	.ascii "_OFF_T_DEFINED \0"
-	.byte	0x1
-	.uleb128 0x4
-	.ascii "_OFF_T_ \0"
-	.byte	0x1
-	.uleb128 0xc
-	.ascii "_OFF64_T_DEFINED \0"
-	.byte	0x1
-	.uleb128 0x15
-	.ascii "_FILE_OFFSET_BITS_SET_OFFT \0"
-	.byte	0x4
-	.byte	0x1
-	.uleb128 0x69
-	.ascii "_iob __iob_func()\0"
-	.byte	0x1
-	.uleb128 0x77
-	.ascii "_FPOS_T_DEFINED \0"
-	.byte	0x2
-	.uleb128 0x78
-	.ascii "_FPOSOFF\0"
-	.byte	0x1
-	.uleb128 0x7c
-	.ascii "_FPOSOFF(fp) ((long)(fp))\0"
-	.byte	0x1
-	.uleb128 0x85
-	.ascii "_STDSTREAM_DEFINED \0"
-	.byte	0x1
-	.uleb128 0x87
-	.ascii "stdin (__acrt_iob_func(0))\0"
-	.byte	0x1
-	.uleb128 0x88
-	.ascii "stdout (__acrt_iob_func(1))\0"
-	.byte	0x1
-	.uleb128 0x89
-	.ascii "stderr (__acrt_iob_func(2))\0"
-	.byte	0x1
-	.uleb128 0x8c
-	.ascii "_IOFBF 0x0000\0"
-	.byte	0x1
-	.uleb128 0x8d
-	.ascii "_IOLBF 0x0040\0"
-	.byte	0x1
-	.uleb128 0x8e
-	.ascii "_IONBF 0x0004\0"
-	.byte	0x2
-	.uleb128 0xfe
-	.ascii "__MINGW_PRINTF_FORMAT\0"
-	.byte	0x2
-	.uleb128 0xff
-	.ascii "__MINGW_SCANF_FORMAT\0"
-	.byte	0x1
-	.uleb128 0x105
-	.ascii "__MINGW_PRINTF_FORMAT __gnu_printf__\0"
-	.byte	0x1
-	.uleb128 0x106
-	.ascii "__MINGW_SCANF_FORMAT __gnu_scanf__\0"
-	.byte	0x2
-	.uleb128 0x1f3
-	.ascii "__builtin_vsnprintf\0"
-	.byte	0x2
-	.uleb128 0x1f4
-	.ascii "__builtin_vsprintf\0"
-	.byte	0x1
-	.uleb128 0x2ad
-	.ascii "_FILE_OFFSET_BITS_SET_FSEEKO \0"
-	.byte	0x1
-	.uleb128 0x2b4
-	.ascii "_FILE_OFFSET_BITS_SET_FTELLO \0"
-	.byte	0x1
-	.uleb128 0x2c2
-	.ascii "_CRT_PERROR_DEFINED \0"
-	.byte	0x1
-	.uleb128 0x2c9
-	.ascii "popen _popen\0"
-	.byte	0x1
-	.uleb128 0x2ca
-	.ascii "pclose _pclose\0"
-	.byte	0x1
-	.uleb128 0x2d2
-	.ascii "_CRT_DIRECTORY_DEFINED \0"
-	.byte	0x1
-	.uleb128 0x3e0
-	.ascii "_WSTDIO_DEFINED \0"
-	.byte	0x1
-	.uleb128 0x518
-	.ascii "WEOF (wint_t)(0xFFFF)\0"
-	.file 13 "D:/mingw64/x86_64-w64-mingw32/include/swprintf.inl"
-	.byte	0x3
-	.uleb128 0x58a
-	.uleb128 0xd
-	.byte	0x1
-	.uleb128 0x8
-	.ascii "_INC_SWPRINTF_INL \0"
-	.byte	0x4
-	.byte	0x1
-	.uleb128 0x59b
-	.ascii "_CRT_WPERROR_DEFINED \0"
-	.byte	0x1
-	.uleb128 0x5a0
-	.ascii "wpopen _wpopen\0"
-	.byte	0x2
-	.uleb128 0x5ab
-	.ascii "_CRT_GETPUTWCHAR_NOINLINE\0"
-	.byte	0x1
-	.uleb128 0x5ae
-	.ascii "getwchar() fgetwc(stdin)\0"
-	.byte	0x1
-	.uleb128 0x5af
-	.ascii "putwchar(_c) fputwc((_c),stdout)\0"
-	.byte	0x1
-	.uleb128 0x5b5
-	.ascii "getwc(_stm) fgetwc(_stm)\0"
-	.byte	0x1
-	.uleb128 0x5b6
-	.ascii "putwc(_c,_stm) fputwc(_c,_stm)\0"
-	.byte	0x1
-	.uleb128 0x5b8
-	.ascii "_putwc_nolock(_c,_stm) _fputwc_nolock(_c,_stm)\0"
-	.byte	0x1
-	.uleb128 0x5b9
-	.ascii "_getwc_nolock(_c) _fgetwc_nolock(_c)\0"
-	.byte	0x1
-	.uleb128 0x5bd
-	.ascii "_STDIO_DEFINED \0"
-	.byte	0x1
-	.uleb128 0x5cb
-	.ascii "_getchar_nolock() _getc_nolock(stdin)\0"
-	.byte	0x1
-	.uleb128 0x5cc
-	.ascii "_putchar_nolock(_c) _putc_nolock((_c),stdout)\0"
-	.byte	0x1
-	.uleb128 0x5cd
-	.ascii "_getwchar_nolock() _getwc_nolock(stdin)\0"
-	.byte	0x1
-	.uleb128 0x5ce
-	.ascii "_putwchar_nolock(_c) _putwc_nolock((_c),stdout)\0"
-	.byte	0x1
-	.uleb128 0x5df
-	.ascii "P_tmpdir _P_tmpdir\0"
-	.byte	0x1
-	.uleb128 0x5e0
-	.ascii "SYS_OPEN _SYS_OPEN\0"
-	.byte	0x1
-	.uleb128 0x5ef
-	.ascii "__MINGW_MBWC_CONVERT_DEFINED \0"
-	.byte	0x1
-	.uleb128 0x619
-	.ascii "_WSPAWN_DEFINED \0"
-	.byte	0x1
-	.uleb128 0x625
-	.ascii "_P_WAIT 0\0"
-	.byte	0x1
-	.uleb128 0x626
-	.ascii "_P_NOWAIT 1\0"
-	.byte	0x1
-	.uleb128 0x627
-	.ascii "_OLD_P_OVERLAY 2\0"
-	.byte	0x1
-	.uleb128 0x628
-	.ascii "_P_NOWAITO 3\0"
-	.byte	0x1
-	.uleb128 0x629
-	.ascii "_P_DETACH 4\0"
-	.byte	0x1
-	.uleb128 0x62a
-	.ascii "_P_OVERLAY 2\0"
-	.byte	0x1
-	.uleb128 0x62c
-	.ascii "_WAIT_CHILD 0\0"
-	.byte	0x1
-	.uleb128 0x62d
-	.ascii "_WAIT_GRANDCHILD 1\0"
-	.byte	0x1
-	.uleb128 0x631
-	.ascii "_SPAWNV_DEFINED \0"
-	.file 14 "D:/mingw64/x86_64-w64-mingw32/include/sec_api/stdio_s.h"
-	.byte	0x3
-	.uleb128 0x644
-	.uleb128 0xe
-	.byte	0x1
-	.uleb128 0x7
-	.ascii "_INC_STDIO_S \0"
-	.byte	0x3
-	.uleb128 0x9
-	.uleb128 0x3
 	.byte	0x4
 	.byte	0x1
 	.uleb128 0x10
 	.ascii "_SECIMP __declspec(dllimport)\0"
 	.byte	0x1
 	.uleb128 0x19
-	.ascii "_STDIO_S_DEFINED \0"
-	.byte	0x1
-	.uleb128 0x1a
-	.ascii "L_tmpnam_s L_tmpnam\0"
-	.byte	0x1
-	.uleb128 0x1b
-	.ascii "TMP_MAX_S TMP_MAX\0"
-	.byte	0x1
-	.uleb128 0x25a
-	.ascii "_WSTDIO_S_DEFINED \0"
-	.byte	0x4
-	.byte	0x4
-	.byte	0x3
-	.uleb128 0x5
-	.uleb128 0x2
-	.byte	0x1
-	.uleb128 0x7
-	.ascii "_INC_STRING \0"
-	.file 15 "D:/mingw64/x86_64-w64-mingw32/include/crtdefs.h"
-	.byte	0x3
-	.uleb128 0x9
-	.uleb128 0xf
-	.byte	0x1
-	.uleb128 0x8
-	.ascii "_INC_CRTDEFS \0"
-	.byte	0x4
-	.byte	0x1
-	.uleb128 0x19
 	.ascii "_NLSCMP_DEFINED \0"
 	.byte	0x1
 	.uleb128 0x1a
 	.ascii "_NLSCMPERROR 2147483647\0"
+	.byte	0x1
+	.uleb128 0x25
+	.ascii "NULL ((void *)0)\0"
 	.byte	0x1
 	.uleb128 0x29
 	.ascii "_WConst_return _CONST_RETURN\0"
@@ -3869,10 +2575,10 @@ addStudent:
 	.byte	0x1
 	.uleb128 0xb2
 	.ascii "wcswcs wcsstr\0"
-	.file 16 "D:/mingw64/x86_64-w64-mingw32/include/sec_api/string_s.h"
+	.file 11 "D:/mingw64/x86_64-w64-mingw32/include/sec_api/string_s.h"
 	.byte	0x3
 	.uleb128 0xc2
-	.uleb128 0x10
+	.uleb128 0xb
 	.byte	0x1
 	.uleb128 0x7
 	.ascii "_INC_STRING_S \0"
@@ -3885,858 +2591,6 @@ addStudent:
 	.ascii "_WSTRING_S_DEFINED \0"
 	.byte	0x4
 	.byte	0x4
-	.file 17 "D:/mingw64/x86_64-w64-mingw32/include/stdlib.h"
-	.byte	0x3
-	.uleb128 0x6
-	.uleb128 0x11
-	.byte	0x1
-	.uleb128 0x7
-	.ascii "_INC_STDLIB \0"
-	.file 18 "D:/mingw64/x86_64-w64-mingw32/include/corecrt_wstdlib.h"
-	.byte	0x3
-	.uleb128 0xa
-	.uleb128 0x12
-	.byte	0x1
-	.uleb128 0x7
-	.ascii "_INC_CORECRT_WSTDLIB \0"
-	.byte	0x4
-	.file 19 "D:/mingw64/lib/gcc/x86_64-w64-mingw32/14.2.0/include/limits.h"
-	.byte	0x3
-	.uleb128 0xb
-	.uleb128 0x13
-	.byte	0x1
-	.uleb128 0x1e
-	.ascii "_GCC_LIMITS_H_ \0"
-	.file 20 "D:/mingw64/lib/gcc/x86_64-w64-mingw32/14.2.0/include/syslimits.h"
-	.byte	0x3
-	.uleb128 0x22
-	.uleb128 0x14
-	.byte	0x1
-	.uleb128 0x6
-	.ascii "_GCC_NEXT_LIMITS_H \0"
-	.byte	0x3
-	.uleb128 0x7
-	.uleb128 0x13
-	.file 21 "D:/mingw64/x86_64-w64-mingw32/include/limits.h"
-	.byte	0x3
-	.uleb128 0xd2
-	.uleb128 0x15
-	.byte	0x1
-	.uleb128 0x9
-	.ascii "_INC_LIMITS \0"
-	.byte	0x1
-	.uleb128 0x14
-	.ascii "PATH_MAX 260\0"
-	.byte	0x1
-	.uleb128 0x16
-	.ascii "CHAR_BIT 8\0"
-	.byte	0x1
-	.uleb128 0x17
-	.ascii "SCHAR_MIN (-128)\0"
-	.byte	0x1
-	.uleb128 0x18
-	.ascii "SCHAR_MAX 127\0"
-	.byte	0x1
-	.uleb128 0x19
-	.ascii "UCHAR_MAX 0xff\0"
-	.byte	0x1
-	.uleb128 0x1f
-	.ascii "CHAR_MIN SCHAR_MIN\0"
-	.byte	0x1
-	.uleb128 0x20
-	.ascii "CHAR_MAX SCHAR_MAX\0"
-	.byte	0x1
-	.uleb128 0x23
-	.ascii "MB_LEN_MAX 5\0"
-	.byte	0x1
-	.uleb128 0x24
-	.ascii "SHRT_MIN (-32768)\0"
-	.byte	0x1
-	.uleb128 0x25
-	.ascii "SHRT_MAX 32767\0"
-	.byte	0x1
-	.uleb128 0x26
-	.ascii "USHRT_MAX 0xffffU\0"
-	.byte	0x1
-	.uleb128 0x27
-	.ascii "INT_MIN (-2147483647 - 1)\0"
-	.byte	0x1
-	.uleb128 0x28
-	.ascii "INT_MAX 2147483647\0"
-	.byte	0x1
-	.uleb128 0x29
-	.ascii "UINT_MAX 0xffffffffU\0"
-	.byte	0x1
-	.uleb128 0x2a
-	.ascii "LONG_MIN (-2147483647L - 1)\0"
-	.byte	0x1
-	.uleb128 0x2b
-	.ascii "LONG_MAX 2147483647L\0"
-	.byte	0x1
-	.uleb128 0x2c
-	.ascii "ULONG_MAX 0xffffffffUL\0"
-	.byte	0x1
-	.uleb128 0x2d
-	.ascii "LLONG_MAX 9223372036854775807ll\0"
-	.byte	0x1
-	.uleb128 0x2e
-	.ascii "LLONG_MIN (-9223372036854775807ll - 1)\0"
-	.byte	0x1
-	.uleb128 0x2f
-	.ascii "ULLONG_MAX 0xffffffffffffffffull\0"
-	.byte	0x1
-	.uleb128 0x31
-	.ascii "_I8_MIN (-127 - 1)\0"
-	.byte	0x1
-	.uleb128 0x32
-	.ascii "_I8_MAX 127\0"
-	.byte	0x1
-	.uleb128 0x33
-	.ascii "_UI8_MAX 0xffu\0"
-	.byte	0x1
-	.uleb128 0x35
-	.ascii "_I16_MIN (-32767 - 1)\0"
-	.byte	0x1
-	.uleb128 0x36
-	.ascii "_I16_MAX 32767\0"
-	.byte	0x1
-	.uleb128 0x37
-	.ascii "_UI16_MAX 0xffffu\0"
-	.byte	0x1
-	.uleb128 0x39
-	.ascii "_I32_MIN (-2147483647 - 1)\0"
-	.byte	0x1
-	.uleb128 0x3a
-	.ascii "_I32_MAX 2147483647\0"
-	.byte	0x1
-	.uleb128 0x3b
-	.ascii "_UI32_MAX 0xffffffffu\0"
-	.byte	0x2
-	.uleb128 0x3e
-	.ascii "LONG_LONG_MAX\0"
-	.byte	0x1
-	.uleb128 0x3f
-	.ascii "LONG_LONG_MAX 9223372036854775807ll\0"
-	.byte	0x2
-	.uleb128 0x40
-	.ascii "LONG_LONG_MIN\0"
-	.byte	0x1
-	.uleb128 0x41
-	.ascii "LONG_LONG_MIN (-LONG_LONG_MAX-1)\0"
-	.byte	0x2
-	.uleb128 0x42
-	.ascii "ULONG_LONG_MAX\0"
-	.byte	0x1
-	.uleb128 0x43
-	.ascii "ULONG_LONG_MAX (2ull * LONG_LONG_MAX + 1ull)\0"
-	.byte	0x1
-	.uleb128 0x46
-	.ascii "_I64_MIN (-9223372036854775807ll - 1)\0"
-	.byte	0x1
-	.uleb128 0x47
-	.ascii "_I64_MAX 9223372036854775807ll\0"
-	.byte	0x1
-	.uleb128 0x48
-	.ascii "_UI64_MAX 0xffffffffffffffffull\0"
-	.byte	0x1
-	.uleb128 0x4c
-	.ascii "SIZE_MAX _UI64_MAX\0"
-	.byte	0x1
-	.uleb128 0x54
-	.ascii "SSIZE_MAX _I64_MAX\0"
-	.byte	0x4
-	.byte	0x4
-	.byte	0x2
-	.uleb128 0x8
-	.ascii "_GCC_NEXT_LIMITS_H\0"
-	.byte	0x4
-	.byte	0x1
-	.uleb128 0x3c
-	.ascii "_LIMITS_H___ \0"
-	.byte	0x2
-	.uleb128 0x3f
-	.ascii "CHAR_BIT\0"
-	.byte	0x1
-	.uleb128 0x40
-	.ascii "CHAR_BIT __CHAR_BIT__\0"
-	.byte	0x2
-	.uleb128 0x48
-	.ascii "SCHAR_MIN\0"
-	.byte	0x1
-	.uleb128 0x49
-	.ascii "SCHAR_MIN (-SCHAR_MAX - 1)\0"
-	.byte	0x2
-	.uleb128 0x4a
-	.ascii "SCHAR_MAX\0"
-	.byte	0x1
-	.uleb128 0x4b
-	.ascii "SCHAR_MAX __SCHAR_MAX__\0"
-	.byte	0x2
-	.uleb128 0x4e
-	.ascii "UCHAR_MAX\0"
-	.byte	0x1
-	.uleb128 0x52
-	.ascii "UCHAR_MAX (SCHAR_MAX * 2 + 1)\0"
-	.byte	0x2
-	.uleb128 0x60
-	.ascii "CHAR_MIN\0"
-	.byte	0x1
-	.uleb128 0x61
-	.ascii "CHAR_MIN SCHAR_MIN\0"
-	.byte	0x2
-	.uleb128 0x62
-	.ascii "CHAR_MAX\0"
-	.byte	0x1
-	.uleb128 0x63
-	.ascii "CHAR_MAX SCHAR_MAX\0"
-	.byte	0x2
-	.uleb128 0x67
-	.ascii "SHRT_MIN\0"
-	.byte	0x1
-	.uleb128 0x68
-	.ascii "SHRT_MIN (-SHRT_MAX - 1)\0"
-	.byte	0x2
-	.uleb128 0x69
-	.ascii "SHRT_MAX\0"
-	.byte	0x1
-	.uleb128 0x6a
-	.ascii "SHRT_MAX __SHRT_MAX__\0"
-	.byte	0x2
-	.uleb128 0x6d
-	.ascii "USHRT_MAX\0"
-	.byte	0x1
-	.uleb128 0x71
-	.ascii "USHRT_MAX (SHRT_MAX * 2 + 1)\0"
-	.byte	0x2
-	.uleb128 0x75
-	.ascii "INT_MIN\0"
-	.byte	0x1
-	.uleb128 0x76
-	.ascii "INT_MIN (-INT_MAX - 1)\0"
-	.byte	0x2
-	.uleb128 0x77
-	.ascii "INT_MAX\0"
-	.byte	0x1
-	.uleb128 0x78
-	.ascii "INT_MAX __INT_MAX__\0"
-	.byte	0x2
-	.uleb128 0x7b
-	.ascii "UINT_MAX\0"
-	.byte	0x1
-	.uleb128 0x7c
-	.ascii "UINT_MAX (INT_MAX * 2U + 1U)\0"
-	.byte	0x2
-	.uleb128 0x80
-	.ascii "LONG_MIN\0"
-	.byte	0x1
-	.uleb128 0x81
-	.ascii "LONG_MIN (-LONG_MAX - 1L)\0"
-	.byte	0x2
-	.uleb128 0x82
-	.ascii "LONG_MAX\0"
-	.byte	0x1
-	.uleb128 0x83
-	.ascii "LONG_MAX __LONG_MAX__\0"
-	.byte	0x2
-	.uleb128 0x86
-	.ascii "ULONG_MAX\0"
-	.byte	0x1
-	.uleb128 0x87
-	.ascii "ULONG_MAX (LONG_MAX * 2UL + 1UL)\0"
-	.byte	0x2
-	.uleb128 0x8b
-	.ascii "LLONG_MIN\0"
-	.byte	0x1
-	.uleb128 0x8c
-	.ascii "LLONG_MIN (-LLONG_MAX - 1LL)\0"
-	.byte	0x2
-	.uleb128 0x8d
-	.ascii "LLONG_MAX\0"
-	.byte	0x1
-	.uleb128 0x8e
-	.ascii "LLONG_MAX __LONG_LONG_MAX__\0"
-	.byte	0x2
-	.uleb128 0x91
-	.ascii "ULLONG_MAX\0"
-	.byte	0x1
-	.uleb128 0x92
-	.ascii "ULLONG_MAX (LLONG_MAX * 2ULL + 1ULL)\0"
-	.byte	0x2
-	.uleb128 0x97
-	.ascii "LONG_LONG_MIN\0"
-	.byte	0x1
-	.uleb128 0x98
-	.ascii "LONG_LONG_MIN (-LONG_LONG_MAX - 1LL)\0"
-	.byte	0x2
-	.uleb128 0x99
-	.ascii "LONG_LONG_MAX\0"
-	.byte	0x1
-	.uleb128 0x9a
-	.ascii "LONG_LONG_MAX __LONG_LONG_MAX__\0"
-	.byte	0x2
-	.uleb128 0x9d
-	.ascii "ULONG_LONG_MAX\0"
-	.byte	0x1
-	.uleb128 0x9e
-	.ascii "ULONG_LONG_MAX (LONG_LONG_MAX * 2ULL + 1ULL)\0"
-	.byte	0x4
-	.byte	0x1
-	.uleb128 0x2c
-	.ascii "EXIT_SUCCESS 0\0"
-	.byte	0x1
-	.uleb128 0x2d
-	.ascii "EXIT_FAILURE 1\0"
-	.byte	0x1
-	.uleb128 0x30
-	.ascii "_ONEXIT_T_DEFINED \0"
-	.byte	0x1
-	.uleb128 0x35
-	.ascii "onexit_t _onexit_t\0"
-	.byte	0x1
-	.uleb128 0x3a
-	.ascii "_DIV_T_DEFINED \0"
-	.byte	0x1
-	.uleb128 0x48
-	.ascii "_CRT_DOUBLE_DEC \0"
-	.byte	0x1
-	.uleb128 0x50
-	.ascii "_PTR_LD(x) ((unsigned char *)(&(x)->ld))\0"
-	.byte	0x2
-	.uleb128 0x5b
-	.ascii "long\0"
-	.byte	0x1
-	.uleb128 0x6a
-	.ascii "RAND_MAX 0x7fff\0"
-	.byte	0x1
-	.uleb128 0x6d
-	.ascii "MB_CUR_MAX ___mb_cur_max_func()\0"
-	.byte	0x1
-	.uleb128 0x76
-	.ascii "__mb_cur_max (___mb_cur_max_func())\0"
-	.byte	0x1
-	.uleb128 0x7c
-	.ascii "__max(a,b) (((a) > (b)) ? (a) : (b))\0"
-	.byte	0x1
-	.uleb128 0x7d
-	.ascii "__min(a,b) (((a) < (b)) ? (a) : (b))\0"
-	.byte	0x1
-	.uleb128 0x7f
-	.ascii "_MAX_PATH 260\0"
-	.byte	0x1
-	.uleb128 0x80
-	.ascii "_MAX_DRIVE 3\0"
-	.byte	0x1
-	.uleb128 0x81
-	.ascii "_MAX_DIR 256\0"
-	.byte	0x1
-	.uleb128 0x82
-	.ascii "_MAX_FNAME 256\0"
-	.byte	0x1
-	.uleb128 0x83
-	.ascii "_MAX_EXT 256\0"
-	.byte	0x1
-	.uleb128 0x85
-	.ascii "_OUT_TO_DEFAULT 0\0"
-	.byte	0x1
-	.uleb128 0x86
-	.ascii "_OUT_TO_STDERR 1\0"
-	.byte	0x1
-	.uleb128 0x87
-	.ascii "_OUT_TO_MSGBOX 2\0"
-	.byte	0x1
-	.uleb128 0x88
-	.ascii "_REPORT_ERRMODE 3\0"
-	.byte	0x1
-	.uleb128 0x8a
-	.ascii "_WRITE_ABORT_MSG 0x1\0"
-	.byte	0x1
-	.uleb128 0x8b
-	.ascii "_CALL_REPORTFAULT 0x2\0"
-	.byte	0x1
-	.uleb128 0x8d
-	.ascii "_MAX_ENV 32767\0"
-	.byte	0x1
-	.uleb128 0x99
-	.ascii "_CRT_ERRNO_DEFINED \0"
-	.byte	0x1
-	.uleb128 0x9b
-	.ascii "errno (*_errno())\0"
-	.byte	0x1
-	.uleb128 0xa0
-	.ascii "_doserrno (*__doserrno())\0"
-	.byte	0x1
-	.uleb128 0xaa
-	.ascii "_sys_nerr (*__sys_nerr())\0"
-	.byte	0x1
-	.uleb128 0xab
-	.ascii "_sys_errlist (__sys_errlist())\0"
-	.byte	0x1
-	.uleb128 0xc5
-	.ascii "_fmode (* __p__fmode())\0"
-	.byte	0x1
-	.uleb128 0xfc
-	.ascii "__argc (* __p___argc())\0"
-	.byte	0x1
-	.uleb128 0xff
-	.ascii "__argv (* __p___argv())\0"
-	.byte	0x1
-	.uleb128 0x102
-	.ascii "__wargv (* __p___wargv())\0"
-	.byte	0x1
-	.uleb128 0x107
-	.ascii "_environ (* __p__environ())\0"
-	.byte	0x1
-	.uleb128 0x10b
-	.ascii "_wenviron (* __p__wenviron())\0"
-	.byte	0x1
-	.uleb128 0x110
-	.ascii "_pgmptr (* __p__pgmptr())\0"
-	.byte	0x1
-	.uleb128 0x114
-	.ascii "_wpgmptr (* __p__wpgmptr())\0"
-	.byte	0x1
-	.uleb128 0x179
-	.ascii "_countof(_Array) (sizeof(_Array) / sizeof(_Array[0]))\0"
-	.byte	0x1
-	.uleb128 0x183
-	.ascii "_CRT_TERMINATE_DEFINED \0"
-	.byte	0x2
-	.uleb128 0x194
-	.ascii "abort\0"
-	.byte	0x1
-	.uleb128 0x19d
-	.ascii "_CRT_ABS_DEFINED \0"
-	.byte	0x1
-	.uleb128 0x1ae
-	.ascii "_CRT_ATOF_DEFINED \0"
-	.byte	0x1
-	.uleb128 0x1b7
-	.ascii "_CRT_ALGO_DEFINED \0"
-	.byte	0x1
-	.uleb128 0x20d
-	.ascii "_CRT_SYSTEM_DEFINED \0"
-	.byte	0x1
-	.uleb128 0x217
-	.ascii "_CRT_ALLOCATION_DEFINED \0"
-	.byte	0x1
-	.uleb128 0x22a
-	.ascii "_WSTDLIB_DEFINED \0"
-	.byte	0x1
-	.uleb128 0x24d
-	.ascii "_CRT_WSYSTEM_DEFINED \0"
-	.byte	0x1
-	.uleb128 0x265
-	.ascii "_CVTBUFSIZE (309+40)\0"
-	.byte	0x2
-	.uleb128 0x27b
-	.ascii "_lrotr\0"
-	.byte	0x2
-	.uleb128 0x27c
-	.ascii "_lrotl\0"
-	.byte	0x2
-	.uleb128 0x28f
-	.ascii "_rotl64\0"
-	.byte	0x2
-	.uleb128 0x290
-	.ascii "_rotr64\0"
-	.byte	0x2
-	.uleb128 0x297
-	.ascii "_rotr\0"
-	.byte	0x2
-	.uleb128 0x298
-	.ascii "_rotl\0"
-	.byte	0x1
-	.uleb128 0x2a3
-	.ascii "_WSTDLIBP_DEFINED \0"
-	.byte	0x1
-	.uleb128 0x2c3
-	.ascii "sys_errlist _sys_errlist\0"
-	.byte	0x1
-	.uleb128 0x2c4
-	.ascii "sys_nerr _sys_nerr\0"
-	.byte	0x1
-	.uleb128 0x2c5
-	.ascii "environ _environ\0"
-	.byte	0x1
-	.uleb128 0x2ce
-	.ascii "_CRT_SWAB_DEFINED \0"
-	.file 22 "D:/mingw64/x86_64-w64-mingw32/include/sec_api/stdlib_s.h"
-	.byte	0x3
-	.uleb128 0x301
-	.uleb128 0x16
-	.byte	0x1
-	.uleb128 0x7
-	.ascii "_INC_STDLIB_S \0"
-	.byte	0x3
-	.uleb128 0x9
-	.uleb128 0x11
-	.byte	0x4
-	.byte	0x1
-	.uleb128 0x33
-	.ascii "_QSORT_S_DEFINED \0"
-	.byte	0x4
-	.file 23 "D:/mingw64/x86_64-w64-mingw32/include/malloc.h"
-	.byte	0x3
-	.uleb128 0x302
-	.uleb128 0x17
-	.byte	0x1
-	.uleb128 0x7
-	.ascii "_MALLOC_H_ \0"
-	.byte	0x1
-	.uleb128 0x12
-	.ascii "_HEAP_MAXREQ 0xFFFFFFFFFFFFFFE0\0"
-	.byte	0x1
-	.uleb128 0x1b
-	.ascii "_STATIC_ASSERT(expr) extern void __static_assert_t(int [(expr)?1:-1])\0"
-	.byte	0x1
-	.uleb128 0x20
-	.ascii "_HEAPEMPTY (-1)\0"
-	.byte	0x1
-	.uleb128 0x21
-	.ascii "_HEAPOK (-2)\0"
-	.byte	0x1
-	.uleb128 0x22
-	.ascii "_HEAPBADBEGIN (-3)\0"
-	.byte	0x1
-	.uleb128 0x23
-	.ascii "_HEAPBADNODE (-4)\0"
-	.byte	0x1
-	.uleb128 0x24
-	.ascii "_HEAPEND (-5)\0"
-	.byte	0x1
-	.uleb128 0x25
-	.ascii "_HEAPBADPTR (-6)\0"
-	.byte	0x1
-	.uleb128 0x28
-	.ascii "_FREEENTRY 0\0"
-	.byte	0x1
-	.uleb128 0x29
-	.ascii "_USEDENTRY 1\0"
-	.byte	0x1
-	.uleb128 0x2c
-	.ascii "_HEAPINFO_DEFINED \0"
-	.file 24 "D:/mingw64/lib/gcc/x86_64-w64-mingw32/14.2.0/include/mm_malloc.h"
-	.byte	0x3
-	.uleb128 0x54
-	.uleb128 0x18
-	.byte	0x1
-	.uleb128 0x19
-	.ascii "_MM_MALLOC_H_INCLUDED \0"
-	.file 25 "D:/mingw64/x86_64-w64-mingw32/include/errno.h"
-	.byte	0x3
-	.uleb128 0x1d
-	.uleb128 0x19
-	.byte	0x1
-	.uleb128 0x7
-	.ascii "_INC_ERRNO \0"
-	.byte	0x1
-	.uleb128 0x18
-	.ascii "EPERM 1\0"
-	.byte	0x1
-	.uleb128 0x19
-	.ascii "ENOENT 2\0"
-	.byte	0x1
-	.uleb128 0x1a
-	.ascii "ENOFILE ENOENT\0"
-	.byte	0x1
-	.uleb128 0x1b
-	.ascii "ESRCH 3\0"
-	.byte	0x1
-	.uleb128 0x1c
-	.ascii "EINTR 4\0"
-	.byte	0x1
-	.uleb128 0x1d
-	.ascii "EIO 5\0"
-	.byte	0x1
-	.uleb128 0x1e
-	.ascii "ENXIO 6\0"
-	.byte	0x1
-	.uleb128 0x1f
-	.ascii "E2BIG 7\0"
-	.byte	0x1
-	.uleb128 0x20
-	.ascii "ENOEXEC 8\0"
-	.byte	0x1
-	.uleb128 0x21
-	.ascii "EBADF 9\0"
-	.byte	0x1
-	.uleb128 0x22
-	.ascii "ECHILD 10\0"
-	.byte	0x1
-	.uleb128 0x23
-	.ascii "EAGAIN 11\0"
-	.byte	0x1
-	.uleb128 0x24
-	.ascii "ENOMEM 12\0"
-	.byte	0x1
-	.uleb128 0x25
-	.ascii "EACCES 13\0"
-	.byte	0x1
-	.uleb128 0x26
-	.ascii "EFAULT 14\0"
-	.byte	0x1
-	.uleb128 0x27
-	.ascii "EBUSY 16\0"
-	.byte	0x1
-	.uleb128 0x28
-	.ascii "EEXIST 17\0"
-	.byte	0x1
-	.uleb128 0x29
-	.ascii "EXDEV 18\0"
-	.byte	0x1
-	.uleb128 0x2a
-	.ascii "ENODEV 19\0"
-	.byte	0x1
-	.uleb128 0x2b
-	.ascii "ENOTDIR 20\0"
-	.byte	0x1
-	.uleb128 0x2c
-	.ascii "EISDIR 21\0"
-	.byte	0x1
-	.uleb128 0x2d
-	.ascii "ENFILE 23\0"
-	.byte	0x1
-	.uleb128 0x2e
-	.ascii "EMFILE 24\0"
-	.byte	0x1
-	.uleb128 0x2f
-	.ascii "ENOTTY 25\0"
-	.byte	0x1
-	.uleb128 0x30
-	.ascii "EFBIG 27\0"
-	.byte	0x1
-	.uleb128 0x31
-	.ascii "ENOSPC 28\0"
-	.byte	0x1
-	.uleb128 0x32
-	.ascii "ESPIPE 29\0"
-	.byte	0x1
-	.uleb128 0x33
-	.ascii "EROFS 30\0"
-	.byte	0x1
-	.uleb128 0x34
-	.ascii "EMLINK 31\0"
-	.byte	0x1
-	.uleb128 0x35
-	.ascii "EPIPE 32\0"
-	.byte	0x1
-	.uleb128 0x36
-	.ascii "EDOM 33\0"
-	.byte	0x1
-	.uleb128 0x37
-	.ascii "EDEADLK 36\0"
-	.byte	0x1
-	.uleb128 0x38
-	.ascii "ENAMETOOLONG 38\0"
-	.byte	0x1
-	.uleb128 0x39
-	.ascii "ENOLCK 39\0"
-	.byte	0x1
-	.uleb128 0x3a
-	.ascii "ENOSYS 40\0"
-	.byte	0x1
-	.uleb128 0x3b
-	.ascii "ENOTEMPTY 41\0"
-	.byte	0x1
-	.uleb128 0x3f
-	.ascii "_SECURECRT_ERRCODE_VALUES_DEFINED \0"
-	.byte	0x1
-	.uleb128 0x40
-	.ascii "EINVAL 22\0"
-	.byte	0x1
-	.uleb128 0x41
-	.ascii "ERANGE 34\0"
-	.byte	0x1
-	.uleb128 0x42
-	.ascii "EILSEQ 42\0"
-	.byte	0x1
-	.uleb128 0x43
-	.ascii "STRUNCATE 80\0"
-	.byte	0x1
-	.uleb128 0x47
-	.ascii "EDEADLOCK EDEADLK\0"
-	.byte	0x1
-	.uleb128 0x4c
-	.ascii "ENOTSUP 129\0"
-	.byte	0x1
-	.uleb128 0x52
-	.ascii "EAFNOSUPPORT 102\0"
-	.byte	0x1
-	.uleb128 0x56
-	.ascii "EADDRINUSE 100\0"
-	.byte	0x1
-	.uleb128 0x5a
-	.ascii "EADDRNOTAVAIL 101\0"
-	.byte	0x1
-	.uleb128 0x5e
-	.ascii "EISCONN 113\0"
-	.byte	0x1
-	.uleb128 0x62
-	.ascii "ENOBUFS 119\0"
-	.byte	0x1
-	.uleb128 0x66
-	.ascii "ECONNABORTED 106\0"
-	.byte	0x1
-	.uleb128 0x6a
-	.ascii "EALREADY 103\0"
-	.byte	0x1
-	.uleb128 0x6e
-	.ascii "ECONNREFUSED 107\0"
-	.byte	0x1
-	.uleb128 0x72
-	.ascii "ECONNRESET 108\0"
-	.byte	0x1
-	.uleb128 0x76
-	.ascii "EDESTADDRREQ 109\0"
-	.byte	0x1
-	.uleb128 0x7a
-	.ascii "EHOSTUNREACH 110\0"
-	.byte	0x1
-	.uleb128 0x7e
-	.ascii "EMSGSIZE 115\0"
-	.byte	0x1
-	.uleb128 0x82
-	.ascii "ENETDOWN 116\0"
-	.byte	0x1
-	.uleb128 0x86
-	.ascii "ENETRESET 117\0"
-	.byte	0x1
-	.uleb128 0x8a
-	.ascii "ENETUNREACH 118\0"
-	.byte	0x1
-	.uleb128 0x8e
-	.ascii "ENOPROTOOPT 123\0"
-	.byte	0x1
-	.uleb128 0x92
-	.ascii "ENOTSOCK 128\0"
-	.byte	0x1
-	.uleb128 0x96
-	.ascii "ENOTCONN 126\0"
-	.byte	0x1
-	.uleb128 0x9a
-	.ascii "ECANCELED 105\0"
-	.byte	0x1
-	.uleb128 0x9e
-	.ascii "EINPROGRESS 112\0"
-	.byte	0x1
-	.uleb128 0xa2
-	.ascii "EOPNOTSUPP 130\0"
-	.byte	0x1
-	.uleb128 0xa6
-	.ascii "EWOULDBLOCK 140\0"
-	.byte	0x1
-	.uleb128 0xaa
-	.ascii "EOWNERDEAD 133\0"
-	.byte	0x1
-	.uleb128 0xae
-	.ascii "EPROTO 134\0"
-	.byte	0x1
-	.uleb128 0xb2
-	.ascii "EPROTONOSUPPORT 135\0"
-	.byte	0x1
-	.uleb128 0xb6
-	.ascii "EBADMSG 104\0"
-	.byte	0x1
-	.uleb128 0xba
-	.ascii "EIDRM 111\0"
-	.byte	0x1
-	.uleb128 0xbe
-	.ascii "ENODATA 120\0"
-	.byte	0x1
-	.uleb128 0xc2
-	.ascii "ENOLINK 121\0"
-	.byte	0x1
-	.uleb128 0xc6
-	.ascii "ENOMSG 122\0"
-	.byte	0x1
-	.uleb128 0xca
-	.ascii "ENOSR 124\0"
-	.byte	0x1
-	.uleb128 0xce
-	.ascii "ENOSTR 125\0"
-	.byte	0x1
-	.uleb128 0xd2
-	.ascii "ENOTRECOVERABLE 127\0"
-	.byte	0x1
-	.uleb128 0xd6
-	.ascii "ETIME 137\0"
-	.byte	0x1
-	.uleb128 0xda
-	.ascii "ETXTBSY 139\0"
-	.byte	0x1
-	.uleb128 0xdf
-	.ascii "ETIMEDOUT 138\0"
-	.byte	0x1
-	.uleb128 0xe3
-	.ascii "ELOOP 114\0"
-	.byte	0x1
-	.uleb128 0xe7
-	.ascii "EPROTOTYPE 136\0"
-	.byte	0x1
-	.uleb128 0xeb
-	.ascii "EOVERFLOW 132\0"
-	.byte	0x4
-	.byte	0x4
-	.byte	0x1
-	.uleb128 0x57
-	.ascii "_MAX_WAIT_MALLOC_CRT 60000\0"
-	.byte	0x2
-	.uleb128 0x61
-	.ascii "_alloca\0"
-	.byte	0x1
-	.uleb128 0x62
-	.ascii "_alloca(x) __builtin_alloca((x))\0"
-	.byte	0x1
-	.uleb128 0x72
-	.ascii "_ALLOCA_S_THRESHOLD 1024\0"
-	.byte	0x1
-	.uleb128 0x73
-	.ascii "_ALLOCA_S_STACK_MARKER 0xCCCC\0"
-	.byte	0x1
-	.uleb128 0x74
-	.ascii "_ALLOCA_S_HEAP_MARKER 0xDDDD\0"
-	.byte	0x1
-	.uleb128 0x79
-	.ascii "_ALLOCA_S_MARKER_SIZE 16\0"
-	.byte	0x2
-	.uleb128 0x86
-	.ascii "_malloca\0"
-	.byte	0x1
-	.uleb128 0x87
-	.ascii "_malloca(size) ((((size) + _ALLOCA_S_MARKER_SIZE) <= _ALLOCA_S_THRESHOLD) ? _MarkAllocaS(_alloca((size) + _ALLOCA_S_MARKER_SIZE),_ALLOCA_S_STACK_MARKER) : _MarkAllocaS(malloc((size) + _ALLOCA_S_MARKER_SIZE),_ALLOCA_S_HEAP_MARKER))\0"
-	.byte	0x2
-	.uleb128 0x8b
-	.ascii "_FREEA_INLINE\0"
-	.byte	0x1
-	.uleb128 0x8c
-	.ascii "_FREEA_INLINE \0"
-	.byte	0x2
-	.uleb128 0x8f
-	.ascii "_freea\0"
-	.byte	0x2
-	.uleb128 0xa2
-	.ascii "alloca\0"
-	.byte	0x1
-	.uleb128 0xa4
-	.ascii "alloca(x) __builtin_alloca((x))\0"
-	.byte	0x4
-	.byte	0x4
-	.byte	0x4
-	.file 26 "inc/ariph.h"
-	.byte	0x3
-	.uleb128 0x2
-	.uleb128 0x1a
-	.byte	0x1
-	.uleb128 0x2
-	.ascii "ARIPH_H_ \0"
-	.byte	0x4
-	.file 27 "inc/utils.h"
-	.byte	0x3
-	.uleb128 0x3
-	.uleb128 0x1b
-	.byte	0x1
-	.uleb128 0x2
-	.ascii "UTILS_H_ \0"
 	.byte	0x4
 	.byte	0x4
 	.byte	0
@@ -4745,12 +2599,8 @@ addStudent:
 	.section	.debug_str,"dr"
 	.section	.debug_line_str,"dr"
 .LASF1:
-	.ascii "D:\\MGU\\Micros\\Micros\\Atmega\\Programming\\Lesson_27\\MYPROG27\0"
+	.ascii "D:\\MGU\\Micros\\Micros\\Atmega\\Programming\\Lesson_30\\MYPROG30\0"
 .LASF0:
-	.ascii "src/main.c\0"
-	.def	__main;	.scl	2;	.type	32;	.endef
+	.ascii "src/utils.c\0"
 	.ident	"GCC: (x86_64-win32-seh-rev2, Built by MinGW-Builds project) 14.2.0"
-	.def	puts;	.scl	2;	.type	32;	.endef
-	.def	printf;	.scl	2;	.type	32;	.endef
-	.def	putchar;	.scl	2;	.type	32;	.endef
-	.def	strcpy;	.scl	2;	.type	32;	.endef
+	.def	strcat;	.scl	2;	.type	32;	.endef

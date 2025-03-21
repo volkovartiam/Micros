@@ -3,7 +3,7 @@
 	.text
 .Ltext0:
 	.cfi_sections	.debug_frame
-	.file 0 "D:/MGU/Micros/Micros/Atmega/Programming/Lesson_27/MYPROG27" "src/main.c"
+	.file 0 "D:/MGU/Micros/Micros/Atmega/Programming/Lesson_30/MYPROG30" "src/main.c"
 	.globl	student_counter
 	.bss
 student_counter:
@@ -12,10 +12,6 @@ student_counter:
 	.align 4
 res:
 	.space 4
-	.globl	str1
-	.align 16
-str1:
-	.space 30
 	.globl	yf
 	.align 4
 yf:
@@ -26,88 +22,25 @@ zf:
 	.space 4
 	.section .rdata,"dr"
 .LC0:
-	.ascii "Element addresses a\0"
+	.ascii "\310\342\340\355\356\342 \310\342\340\355 \310\342\340\355\356\342\350\367\0"
 .LC1:
-	.ascii "%08X \0"
+	.ascii "\317\345\362\360\356\342 \317\345\362\360 \310\342\340\355\356\342\350\367\0"
 .LC2:
-	.ascii "\12Value a\0"
-	.align 8
+	.ascii "\310\342\340\355\356\342\340 \305\353\345\355\340 \317\340\342\353\356\342\355\340\0"
 .LC3:
-	.ascii "\12--------------------------------------------\0"
-	.align 8
+	.ascii "\317\356\357\356\342 \310\342\340\355 \321\345\360\343\345\345\342\350\367\0"
 .LC4:
-	.ascii "Value *p0_a is %08X\11p0_a is %08X\12\0"
-	.align 8
+	.ascii "\302\340\361\350\353\374\345\342 \324\345\344\356\360 \315\350\352\356\353\340\345\342\350\367\0"
 .LC5:
-	.ascii "Value *p5_a is %08X\11p5_a is %08X\12\0"
-	.align 8
+	.ascii "\321\340\341\353\350\355 \302\350\352\362\356\360 \317\345\362\360\356\342\350\367\0"
 .LC6:
-	.ascii "--------------------------------------------\0"
+	.ascii "\302\345\361\345\353\352\350\355 \300\353\345\352\361\345\351 \300\353\345\352\361\345\345\342\350\367\0"
 .LC7:
-	.ascii "p0_a++; p5_a++;\0"
+	.ascii "\322\360\363\365\350\355 \321\345\360\343\345\351 \321\345\360\343\345\345\342\350\367\0"
 .LC8:
-	.ascii "p0_a--; p5_a--;\0"
+	.ascii "%d\11\0"
 .LC9:
-	.ascii "p0_a+=4; p5_a+=2;\0"
-.LC10:
-	.ascii "p0_a-=4; p5_a-=2;\0"
-.LC11:
-	.ascii "p5_a - p0_a is %u\12\0"
-.LC12:
-	.ascii "Element addresses b\0"
-.LC13:
-	.ascii "\12Value b\0"
-	.align 8
-.LC14:
-	.ascii "Value *p0_b is %08X\11p0_a is %08X\12\0"
-	.align 8
-.LC15:
-	.ascii "Value *p2_b is %08X\11p5_a is %08X\12\0"
-.LC16:
-	.ascii "Value p0_b[0] is %08X\12\0"
-.LC17:
-	.ascii "Value p0_b[1] is %08X\12\0"
-.LC18:
-	.ascii "Value p2_b[0] is %08X\12\0"
-.LC19:
-	.ascii "Value p2_b[1] is %08X\12\0"
-.LC20:
-	.ascii "Value p2_b[2] is %08X\12\0"
-.LC21:
-	.ascii "Value p2_b[-1] is %08X\12\0"
-.LC22:
-	.ascii "Value p0_b[-1] is %08X\12\0"
-.LC23:
-	.ascii "Value *b is %08X\12\0"
-.LC24:
-	.ascii "Value *(b+2) is %08X\12\0"
-	.align 8
-.LC25:
-	.ascii "Value (unsigned int)(unsigned char*)b is %08X\12\0"
-	.align 8
-.LC26:
-	.ascii "Value *(unsigned char*)b is %02X\12\0"
-	.align 8
-.LC27:
-	.ascii "Value *(unsigned char*)(b+1) is %02X\12\0"
-	.align 8
-.LC28:
-	.ascii "Value *(unsigned char*)(b+2) is %02X\12\0"
-	.align 8
-.LC29:
-	.ascii "Value *(((unsigned char*)b)+1) is %02X\12\0"
-	.align 8
-.LC30:
-	.ascii "Value *(((unsigned char*)b)+2) is %02X\12\0"
-	.align 8
-.LC31:
-	.ascii "Value *(((unsigned char*)b)+3) is %02X\12\0"
-.LC32:
-	.ascii "bytes of b\0"
-.LC33:
-	.ascii "0x%08X\12\0"
-.LC34:
-	.ascii "%02X \0"
+	.ascii "\317\345\362\360\356\342\340 \305\353\345\355\340 \317\340\342\353\356\342\355\340\0"
 	.text
 	.globl	main
 	.def	main;	.scl	2;	.type	32;	.endef
@@ -115,594 +48,334 @@ zf:
 main:
 .LFB129:
 	.file 1 "src/main.c"
-	.loc 1 31 1
+	.loc 1 16 1
 	.cfi_startproc
 	push	rbp
 	.seh_pushreg	rbp
 	.cfi_def_cfa_offset 16
 	.cfi_offset 6, -16
-	mov	rbp, rsp
-	.seh_setframe	rbp, 0
-	.cfi_def_cfa_register 6
-	sub	rsp, 160
-	.seh_stackalloc	160
+	sub	rsp, 1360
+	.seh_stackalloc	1360
+	.cfi_def_cfa_offset 1376
+	lea	rbp, 128[rsp]
+	.seh_setframe	rbp, 128
+	.cfi_def_cfa 6, 1248
 	.seh_endprologue
-	.loc 1 31 1
+	.loc 1 16 1
 	call	__main
-	.loc 1 32 16
-	mov	DWORD PTR -112[rbp], 858993459
-	mov	DWORD PTR -108[rbp], 1145324612
-	mov	DWORD PTR -104[rbp], 1431655765
-	mov	DWORD PTR -100[rbp], 1717986918
-	mov	DWORD PTR -96[rbp], 2004318071
-	mov	DWORD PTR -92[rbp], -2004318072
-	mov	DWORD PTR -88[rbp], -1717986919
-	mov	DWORD PTR -84[rbp], -1431655766
-	mov	DWORD PTR -80[rbp], -1145324613
-	mov	DWORD PTR -76[rbp], -858993460
-	.loc 1 34 3
-	lea	rax, .LC0[rip]
-	mov	rcx, rax
-	call	puts
-.LBB2:
-	.loc 1 35 11
-	mov	DWORD PTR -4[rbp], 0
-	.loc 1 35 3
-	jmp	.L2
-.L3:
-	.loc 1 37 35
-	lea	rax, -112[rbp]
-	mov	edx, DWORD PTR -4[rbp]
-	movsx	rdx, edx
-	sal	rdx, 2
-	add	rax, rdx
-	.loc 1 37 5
-	mov	edx, eax
-	lea	rax, .LC1[rip]
-	mov	rcx, rax
-	call	printf
-	.loc 1 35 22 discriminator 3
-	add	DWORD PTR -4[rbp], 1
+	.loc 1 40 16
+	mov	DWORD PTR -36[rbp], 0
+	.loc 1 41 12
+	mov	eax, DWORD PTR -36[rbp]
+	.loc 1 41 5
+	cmp	eax, 19
+	ja	.L2
+	.loc 1 41 30 discriminator 1
+	mov	eax, DWORD PTR -36[rbp]
+	mov	eax, eax
+	imul	rax, rax, 62
+	.loc 1 41 17 discriminator 1
+	lea	rdx, -32[rbp]
+	lea	rcx, [rdx+rax]
+	lea	rax, -36[rbp]
+	mov	DWORD PTR 32[rsp], 18
+	mov	r9d, 2
+	lea	r8, .LC0[rip]
+	mov	rdx, rax
+	call	addStudent
 .L2:
-	.loc 1 35 17 discriminator 1
-	cmp	DWORD PTR -4[rbp], 9
-	jle	.L3
-.LBE2:
-	.loc 1 39 3
-	lea	rax, .LC2[rip]
-	mov	rcx, rax
-	call	puts
-.LBB3:
-	.loc 1 40 11
-	mov	DWORD PTR -8[rbp], 0
-	.loc 1 40 3
-	jmp	.L4
-.L5:
+	.loc 1 42 12
+	mov	eax, DWORD PTR -36[rbp]
 	.loc 1 42 5
-	mov	eax, DWORD PTR -8[rbp]
-	cdqe
-	mov	eax, DWORD PTR -112[rbp+rax*4]
-	mov	edx, eax
-	lea	rax, .LC1[rip]
-	mov	rcx, rax
-	call	printf
-	.loc 1 40 22 discriminator 3
-	add	DWORD PTR -8[rbp], 1
+	cmp	eax, 19
+	ja	.L3
+	.loc 1 42 30 discriminator 1
+	mov	eax, DWORD PTR -36[rbp]
+	mov	eax, eax
+	imul	rax, rax, 62
+	.loc 1 42 17 discriminator 1
+	lea	rdx, -32[rbp]
+	lea	rcx, [rdx+rax]
+	lea	rax, -36[rbp]
+	mov	DWORD PTR 32[rsp], 17
+	mov	r9d, 1
+	lea	r8, .LC1[rip]
+	mov	rdx, rax
+	call	addStudent
+.L3:
+	.loc 1 43 12
+	mov	eax, DWORD PTR -36[rbp]
+	.loc 1 43 5
+	cmp	eax, 19
+	ja	.L4
+	.loc 1 43 30 discriminator 1
+	mov	eax, DWORD PTR -36[rbp]
+	mov	eax, eax
+	imul	rax, rax, 62
+	.loc 1 43 17 discriminator 1
+	lea	rdx, -32[rbp]
+	lea	rcx, [rdx+rax]
+	lea	rax, -36[rbp]
+	mov	DWORD PTR 32[rsp], 22
+	mov	r9d, 4
+	lea	r8, .LC2[rip]
+	mov	rdx, rax
+	call	addStudent
 .L4:
-	.loc 1 40 17 discriminator 1
-	cmp	DWORD PTR -8[rbp], 9
-	jle	.L5
-.LBE3:
-	.loc 1 44 3
-	lea	rax, .LC3[rip]
-	mov	rcx, rax
-	call	puts
-	.loc 1 46 8
-	lea	rax, -112[rbp]
-	mov	QWORD PTR -32[rbp], rax
-	.loc 1 47 8
-	lea	rax, -112[rbp]
-	add	rax, 20
-	mov	QWORD PTR -40[rbp], rax
-	.loc 1 48 3
-	mov	rax, QWORD PTR -32[rbp]
-	mov	edx, eax
-	mov	rax, QWORD PTR -32[rbp]
-	mov	eax, DWORD PTR [rax]
-	mov	r8d, edx
-	mov	edx, eax
-	lea	rax, .LC4[rip]
-	mov	rcx, rax
-	call	printf
-	.loc 1 49 3
-	mov	rax, QWORD PTR -40[rbp]
-	mov	edx, eax
-	mov	rax, QWORD PTR -40[rbp]
-	mov	eax, DWORD PTR [rax]
-	mov	r8d, edx
-	mov	edx, eax
-	lea	rax, .LC5[rip]
-	mov	rcx, rax
-	call	printf
-	.loc 1 50 3
-	lea	rax, .LC6[rip]
-	mov	rcx, rax
-	call	puts
-	.loc 1 52 7
-	add	QWORD PTR -32[rbp], 4
-	.loc 1 52 16
-	add	QWORD PTR -40[rbp], 4
-	.loc 1 53 3
-	lea	rax, .LC7[rip]
-	mov	rcx, rax
-	call	puts
-	.loc 1 54 3
-	lea	rax, .LC6[rip]
-	mov	rcx, rax
-	call	puts
-	.loc 1 55 3
-	mov	rax, QWORD PTR -32[rbp]
-	mov	edx, eax
-	mov	rax, QWORD PTR -32[rbp]
-	mov	eax, DWORD PTR [rax]
-	mov	r8d, edx
-	mov	edx, eax
-	lea	rax, .LC4[rip]
-	mov	rcx, rax
-	call	printf
-	.loc 1 56 3
-	mov	rax, QWORD PTR -40[rbp]
-	mov	edx, eax
-	mov	rax, QWORD PTR -40[rbp]
-	mov	eax, DWORD PTR [rax]
-	mov	r8d, edx
-	mov	edx, eax
-	lea	rax, .LC5[rip]
-	mov	rcx, rax
-	call	printf
-	.loc 1 57 3
-	lea	rax, .LC6[rip]
-	mov	rcx, rax
-	call	puts
-	.loc 1 59 7
-	sub	QWORD PTR -32[rbp], 4
-	.loc 1 59 16
-	sub	QWORD PTR -40[rbp], 4
-	.loc 1 60 3
-	lea	rax, .LC8[rip]
-	mov	rcx, rax
-	call	puts
-	.loc 1 61 3
-	lea	rax, .LC6[rip]
-	mov	rcx, rax
-	call	puts
-	.loc 1 62 3
-	mov	rax, QWORD PTR -32[rbp]
-	mov	edx, eax
-	mov	rax, QWORD PTR -32[rbp]
-	mov	eax, DWORD PTR [rax]
-	mov	r8d, edx
-	mov	edx, eax
-	lea	rax, .LC4[rip]
-	mov	rcx, rax
-	call	printf
-	.loc 1 63 3
-	mov	rax, QWORD PTR -40[rbp]
-	mov	edx, eax
-	mov	rax, QWORD PTR -40[rbp]
-	mov	eax, DWORD PTR [rax]
-	mov	r8d, edx
-	mov	edx, eax
-	lea	rax, .LC5[rip]
-	mov	rcx, rax
-	call	printf
-	.loc 1 65 3
-	lea	rax, .LC6[rip]
-	mov	rcx, rax
-	call	puts
-	.loc 1 66 7
-	add	QWORD PTR -32[rbp], 16
-	.loc 1 66 17
-	add	QWORD PTR -40[rbp], 8
-	.loc 1 67 3
-	lea	rax, .LC9[rip]
-	mov	rcx, rax
-	call	puts
-	.loc 1 68 3
-	mov	rax, QWORD PTR -32[rbp]
-	mov	edx, eax
-	mov	rax, QWORD PTR -32[rbp]
-	mov	eax, DWORD PTR [rax]
-	mov	r8d, edx
-	mov	edx, eax
-	lea	rax, .LC4[rip]
-	mov	rcx, rax
-	call	printf
-	.loc 1 69 3
-	mov	rax, QWORD PTR -40[rbp]
-	mov	edx, eax
-	mov	rax, QWORD PTR -40[rbp]
-	mov	eax, DWORD PTR [rax]
-	mov	r8d, edx
-	mov	edx, eax
-	lea	rax, .LC5[rip]
-	mov	rcx, rax
-	call	printf
-	.loc 1 71 3
-	lea	rax, .LC6[rip]
-	mov	rcx, rax
-	call	puts
-	.loc 1 72 7
-	sub	QWORD PTR -32[rbp], 16
-	.loc 1 72 17
-	sub	QWORD PTR -40[rbp], 8
-	.loc 1 73 3
-	lea	rax, .LC10[rip]
-	mov	rcx, rax
-	call	puts
-	.loc 1 74 3
-	mov	rax, QWORD PTR -32[rbp]
-	mov	edx, eax
-	mov	rax, QWORD PTR -32[rbp]
-	mov	eax, DWORD PTR [rax]
-	mov	r8d, edx
-	mov	edx, eax
-	lea	rax, .LC4[rip]
-	mov	rcx, rax
-	call	printf
-	.loc 1 75 3
-	mov	rax, QWORD PTR -40[rbp]
-	mov	edx, eax
-	mov	rax, QWORD PTR -40[rbp]
-	mov	eax, DWORD PTR [rax]
-	mov	r8d, edx
-	mov	edx, eax
-	lea	rax, .LC5[rip]
-	mov	rcx, rax
-	call	printf
-	.loc 1 77 3
-	lea	rax, .LC6[rip]
-	mov	rcx, rax
-	call	puts
-	.loc 1 78 25
-	mov	rax, QWORD PTR -40[rbp]
-	sub	rax, QWORD PTR -32[rbp]
-	sar	rax, 2
-	.loc 1 78 16
-	mov	DWORD PTR -44[rbp], eax
-	.loc 1 79 3
-	mov	eax, DWORD PTR -44[rbp]
-	mov	edx, eax
-	lea	rax, .LC11[rip]
-	mov	rcx, rax
-	call	printf
-	.loc 1 81 3
-	lea	rax, .LC6[rip]
-	mov	rcx, rax
-	call	puts
-	.loc 1 106 16
-	mov	DWORD PTR -128[rbp], 1122867
-	mov	DWORD PTR -124[rbp], 1146447479
-	mov	DWORD PTR -120[rbp], -2003195205
-	mov	DWORD PTR -116[rbp], -857870593
-	.loc 1 107 3
-	lea	rax, .LC12[rip]
-	mov	rcx, rax
-	call	puts
-.LBB4:
-	.loc 1 108 11
-	mov	DWORD PTR -12[rbp], 0
-	.loc 1 108 3
-	jmp	.L6
-.L7:
-	.loc 1 110 35
-	lea	rax, -128[rbp]
-	mov	edx, DWORD PTR -12[rbp]
-	movsx	rdx, edx
-	sal	rdx, 2
-	add	rax, rdx
-	.loc 1 110 5
-	mov	edx, eax
-	lea	rax, .LC1[rip]
-	mov	rcx, rax
-	call	printf
-	.loc 1 108 21 discriminator 3
-	add	DWORD PTR -12[rbp], 1
+	.loc 1 44 12
+	mov	eax, DWORD PTR -36[rbp]
+	.loc 1 44 5
+	cmp	eax, 19
+	ja	.L5
+	.loc 1 44 30 discriminator 1
+	mov	eax, DWORD PTR -36[rbp]
+	mov	eax, eax
+	imul	rax, rax, 62
+	.loc 1 44 17 discriminator 1
+	lea	rdx, -32[rbp]
+	lea	rcx, [rdx+rax]
+	lea	rax, -36[rbp]
+	mov	DWORD PTR 32[rsp], 22
+	mov	r9d, 3
+	lea	r8, .LC3[rip]
+	mov	rdx, rax
+	call	addStudent
+.L5:
+	.loc 1 45 12
+	mov	eax, DWORD PTR -36[rbp]
+	.loc 1 45 5
+	cmp	eax, 19
+	ja	.L6
+	.loc 1 45 30 discriminator 1
+	mov	eax, DWORD PTR -36[rbp]
+	mov	eax, eax
+	imul	rax, rax, 62
+	.loc 1 45 17 discriminator 1
+	lea	rdx, -32[rbp]
+	lea	rcx, [rdx+rax]
+	lea	rax, -36[rbp]
+	mov	DWORD PTR 32[rsp], 24
+	mov	r9d, 5
+	lea	r8, .LC4[rip]
+	mov	rdx, rax
+	call	addStudent
 .L6:
-	.loc 1 108 17 discriminator 1
-	cmp	DWORD PTR -12[rbp], 3
-	jle	.L7
-.LBE4:
-	.loc 1 112 3
-	lea	rax, .LC13[rip]
-	mov	rcx, rax
-	call	puts
-.LBB5:
-	.loc 1 113 11
-	mov	DWORD PTR -16[rbp], 0
-	.loc 1 113 3
-	jmp	.L8
-.L9:
-	.loc 1 115 5
-	mov	eax, DWORD PTR -16[rbp]
-	cdqe
-	mov	eax, DWORD PTR -128[rbp+rax*4]
-	mov	edx, eax
-	lea	rax, .LC1[rip]
-	mov	rcx, rax
-	call	printf
-	.loc 1 113 21 discriminator 3
-	add	DWORD PTR -16[rbp], 1
+	.loc 1 46 12
+	mov	eax, DWORD PTR -36[rbp]
+	.loc 1 46 5
+	cmp	eax, 19
+	ja	.L7
+	.loc 1 46 30 discriminator 1
+	mov	eax, DWORD PTR -36[rbp]
+	mov	eax, eax
+	imul	rax, rax, 62
+	.loc 1 46 17 discriminator 1
+	lea	rdx, -32[rbp]
+	lea	rcx, [rdx+rax]
+	lea	rax, -36[rbp]
+	mov	DWORD PTR 32[rsp], 18
+	mov	r9d, 1
+	lea	r8, .LC5[rip]
+	mov	rdx, rax
+	call	addStudent
+.L7:
+	.loc 1 47 12
+	mov	eax, DWORD PTR -36[rbp]
+	.loc 1 47 5
+	cmp	eax, 19
+	ja	.L8
+	.loc 1 47 30 discriminator 1
+	mov	eax, DWORD PTR -36[rbp]
+	mov	eax, eax
+	imul	rax, rax, 62
+	.loc 1 47 17 discriminator 1
+	lea	rdx, -32[rbp]
+	lea	rcx, [rdx+rax]
+	lea	rax, -36[rbp]
+	mov	DWORD PTR 32[rsp], 18
+	mov	r9d, 2
+	lea	r8, .LC6[rip]
+	mov	rdx, rax
+	call	addStudent
 .L8:
-	.loc 1 113 17 discriminator 1
-	cmp	DWORD PTR -16[rbp], 3
-	jle	.L9
-.LBE5:
-	.loc 1 117 3
-	lea	rax, .LC3[rip]
-	mov	rcx, rax
-	call	puts
-	.loc 1 118 17
-	lea	rax, -128[rbp]
-	mov	QWORD PTR -56[rbp], rax
-	.loc 1 118 32
-	lea	rax, -128[rbp]
-	add	rax, 8
-	mov	QWORD PTR -64[rbp], rax
-	.loc 1 119 3
-	mov	rax, QWORD PTR -56[rbp]
-	mov	edx, eax
-	mov	rax, QWORD PTR -56[rbp]
-	mov	eax, DWORD PTR [rax]
-	mov	r8d, edx
-	mov	edx, eax
-	lea	rax, .LC14[rip]
-	mov	rcx, rax
-	call	printf
-	.loc 1 120 3
-	mov	rax, QWORD PTR -64[rbp]
-	mov	edx, eax
-	mov	rax, QWORD PTR -64[rbp]
-	mov	eax, DWORD PTR [rax]
-	mov	r8d, edx
-	mov	edx, eax
-	lea	rax, .LC15[rip]
-	mov	rcx, rax
-	call	printf
-	.loc 1 121 3
-	lea	rax, .LC6[rip]
-	mov	rcx, rax
-	call	puts
-	.loc 1 122 3
-	mov	rax, QWORD PTR -56[rbp]
-	mov	eax, DWORD PTR [rax]
-	mov	edx, eax
-	lea	rax, .LC16[rip]
-	mov	rcx, rax
-	call	printf
-	.loc 1 123 41
-	mov	rax, QWORD PTR -56[rbp]
-	add	rax, 4
-	.loc 1 123 3
-	mov	eax, DWORD PTR [rax]
-	mov	edx, eax
-	lea	rax, .LC17[rip]
-	mov	rcx, rax
-	call	printf
-	.loc 1 124 3
-	mov	rax, QWORD PTR -64[rbp]
-	mov	eax, DWORD PTR [rax]
-	mov	edx, eax
-	lea	rax, .LC18[rip]
-	mov	rcx, rax
-	call	printf
-	.loc 1 125 41
-	mov	rax, QWORD PTR -64[rbp]
-	add	rax, 4
-	.loc 1 125 3
-	mov	eax, DWORD PTR [rax]
-	mov	edx, eax
-	lea	rax, .LC19[rip]
-	mov	rcx, rax
-	call	printf
-	.loc 1 126 41
-	mov	rax, QWORD PTR -64[rbp]
-	add	rax, 8
-	.loc 1 126 3
-	mov	eax, DWORD PTR [rax]
-	mov	edx, eax
-	lea	rax, .LC20[rip]
-	mov	rcx, rax
-	call	printf
-	.loc 1 127 42
-	mov	rax, QWORD PTR -64[rbp]
-	sub	rax, 4
-	.loc 1 127 3
-	mov	eax, DWORD PTR [rax]
-	mov	edx, eax
-	lea	rax, .LC21[rip]
-	mov	rcx, rax
-	call	printf
-	.loc 1 128 42
-	mov	rax, QWORD PTR -56[rbp]
-	sub	rax, 4
-	.loc 1 128 3
-	mov	eax, DWORD PTR [rax]
-	mov	edx, eax
-	lea	rax, .LC22[rip]
-	mov	rcx, rax
-	call	printf
-	.loc 1 129 3
-	lea	rax, .LC3[rip]
-	mov	rcx, rax
-	call	puts
-	.loc 1 130 3
-	mov	eax, DWORD PTR -128[rbp]
-	mov	edx, eax
-	lea	rax, .LC23[rip]
-	mov	rcx, rax
-	call	printf
-	.loc 1 131 3
-	mov	eax, DWORD PTR -120[rbp]
-	mov	edx, eax
-	lea	rax, .LC24[rip]
-	mov	rcx, rax
-	call	printf
-	.loc 1 132 3
-	lea	rax, -128[rbp]
-	mov	edx, eax
-	lea	rax, .LC25[rip]
-	mov	rcx, rax
-	call	printf
-	.loc 1 133 65
-	lea	rax, -128[rbp]
-	.loc 1 133 48
-	movzx	eax, BYTE PTR [rax]
-	.loc 1 133 3
-	movzx	eax, al
-	mov	edx, eax
-	lea	rax, .LC26[rip]
-	mov	rcx, rax
-	call	printf
-	.loc 1 134 53
-	lea	rax, -128[rbp]
-	add	rax, 4
-	.loc 1 134 52
-	movzx	eax, BYTE PTR [rax]
-	.loc 1 134 3
-	movzx	eax, al
-	mov	edx, eax
-	lea	rax, .LC27[rip]
-	mov	rcx, rax
-	call	printf
-	.loc 1 135 53
-	lea	rax, -128[rbp]
-	add	rax, 8
-	.loc 1 135 52
-	movzx	eax, BYTE PTR [rax]
-	.loc 1 135 3
-	movzx	eax, al
-	mov	edx, eax
-	lea	rax, .LC28[rip]
-	mov	rcx, rax
-	call	printf
-	.loc 1 136 75
-	lea	rax, -128[rbp]
-	add	rax, 1
-	.loc 1 136 54
-	movzx	eax, BYTE PTR [rax]
-	.loc 1 136 3
-	movzx	eax, al
-	mov	edx, eax
-	lea	rax, .LC29[rip]
-	mov	rcx, rax
-	call	printf
-	.loc 1 137 75
-	lea	rax, -128[rbp]
-	add	rax, 2
-	.loc 1 137 54
-	movzx	eax, BYTE PTR [rax]
-	.loc 1 137 3
-	movzx	eax, al
-	mov	edx, eax
-	lea	rax, .LC30[rip]
-	mov	rcx, rax
-	call	printf
-	.loc 1 138 75
-	lea	rax, -128[rbp]
-	add	rax, 3
-	.loc 1 138 54
-	movzx	eax, BYTE PTR [rax]
-	.loc 1 138 3
-	movzx	eax, al
-	mov	edx, eax
-	lea	rax, .LC31[rip]
-	mov	rcx, rax
-	call	printf
-	.loc 1 139 3
-	lea	rax, .LC3[rip]
-	mov	rcx, rax
-	call	puts
-	.loc 1 140 3
-	lea	rax, .LC32[rip]
-	mov	rcx, rax
-	call	puts
-	.loc 1 141 3
-	lea	rax, -128[rbp]
-	mov	edx, eax
-	lea	rax, .LC33[rip]
-	mov	rcx, rax
-	call	printf
-.LBB6:
-	.loc 1 142 11
-	mov	DWORD PTR -20[rbp], 0
-	.loc 1 142 3
+	.loc 1 48 12
+	mov	eax, DWORD PTR -36[rbp]
+	.loc 1 48 5
+	cmp	eax, 19
+	ja	.L9
+	.loc 1 48 30 discriminator 1
+	mov	eax, DWORD PTR -36[rbp]
+	mov	eax, eax
+	imul	rax, rax, 62
+	.loc 1 48 17 discriminator 1
+	lea	rdx, -32[rbp]
+	lea	rcx, [rdx+rax]
+	lea	rax, -36[rbp]
+	mov	DWORD PTR 32[rsp], 23
+	mov	r9d, 5
+	lea	r8, .LC7[rip]
+	mov	rdx, rax
+	call	addStudent
+.L9:
+.LBB2:
+	.loc 1 49 11
+	mov	DWORD PTR 1228[rbp], 0
+	.loc 1 49 3
 	jmp	.L10
 .L11:
-	.loc 1 144 55
-	mov	eax, DWORD PTR -20[rbp]
-	cdqe
-	lea	rdx, -128[rbp]
-	add	rax, rdx
-	.loc 1 144 5
-	movzx	eax, al
+	.loc 1 49 32 discriminator 3
+	mov	eax, DWORD PTR 1228[rbp]
 	mov	edx, eax
-	lea	rax, .LC34[rip]
+	lea	rax, .LC8[rip]
 	mov	rcx, rax
 	call	printf
-	.loc 1 142 23 discriminator 3
-	add	DWORD PTR -20[rbp], 1
+	.loc 1 49 66 discriminator 3
+	mov	eax, DWORD PTR 1228[rbp]
+	cdqe
+	imul	rax, rax, 62
+	.loc 1 49 51 discriminator 3
+	lea	rdx, -32[rbp]
+	add	rax, rdx
+	mov	rcx, rax
+	call	printStudent
+	.loc 1 49 27 discriminator 3
+	add	DWORD PTR 1228[rbp], 1
 .L10:
-	.loc 1 142 17 discriminator 1
-	cmp	DWORD PTR -20[rbp], 15
-	jle	.L11
-.LBE6:
-	.loc 1 146 3
+	.loc 1 49 17 discriminator 2
+	mov	edx, DWORD PTR 1228[rbp]
+	mov	eax, DWORD PTR -36[rbp]
+	cmp	edx, eax
+	jb	.L11
+.LBE2:
+	.loc 1 50 3
 	mov	ecx, 10
 	call	putchar
-.LBB7:
-	.loc 1 147 11
-	mov	DWORD PTR -24[rbp], 0
-	.loc 1 147 3
+	.loc 1 51 16
+	lea	rax, -32[rbp]
+	mov	QWORD PTR -80[rbp], rax
+	mov	rax, QWORD PTR .refptr.addCourse[rip]
+	mov	QWORD PTR -72[rbp], rax
+	mov	rax, QWORD PTR .refptr.addAge[rip]
+	mov	QWORD PTR -64[rbp], rax
+	mov	rax, QWORD PTR .refptr.modifyName[rip]
+	mov	QWORD PTR -56[rbp], rax
+	mov	rax, QWORD PTR .refptr.deletePos[rip]
+	mov	QWORD PTR -48[rbp], rax
+	.loc 1 59 10
+	mov	rdx, QWORD PTR -72[rbp]
+	.loc 1 59 3
+	lea	rax, -32[rbp]
+	add	rax, 310
+	mov	rcx, rax
+	call	rdx
+.LVL0:
+	.loc 1 60 10
+	mov	rdx, QWORD PTR -64[rbp]
+	.loc 1 60 3
+	lea	rax, -32[rbp]
+	add	rax, 62
+	mov	rcx, rax
+	call	rdx
+.LVL1:
+	.loc 1 61 10
+	mov	r8, QWORD PTR -56[rbp]
+	.loc 1 61 3
+	lea	rax, -32[rbp]
+	add	rax, 124
+	lea	rdx, .LC9[rip]
+	mov	rcx, rax
+	call	r8
+.LVL2:
+.LBB3:
+	.loc 1 62 11
+	mov	DWORD PTR 1224[rbp], 0
+	.loc 1 62 3
 	jmp	.L12
 .L13:
-	.loc 1 149 42
-	mov	eax, DWORD PTR -24[rbp]
-	cdqe
-	lea	rdx, -128[rbp]
-	add	rax, rdx
-	.loc 1 149 21
-	movzx	eax, BYTE PTR [rax]
-	.loc 1 149 5
-	movzx	eax, al
+	.loc 1 62 32 discriminator 3
+	mov	eax, DWORD PTR 1224[rbp]
 	mov	edx, eax
-	lea	rax, .LC34[rip]
+	lea	rax, .LC8[rip]
 	mov	rcx, rax
 	call	printf
-	.loc 1 147 23 discriminator 3
-	add	DWORD PTR -24[rbp], 1
+	.loc 1 62 66 discriminator 3
+	mov	eax, DWORD PTR 1224[rbp]
+	cdqe
+	imul	rax, rax, 62
+	.loc 1 62 51 discriminator 3
+	lea	rdx, -32[rbp]
+	add	rax, rdx
+	mov	rcx, rax
+	call	printStudent
+	.loc 1 62 27 discriminator 3
+	add	DWORD PTR 1224[rbp], 1
 .L12:
-	.loc 1 147 17 discriminator 1
-	cmp	DWORD PTR -24[rbp], 15
-	jle	.L13
-.LBE7:
-	.loc 1 151 10
+	.loc 1 62 17 discriminator 2
+	mov	edx, DWORD PTR 1224[rbp]
+	mov	eax, DWORD PTR -36[rbp]
+	cmp	edx, eax
+	jb	.L13
+.LBE3:
+	.loc 1 63 3
+	mov	ecx, 10
+	call	putchar
+	.loc 1 64 10
+	mov	r9, QWORD PTR -48[rbp]
+	.loc 1 64 3
+	lea	rdx, -36[rbp]
+	lea	rax, -32[rbp]
+	mov	r8, rdx
+	mov	edx, 4
+	mov	rcx, rax
+	call	r9
+.LVL3:
+.LBB4:
+	.loc 1 65 11
+	mov	DWORD PTR 1220[rbp], 0
+	.loc 1 65 3
+	jmp	.L14
+.L15:
+	.loc 1 65 32 discriminator 3
+	mov	eax, DWORD PTR 1220[rbp]
+	mov	edx, eax
+	lea	rax, .LC8[rip]
+	mov	rcx, rax
+	call	printf
+	.loc 1 65 66 discriminator 3
+	mov	eax, DWORD PTR 1220[rbp]
+	cdqe
+	imul	rax, rax, 62
+	.loc 1 65 51 discriminator 3
+	lea	rdx, -32[rbp]
+	add	rax, rdx
+	mov	rcx, rax
+	call	printStudent
+	.loc 1 65 27 discriminator 3
+	add	DWORD PTR 1220[rbp], 1
+.L14:
+	.loc 1 65 17 discriminator 2
+	mov	edx, DWORD PTR 1220[rbp]
+	mov	eax, DWORD PTR -36[rbp]
+	cmp	edx, eax
+	jb	.L15
+.LBE4:
+	.loc 1 81 10
 	mov	eax, 0
-	.loc 1 152 1
-	add	rsp, 160
+	.loc 1 82 1
+	add	rsp, 1360
 	pop	rbp
 	.cfi_restore 6
-	.cfi_def_cfa 7, 8
+	.cfi_def_cfa 7, -1352
 	ret
 	.cfi_endproc
 .LFE129:
 	.seh_endproc
-	.globl	addStudent
-	.def	addStudent;	.scl	2;	.type	32;	.endef
-	.seh_proc	addStudent
-addStudent:
+	.globl	print_str
+	.def	print_str;	.scl	2;	.type	32;	.endef
+	.seh_proc	print_str
+print_str:
 .LFB130:
-	.loc 1 155 1
+	.loc 1 85 1
 	.cfi_startproc
 	push	rbp
 	.seh_pushreg	rbp
@@ -711,49 +384,17 @@ addStudent:
 	mov	rbp, rsp
 	.seh_setframe	rbp, 0
 	.cfi_def_cfa_register 6
-	sub	rsp, 96
-	.seh_stackalloc	96
+	sub	rsp, 32
+	.seh_stackalloc	32
 	.seh_endprologue
 	mov	QWORD PTR 16[rbp], rcx
-	mov	QWORD PTR 24[rbp], rdx
-	mov	DWORD PTR 32[rbp], r8d
-	mov	DWORD PTR 40[rbp], r9d
-	.loc 1 157 3
-	mov	rdx, QWORD PTR 24[rbp]
-	lea	rax, -64[rbp]
+	.loc 1 86 3
+	mov	rax, QWORD PTR 16[rbp]
 	mov	rcx, rax
-	call	strcpy
-	.loc 1 158 17
-	mov	eax, DWORD PTR 32[rbp]
-	mov	BYTE PTR -3[rbp], al
-	.loc 1 159 14
-	mov	eax, DWORD PTR 40[rbp]
-	mov	BYTE PTR -4[rbp], al
-	.loc 1 160 18
-	movzx	eax, BYTE PTR student_counter[rip]
-	add	eax, 1
-	mov	BYTE PTR student_counter[rip], al
-	.loc 1 161 10
-	mov	rax, QWORD PTR 16[rbp]
-	mov	rdx, QWORD PTR -64[rbp]
-	mov	QWORD PTR [rax], rdx
-	mov	rdx, QWORD PTR -56[rbp]
-	mov	QWORD PTR 8[rax], rdx
-	mov	rdx, QWORD PTR -48[rbp]
-	mov	QWORD PTR 16[rax], rdx
-	mov	rdx, QWORD PTR -40[rbp]
-	mov	QWORD PTR 24[rax], rdx
-	mov	rdx, QWORD PTR -32[rbp]
-	mov	QWORD PTR 32[rax], rdx
-	mov	rdx, QWORD PTR -24[rbp]
-	mov	QWORD PTR 40[rax], rdx
-	mov	rdx, QWORD PTR -16[rbp]
-	mov	QWORD PTR 48[rax], rdx
-	mov	rdx, QWORD PTR -10[rbp]
-	mov	QWORD PTR 54[rax], rdx
-	.loc 1 162 1
-	mov	rax, QWORD PTR 16[rbp]
-	add	rsp, 96
+	call	puts
+	.loc 1 87 1
+	nop
+	add	rsp, 32
 	pop	rbp
 	.cfi_restore 6
 	.cfi_def_cfa 7, 8
@@ -761,17 +402,138 @@ addStudent:
 	.cfi_endproc
 .LFE130:
 	.seh_endproc
+	.section .rdata,"dr"
+.LC10:
+	.ascii "%c\12\0"
+	.text
+	.globl	print_chars
+	.def	print_chars;	.scl	2;	.type	32;	.endef
+	.seh_proc	print_chars
+print_chars:
+.LFB131:
+	.loc 1 90 1
+	.cfi_startproc
+	push	rbp
+	.seh_pushreg	rbp
+	.cfi_def_cfa_offset 16
+	.cfi_offset 6, -16
+	mov	rbp, rsp
+	.seh_setframe	rbp, 0
+	.cfi_def_cfa_register 6
+	sub	rsp, 48
+	.seh_stackalloc	48
+	.seh_endprologue
+	mov	QWORD PTR 16[rbp], rcx
+	.loc 1 91 7
+	mov	DWORD PTR -4[rbp], 0
+	.loc 1 92 8
+	jmp	.L19
+.L20:
+	.loc 1 94 24
+	mov	eax, DWORD PTR -4[rbp]
+	cdqe
+	mov	rdx, QWORD PTR 16[rbp]
+	add	rax, rdx
+	movzx	eax, BYTE PTR [rax]
+	.loc 1 94 5
+	movsx	eax, al
+	mov	edx, eax
+	lea	rax, .LC10[rip]
+	mov	rcx, rax
+	call	printf
+	.loc 1 95 6
+	add	DWORD PTR -4[rbp], 1
+.L19:
+	.loc 1 92 14
+	mov	eax, DWORD PTR -4[rbp]
+	cdqe
+	mov	rdx, QWORD PTR 16[rbp]
+	add	rax, rdx
+	movzx	eax, BYTE PTR [rax]
+	.loc 1 92 9
+	test	al, al
+	jne	.L20
+	.loc 1 97 1
+	nop
+	nop
+	add	rsp, 48
+	pop	rbp
+	.cfi_restore 6
+	.cfi_def_cfa 7, 8
+	ret
+	.cfi_endproc
+.LFE131:
+	.seh_endproc
+	.section .rdata,"dr"
+.LC11:
+	.ascii "0x%08X\12\0"
+	.text
+	.globl	print_uint32_arr
+	.def	print_uint32_arr;	.scl	2;	.type	32;	.endef
+	.seh_proc	print_uint32_arr
+print_uint32_arr:
+.LFB132:
+	.loc 1 100 1
+	.cfi_startproc
+	push	rbp
+	.seh_pushreg	rbp
+	.cfi_def_cfa_offset 16
+	.cfi_offset 6, -16
+	mov	rbp, rsp
+	.seh_setframe	rbp, 0
+	.cfi_def_cfa_register 6
+	sub	rsp, 48
+	.seh_stackalloc	48
+	.seh_endprologue
+	mov	QWORD PTR 16[rbp], rcx
+	mov	DWORD PTR 24[rbp], edx
+	.loc 1 101 7
+	mov	DWORD PTR -4[rbp], 0
+	.loc 1 102 8
+	jmp	.L22
+.L23:
+	.loc 1 104 29
+	mov	eax, DWORD PTR -4[rbp]
+	cdqe
+	lea	rdx, 0[0+rax*4]
+	mov	rax, QWORD PTR 16[rbp]
+	add	rax, rdx
+	.loc 1 104 5
+	mov	eax, DWORD PTR [rax]
+	mov	edx, eax
+	lea	rax, .LC11[rip]
+	mov	rcx, rax
+	call	printf
+	.loc 1 105 8
+	sub	DWORD PTR 24[rbp], 1
+	.loc 1 106 6
+	add	DWORD PTR -4[rbp], 1
+.L22:
+	.loc 1 102 9
+	cmp	DWORD PTR 24[rbp], 0
+	jne	.L23
+	.loc 1 108 1
+	nop
+	nop
+	add	rsp, 48
+	pop	rbp
+	.cfi_restore 6
+	.cfi_def_cfa 7, 8
+	ret
+	.cfi_endproc
+.LFE132:
+	.seh_endproc
 .Letext0:
-	.file 2 "D:/mingw64/x86_64-w64-mingw32/include/string.h"
+	.file 2 "inc/student.h"
 	.file 3 "D:/mingw64/x86_64-w64-mingw32/include/stdio.h"
 	.section	.debug_info,"dr"
 .Ldebug_info0:
-	.long	0x3f1
+	.long	0x4a5
 	.word	0x5
 	.byte	0x1
 	.byte	0x8
 	.secrel32	.Ldebug_abbrev0
-	.uleb128 0xb
+	.uleb128 0x12
 	.ascii "GNU C17 14.2.0 -masm=intel -mtune=core2 -march=nocona -g3\0"
 	.byte	0x1d
 	.secrel32	.LASF0
@@ -784,7 +546,7 @@ addStudent:
 	.byte	0x1
 	.byte	0x6
 	.ascii "char\0"
-	.uleb128 0xc
+	.uleb128 0xd
 	.long	0x68
 	.uleb128 0x2
 	.byte	0x8
@@ -810,6 +572,8 @@ addStudent:
 	.byte	0x4
 	.byte	0x7
 	.ascii "unsigned int\0"
+	.uleb128 0xd
+	.long	0xc9
 	.uleb128 0x2
 	.byte	0x1
 	.byte	0x8
@@ -826,323 +590,399 @@ addStudent:
 	.byte	0x10
 	.byte	0x4
 	.ascii "long double\0"
-	.uleb128 0xd
+	.uleb128 0xe
 	.byte	0x3e
-	.byte	0x1
-	.byte	0xd
-	.byte	0x9
-	.long	0x13c
-	.uleb128 0x6
-	.ascii "nm\0"
 	.byte	0xf
+	.long	0x13f
+	.uleb128 0x5
+	.ascii "nm\0"
+	.byte	0x11
 	.byte	0x8
-	.long	0x13c
+	.long	0x13f
 	.byte	0
-	.uleb128 0x6
+	.uleb128 0x5
 	.ascii "age\0"
-	.byte	0x10
+	.byte	0x12
 	.byte	0x11
-	.long	0xd9
+	.long	0xde
 	.byte	0x3c
-	.uleb128 0x6
+	.uleb128 0x5
 	.ascii "course\0"
+	.byte	0x13
 	.byte	0x11
-	.byte	0x11
-	.long	0xd9
+	.long	0xde
 	.byte	0x3d
 	.byte	0
-	.uleb128 0x7
+	.uleb128 0x13
 	.long	0x68
-	.long	0x14c
-	.uleb128 0x5
+	.long	0x14f
+	.uleb128 0xf
 	.long	0x75
 	.byte	0x3b
 	.byte	0
-	.uleb128 0xe
+	.uleb128 0x10
 	.ascii "student\0"
-	.byte	0x1
-	.byte	0x12
-	.byte	0x3
-	.long	0x10c
-	.uleb128 0x3
-	.ascii "student_counter\0"
 	.byte	0x14
+	.long	0x111
+	.uleb128 0xe
+	.byte	0x28
+	.byte	0x16
+	.long	0x1a0
+	.uleb128 0x5
+	.ascii "st\0"
+	.byte	0x18
+	.byte	0xc
+	.long	0x1a0
+	.byte	0
+	.uleb128 0x8
+	.secrel32	.LASF2
+	.byte	0x19
+	.long	0x1b0
+	.byte	0x8
+	.uleb128 0x5
+	.ascii "addAge\0"
+	.byte	0x1a
+	.byte	0xa
+	.long	0x1b0
+	.byte	0x10
+	.uleb128 0x8
+	.secrel32	.LASF3
+	.byte	0x1b
+	.long	0x1ca
+	.byte	0x18
+	.uleb128 0x8
+	.secrel32	.LASF4
+	.byte	0x1c
+	.long	0x1e9
+	.byte	0x20
+	.byte	0
+	.uleb128 0x3
+	.long	0x14f
+	.uleb128 0x9
+	.long	0x1b0
+	.uleb128 0x1
+	.long	0x1a0
+	.byte	0
+	.uleb128 0x3
+	.long	0x1a5
+	.uleb128 0x9
+	.long	0x1c5
+	.uleb128 0x1
+	.long	0x1a0
+	.uleb128 0x1
+	.long	0x1c5
+	.byte	0
+	.uleb128 0x3
+	.long	0x68
+	.uleb128 0x3
+	.long	0x1b5
+	.uleb128 0x9
+	.long	0x1e4
+	.uleb128 0x1
+	.long	0x1a0
+	.uleb128 0x1
+	.long	0xc9
+	.uleb128 0x1
+	.long	0x1e4
+	.byte	0
+	.uleb128 0x3
+	.long	0xc9
+	.uleb128 0x3
+	.long	0x1cf
+	.uleb128 0x10
+	.ascii "student_list\0"
+	.byte	0x1d
+	.long	0x15d
+	.uleb128 0x6
+	.ascii "student_counter\0"
+	.byte	0x6
 	.byte	0xf
-	.long	0xd9
+	.long	0xde
 	.uleb128 0x9
 	.byte	0x3
 	.quad	student_counter
-	.uleb128 0x3
+	.uleb128 0x6
 	.ascii "res\0"
-	.byte	0x18
+	.byte	0x8
 	.byte	0x7
-	.long	0xf4
+	.long	0xf9
 	.uleb128 0x9
 	.byte	0x3
 	.quad	res
-	.uleb128 0x7
-	.long	0x68
-	.long	0x1a2
-	.uleb128 0x5
-	.long	0x75
-	.byte	0x1d
-	.byte	0
-	.uleb128 0x3
-	.ascii "str1\0"
-	.byte	0x19
-	.byte	0x6
-	.long	0x192
-	.uleb128 0x9
-	.byte	0x3
-	.quad	str1
-	.uleb128 0x3
+	.uleb128 0x6
 	.ascii "yf\0"
-	.byte	0x1a
+	.byte	0x9
 	.byte	0x7
-	.long	0xf4
+	.long	0xf9
 	.uleb128 0x9
 	.byte	0x3
 	.quad	yf
-	.uleb128 0x3
+	.uleb128 0x6
 	.ascii "zf\0"
-	.byte	0x1a
+	.byte	0x9
 	.byte	0xb
-	.long	0xf4
+	.long	0xf9
 	.uleb128 0x9
 	.byte	0x3
 	.quad	zf
-	.uleb128 0xf
-	.ascii "strcpy\0"
-	.byte	0x2
-	.byte	0x3d
-	.byte	0x12
-	.long	0x1fe
-	.long	0x1fe
-	.uleb128 0x8
-	.long	0x1fe
-	.uleb128 0x8
-	.long	0x203
+	.uleb128 0xa
+	.secrel32	.LASF4
+	.byte	0x25
+	.long	0x279
+	.uleb128 0x1
+	.long	0x1a0
+	.uleb128 0x1
+	.long	0xc9
+	.uleb128 0x1
+	.long	0x1e4
 	.byte	0
-	.uleb128 0x9
-	.long	0x68
-	.uleb128 0x9
-	.long	0x70
-	.uleb128 0x10
+	.uleb128 0xa
+	.secrel32	.LASF3
+	.byte	0x24
+	.long	0x28e
+	.uleb128 0x1
+	.long	0x1a0
+	.uleb128 0x1
+	.long	0x1c5
+	.byte	0
+	.uleb128 0xb
+	.ascii "addAge\0"
+	.byte	0x23
+	.long	0x2a1
+	.uleb128 0x1
+	.long	0x1a0
+	.byte	0
+	.uleb128 0xa
+	.secrel32	.LASF2
+	.byte	0x22
+	.long	0x2b1
+	.uleb128 0x1
+	.long	0x1a0
+	.byte	0
+	.uleb128 0xb
+	.ascii "printStudent\0"
+	.byte	0x1e
+	.long	0x2ca
+	.uleb128 0x1
+	.long	0x1a0
+	.byte	0
+	.uleb128 0x14
 	.ascii "printf\0"
 	.byte	0x3
 	.word	0x201
 	.byte	0xf
 	.long	0xb6
-	.long	0x223
-	.uleb128 0x8
-	.long	0x203
-	.uleb128 0x11
+	.long	0x2e5
+	.uleb128 0x1
+	.long	0x2e5
+	.uleb128 0x15
 	.byte	0
-	.uleb128 0x12
+	.uleb128 0x3
+	.long	0x70
+	.uleb128 0xb
 	.ascii "addStudent\0"
-	.byte	0x1
-	.byte	0x9a
-	.byte	0x9
-	.long	0x14c
+	.byte	0x20
+	.long	0x315
+	.uleb128 0x1
+	.long	0x1a0
+	.uleb128 0x1
+	.long	0x1e4
+	.uleb128 0x1
+	.long	0x1c5
+	.uleb128 0x1
+	.long	0xc9
+	.uleb128 0x1
+	.long	0xc9
+	.byte	0
+	.uleb128 0xc
+	.ascii "print_uint32_arr\0"
+	.byte	0x63
+	.quad	.LFB132
+	.quad	.LFE132-.LFB132
+	.uleb128 0x1
+	.byte	0x9c
+	.long	0x36a
+	.uleb128 0x7
+	.ascii "p_uint\0"
+	.byte	0x63
+	.byte	0x2b
+	.long	0x36a
+	.uleb128 0x2
+	.byte	0x91
+	.sleb128 0
+	.uleb128 0x7
+	.ascii "len\0"
+	.byte	0x63
+	.byte	0x40
+	.long	0xc9
+	.uleb128 0x2
+	.byte	0x91
+	.sleb128 8
+	.uleb128 0x4
+	.ascii "i\0"
+	.byte	0x65
+	.byte	0x7
+	.long	0xb6
+	.uleb128 0x2
+	.byte	0x91
+	.sleb128 -20
+	.byte	0
+	.uleb128 0x3
+	.long	0xd9
+	.uleb128 0xc
+	.ascii "print_chars\0"
+	.byte	0x59
+	.quad	.LFB131
+	.quad	.LFE131-.LFB131
+	.uleb128 0x1
+	.byte	0x9c
+	.long	0x3b0
+	.uleb128 0x7
+	.ascii "c_str\0"
+	.byte	0x59
+	.byte	0x1e
+	.long	0x2e5
+	.uleb128 0x2
+	.byte	0x91
+	.sleb128 0
+	.uleb128 0x4
+	.ascii "i\0"
+	.byte	0x5b
+	.byte	0x7
+	.long	0xb6
+	.uleb128 0x2
+	.byte	0x91
+	.sleb128 -20
+	.byte	0
+	.uleb128 0xc
+	.ascii "print_str\0"
+	.byte	0x54
 	.quad	.LFB130
 	.quad	.LFE130-.LFB130
 	.uleb128 0x1
 	.byte	0x9c
-	.long	0x283
-	.uleb128 0xa
-	.ascii "ch\0"
-	.byte	0x1a
-	.long	0x1fe
+	.long	0x3e3
+	.uleb128 0x7
+	.ascii "c_str\0"
+	.byte	0x54
+	.byte	0x1c
+	.long	0x2e5
 	.uleb128 0x2
 	.byte	0x91
-	.sleb128 8
-	.uleb128 0xa
-	.ascii "cr\0"
-	.byte	0x2d
-	.long	0xc9
-	.uleb128 0x2
-	.byte	0x91
-	.sleb128 16
-	.uleb128 0xa
-	.ascii "ag\0"
-	.byte	0x3e
-	.long	0xc9
-	.uleb128 0x2
-	.byte	0x91
-	.sleb128 24
-	.uleb128 0x1
-	.ascii "res_st\0"
-	.byte	0x9c
-	.byte	0xb
-	.long	0x14c
-	.uleb128 0x3
-	.byte	0x91
-	.sleb128 -80
+	.sleb128 0
 	.byte	0
-	.uleb128 0x13
+	.uleb128 0x16
 	.ascii "main\0"
 	.byte	0x1
-	.byte	0x1e
+	.byte	0xf
 	.byte	0x5
 	.long	0xb6
 	.quad	.LFB129
 	.quad	.LFE129-.LFB129
 	.uleb128 0x1
 	.byte	0x9c
-	.long	0x3d3
-	.uleb128 0x1
-	.ascii "a\0"
-	.byte	0x20
-	.byte	0x10
-	.long	0x3d3
+	.long	0x49c
+	.uleb128 0x4
+	.ascii "st\0"
+	.byte	0x27
+	.byte	0xb
+	.long	0x49c
 	.uleb128 0x3
 	.byte	0x91
-	.sleb128 -128
-	.uleb128 0x1
-	.ascii "p0_a\0"
-	.byte	0x2d
-	.byte	0x11
-	.long	0x3e3
-	.uleb128 0x2
-	.byte	0x91
-	.sleb128 -48
-	.uleb128 0x1
-	.ascii "p5_a\0"
-	.byte	0x2d
-	.byte	0x18
-	.long	0x3e3
-	.uleb128 0x2
-	.byte	0x91
-	.sleb128 -56
-	.uleb128 0x1
-	.ascii "n\0"
-	.byte	0x4e
+	.sleb128 -1280
+	.uleb128 0x4
+	.ascii "st_cnt\0"
+	.byte	0x28
 	.byte	0x10
 	.long	0xc9
-	.uleb128 0x2
-	.byte	0x91
-	.sleb128 -60
-	.uleb128 0x1
-	.ascii "b\0"
-	.byte	0x6a
-	.byte	0x10
-	.long	0x3e8
 	.uleb128 0x3
 	.byte	0x91
-	.sleb128 -144
-	.uleb128 0x1
-	.ascii "p0_b\0"
-	.byte	0x76
-	.byte	0x11
-	.long	0x3e3
-	.uleb128 0x3
-	.byte	0x91
-	.sleb128 -72
-	.uleb128 0x1
-	.ascii "p2_b\0"
-	.byte	0x76
-	.byte	0x20
-	.long	0x3e3
-	.uleb128 0x3
-	.byte	0x91
-	.sleb128 -80
+	.sleb128 -1284
 	.uleb128 0x4
+	.ascii "st_list\0"
+	.byte	0x33
+	.byte	0x10
+	.long	0x1ee
+	.uleb128 0x3
+	.byte	0x91
+	.sleb128 -1328
+	.uleb128 0x11
 	.quad	.LBB2
 	.quad	.LBE2-.LBB2
-	.long	0x32c
-	.uleb128 0x1
+	.long	0x45b
+	.uleb128 0x4
 	.ascii "i\0"
-	.byte	0x23
+	.byte	0x31
 	.byte	0xb
 	.long	0xb6
 	.uleb128 0x2
 	.byte	0x91
 	.sleb128 -20
 	.byte	0
-	.uleb128 0x4
+	.uleb128 0x11
 	.quad	.LBB3
 	.quad	.LBE3-.LBB3
-	.long	0x34e
-	.uleb128 0x1
+	.long	0x47d
+	.uleb128 0x4
 	.ascii "i\0"
-	.byte	0x28
+	.byte	0x3e
 	.byte	0xb
 	.long	0xb6
 	.uleb128 0x2
 	.byte	0x91
 	.sleb128 -24
 	.byte	0
-	.uleb128 0x4
+	.uleb128 0x17
 	.quad	.LBB4
 	.quad	.LBE4-.LBB4
-	.long	0x370
-	.uleb128 0x1
+	.uleb128 0x4
 	.ascii "i\0"
-	.byte	0x6c
+	.byte	0x41
 	.byte	0xb
 	.long	0xb6
 	.uleb128 0x2
 	.byte	0x91
 	.sleb128 -28
 	.byte	0
-	.uleb128 0x4
-	.quad	.LBB5
-	.quad	.LBE5-.LBB5
-	.long	0x392
-	.uleb128 0x1
-	.ascii "i\0"
-	.byte	0x71
-	.byte	0xb
-	.long	0xb6
-	.uleb128 0x2
-	.byte	0x91
-	.sleb128 -32
 	.byte	0
-	.uleb128 0x4
-	.quad	.LBB6
-	.quad	.LBE6-.LBB6
-	.long	0x3b4
-	.uleb128 0x1
-	.ascii "i\0"
-	.byte	0x8e
-	.byte	0xb
-	.long	0xb6
-	.uleb128 0x2
-	.byte	0x91
-	.sleb128 -36
-	.byte	0
-	.uleb128 0x14
-	.quad	.LBB7
-	.quad	.LBE7-.LBB7
-	.uleb128 0x1
-	.ascii "i\0"
-	.byte	0x93
-	.byte	0xb
-	.long	0xb6
-	.uleb128 0x2
-	.byte	0x91
-	.sleb128 -40
-	.byte	0
-	.byte	0
-	.uleb128 0x7
-	.long	0xc9
-	.long	0x3e3
-	.uleb128 0x5
+	.uleb128 0x18
+	.long	0x14f
+	.uleb128 0xf
 	.long	0x75
-	.byte	0x9
-	.byte	0
-	.uleb128 0x9
-	.long	0xc9
-	.uleb128 0x15
-	.long	0xc9
-	.uleb128 0x5
-	.long	0x75
-	.byte	0x3
+	.byte	0x13
 	.byte	0
 	.byte	0
 	.section	.debug_abbrev,"dr"
 .Ldebug_abbrev0:
 	.uleb128 0x1
+	.uleb128 0x5
+	.byte	0
+	.uleb128 0x49
+	.uleb128 0x13
+	.byte	0
+	.byte	0
+	.uleb128 0x2
+	.uleb128 0x24
+	.byte	0
+	.uleb128 0xb
+	.uleb128 0xb
+	.uleb128 0x3e
+	.uleb128 0xb
+	.uleb128 0x3
+	.uleb128 0x8
+	.byte	0
+	.byte	0
+	.uleb128 0x3
+	.uleb128 0xf
+	.byte	0
+	.uleb128 0xb
+	.uleb128 0x21
+	.sleb128 8
+	.uleb128 0x49
+	.uleb128 0x13
+	.byte	0
+	.byte	0
+	.uleb128 0x4
 	.uleb128 0x34
 	.byte	0
 	.uleb128 0x3
@@ -1160,18 +1000,25 @@ addStudent:
 	.uleb128 0x18
 	.byte	0
 	.byte	0
-	.uleb128 0x2
-	.uleb128 0x24
+	.uleb128 0x5
+	.uleb128 0xd
 	.byte	0
-	.uleb128 0xb
-	.uleb128 0xb
-	.uleb128 0x3e
-	.uleb128 0xb
 	.uleb128 0x3
 	.uleb128 0x8
+	.uleb128 0x3a
+	.uleb128 0x21
+	.sleb128 2
+	.uleb128 0x3b
+	.uleb128 0xb
+	.uleb128 0x39
+	.uleb128 0xb
+	.uleb128 0x49
+	.uleb128 0x13
+	.uleb128 0x38
+	.uleb128 0xb
 	.byte	0
 	.byte	0
-	.uleb128 0x3
+	.uleb128 0x6
 	.uleb128 0x34
 	.byte	0
 	.uleb128 0x3
@@ -1191,7 +1038,178 @@ addStudent:
 	.uleb128 0x18
 	.byte	0
 	.byte	0
-	.uleb128 0x4
+	.uleb128 0x7
+	.uleb128 0x5
+	.byte	0
+	.uleb128 0x3
+	.uleb128 0x8
+	.uleb128 0x3a
+	.uleb128 0x21
+	.sleb128 1
+	.uleb128 0x3b
+	.uleb128 0xb
+	.uleb128 0x39
+	.uleb128 0xb
+	.uleb128 0x49
+	.uleb128 0x13
+	.uleb128 0x2
+	.uleb128 0x18
+	.byte	0
+	.byte	0
+	.uleb128 0x8
+	.uleb128 0xd
+	.byte	0
+	.uleb128 0x3
+	.uleb128 0xe
+	.uleb128 0x3a
+	.uleb128 0x21
+	.sleb128 2
+	.uleb128 0x3b
+	.uleb128 0xb
+	.uleb128 0x39
+	.uleb128 0x21
+	.sleb128 10
+	.uleb128 0x49
+	.uleb128 0x13
+	.uleb128 0x38
+	.uleb128 0xb
+	.byte	0
+	.byte	0
+	.uleb128 0x9
+	.uleb128 0x15
+	.byte	0x1
+	.uleb128 0x27
+	.uleb128 0x19
+	.uleb128 0x1
+	.uleb128 0x13
+	.byte	0
+	.byte	0
+	.uleb128 0xa
+	.uleb128 0x2e
+	.byte	0x1
+	.uleb128 0x3f
+	.uleb128 0x19
+	.uleb128 0x3
+	.uleb128 0xe
+	.uleb128 0x3a
+	.uleb128 0x21
+	.sleb128 2
+	.uleb128 0x3b
+	.uleb128 0xb
+	.uleb128 0x39
+	.uleb128 0x21
+	.sleb128 6
+	.uleb128 0x27
+	.uleb128 0x19
+	.uleb128 0x3c
+	.uleb128 0x19
+	.uleb128 0x1
+	.uleb128 0x13
+	.byte	0
+	.byte	0
+	.uleb128 0xb
+	.uleb128 0x2e
+	.byte	0x1
+	.uleb128 0x3f
+	.uleb128 0x19
+	.uleb128 0x3
+	.uleb128 0x8
+	.uleb128 0x3a
+	.uleb128 0x21
+	.sleb128 2
+	.uleb128 0x3b
+	.uleb128 0xb
+	.uleb128 0x39
+	.uleb128 0x21
+	.sleb128 6
+	.uleb128 0x27
+	.uleb128 0x19
+	.uleb128 0x3c
+	.uleb128 0x19
+	.uleb128 0x1
+	.uleb128 0x13
+	.byte	0
+	.byte	0
+	.uleb128 0xc
+	.uleb128 0x2e
+	.byte	0x1
+	.uleb128 0x3f
+	.uleb128 0x19
+	.uleb128 0x3
+	.uleb128 0x8
+	.uleb128 0x3a
+	.uleb128 0x21
+	.sleb128 1
+	.uleb128 0x3b
+	.uleb128 0xb
+	.uleb128 0x39
+	.uleb128 0x21
+	.sleb128 6
+	.uleb128 0x27
+	.uleb128 0x19
+	.uleb128 0x11
+	.uleb128 0x1
+	.uleb128 0x12
+	.uleb128 0x7
+	.uleb128 0x40
+	.uleb128 0x18
+	.uleb128 0x7c
+	.uleb128 0x19
+	.uleb128 0x1
+	.uleb128 0x13
+	.byte	0
+	.byte	0
+	.uleb128 0xd
+	.uleb128 0x26
+	.byte	0
+	.uleb128 0x49
+	.uleb128 0x13
+	.byte	0
+	.byte	0
+	.uleb128 0xe
+	.uleb128 0x13
+	.byte	0x1
+	.uleb128 0xb
+	.uleb128 0xb
+	.uleb128 0x3a
+	.uleb128 0x21
+	.sleb128 2
+	.uleb128 0x3b
+	.uleb128 0xb
+	.uleb128 0x39
+	.uleb128 0x21
+	.sleb128 9
+	.uleb128 0x1
+	.uleb128 0x13
+	.byte	0
+	.byte	0
+	.uleb128 0xf
+	.uleb128 0x21
+	.byte	0
+	.uleb128 0x49
+	.uleb128 0x13
+	.uleb128 0x2f
+	.uleb128 0xb
+	.byte	0
+	.byte	0
+	.uleb128 0x10
+	.uleb128 0x16
+	.byte	0
+	.uleb128 0x3
+	.uleb128 0x8
+	.uleb128 0x3a
+	.uleb128 0x21
+	.sleb128 2
+	.uleb128 0x3b
+	.uleb128 0xb
+	.uleb128 0x39
+	.uleb128 0x21
+	.sleb128 3
+	.uleb128 0x49
+	.uleb128 0x13
+	.byte	0
+	.byte	0
+	.uleb128 0x11
 	.uleb128 0xb
 	.byte	0x1
 	.uleb128 0x11
@@ -1202,79 +1220,7 @@ addStudent:
 	.uleb128 0x13
 	.byte	0
 	.byte	0
-	.uleb128 0x5
-	.uleb128 0x21
-	.byte	0
-	.uleb128 0x49
-	.uleb128 0x13
-	.uleb128 0x2f
-	.uleb128 0xb
-	.byte	0
-	.byte	0
-	.uleb128 0x6
-	.uleb128 0xd
-	.byte	0
-	.uleb128 0x3
-	.uleb128 0x8
-	.uleb128 0x3a
-	.uleb128 0x21
-	.sleb128 1
-	.uleb128 0x3b
-	.uleb128 0xb
-	.uleb128 0x39
-	.uleb128 0xb
-	.uleb128 0x49
-	.uleb128 0x13
-	.uleb128 0x38
-	.uleb128 0xb
-	.byte	0
-	.byte	0
-	.uleb128 0x7
-	.uleb128 0x1
-	.byte	0x1
-	.uleb128 0x49
-	.uleb128 0x13
-	.uleb128 0x1
-	.uleb128 0x13
-	.byte	0
-	.byte	0
-	.uleb128 0x8
-	.uleb128 0x5
-	.byte	0
-	.uleb128 0x49
-	.uleb128 0x13
-	.byte	0
-	.byte	0
-	.uleb128 0x9
-	.uleb128 0xf
-	.byte	0
-	.uleb128 0xb
-	.uleb128 0x21
-	.sleb128 8
-	.uleb128 0x49
-	.uleb128 0x13
-	.byte	0
-	.byte	0
-	.uleb128 0xa
-	.uleb128 0x5
-	.byte	0
-	.uleb128 0x3
-	.uleb128 0x8
-	.uleb128 0x3a
-	.uleb128 0x21
-	.sleb128 1
-	.uleb128 0x3b
-	.uleb128 0x21
-	.sleb128 154
-	.uleb128 0x39
-	.uleb128 0xb
-	.uleb128 0x49
-	.uleb128 0x13
-	.uleb128 0x2
-	.uleb128 0x18
-	.byte	0
-	.byte	0
-	.uleb128 0xb
+	.uleb128 0x12
 	.uleb128 0x11
 	.byte	0x1
 	.uleb128 0x25
@@ -1295,67 +1241,16 @@ addStudent:
 	.uleb128 0x17
 	.byte	0
 	.byte	0
-	.uleb128 0xc
-	.uleb128 0x26
-	.byte	0
+	.uleb128 0x13
+	.uleb128 0x1
+	.byte	0x1
 	.uleb128 0x49
 	.uleb128 0x13
-	.byte	0
-	.byte	0
-	.uleb128 0xd
-	.uleb128 0x13
-	.byte	0x1
-	.uleb128 0xb
-	.uleb128 0xb
-	.uleb128 0x3a
-	.uleb128 0xb
-	.uleb128 0x3b
-	.uleb128 0xb
-	.uleb128 0x39
-	.uleb128 0xb
 	.uleb128 0x1
 	.uleb128 0x13
 	.byte	0
 	.byte	0
-	.uleb128 0xe
-	.uleb128 0x16
-	.byte	0
-	.uleb128 0x3
-	.uleb128 0x8
-	.uleb128 0x3a
-	.uleb128 0xb
-	.uleb128 0x3b
-	.uleb128 0xb
-	.uleb128 0x39
-	.uleb128 0xb
-	.uleb128 0x49
-	.uleb128 0x13
-	.byte	0
-	.byte	0
-	.uleb128 0xf
-	.uleb128 0x2e
-	.byte	0x1
-	.uleb128 0x3f
-	.uleb128 0x19
-	.uleb128 0x3
-	.uleb128 0x8
-	.uleb128 0x3a
-	.uleb128 0xb
-	.uleb128 0x3b
-	.uleb128 0xb
-	.uleb128 0x39
-	.uleb128 0xb
-	.uleb128 0x27
-	.uleb128 0x19
-	.uleb128 0x49
-	.uleb128 0x13
-	.uleb128 0x3c
-	.uleb128 0x19
-	.uleb128 0x1
-	.uleb128 0x13
-	.byte	0
-	.byte	0
-	.uleb128 0x10
+	.uleb128 0x14
 	.uleb128 0x2e
 	.byte	0x1
 	.uleb128 0x3f
@@ -1378,77 +1273,48 @@ addStudent:
 	.uleb128 0x13
 	.byte	0
 	.byte	0
-	.uleb128 0x11
-	.uleb128 0x18
-	.byte	0
-	.byte	0
-	.byte	0
-	.uleb128 0x12
-	.uleb128 0x2e
-	.byte	0x1
-	.uleb128 0x3f
-	.uleb128 0x19
-	.uleb128 0x3
-	.uleb128 0x8
-	.uleb128 0x3a
-	.uleb128 0xb
-	.uleb128 0x3b
-	.uleb128 0xb
-	.uleb128 0x39
-	.uleb128 0xb
-	.uleb128 0x27
-	.uleb128 0x19
-	.uleb128 0x49
-	.uleb128 0x13
-	.uleb128 0x11
-	.uleb128 0x1
-	.uleb128 0x12
-	.uleb128 0x7
-	.uleb128 0x40
-	.uleb128 0x18
-	.uleb128 0x7c
-	.uleb128 0x19
-	.uleb128 0x1
-	.uleb128 0x13
-	.byte	0
-	.byte	0
-	.uleb128 0x13
-	.uleb128 0x2e
-	.byte	0x1
-	.uleb128 0x3f
-	.uleb128 0x19
-	.uleb128 0x3
-	.uleb128 0x8
-	.uleb128 0x3a
-	.uleb128 0xb
-	.uleb128 0x3b
-	.uleb128 0xb
-	.uleb128 0x39
-	.uleb128 0xb
-	.uleb128 0x49
-	.uleb128 0x13
-	.uleb128 0x11
-	.uleb128 0x1
-	.uleb128 0x12
-	.uleb128 0x7
-	.uleb128 0x40
-	.uleb128 0x18
-	.uleb128 0x7c
-	.uleb128 0x19
-	.uleb128 0x1
-	.uleb128 0x13
-	.byte	0
-	.byte	0
-	.uleb128 0x14
-	.uleb128 0xb
-	.byte	0x1
-	.uleb128 0x11
-	.uleb128 0x1
-	.uleb128 0x12
-	.uleb128 0x7
-	.byte	0
-	.byte	0
 	.uleb128 0x15
+	.uleb128 0x18
+	.byte	0
+	.byte	0
+	.byte	0
+	.uleb128 0x16
+	.uleb128 0x2e
+	.byte	0x1
+	.uleb128 0x3f
+	.uleb128 0x19
+	.uleb128 0x3
+	.uleb128 0x8
+	.uleb128 0x3a
+	.uleb128 0xb
+	.uleb128 0x3b
+	.uleb128 0xb
+	.uleb128 0x39
+	.uleb128 0xb
+	.uleb128 0x49
+	.uleb128 0x13
+	.uleb128 0x11
+	.uleb128 0x1
+	.uleb128 0x12
+	.uleb128 0x7
+	.uleb128 0x40
+	.uleb128 0x18
+	.uleb128 0x7c
+	.uleb128 0x19
+	.uleb128 0x1
+	.uleb128 0x13
+	.byte	0
+	.byte	0
+	.uleb128 0x17
+	.uleb128 0xb
+	.byte	0x1
+	.uleb128 0x11
+	.uleb128 0x1
+	.uleb128 0x12
+	.uleb128 0x7
+	.byte	0
+	.byte	0
+	.uleb128 0x18
 	.uleb128 0x1
 	.byte	0x1
 	.uleb128 0x49
@@ -3828,16 +3694,17 @@ addStudent:
 	.ascii "_WSTDIO_S_DEFINED \0"
 	.byte	0x4
 	.byte	0x4
+	.file 15 "D:/mingw64/x86_64-w64-mingw32/include/string.h"
 	.byte	0x3
 	.uleb128 0x5
-	.uleb128 0x2
+	.uleb128 0xf
 	.byte	0x1
 	.uleb128 0x7
 	.ascii "_INC_STRING \0"
-	.file 15 "D:/mingw64/x86_64-w64-mingw32/include/crtdefs.h"
+	.file 16 "D:/mingw64/x86_64-w64-mingw32/include/crtdefs.h"
 	.byte	0x3
 	.uleb128 0x9
-	.uleb128 0xf
+	.uleb128 0x10
 	.byte	0x1
 	.uleb128 0x8
 	.ascii "_INC_CRTDEFS \0"
@@ -3869,58 +3736,58 @@ addStudent:
 	.byte	0x1
 	.uleb128 0xb2
 	.ascii "wcswcs wcsstr\0"
-	.file 16 "D:/mingw64/x86_64-w64-mingw32/include/sec_api/string_s.h"
+	.file 17 "D:/mingw64/x86_64-w64-mingw32/include/sec_api/string_s.h"
 	.byte	0x3
 	.uleb128 0xc2
-	.uleb128 0x10
+	.uleb128 0x11
 	.byte	0x1
 	.uleb128 0x7
 	.ascii "_INC_STRING_S \0"
 	.byte	0x3
 	.uleb128 0x9
-	.uleb128 0x2
+	.uleb128 0xf
 	.byte	0x4
 	.byte	0x1
 	.uleb128 0x3e
 	.ascii "_WSTRING_S_DEFINED \0"
 	.byte	0x4
 	.byte	0x4
-	.file 17 "D:/mingw64/x86_64-w64-mingw32/include/stdlib.h"
+	.file 18 "D:/mingw64/x86_64-w64-mingw32/include/stdlib.h"
 	.byte	0x3
 	.uleb128 0x6
-	.uleb128 0x11
+	.uleb128 0x12
 	.byte	0x1
 	.uleb128 0x7
 	.ascii "_INC_STDLIB \0"
-	.file 18 "D:/mingw64/x86_64-w64-mingw32/include/corecrt_wstdlib.h"
+	.file 19 "D:/mingw64/x86_64-w64-mingw32/include/corecrt_wstdlib.h"
 	.byte	0x3
 	.uleb128 0xa
-	.uleb128 0x12
+	.uleb128 0x13
 	.byte	0x1
 	.uleb128 0x7
 	.ascii "_INC_CORECRT_WSTDLIB \0"
 	.byte	0x4
-	.file 19 "D:/mingw64/lib/gcc/x86_64-w64-mingw32/14.2.0/include/limits.h"
+	.file 20 "D:/mingw64/lib/gcc/x86_64-w64-mingw32/14.2.0/include/limits.h"
 	.byte	0x3
 	.uleb128 0xb
-	.uleb128 0x13
+	.uleb128 0x14
 	.byte	0x1
 	.uleb128 0x1e
 	.ascii "_GCC_LIMITS_H_ \0"
-	.file 20 "D:/mingw64/lib/gcc/x86_64-w64-mingw32/14.2.0/include/syslimits.h"
+	.file 21 "D:/mingw64/lib/gcc/x86_64-w64-mingw32/14.2.0/include/syslimits.h"
 	.byte	0x3
 	.uleb128 0x22
-	.uleb128 0x14
+	.uleb128 0x15
 	.byte	0x1
 	.uleb128 0x6
 	.ascii "_GCC_NEXT_LIMITS_H \0"
 	.byte	0x3
 	.uleb128 0x7
-	.uleb128 0x13
-	.file 21 "D:/mingw64/x86_64-w64-mingw32/include/limits.h"
+	.uleb128 0x14
+	.file 22 "D:/mingw64/x86_64-w64-mingw32/include/limits.h"
 	.byte	0x3
 	.uleb128 0xd2
-	.uleb128 0x15
+	.uleb128 0x16
 	.byte	0x1
 	.uleb128 0x9
 	.ascii "_INC_LIMITS \0"
@@ -4360,25 +4227,25 @@ addStudent:
 	.byte	0x1
 	.uleb128 0x2ce
 	.ascii "_CRT_SWAB_DEFINED \0"
-	.file 22 "D:/mingw64/x86_64-w64-mingw32/include/sec_api/stdlib_s.h"
+	.file 23 "D:/mingw64/x86_64-w64-mingw32/include/sec_api/stdlib_s.h"
 	.byte	0x3
 	.uleb128 0x301
-	.uleb128 0x16
+	.uleb128 0x17
 	.byte	0x1
 	.uleb128 0x7
 	.ascii "_INC_STDLIB_S \0"
 	.byte	0x3
 	.uleb128 0x9
-	.uleb128 0x11
+	.uleb128 0x12
 	.byte	0x4
 	.byte	0x1
 	.uleb128 0x33
 	.ascii "_QSORT_S_DEFINED \0"
 	.byte	0x4
-	.file 23 "D:/mingw64/x86_64-w64-mingw32/include/malloc.h"
+	.file 24 "D:/mingw64/x86_64-w64-mingw32/include/malloc.h"
 	.byte	0x3
 	.uleb128 0x302
-	.uleb128 0x17
+	.uleb128 0x18
 	.byte	0x1
 	.uleb128 0x7
 	.ascii "_MALLOC_H_ \0"
@@ -4415,17 +4282,17 @@ addStudent:
 	.byte	0x1
 	.uleb128 0x2c
 	.ascii "_HEAPINFO_DEFINED \0"
-	.file 24 "D:/mingw64/lib/gcc/x86_64-w64-mingw32/14.2.0/include/mm_malloc.h"
+	.file 25 "D:/mingw64/lib/gcc/x86_64-w64-mingw32/14.2.0/include/mm_malloc.h"
 	.byte	0x3
 	.uleb128 0x54
-	.uleb128 0x18
+	.uleb128 0x19
 	.byte	0x1
 	.uleb128 0x19
 	.ascii "_MM_MALLOC_H_INCLUDED \0"
-	.file 25 "D:/mingw64/x86_64-w64-mingw32/include/errno.h"
+	.file 26 "D:/mingw64/x86_64-w64-mingw32/include/errno.h"
 	.byte	0x3
 	.uleb128 0x1d
-	.uleb128 0x19
+	.uleb128 0x1a
 	.byte	0x1
 	.uleb128 0x7
 	.ascii "_INC_ERRNO \0"
@@ -4722,35 +4589,69 @@ addStudent:
 	.byte	0x4
 	.byte	0x4
 	.byte	0x4
-	.file 26 "inc/ariph.h"
+	.file 27 "inc/arith.h"
 	.byte	0x3
 	.uleb128 0x2
-	.uleb128 0x1a
+	.uleb128 0x1b
 	.byte	0x1
 	.uleb128 0x2
 	.ascii "ARIPH_H_ \0"
 	.byte	0x4
-	.file 27 "inc/utils.h"
+	.file 28 "inc/utils.h"
 	.byte	0x3
 	.uleb128 0x3
-	.uleb128 0x1b
+	.uleb128 0x1c
 	.byte	0x1
 	.uleb128 0x2
 	.ascii "UTILS_H_ \0"
+	.byte	0x4
+	.byte	0x3
+	.uleb128 0x4
+	.uleb128 0x2
+	.byte	0x1
+	.uleb128 0x2
+	.ascii "STUDENT_H_ \0"
 	.byte	0x4
 	.byte	0x4
 	.byte	0
 	.section	.debug_line,"dr"
 .Ldebug_line0:
 	.section	.debug_str,"dr"
+.LASF3:
+	.ascii "modifyName\0"
+.LASF4:
+	.ascii "deletePos\0"
+.LASF2:
+	.ascii "addCourse\0"
 	.section	.debug_line_str,"dr"
 .LASF1:
-	.ascii "D:\\MGU\\Micros\\Micros\\Atmega\\Programming\\Lesson_27\\MYPROG27\0"
+	.ascii "D:\\MGU\\Micros\\Micros\\Atmega\\Programming\\Lesson_30\\MYPROG30\0"
 .LASF0:
 	.ascii "src/main.c\0"
 	.def	__main;	.scl	2;	.type	32;	.endef
 	.ident	"GCC: (x86_64-win32-seh-rev2, Built by MinGW-Builds project) 14.2.0"
-	.def	puts;	.scl	2;	.type	32;	.endef
+	.def	addStudent;	.scl	2;	.type	32;	.endef
 	.def	printf;	.scl	2;	.type	32;	.endef
+	.def	printStudent;	.scl	2;	.type	32;	.endef
 	.def	putchar;	.scl	2;	.type	32;	.endef
-	.def	strcpy;	.scl	2;	.type	32;	.endef
+	.def	puts;	.scl	2;	.type	32;	.endef
+	.section	.rdata$.refptr.deletePos, "dr"
+	.globl	.refptr.deletePos
+	.linkonce	discard
+.refptr.deletePos:
+	.quad	deletePos
+	.section	.rdata$.refptr.modifyName, "dr"
+	.globl	.refptr.modifyName
+	.linkonce	discard
+.refptr.modifyName:
+	.quad	modifyName
+	.section	.rdata$.refptr.addAge, "dr"
+	.globl	.refptr.addAge
+	.linkonce	discard
+.refptr.addAge:
+	.quad	addAge
+	.section	.rdata$.refptr.addCourse, "dr"
+	.globl	.refptr.addCourse
+	.linkonce	discard
+.refptr.addCourse:
+	.quad	addCourse
