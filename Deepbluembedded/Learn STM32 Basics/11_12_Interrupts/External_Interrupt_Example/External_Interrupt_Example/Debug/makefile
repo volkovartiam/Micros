@@ -84,8 +84,8 @@ all: main-build
 main-build: External_Interrupt_Example.elf secondary-outputs
 
 # Tool invocations
-External_Interrupt_Example.elf External_Interrupt_Example.map: $(OBJS) $(USER_OBJS) D:\MGU\Micros\Micros\Deepbluembedded\Learn\ STM32\ Basics\11_12_Interrupts\External_Interrupt_Example\External_Interrupt_Example\STM32F103C6TX_FLASH.ld makefile objects.list $(OPTIONAL_TOOL_DEPS)
-	arm-none-eabi-g++ -o "External_Interrupt_Example.elf" @"objects.list" $(USER_OBJS) $(LIBS) -mcpu=cortex-m3 -T"D:\MGU\Micros\Micros\Deepbluembedded\Learn STM32 Basics\11_12_Interrupts\External_Interrupt_Example\External_Interrupt_Example\STM32F103C6TX_FLASH.ld" --specs=nosys.specs -Wl,-Map="External_Interrupt_Example.map" -Wl,--gc-sections -static --specs=nano.specs -mfloat-abi=soft -mthumb -Wl,--start-group -lc -lm -lstdc++ -lsupc++ -Wl,--end-group
+External_Interrupt_Example.elf External_Interrupt_Example.map: $(OBJS) $(USER_OBJS) E:\Projects\Micros\Micros\Deepbluembedded\Learn\ STM32\ Basics\11_12_Interrupts\External_Interrupt_Example\External_Interrupt_Example\STM32F103C6TX_FLASH.ld makefile objects.list $(OPTIONAL_TOOL_DEPS)
+	arm-none-eabi-g++ -o "External_Interrupt_Example.elf" @"objects.list" $(USER_OBJS) $(LIBS) -mcpu=cortex-m3 -T"E:\Projects\Micros\Micros\Deepbluembedded\Learn STM32 Basics\11_12_Interrupts\External_Interrupt_Example\External_Interrupt_Example\STM32F103C6TX_FLASH.ld" --specs=nosys.specs -Wl,-Map="External_Interrupt_Example.map" -Wl,--gc-sections -static --specs=nano.specs -mfloat-abi=soft -mthumb -Wl,--start-group -lc -lm -lstdc++ -lsupc++ -Wl,--end-group
 	@echo 'Finished building target: $@'
 	@echo ' '
 
