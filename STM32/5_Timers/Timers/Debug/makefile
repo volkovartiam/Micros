@@ -87,8 +87,8 @@ all: main-build
 main-build: Timers.elf secondary-outputs
 
 # Tool invocations
-Timers.elf Timers.map: $(OBJS) $(USER_OBJS) E:\Projects\Micros\Micros\STM32\5_Timers\Timers\STM32F103C6TX_FLASH.ld makefile objects.list $(OPTIONAL_TOOL_DEPS)
-	arm-none-eabi-g++ -o "Timers.elf" @"objects.list" $(USER_OBJS) $(LIBS) -mcpu=cortex-m3 -T"E:\Projects\Micros\Micros\STM32\5_Timers\Timers\STM32F103C6TX_FLASH.ld" --specs=nosys.specs -Wl,-Map="Timers.map" -Wl,--gc-sections -static --specs=nano.specs -mfloat-abi=soft -mthumb -Wl,--start-group -lc -lm -lstdc++ -lsupc++ -Wl,--end-group
+Timers.elf Timers.map: $(OBJS) $(USER_OBJS) D:\MGU\Micros\Micros\STM32\5_Timers\Timers\STM32F103C6TX_FLASH.ld makefile objects.list $(OPTIONAL_TOOL_DEPS)
+	arm-none-eabi-g++ -o "Timers.elf" @"objects.list" $(USER_OBJS) $(LIBS) -mcpu=cortex-m3 -T"D:\MGU\Micros\Micros\STM32\5_Timers\Timers\STM32F103C6TX_FLASH.ld" --specs=nosys.specs -Wl,-Map="Timers.map" -Wl,--gc-sections -static --specs=nano.specs -mfloat-abi=soft -mthumb -Wl,--start-group -lc -lm -lstdc++ -lsupc++ -Wl,--end-group
 	@echo 'Finished building target: $@'
 	@echo ' '
 

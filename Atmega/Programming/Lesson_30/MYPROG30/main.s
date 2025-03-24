@@ -63,18 +63,18 @@ main:
 	.seh_endprologue
 	.loc 1 16 1
 	call	__main
-	.loc 1 40 16
+	.loc 1 49 16
 	mov	DWORD PTR -36[rbp], 0
-	.loc 1 41 12
+	.loc 1 50 12
 	mov	eax, DWORD PTR -36[rbp]
-	.loc 1 41 5
+	.loc 1 50 5
 	cmp	eax, 19
 	ja	.L2
-	.loc 1 41 30 discriminator 1
+	.loc 1 50 30 discriminator 1
 	mov	eax, DWORD PTR -36[rbp]
 	mov	eax, eax
 	imul	rax, rax, 62
-	.loc 1 41 17 discriminator 1
+	.loc 1 50 17 discriminator 1
 	lea	rdx, -32[rbp]
 	lea	rcx, [rdx+rax]
 	lea	rax, -36[rbp]
@@ -84,16 +84,16 @@ main:
 	mov	rdx, rax
 	call	addStudent
 .L2:
-	.loc 1 42 12
+	.loc 1 51 12
 	mov	eax, DWORD PTR -36[rbp]
-	.loc 1 42 5
+	.loc 1 51 5
 	cmp	eax, 19
 	ja	.L3
-	.loc 1 42 30 discriminator 1
+	.loc 1 51 30 discriminator 1
 	mov	eax, DWORD PTR -36[rbp]
 	mov	eax, eax
 	imul	rax, rax, 62
-	.loc 1 42 17 discriminator 1
+	.loc 1 51 17 discriminator 1
 	lea	rdx, -32[rbp]
 	lea	rcx, [rdx+rax]
 	lea	rax, -36[rbp]
@@ -103,16 +103,16 @@ main:
 	mov	rdx, rax
 	call	addStudent
 .L3:
-	.loc 1 43 12
+	.loc 1 52 12
 	mov	eax, DWORD PTR -36[rbp]
-	.loc 1 43 5
+	.loc 1 52 5
 	cmp	eax, 19
 	ja	.L4
-	.loc 1 43 30 discriminator 1
+	.loc 1 52 30 discriminator 1
 	mov	eax, DWORD PTR -36[rbp]
 	mov	eax, eax
 	imul	rax, rax, 62
-	.loc 1 43 17 discriminator 1
+	.loc 1 52 17 discriminator 1
 	lea	rdx, -32[rbp]
 	lea	rcx, [rdx+rax]
 	lea	rax, -36[rbp]
@@ -122,16 +122,16 @@ main:
 	mov	rdx, rax
 	call	addStudent
 .L4:
-	.loc 1 44 12
+	.loc 1 53 12
 	mov	eax, DWORD PTR -36[rbp]
-	.loc 1 44 5
+	.loc 1 53 5
 	cmp	eax, 19
 	ja	.L5
-	.loc 1 44 30 discriminator 1
+	.loc 1 53 30 discriminator 1
 	mov	eax, DWORD PTR -36[rbp]
 	mov	eax, eax
 	imul	rax, rax, 62
-	.loc 1 44 17 discriminator 1
+	.loc 1 53 17 discriminator 1
 	lea	rdx, -32[rbp]
 	lea	rcx, [rdx+rax]
 	lea	rax, -36[rbp]
@@ -141,16 +141,16 @@ main:
 	mov	rdx, rax
 	call	addStudent
 .L5:
-	.loc 1 45 12
+	.loc 1 54 12
 	mov	eax, DWORD PTR -36[rbp]
-	.loc 1 45 5
+	.loc 1 54 5
 	cmp	eax, 19
 	ja	.L6
-	.loc 1 45 30 discriminator 1
+	.loc 1 54 30 discriminator 1
 	mov	eax, DWORD PTR -36[rbp]
 	mov	eax, eax
 	imul	rax, rax, 62
-	.loc 1 45 17 discriminator 1
+	.loc 1 54 17 discriminator 1
 	lea	rdx, -32[rbp]
 	lea	rcx, [rdx+rax]
 	lea	rax, -36[rbp]
@@ -160,16 +160,16 @@ main:
 	mov	rdx, rax
 	call	addStudent
 .L6:
-	.loc 1 46 12
+	.loc 1 55 12
 	mov	eax, DWORD PTR -36[rbp]
-	.loc 1 46 5
+	.loc 1 55 5
 	cmp	eax, 19
 	ja	.L7
-	.loc 1 46 30 discriminator 1
+	.loc 1 55 30 discriminator 1
 	mov	eax, DWORD PTR -36[rbp]
 	mov	eax, eax
 	imul	rax, rax, 62
-	.loc 1 46 17 discriminator 1
+	.loc 1 55 17 discriminator 1
 	lea	rdx, -32[rbp]
 	lea	rcx, [rdx+rax]
 	lea	rax, -36[rbp]
@@ -179,16 +179,16 @@ main:
 	mov	rdx, rax
 	call	addStudent
 .L7:
-	.loc 1 47 12
+	.loc 1 56 12
 	mov	eax, DWORD PTR -36[rbp]
-	.loc 1 47 5
+	.loc 1 56 5
 	cmp	eax, 19
 	ja	.L8
-	.loc 1 47 30 discriminator 1
+	.loc 1 56 30 discriminator 1
 	mov	eax, DWORD PTR -36[rbp]
 	mov	eax, eax
 	imul	rax, rax, 62
-	.loc 1 47 17 discriminator 1
+	.loc 1 56 17 discriminator 1
 	lea	rdx, -32[rbp]
 	lea	rcx, [rdx+rax]
 	lea	rax, -36[rbp]
@@ -198,16 +198,16 @@ main:
 	mov	rdx, rax
 	call	addStudent
 .L8:
-	.loc 1 48 12
+	.loc 1 57 12
 	mov	eax, DWORD PTR -36[rbp]
-	.loc 1 48 5
+	.loc 1 57 5
 	cmp	eax, 19
 	ja	.L9
-	.loc 1 48 30 discriminator 1
+	.loc 1 57 30 discriminator 1
 	mov	eax, DWORD PTR -36[rbp]
 	mov	eax, eax
 	imul	rax, rax, 62
-	.loc 1 48 17 discriminator 1
+	.loc 1 57 17 discriminator 1
 	lea	rdx, -32[rbp]
 	lea	rcx, [rdx+rax]
 	lea	rax, -36[rbp]
@@ -218,39 +218,39 @@ main:
 	call	addStudent
 .L9:
 .LBB2:
-	.loc 1 49 11
+	.loc 1 58 11
 	mov	DWORD PTR 1228[rbp], 0
-	.loc 1 49 3
+	.loc 1 58 3
 	jmp	.L10
 .L11:
-	.loc 1 49 32 discriminator 3
+	.loc 1 58 32 discriminator 3
 	mov	eax, DWORD PTR 1228[rbp]
 	mov	edx, eax
 	lea	rax, .LC8[rip]
 	mov	rcx, rax
 	call	printf
-	.loc 1 49 66 discriminator 3
+	.loc 1 58 66 discriminator 3
 	mov	eax, DWORD PTR 1228[rbp]
 	cdqe
 	imul	rax, rax, 62
-	.loc 1 49 51 discriminator 3
+	.loc 1 58 51 discriminator 3
 	lea	rdx, -32[rbp]
 	add	rax, rdx
 	mov	rcx, rax
 	call	printStudent
-	.loc 1 49 27 discriminator 3
+	.loc 1 58 27 discriminator 3
 	add	DWORD PTR 1228[rbp], 1
 .L10:
-	.loc 1 49 17 discriminator 2
+	.loc 1 58 17 discriminator 2
 	mov	edx, DWORD PTR 1228[rbp]
 	mov	eax, DWORD PTR -36[rbp]
 	cmp	edx, eax
 	jb	.L11
 .LBE2:
-	.loc 1 50 3
+	.loc 1 59 3
 	mov	ecx, 10
 	call	putchar
-	.loc 1 51 16
+	.loc 1 62 16
 	lea	rax, -32[rbp]
 	mov	QWORD PTR -80[rbp], rax
 	mov	rax, QWORD PTR .refptr.addCourse[rip]
@@ -261,25 +261,25 @@ main:
 	mov	QWORD PTR -56[rbp], rax
 	mov	rax, QWORD PTR .refptr.deletePos[rip]
 	mov	QWORD PTR -48[rbp], rax
-	.loc 1 59 10
+	.loc 1 70 10
 	mov	rdx, QWORD PTR -72[rbp]
-	.loc 1 59 3
+	.loc 1 70 3
 	lea	rax, -32[rbp]
 	add	rax, 310
 	mov	rcx, rax
 	call	rdx
 .LVL0:
-	.loc 1 60 10
+	.loc 1 71 10
 	mov	rdx, QWORD PTR -64[rbp]
-	.loc 1 60 3
+	.loc 1 71 3
 	lea	rax, -32[rbp]
 	add	rax, 62
 	mov	rcx, rax
 	call	rdx
 .LVL1:
-	.loc 1 61 10
+	.loc 1 72 10
 	mov	r8, QWORD PTR -56[rbp]
-	.loc 1 61 3
+	.loc 1 72 3
 	lea	rax, -32[rbp]
 	add	rax, 124
 	lea	rdx, .LC9[rip]
@@ -287,41 +287,41 @@ main:
 	call	r8
 .LVL2:
 .LBB3:
-	.loc 1 62 11
+	.loc 1 73 11
 	mov	DWORD PTR 1224[rbp], 0
-	.loc 1 62 3
+	.loc 1 73 3
 	jmp	.L12
 .L13:
-	.loc 1 62 32 discriminator 3
+	.loc 1 73 32 discriminator 3
 	mov	eax, DWORD PTR 1224[rbp]
 	mov	edx, eax
 	lea	rax, .LC8[rip]
 	mov	rcx, rax
 	call	printf
-	.loc 1 62 66 discriminator 3
+	.loc 1 73 66 discriminator 3
 	mov	eax, DWORD PTR 1224[rbp]
 	cdqe
 	imul	rax, rax, 62
-	.loc 1 62 51 discriminator 3
+	.loc 1 73 51 discriminator 3
 	lea	rdx, -32[rbp]
 	add	rax, rdx
 	mov	rcx, rax
 	call	printStudent
-	.loc 1 62 27 discriminator 3
+	.loc 1 73 27 discriminator 3
 	add	DWORD PTR 1224[rbp], 1
 .L12:
-	.loc 1 62 17 discriminator 2
+	.loc 1 73 17 discriminator 2
 	mov	edx, DWORD PTR 1224[rbp]
 	mov	eax, DWORD PTR -36[rbp]
 	cmp	edx, eax
 	jb	.L13
 .LBE3:
-	.loc 1 63 3
+	.loc 1 74 3
 	mov	ecx, 10
 	call	putchar
-	.loc 1 64 10
+	.loc 1 77 10
 	mov	r9, QWORD PTR -48[rbp]
-	.loc 1 64 3
+	.loc 1 77 3
 	lea	rdx, -36[rbp]
 	lea	rax, -32[rbp]
 	mov	r8, rdx
@@ -330,38 +330,38 @@ main:
 	call	r9
 .LVL3:
 .LBB4:
-	.loc 1 65 11
+	.loc 1 78 11
 	mov	DWORD PTR 1220[rbp], 0
-	.loc 1 65 3
+	.loc 1 78 3
 	jmp	.L14
 .L15:
-	.loc 1 65 32 discriminator 3
+	.loc 1 78 32 discriminator 3
 	mov	eax, DWORD PTR 1220[rbp]
 	mov	edx, eax
 	lea	rax, .LC8[rip]
 	mov	rcx, rax
 	call	printf
-	.loc 1 65 66 discriminator 3
+	.loc 1 78 66 discriminator 3
 	mov	eax, DWORD PTR 1220[rbp]
 	cdqe
 	imul	rax, rax, 62
-	.loc 1 65 51 discriminator 3
+	.loc 1 78 51 discriminator 3
 	lea	rdx, -32[rbp]
 	add	rax, rdx
 	mov	rcx, rax
 	call	printStudent
-	.loc 1 65 27 discriminator 3
+	.loc 1 78 27 discriminator 3
 	add	DWORD PTR 1220[rbp], 1
 .L14:
-	.loc 1 65 17 discriminator 2
+	.loc 1 78 17 discriminator 2
 	mov	edx, DWORD PTR 1220[rbp]
 	mov	eax, DWORD PTR -36[rbp]
 	cmp	edx, eax
 	jb	.L15
 .LBE4:
-	.loc 1 81 10
+	.loc 1 82 10
 	mov	eax, 0
-	.loc 1 82 1
+	.loc 1 83 1
 	add	rsp, 1360
 	pop	rbp
 	.cfi_restore 6
@@ -375,7 +375,7 @@ main:
 	.seh_proc	print_str
 print_str:
 .LFB130:
-	.loc 1 85 1
+	.loc 1 86 1
 	.cfi_startproc
 	push	rbp
 	.seh_pushreg	rbp
@@ -388,11 +388,11 @@ print_str:
 	.seh_stackalloc	32
 	.seh_endprologue
 	mov	QWORD PTR 16[rbp], rcx
-	.loc 1 86 3
+	.loc 1 87 3
 	mov	rax, QWORD PTR 16[rbp]
 	mov	rcx, rax
 	call	puts
-	.loc 1 87 1
+	.loc 1 88 1
 	nop
 	add	rsp, 32
 	pop	rbp
@@ -411,7 +411,7 @@ print_str:
 	.seh_proc	print_chars
 print_chars:
 .LFB131:
-	.loc 1 90 1
+	.loc 1 92 1
 	.cfi_startproc
 	push	rbp
 	.seh_pushreg	rbp
@@ -424,36 +424,36 @@ print_chars:
 	.seh_stackalloc	48
 	.seh_endprologue
 	mov	QWORD PTR 16[rbp], rcx
-	.loc 1 91 7
+	.loc 1 93 7
 	mov	DWORD PTR -4[rbp], 0
-	.loc 1 92 8
+	.loc 1 94 8
 	jmp	.L19
 .L20:
-	.loc 1 94 24
+	.loc 1 96 24
 	mov	eax, DWORD PTR -4[rbp]
 	cdqe
 	mov	rdx, QWORD PTR 16[rbp]
 	add	rax, rdx
 	movzx	eax, BYTE PTR [rax]
-	.loc 1 94 5
+	.loc 1 96 5
 	movsx	eax, al
 	mov	edx, eax
 	lea	rax, .LC10[rip]
 	mov	rcx, rax
 	call	printf
-	.loc 1 95 6
+	.loc 1 97 6
 	add	DWORD PTR -4[rbp], 1
 .L19:
-	.loc 1 92 14
+	.loc 1 94 14
 	mov	eax, DWORD PTR -4[rbp]
 	cdqe
 	mov	rdx, QWORD PTR 16[rbp]
 	add	rax, rdx
 	movzx	eax, BYTE PTR [rax]
-	.loc 1 92 9
+	.loc 1 94 9
 	test	al, al
 	jne	.L20
-	.loc 1 97 1
+	.loc 1 99 1
 	nop
 	nop
 	add	rsp, 48
@@ -473,7 +473,7 @@ print_chars:
 	.seh_proc	print_uint32_arr
 print_uint32_arr:
 .LFB132:
-	.loc 1 100 1
+	.loc 1 102 1
 	.cfi_startproc
 	push	rbp
 	.seh_pushreg	rbp
@@ -487,32 +487,32 @@ print_uint32_arr:
 	.seh_endprologue
 	mov	QWORD PTR 16[rbp], rcx
 	mov	DWORD PTR 24[rbp], edx
-	.loc 1 101 7
+	.loc 1 103 7
 	mov	DWORD PTR -4[rbp], 0
-	.loc 1 102 8
+	.loc 1 104 8
 	jmp	.L22
 .L23:
-	.loc 1 104 29
+	.loc 1 106 29
 	mov	eax, DWORD PTR -4[rbp]
 	cdqe
 	lea	rdx, 0[0+rax*4]
 	mov	rax, QWORD PTR 16[rbp]
 	add	rax, rdx
-	.loc 1 104 5
+	.loc 1 106 5
 	mov	eax, DWORD PTR [rax]
 	mov	edx, eax
 	lea	rax, .LC11[rip]
 	mov	rcx, rax
 	call	printf
-	.loc 1 105 8
+	.loc 1 107 8
 	sub	DWORD PTR 24[rbp], 1
-	.loc 1 106 6
+	.loc 1 108 6
 	add	DWORD PTR -4[rbp], 1
 .L22:
-	.loc 1 102 9
+	.loc 1 104 9
 	cmp	DWORD PTR 24[rbp], 0
 	jne	.L23
-	.loc 1 108 1
+	.loc 1 110 1
 	nop
 	nop
 	add	rsp, 48
@@ -796,7 +796,7 @@ print_uint32_arr:
 	.byte	0
 	.uleb128 0xc
 	.ascii "print_uint32_arr\0"
-	.byte	0x63
+	.byte	0x65
 	.quad	.LFB132
 	.quad	.LFE132-.LFB132
 	.uleb128 0x1
@@ -804,7 +804,7 @@ print_uint32_arr:
 	.long	0x36a
 	.uleb128 0x7
 	.ascii "p_uint\0"
-	.byte	0x63
+	.byte	0x65
 	.byte	0x2b
 	.long	0x36a
 	.uleb128 0x2
@@ -812,7 +812,7 @@ print_uint32_arr:
 	.sleb128 0
 	.uleb128 0x7
 	.ascii "len\0"
-	.byte	0x63
+	.byte	0x65
 	.byte	0x40
 	.long	0xc9
 	.uleb128 0x2
@@ -820,7 +820,7 @@ print_uint32_arr:
 	.sleb128 8
 	.uleb128 0x4
 	.ascii "i\0"
-	.byte	0x65
+	.byte	0x67
 	.byte	0x7
 	.long	0xb6
 	.uleb128 0x2
@@ -831,7 +831,7 @@ print_uint32_arr:
 	.long	0xd9
 	.uleb128 0xc
 	.ascii "print_chars\0"
-	.byte	0x59
+	.byte	0x5b
 	.quad	.LFB131
 	.quad	.LFE131-.LFB131
 	.uleb128 0x1
@@ -839,7 +839,7 @@ print_uint32_arr:
 	.long	0x3b0
 	.uleb128 0x7
 	.ascii "c_str\0"
-	.byte	0x59
+	.byte	0x5b
 	.byte	0x1e
 	.long	0x2e5
 	.uleb128 0x2
@@ -847,7 +847,7 @@ print_uint32_arr:
 	.sleb128 0
 	.uleb128 0x4
 	.ascii "i\0"
-	.byte	0x5b
+	.byte	0x5d
 	.byte	0x7
 	.long	0xb6
 	.uleb128 0x2
@@ -856,7 +856,7 @@ print_uint32_arr:
 	.byte	0
 	.uleb128 0xc
 	.ascii "print_str\0"
-	.byte	0x54
+	.byte	0x55
 	.quad	.LFB130
 	.quad	.LFE130-.LFB130
 	.uleb128 0x1
@@ -864,7 +864,7 @@ print_uint32_arr:
 	.long	0x3e3
 	.uleb128 0x7
 	.ascii "c_str\0"
-	.byte	0x54
+	.byte	0x55
 	.byte	0x1c
 	.long	0x2e5
 	.uleb128 0x2
@@ -884,7 +884,7 @@ print_uint32_arr:
 	.long	0x49c
 	.uleb128 0x4
 	.ascii "st\0"
-	.byte	0x27
+	.byte	0x30
 	.byte	0xb
 	.long	0x49c
 	.uleb128 0x3
@@ -892,7 +892,7 @@ print_uint32_arr:
 	.sleb128 -1280
 	.uleb128 0x4
 	.ascii "st_cnt\0"
-	.byte	0x28
+	.byte	0x31
 	.byte	0x10
 	.long	0xc9
 	.uleb128 0x3
@@ -900,7 +900,7 @@ print_uint32_arr:
 	.sleb128 -1284
 	.uleb128 0x4
 	.ascii "st_list\0"
-	.byte	0x33
+	.byte	0x3e
 	.byte	0x10
 	.long	0x1ee
 	.uleb128 0x3
@@ -912,7 +912,7 @@ print_uint32_arr:
 	.long	0x45b
 	.uleb128 0x4
 	.ascii "i\0"
-	.byte	0x31
+	.byte	0x3a
 	.byte	0xb
 	.long	0xb6
 	.uleb128 0x2
@@ -925,7 +925,7 @@ print_uint32_arr:
 	.long	0x47d
 	.uleb128 0x4
 	.ascii "i\0"
-	.byte	0x3e
+	.byte	0x49
 	.byte	0xb
 	.long	0xb6
 	.uleb128 0x2
@@ -937,7 +937,7 @@ print_uint32_arr:
 	.quad	.LBE4-.LBB4
 	.uleb128 0x4
 	.ascii "i\0"
-	.byte	0x41
+	.byte	0x4e
 	.byte	0xb
 	.long	0xb6
 	.uleb128 0x2

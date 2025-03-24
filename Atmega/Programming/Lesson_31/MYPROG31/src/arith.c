@@ -1,0 +1,34 @@
+#include "arith.h"
+//----------------------------------------------
+extern float yf, zf;
+//----------------------------------------------
+float my_div(void)
+{
+  return yf/zf;
+}
+//----------------------------------------------
+float my_sum(void)
+{
+  return yf+zf;
+}
+//----------------------------------------------
+void my_sum_p(float a_f, float b_f, float *sum_f)
+{
+  *sum_f = a_f + b_f;
+}
+//----------------------------------------------
+void my_div_p(float a_f, float b_f, float *div_f)
+{
+  *div_f = a_f / b_f;
+}
+//----------------------------------------------
+void my_mul_p(float a_f, float b_f, float *mul_f)
+{
+  *mul_f = a_f * b_f;
+}
+//----------------------------------------------
+void my_sub_p(float a_f, float b_f, float *sub_f)
+{
+  *sub_f = a_f - b_f;
+}
+//----------------------------------------------

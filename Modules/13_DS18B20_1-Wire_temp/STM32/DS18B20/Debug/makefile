@@ -87,8 +87,8 @@ all: main-build
 main-build: DS18B20.elf secondary-outputs
 
 # Tool invocations
-DS18B20.elf DS18B20.map: $(OBJS) $(USER_OBJS) E:\Projects\Micros\Micros\Modules\13_DS18B20_1-Wire_temp\STM32\DS18B20\STM32F103C6TX_FLASH.ld makefile objects.list $(OPTIONAL_TOOL_DEPS)
-	arm-none-eabi-g++ -o "DS18B20.elf" @"objects.list" $(USER_OBJS) $(LIBS) -mcpu=cortex-m3 -T"E:\Projects\Micros\Micros\Modules\13_DS18B20_1-Wire_temp\STM32\DS18B20\STM32F103C6TX_FLASH.ld" --specs=nosys.specs -Wl,-Map="DS18B20.map" -Wl,--gc-sections -static --specs=nano.specs -mfloat-abi=soft -mthumb -Wl,--start-group -lc -lm -lstdc++ -lsupc++ -Wl,--end-group
+DS18B20.elf DS18B20.map: $(OBJS) $(USER_OBJS) D:\MGU\Micros\Micros\Modules\13_DS18B20_1-Wire_temp\STM32\DS18B20\STM32F103C6TX_FLASH.ld makefile objects.list $(OPTIONAL_TOOL_DEPS)
+	arm-none-eabi-g++ -o "DS18B20.elf" @"objects.list" $(USER_OBJS) $(LIBS) -mcpu=cortex-m3 -T"D:\MGU\Micros\Micros\Modules\13_DS18B20_1-Wire_temp\STM32\DS18B20\STM32F103C6TX_FLASH.ld" --specs=nosys.specs -Wl,-Map="DS18B20.map" -Wl,--gc-sections -static --specs=nano.specs -mfloat-abi=soft -mthumb -Wl,--start-group -lc -lm -lstdc++ -lsupc++ -Wl,--end-group
 	@echo 'Finished building target: $@'
 	@echo ' '
 

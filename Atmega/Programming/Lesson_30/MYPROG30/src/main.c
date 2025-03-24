@@ -18,15 +18,22 @@ int main()
   unsigned int *print_str_addr;
   print_str_addr = (unsigned int *)print_str;
   printf("0x%08X\n",(unsigned int)print_str_addr);
+
+
+  /*
   void (*print_str_new)(const char *c_str);
   print_str_new = (void*)print_str_addr;
   print_str_new("Hello, World!!!");
-  void (*print_str_new)(const char *c_str)
-  print_str_new = print_str;
+  */
+
+  /*
+  void (*print_str_new)(const char *c_str);
+  print_str_new =  print_str;
   print_str_new("Hello, World!!!");
   void (*print_str_new)(const char *c_str) = print_str;
   print_str_new("Hello, World!!!");
   */
+
   /*
   void (*arith_operations[4])(float, float, float *) = {my_sum_p, my_sub_p, my_mul_p, my_div_p};
   float a = 3., b = 5., res = .0;
@@ -36,6 +43,8 @@ int main()
     printf("Valye oeration %hd is %f\n", i, res);
   }
   */
+
+
   student st[20];
   unsigned int st_cnt = 0;
   if(st_cnt<20) addStudent(st+st_cnt, &st_cnt, "Иванов Иван Иванович", 2, 18);
@@ -48,6 +57,8 @@ int main()
   if(st_cnt<20) addStudent(st+st_cnt, &st_cnt, "Трухин Сергей Сергеевич", 5, 23);
   for(int i=0; i<st_cnt; i++) {printf("%d\t", i); printStudent(st+i);}
   printf("\n");
+
+
   student_list st_list =
   {
     st,
@@ -61,21 +72,11 @@ int main()
   st_list.modifyName(st+2, "Петрова Елена Павловна");
   for(int i=0; i<st_cnt; i++) {printf("%d\t", i); printStudent(st+i);}
   printf("\n");
+
+  /**/
   st_list.deletePos(st, 4, &st_cnt);
   for(int i=0; i<st_cnt; i++) {printf("%d\t", i); printStudent(st+i);}
-
-
-
-
-
-
-
-
-
-
-
-
-
+  /**/
 
 
   return 0; //Return an integer from a function
@@ -85,6 +86,7 @@ void print_str(const char *c_str)
 {
   printf("%s\n",c_str);
 }
+
 //--------------------------------------------------------
 void print_chars(const char *c_str)
 {
