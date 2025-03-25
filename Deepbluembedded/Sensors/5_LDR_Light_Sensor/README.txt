@@ -1,0 +1,1 @@
+https://microdigisoft.com/control-led-using-ldr-with-arduino-in-proteus/

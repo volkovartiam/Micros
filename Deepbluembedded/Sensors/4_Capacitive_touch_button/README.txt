@@ -1,0 +1,1 @@
+https://microdigisoft.com/capacitive-touch-sensor-with-arduino-in-proteus-software/
