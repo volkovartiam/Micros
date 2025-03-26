@@ -93,13 +93,17 @@ int main(void)
 
   /* USER CODE END 2 */
 
+  uint8_t MSG[35] = {'\0'};
+  uint8_t X = 0;
+
   /* Infinite loop */
   /* USER CODE BEGIN WHILE */
   while (1)
   {
-    /* USER CODE END WHILE */
-
-    /* USER CODE BEGIN 3 */
+	sprintf(MSG, "Hello Dudes! Tracing X = %d\r\n", X);
+	HAL_UART_Transmit(&huart1, MSG, sizeof(MSG), 100);
+	HAL_Delay(500);
+	X++;
   }
   /* USER CODE END 3 */
 }

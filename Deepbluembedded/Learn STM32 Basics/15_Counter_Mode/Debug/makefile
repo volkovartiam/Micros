@@ -84,8 +84,8 @@ all: main-build
 main-build: 15_Counter_Mode.elf secondary-outputs
 
 # Tool invocations
-15_Counter_Mode.elf 15_Counter_Mode.map: $(OBJS) $(USER_OBJS) D:\MGU\Micros\Micros\Deepbluembedded\Learn\ STM32\ Basics\15_Counter_Mode\STM32F103C6TX_FLASH.ld makefile objects.list $(OPTIONAL_TOOL_DEPS)
-	arm-none-eabi-g++ -o "15_Counter_Mode.elf" @"objects.list" $(USER_OBJS) $(LIBS) -mcpu=cortex-m3 -T"D:\MGU\Micros\Micros\Deepbluembedded\Learn STM32 Basics\15_Counter_Mode\STM32F103C6TX_FLASH.ld" --specs=nosys.specs -Wl,-Map="15_Counter_Mode.map" -Wl,--gc-sections -static --specs=nano.specs -mfloat-abi=soft -mthumb -Wl,--start-group -lc -lm -lstdc++ -lsupc++ -Wl,--end-group
+15_Counter_Mode.elf 15_Counter_Mode.map: $(OBJS) $(USER_OBJS) E:\Projects\Micros\Micros\Deepbluembedded\Learn\ STM32\ Basics\15_Counter_Mode\STM32F103C6TX_FLASH.ld makefile objects.list $(OPTIONAL_TOOL_DEPS)
+	arm-none-eabi-g++ -o "15_Counter_Mode.elf" @"objects.list" $(USER_OBJS) $(LIBS) -mcpu=cortex-m3 -T"E:\Projects\Micros\Micros\Deepbluembedded\Learn STM32 Basics\15_Counter_Mode\STM32F103C6TX_FLASH.ld" --specs=nosys.specs -Wl,-Map="15_Counter_Mode.map" -Wl,--gc-sections -static --specs=nano.specs -mfloat-abi=soft -mthumb -Wl,--start-group -lc -lm -lstdc++ -lsupc++ -Wl,--end-group
 	@echo 'Finished building target: $@'
 	@echo ' '
 
