@@ -14,3 +14,11 @@ Arduino <br>
 - [wokwi](https://docs.wokwi.com/parts/wokwi-rgb-led)
 - [arduino](https://www.arduino.cc/)
 
+
+
+
+// https://www.viralsciencecreativity.com/
+
+
+
+https://refcircuit.com/articles/20-how-to-open-terminal-in-stm32cubeide-without-install.html

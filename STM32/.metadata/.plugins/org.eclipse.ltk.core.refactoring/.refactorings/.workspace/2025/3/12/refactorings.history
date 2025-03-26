@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">
+<refactoring comment="Delete resource &apos;Ecual_driver_integration/util&apos;" deleteContents="false" description="Delete resource &apos;Ecual_driver_integration/util&apos;" element1="/Ecual_driver_integration/util" flags="7" id="org.eclipse.ltk.core.refactoring.delete.resources" resources="1" stamp="1742629776183"/>
+</session>

@@ -1,0 +1,10 @@
+19:34:44 **** Incremental Build of configuration Debug for project 31_Potentiometer_Reading ****
+make -j4 all 
+arm-none-eabi-size  31_Potentiometer_Reading.elf 
+   text	   data	    bss	    dec	    hex	filename
+  11728	     12	   1692	  13432	   3478	31_Potentiometer_Reading.elf
+Finished building: default.size.stdout
+ 
+
+19:34:45 Build Finished. 0 errors, 0 warnings. (took 709ms)
+
