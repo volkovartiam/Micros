@@ -118,7 +118,7 @@ int main(void)
 void HAL_ADC_ConvCpltCallback(ADC_HandleTypeDef* hadc)
 {
     // Read & Update The ADC Result
-    AD_RES = HAL_ADC_GetValue(&hadc1);
+    //AD_RES = HAL_ADC_GetValue(&hadc1);
 }
 
 
