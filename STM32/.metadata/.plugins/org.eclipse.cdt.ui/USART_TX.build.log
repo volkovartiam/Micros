@@ -1,19 +1,10 @@
-20:47:11 **** Build of configuration Debug for project USART_TX ****
+20:30:24 **** Build of configuration Debug for project USART_TX ****
 make -j4 all 
-arm-none-eabi-g++ -o "USART_TX.elf" @"objects.list"   -mcpu=cortex-m3 -T"E:\Projects\Micros\Micros\STM32\13_USART_TX\USART_TX\STM32F103C6TX_FLASH.ld" --specs=nosys.specs -Wl,-Map="USART_TX.map" -Wl,--gc-sections -static --specs=nano.specs -mfloat-abi=soft -mthumb -Wl,--start-group -lc -lm -lstdc++ -lsupc++ -Wl,--end-group
-Finished building target: USART_TX.elf
- 
 arm-none-eabi-size  USART_TX.elf 
-arm-none-eabi-objdump -h -S USART_TX.elf  > "USART_TX.list"
    text	   data	    bss	    dec	    hex	filename
    8456	     12	   1644	  10112	   2780	USART_TX.elf
-arm-none-eabi-objcopy  -O ihex USART_TX.elf  "USART_TX.hex"
 Finished building: default.size.stdout
  
-Finished building: USART_TX.hex
- 
-Finished building: USART_TX.list
- 
 
-20:47:13 Build Finished. 0 errors, 0 warnings. (took 1s.569ms)
+20:30:24 Build Finished. 0 errors, 0 warnings. (took 640ms)
 

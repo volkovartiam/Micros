@@ -1,10 +1,19 @@
-19:27:38 **** Incremental Build of configuration Debug for project Dinamic_IND ****
+20:29:50 **** Build of configuration Debug for project Dinamic_IND ****
 make -j4 all 
+arm-none-eabi-g++ -o "Dinamic_IND.elf" @"objects.list"   -mcpu=cortex-m3 -T"E:\Projects\Micros\Micros\STM32\12_Dinamic_IND\Dinamic_IND\STM32F103C6TX_FLASH.ld" --specs=nosys.specs -Wl,-Map="Dinamic_IND.map" -Wl,--gc-sections -static --specs=nano.specs -mfloat-abi=soft -mthumb -Wl,--start-group -lc -lm -lstdc++ -lsupc++ -Wl,--end-group
+Finished building target: Dinamic_IND.elf
+ 
 arm-none-eabi-size  Dinamic_IND.elf 
+arm-none-eabi-objdump -h -S Dinamic_IND.elf  > "Dinamic_IND.list"
+arm-none-eabi-objcopy  -O ihex Dinamic_IND.elf  "Dinamic_IND.hex"
    text	   data	    bss	    dec	    hex	filename
   10120	     20	   1644	  11784	   2e08	Dinamic_IND.elf
 Finished building: default.size.stdout
  
+Finished building: Dinamic_IND.hex
+ 
+Finished building: Dinamic_IND.list
+ 
 
-19:27:39 Build Finished. 0 errors, 0 warnings. (took 709ms)
+20:29:51 Build Finished. 0 errors, 0 warnings. (took 1s.363ms)
 

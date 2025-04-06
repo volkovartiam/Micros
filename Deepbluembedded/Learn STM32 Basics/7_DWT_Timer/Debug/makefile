@@ -85,8 +85,8 @@ all: main-build
 main-build: 7_DWT_Timer.elf secondary-outputs
 
 # Tool invocations
-7_DWT_Timer.elf 7_DWT_Timer.map: $(OBJS) $(USER_OBJS) D:\MGU\Micros\Micros\Deepbluembedded\Learn\ STM32\ Basics\7_DWT_Timer\STM32F103C6TX_FLASH.ld makefile objects.list $(OPTIONAL_TOOL_DEPS)
-	arm-none-eabi-g++ -o "7_DWT_Timer.elf" @"objects.list" $(USER_OBJS) $(LIBS) -mcpu=cortex-m3 -T"D:\MGU\Micros\Micros\Deepbluembedded\Learn STM32 Basics\7_DWT_Timer\STM32F103C6TX_FLASH.ld" --specs=nosys.specs -Wl,-Map="7_DWT_Timer.map" -Wl,--gc-sections -static --specs=nano.specs -mfloat-abi=soft -mthumb -Wl,--start-group -lc -lm -lstdc++ -lsupc++ -Wl,--end-group
+7_DWT_Timer.elf 7_DWT_Timer.map: $(OBJS) $(USER_OBJS) E:\Projects\Micros\Micros\Deepbluembedded\Learn\ STM32\ Basics\7_DWT_Timer\STM32F103C6TX_FLASH.ld makefile objects.list $(OPTIONAL_TOOL_DEPS)
+	arm-none-eabi-g++ -o "7_DWT_Timer.elf" @"objects.list" $(USER_OBJS) $(LIBS) -mcpu=cortex-m3 -T"E:\Projects\Micros\Micros\Deepbluembedded\Learn STM32 Basics\7_DWT_Timer\STM32F103C6TX_FLASH.ld" --specs=nosys.specs -Wl,-Map="7_DWT_Timer.map" -Wl,--gc-sections -static --specs=nano.specs -mfloat-abi=soft -mthumb -Wl,--start-group -lc -lm -lstdc++ -lsupc++ -Wl,--end-group
 	@echo 'Finished building target: $@'
 	@echo ' '
 

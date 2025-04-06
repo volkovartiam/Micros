@@ -1,4 +1,4 @@
-22:54:44 **** Incremental Build of configuration Debug for project HAL_SPI_74HC595 ****
+20:29:53 **** Build of configuration Debug for project HAL_SPI_74HC595 ****
 make -j4 all 
 arm-none-eabi-size  HAL_SPI_74HC595.elf 
    text	   data	    bss	    dec	    hex	filename
@@ -6,5 +6,5 @@ arm-none-eabi-size  HAL_SPI_74HC595.elf
 Finished building: default.size.stdout
  
 
-22:54:46 Build Finished. 0 errors, 0 warnings. (took 1s.195ms)
+20:29:54 Build Finished. 0 errors, 0 warnings. (took 551ms)
 

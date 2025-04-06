@@ -89,8 +89,8 @@ all: main-build
 main-build: Sensor_2_LM35.elf secondary-outputs
 
 # Tool invocations
-Sensor_2_LM35.elf Sensor_2_LM35.map: $(OBJS) $(USER_OBJS) D:\MGU\Micros\Micros\Deepbluembedded\Sensors\2_LM35_Temp_Sensor\LM35\STM32F103C6TX_FLASH.ld makefile objects.list $(OPTIONAL_TOOL_DEPS)
-	arm-none-eabi-g++ -o "Sensor_2_LM35.elf" @"objects.list" $(USER_OBJS) $(LIBS) -mcpu=cortex-m3 -T"D:\MGU\Micros\Micros\Deepbluembedded\Sensors\2_LM35_Temp_Sensor\LM35\STM32F103C6TX_FLASH.ld" --specs=nosys.specs -Wl,-Map="Sensor_2_LM35.map" -Wl,--gc-sections -static --specs=nano.specs -mfloat-abi=soft -mthumb -Wl,--start-group -lc -lm -lstdc++ -lsupc++ -Wl,--end-group
+Sensor_2_LM35.elf Sensor_2_LM35.map: $(OBJS) $(USER_OBJS) E:\Projects\Micros\Micros\Deepbluembedded\Sensors\2_LM35_Temp_Sensor\LM35\STM32F103C6TX_FLASH.ld makefile objects.list $(OPTIONAL_TOOL_DEPS)
+	arm-none-eabi-g++ -o "Sensor_2_LM35.elf" @"objects.list" $(USER_OBJS) $(LIBS) -mcpu=cortex-m3 -T"E:\Projects\Micros\Micros\Deepbluembedded\Sensors\2_LM35_Temp_Sensor\LM35\STM32F103C6TX_FLASH.ld" --specs=nosys.specs -Wl,-Map="Sensor_2_LM35.map" -Wl,--gc-sections -static --specs=nano.specs -mfloat-abi=soft -mthumb -Wl,--start-group -lc -lm -lstdc++ -lsupc++ -Wl,--end-group
 	@echo 'Finished building target: $@'
 	@echo ' '
 

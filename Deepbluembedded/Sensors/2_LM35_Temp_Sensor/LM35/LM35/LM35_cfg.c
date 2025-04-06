@@ -18,6 +18,6 @@ const LM35_CfgType LM35_CfgParam[SENSORS_NUM] =
     {
 	    GPIOA,
 		ADC1,
-		ADC_CHANNEL_7
+		ADC_CHANNEL_0
 	}
 };

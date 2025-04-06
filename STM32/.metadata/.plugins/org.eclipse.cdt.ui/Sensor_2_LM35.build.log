@@ -1,0 +1,10 @@
+21:32:27 **** Incremental Build of configuration Debug for project Sensor_2_LM35 ****
+make -j4 all 
+arm-none-eabi-size  Sensor_2_LM35.elf 
+   text	   data	    bss	    dec	    hex	filename
+  16988	     92	   2156	  19236	   4b24	Sensor_2_LM35.elf
+Finished building: default.size.stdout
+ 
+
+21:32:28 Build Finished. 0 errors, 0 warnings. (took 523ms)
+

@@ -87,8 +87,8 @@ all: main-build
 main-build: Dinamic_IND.elf secondary-outputs
 
 # Tool invocations
-Dinamic_IND.elf Dinamic_IND.map: $(OBJS) $(USER_OBJS) D:\MGU\Micros\Micros\STM32\12_Dinamic_IND\Dinamic_IND\STM32F103C6TX_FLASH.ld makefile objects.list $(OPTIONAL_TOOL_DEPS)
-	arm-none-eabi-g++ -o "Dinamic_IND.elf" @"objects.list" $(USER_OBJS) $(LIBS) -mcpu=cortex-m3 -T"D:\MGU\Micros\Micros\STM32\12_Dinamic_IND\Dinamic_IND\STM32F103C6TX_FLASH.ld" --specs=nosys.specs -Wl,-Map="Dinamic_IND.map" -Wl,--gc-sections -static --specs=nano.specs -mfloat-abi=soft -mthumb -Wl,--start-group -lc -lm -lstdc++ -lsupc++ -Wl,--end-group
+Dinamic_IND.elf Dinamic_IND.map: $(OBJS) $(USER_OBJS) E:\Projects\Micros\Micros\STM32\12_Dinamic_IND\Dinamic_IND\STM32F103C6TX_FLASH.ld makefile objects.list $(OPTIONAL_TOOL_DEPS)
+	arm-none-eabi-g++ -o "Dinamic_IND.elf" @"objects.list" $(USER_OBJS) $(LIBS) -mcpu=cortex-m3 -T"E:\Projects\Micros\Micros\STM32\12_Dinamic_IND\Dinamic_IND\STM32F103C6TX_FLASH.ld" --specs=nosys.specs -Wl,-Map="Dinamic_IND.map" -Wl,--gc-sections -static --specs=nano.specs -mfloat-abi=soft -mthumb -Wl,--start-group -lc -lm -lstdc++ -lsupc++ -Wl,--end-group
 	@echo 'Finished building target: $@'
 	@echo ' '
 

@@ -13,10 +13,11 @@
 #define F_CPU = 12000000L
 
 void segchar(unsigned char seg);
+void timer_init(void);
 
 unsigned char R1=0, R2=0, R3=0, R4=0;
 unsigned char n_count=0;
-int i = 1234;
+int i = 0;
 
 void segchar(unsigned char seg)
 {
@@ -36,73 +37,57 @@ void segchar(unsigned char seg)
 }
 
 
-void timer_ini(void)
+void timer_init(void)
 {
 	TCCR1B |= (1<<WGM12); // устанавливаем режим —“— (сброс по совпадению)
 	TIMSK1 |= (1<<OCIE1A);	//устанавливаем бит разрешени€ прерывани€ 1ого счетчика по совпадению с OCR1A(H и L)
-	OCR1AH = 0b00001111; //записываем в регистр число дл€ сравнени€
-	OCR1AL = 0b01000010;
-	//TCCR1B |= (1<<CS11);//установим делитель.
+	OCR1AH = 0b00000001; //записываем в регистр число дл€ сравнени€
+	OCR1AL = 0b00000000;
+	TCCR1B |= (1<<CS12);//установим делитель.
+		
 }
 //--------------------------------------------
 
 //--------------------------------------------
 ISR (TIMER1_COMPA_vect)
 {
-	ledprint(i);
-	change_i();
+	ledprint(4321);
 }
 
 
-void ledprint(int number)
+void ledprint(unsigned int number)
 {
-	int R0 = number%10;
-	int R1 = number%100/10;
-	int R2 = number%1000/100;
-	int R3 = number/1000;
 
-	int delayTimer = 5;
-	
-	segchar(R0);
-	PORTB&=~(1<<PORTB0);
-	PORTB|=(1<<PORTB0);
-	_delay_ms(delayTimer);
-/*
+	int R3 = number%10;
+	int R2 = number%100/10;
+	int R1 = number%1000/100;
+	int R0 = number/1000;
 
-	segchar(R1);
-	reset_ON_LED_0;
-	reset_ON_LED_1;
-	set_ON_LED_2;
-	reset_ON_LED_3;
-	_delay_ms(delayTimer);
-
-	segchar(R2);
-	reset_ON_LED_0;
-	set_ON_LED_1;
-	reset_ON_LED_2;
-	reset_ON_LED_3;
-	_delay_ms(delayTimer);
-	
-	segchar(R3);
-	set_ON_LED_0;
-	reset_ON_LED_1;
-	reset_ON_LED_2;
-	reset_ON_LED_3;
-	_delay_ms(delayTimer);
-	*/
-}
-
-
-void change_i(){
-	if(i >= 9999){
-		i = 0;
-		} else {
-		i++;
+	if(i==0){
+		segchar(R0);
+		PORTB=PORTB0;
+		PORTB|=(1<<PORTB);	
 	}
-
+	if(i==1){
+		segchar(R1);
+		PORTB=PORTB0;
+		PORTB|=(1<<PORTB1);	
+	}
+	if(i==2){
+		segchar(R2);
+		PORTB=PORTB0;
+		PORTB|=(1<<PORTB2);
+	}
+	if(i==3){
+		segchar(R3);
+		PORTB=PORTB0;
+		PORTB|=(1<<PORTB3);
+	}
+	i++;
+	if(i>=4){
+		i=0;
+	}
 }
-
-
 
 
 int main(void)
@@ -114,20 +99,11 @@ int main(void)
 	DDRB = 0b00001111;
 	PORTB = 0b00000000;
 
-	
-    /* Replace with your application code */
+	timer_init();
+	sei();
+
     while (1) 
     {
-		
-
-		/*	
-		for (int i = 0; i < 10; i++)
-		{
-			segchar(i);
-			_delay_ms(500);
-		}
-		*/
-		
     }
 }
 

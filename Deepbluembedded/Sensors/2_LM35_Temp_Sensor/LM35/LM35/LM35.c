@@ -54,7 +54,7 @@ void LM35_Init(uint16_t LM35_Instance)
 		HAL_ADCEx_Calibration_Start(&hadc);
 		calibrated = 1;
 	}
-	DWT_Delay_Init();
+	//DWT_Delay_Init();
 }
 
 

@@ -9,6 +9,8 @@
 		<item key="SmartImportRootWizardPage.STORE_NESTED_PROJECTS" value="true"/>
 		<item key="SmartImportRootWizardPage.STORE_CONFIGURE_NATURES" value="true"/>
 		<list key="org.eclipse.ui.internal.wizards.datatransfer.SmartImportRootWizardPage.knownSources">
+			<item value="E:\Projects\Micros\Micros\Deepbluembedded\Learn STM32 Basics\7_DWT_Timer"/>
+			<item value="E:\Projects\Micros\Micros\Deepbluembedded\Sensors\2_LM35_Temp_Sensor\LM35"/>
 			<item value="E:\Projects\Micros\Micros\Deepbluembedded\Learn STM32 Basics\15_2_Counter_Mode_Ex2"/>
 			<item value="E:\Projects\Micros\Micros\STM32\6_7_LCD 20x4 4bit\LCD_16x2"/>
 			<item value="E:\Projects\Micros\Micros\Deepbluembedded\Learn STM32 Basics\11_12_Interrupts\External_Interrupt_Example\External_Interrupt_Example"/>

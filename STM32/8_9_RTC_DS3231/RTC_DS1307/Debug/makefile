@@ -89,8 +89,8 @@ all: main-build
 main-build: RTC_DS1307.elf secondary-outputs
 
 # Tool invocations
-RTC_DS1307.elf RTC_DS1307.map: $(OBJS) $(USER_OBJS) D:\MGU\Micros\Micros\STM32\8_9_RTC_DS3231\RTC_DS1307\STM32F103C6TX_FLASH.ld makefile objects.list $(OPTIONAL_TOOL_DEPS)
-	arm-none-eabi-g++ -o "RTC_DS1307.elf" @"objects.list" $(USER_OBJS) $(LIBS) -mcpu=cortex-m3 -T"D:\MGU\Micros\Micros\STM32\8_9_RTC_DS3231\RTC_DS1307\STM32F103C6TX_FLASH.ld" --specs=nosys.specs -Wl,-Map="RTC_DS1307.map" -Wl,--gc-sections -static --specs=nano.specs -mfloat-abi=soft -mthumb -Wl,--start-group -lc -lm -lstdc++ -lsupc++ -Wl,--end-group
+RTC_DS1307.elf RTC_DS1307.map: $(OBJS) $(USER_OBJS) E:\Projects\Micros\Micros\STM32\8_9_RTC_DS3231\RTC_DS1307\STM32F103C6TX_FLASH.ld makefile objects.list $(OPTIONAL_TOOL_DEPS)
+	arm-none-eabi-g++ -o "RTC_DS1307.elf" @"objects.list" $(USER_OBJS) $(LIBS) -mcpu=cortex-m3 -T"E:\Projects\Micros\Micros\STM32\8_9_RTC_DS3231\RTC_DS1307\STM32F103C6TX_FLASH.ld" --specs=nosys.specs -Wl,-Map="RTC_DS1307.map" -Wl,--gc-sections -static --specs=nano.specs -mfloat-abi=soft -mthumb -Wl,--start-group -lc -lm -lstdc++ -lsupc++ -Wl,--end-group
 	@echo 'Finished building target: $@'
 	@echo ' '
 
