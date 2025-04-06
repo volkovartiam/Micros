@@ -6,10 +6,13 @@
  */ 
 
 #include "main.h"
+#include "usart.h"
 //-----------------------------------------------------------
 int main(void)
 {
-	 USART_Init (8);//115200
+	
+	USART_Init (BAUD_9600);
+
 	while(1)
 	{
 		
