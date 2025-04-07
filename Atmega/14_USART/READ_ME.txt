@@ -6,3 +6,5 @@
 Не запускал на прием 
 
 // https://gist.github.com/lrvdijk/803189
+
+https://www.arnabkumardas.com/arduino-tutorial/usart-programming/
