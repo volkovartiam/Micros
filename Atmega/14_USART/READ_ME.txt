@@ -8,3 +8,5 @@
 // https://gist.github.com/lrvdijk/803189
 
 https://www.arnabkumardas.com/arduino-tutorial/usart-programming/
+
+https://www.youtube.com/watch?v=xJKoc_TI2sw

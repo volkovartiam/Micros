@@ -6,6 +6,8 @@
  */ 
 
 
+/*
+
 #define F_CPU 16000000UL // Defining the CPU Frequency
 
 #include <avr/io.h>      // Contains all the I/O Register Macros
@@ -89,9 +91,9 @@ ISR(USART_RX_vect)
 
 }
 
+*/
 
 
-/*
 #include <avr/io.h>
 
 #include "main.h"
@@ -124,13 +126,14 @@ int main(void)
 ISR(USART_RX_vect)
 {
 	
+	/*
 	int b = 0;
 	b = UDR0;
 	
 	USART_Transmit(b);
 	USART_Transmit('R');
 	i++;
-	
+	*/
 
 	PORTB |= 1<<5;    // Writing HIGH to glow LED
 
@@ -147,4 +150,3 @@ ISR(USART_RX_vect)
 	
 }
 
-*/
