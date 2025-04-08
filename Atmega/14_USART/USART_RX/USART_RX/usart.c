@@ -4,64 +4,33 @@
  * Created: 07.04.2025 20:55:55
  *  Author: Artem
  */ 
-/*
- * usart.c
- *
- * Created: 04.04.2025 21:34:46
- *  Author: Artem
- */ 
 
 #include "usart.h"
 
-void USART_Init(unsigned int speed)
+
+void USART_Init(unsigned char baud)
 {
-	//Регистр UBRR0 задает скорость передачи данных 
-	UBRR0H = (unsigned char)(speed>>8);
-	UBRR0L = (unsigned char)speed;
+	UBRR0H = (unsigned char)(baud>>8);
+	UBRR0L = (unsigned char)baud;
 	
-	//Регистр UCSR0A
-	//RXC0 - получение данных 
-	//TXC0 - передача данных
-	//UDRE0 - флаг готовности передачи данных
-	//FE0 - frame error
-	//DOR0 - переполнение данных
-	//UPE0 - ошибка четности  
-	//U2X0 - удвоение скорости передачи данных
-	//MCMP - мультипроцессорный режим  
-	
-	//UCSR0A |= (1<<U2X0);			// Для удвоения частоты
-	
-	
-	//Регистр UCSR0B
-	//RXCIE0 - разрешение прерываний при данных
-	//TXCIE0 - разрешение прерываний при приеме данных
-	//UDRIE0 - резрешение прервываний при опустошении регистра
-	//RXEN0 - разрешение передачи данных
-	//TXEN0 - разрешение передачи данных
-	//UCSZ02 - бит задающий количество передваемых бит в кадре (совместно с UCSZ00, UCSZ01)
-	//RXB80 - для получения 9-го бита
-	//TXB80 - для передачи 9-го бита
+	/*
+	UCSR0C = ASYNCHRONOUS | PARITY_MODE | STOP_BIT | DATA_BIT;
+	ASYNCHRONOUS (0<<UMSEL00)
+	PARITY_MODE (0<<UPM00)
+	TWO_BIT (1<<USBS0)
+	EIGHT_BIT (3<<UCSZ00)
+	*/
 
-	UCSR0B |=(1<<RXCIE0)|(1<<RXEN0)|(1<<TXEN0);	//Включаем прием и передачу по USART
-
-
-	//Регистр UCSR0C	
-	//UMSEL01,
-	//UMSEL00 - UMSEL - задает режим работы (асинхронный, синхронный, SPI)
-	//UPM01
-	//UPM00, UPM - задает режим четности/нечетности
-	//USBS0 - задает количество стоп битов один/два
-	//UCSZ00  
-	//UCSZ01 - бит задающий количество передваемых бит в кадре
-	//UCPOL0 - бит полярности падающий/восходящий
-	
-//	UCSR0C |= (1<<UPM01)|(1<<UPM00)|(1<<UCSZ01)|(1<<UCSZ00);
+	UCSR0B |=(1<<RXCIE0)|(1<<RXEN0)|(1<<TXEN0);	
 	UCSR0C |= (1<<UCSZ01)|(1<<UCSZ00);
-	
+	sei();
 }
 
-void USART_Transmit( unsigned char data ) //Функция отправки данных
+
+void USART_Transmit(unsigned char data) 
 {
-	while ( !(UCSR0A & (1<<UDRE0)) ); //Ожидание опустошения буфера приема
-	UDR0 = data; //Начало передачи данных
+	while ( !(UCSR0A & (1<<UDRE0)) );{
+		UDR0 = data;
+	}
 }
+
