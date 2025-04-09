@@ -3,29 +3,31 @@ I2CLCD80.elf:     file format elf32-avr
 
 Sections:
 Idx Name          Size      VMA       LMA       File off  Algn
-  0 .text         0000026a  00000000  00000000  00000094  2**1
+  0 .text         00000268  00000000  00000000  00000094  2**1
                   CONTENTS, ALLOC, LOAD, READONLY, CODE
-  1 .data         00000028  00800060  0000026a  000002fe  2**0
+  1 .data         00000028  00800060  00000268  000002fc  2**0
                   CONTENTS, ALLOC, LOAD, DATA
-  2 .bss          00000001  00800088  00800088  00000326  2**0
+  2 .bss          00000001  00800088  00800088  00000324  2**0
                   ALLOC
-  3 .comment      00000030  00000000  00000000  00000326  2**0
+  3 .comment      00000030  00000000  00000000  00000324  2**0
                   CONTENTS, READONLY
-  4 .debug_aranges 000000c0  00000000  00000000  00000356  2**0
+  4 .note.gnu.avr.deviceinfo 0000003c  00000000  00000000  00000354  2**2
+                  CONTENTS, READONLY
+  5 .debug_aranges 000000c0  00000000  00000000  00000390  2**0
                   CONTENTS, READONLY, DEBUGGING
-  5 .debug_info   00000a27  00000000  00000000  00000416  2**0
+  6 .debug_info   00000ea1  00000000  00000000  00000450  2**0
                   CONTENTS, READONLY, DEBUGGING
-  6 .debug_abbrev 0000035a  00000000  00000000  00000e3d  2**0
+  7 .debug_abbrev 0000077e  00000000  00000000  000012f1  2**0
                   CONTENTS, READONLY, DEBUGGING
-  7 .debug_line   00000429  00000000  00000000  00001197  2**0
+  8 .debug_line   00000653  00000000  00000000  00001a6f  2**0
                   CONTENTS, READONLY, DEBUGGING
-  8 .debug_frame  00000154  00000000  00000000  000015c0  2**2
+  9 .debug_frame  00000154  00000000  00000000  000020c4  2**2
                   CONTENTS, READONLY, DEBUGGING
-  9 .debug_str    0000028b  00000000  00000000  00001714  2**0
+ 10 .debug_str    000003f6  00000000  00000000  00002218  2**0
                   CONTENTS, READONLY, DEBUGGING
- 10 .debug_loc    000003bf  00000000  00000000  0000199f  2**0
+ 11 .debug_loc    000006c3  00000000  00000000  0000260e  2**0
                   CONTENTS, READONLY, DEBUGGING
- 11 .debug_ranges 00000090  00000000  00000000  00001d5e  2**0
+ 12 .debug_ranges 00000090  00000000  00000000  00002cd1  2**0
                   CONTENTS, READONLY, DEBUGGING
 
 Disassembly of section .text:
@@ -63,7 +65,7 @@ Disassembly of section .text:
   32:	10 e0       	ldi	r17, 0x00	; 0
   34:	a0 e6       	ldi	r26, 0x60	; 96
   36:	b0 e0       	ldi	r27, 0x00	; 0
-  38:	ea e6       	ldi	r30, 0x6A	; 106
+  38:	e8 e6       	ldi	r30, 0x68	; 104
   3a:	f2 e0       	ldi	r31, 0x02	; 2
   3c:	02 c0       	rjmp	.+4      	; 0x42 <__SREG__+0x3>
   3e:	05 90       	lpm	r0, Z+
@@ -86,7 +88,7 @@ Disassembly of section .text:
   54:	b2 07       	cpc	r27, r18
   56:	e1 f7       	brne	.-8      	; 0x50 <.do_clear_bss_loop>
   58:	02 d0       	rcall	.+4      	; 0x5e <main>
-  5a:	05 c1       	rjmp	.+522    	; 0x266 <_exit>
+  5a:	04 c1       	rjmp	.+520    	; 0x264 <_exit>
 
 0000005c <__bad_interrupt>:
   5c:	d1 cf       	rjmp	.-94     	; 0x0 <__vectors>
@@ -97,318 +99,434 @@ Disassembly of section .text:
 int main(void)
 {
 	I2C_Init();//инициализируем TWI
-  5e:	e5 d0       	rcall	.+458    	; 0x22a <I2C_Init>
+  5e:	e4 d0       	rcall	.+456    	; 0x228 <I2C_Init>
 	LCD_ini();  //инициализируем дисплей
-  60:	7c d0       	rcall	.+248    	; 0x15a <LCD_ini>
+  60:	7b d0       	rcall	.+246    	; 0x158 <LCD_ini>
 	clearlcd();//очистим дисплей
-  62:	cb d0       	rcall	.+406    	; 0x1fa <clearlcd>
+  62:	ca d0       	rcall	.+404    	; 0x1f8 <clearlcd>
 	setpos(0,0);
   64:	60 e0       	ldi	r22, 0x00	; 0
   66:	70 e0       	ldi	r23, 0x00	; 0
   68:	80 e0       	ldi	r24, 0x00	; 0
-  6a:	59 d0       	rcall	.+178    	; 0x11e <setpos>
+  6a:	58 d0       	rcall	.+176    	; 0x11c <setpos>
 	str_lcd("Hello World!");
   6c:	80 e6       	ldi	r24, 0x60	; 96
   6e:	90 e0       	ldi	r25, 0x00	; 0
-  70:	ce d0       	rcall	.+412    	; 0x20e <str_lcd>
+  70:	cd d0       	rcall	.+410    	; 0x20c <str_lcd>
 	setpos(2,1);
   72:	61 e0       	ldi	r22, 0x01	; 1
   74:	70 e0       	ldi	r23, 0x00	; 0
   76:	82 e0       	ldi	r24, 0x02	; 2
-  78:	52 d0       	rcall	.+164    	; 0x11e <setpos>
+  78:	51 d0       	rcall	.+162    	; 0x11c <setpos>
 	str_lcd("String 2");
   7a:	8d e6       	ldi	r24, 0x6D	; 109
   7c:	90 e0       	ldi	r25, 0x00	; 0
-  7e:	c7 d0       	rcall	.+398    	; 0x20e <str_lcd>
+  7e:	c6 d0       	rcall	.+396    	; 0x20c <str_lcd>
 	setpos(4,2);
   80:	62 e0       	ldi	r22, 0x02	; 2
   82:	70 e0       	ldi	r23, 0x00	; 0
   84:	84 e0       	ldi	r24, 0x04	; 4
-  86:	4b d0       	rcall	.+150    	; 0x11e <setpos>
+  86:	4a d0       	rcall	.+148    	; 0x11c <setpos>
 	str_lcd("String 3");
   88:	86 e7       	ldi	r24, 0x76	; 118
   8a:	90 e0       	ldi	r25, 0x00	; 0
-  8c:	c0 d0       	rcall	.+384    	; 0x20e <str_lcd>
+  8c:	bf d0       	rcall	.+382    	; 0x20c <str_lcd>
 	setpos(6,3);
   8e:	63 e0       	ldi	r22, 0x03	; 3
   90:	70 e0       	ldi	r23, 0x00	; 0
   92:	86 e0       	ldi	r24, 0x06	; 6
-  94:	44 d0       	rcall	.+136    	; 0x11e <setpos>
+  94:	43 d0       	rcall	.+134    	; 0x11c <setpos>
 	str_lcd("String 4");
   96:	8f e7       	ldi	r24, 0x7F	; 127
   98:	90 e0       	ldi	r25, 0x00	; 0
-  9a:	b9 d0       	rcall	.+370    	; 0x20e <str_lcd>
+  9a:	b8 d0       	rcall	.+368    	; 0x20c <str_lcd>
   9c:	ff cf       	rjmp	.-2      	; 0x9c <main+0x3e>
 
 0000009e <sendhalfbyte>:
+﻿#include "lcdtwi.h"
+//----------------------------------------
+unsigned char portlcd = 0; //ячейка для хранения данных порта микросхемы расширения
+//----------------------------------------
+void sendhalfbyte(unsigned char c)
+{
   9e:	cf 93       	push	r28
   a0:	c8 2f       	mov	r28, r24
-  a2:	90 91 88 00 	lds	r25, 0x0088
-  a6:	89 2f       	mov	r24, r25
-  a8:	84 60       	ori	r24, 0x04	; 4
-  aa:	80 93 88 00 	sts	0x0088, r24
-  ae:	6e e4       	ldi	r22, 0x4E	; 78
-  b0:	cc d0       	rcall	.+408    	; 0x24a <I2C_SendByteByADDR>
+	c<<=4;
+	e1; //включаем линию Е
+  a2:	80 91 88 00 	lds	r24, 0x0088	; 0x800088 <__data_end>
+  a6:	84 60       	ori	r24, 0x04	; 4
+  a8:	80 93 88 00 	sts	0x0088, r24	; 0x800088 <__data_end>
+  ac:	6e e4       	ldi	r22, 0x4E	; 78
+  ae:	cc d0       	rcall	.+408    	; 0x248 <I2C_SendByteByADDR>
 	#else
 		//round up by default
 		__ticks_dc = (uint32_t)(ceil(fabs(__tmp)));
 	#endif
 
 	__builtin_avr_delay_cycles(__ticks_dc);
-  b2:	85 e8       	ldi	r24, 0x85	; 133
-  b4:	8a 95       	dec	r24
-  b6:	f1 f7       	brne	.-4      	; 0xb4 <sendhalfbyte+0x16>
-  b8:	00 00       	nop
-  ba:	c2 95       	swap	r28
-  bc:	c0 7f       	andi	r28, 0xF0	; 240
-  be:	80 91 88 00 	lds	r24, 0x0088
-  c2:	6e e4       	ldi	r22, 0x4E	; 78
-  c4:	8c 2b       	or	r24, r28
-  c6:	c1 d0       	rcall	.+386    	; 0x24a <I2C_SendByteByADDR>
-  c8:	80 91 88 00 	lds	r24, 0x0088
-  cc:	8b 7f       	andi	r24, 0xFB	; 251
-  ce:	80 93 88 00 	sts	0x0088, r24
-  d2:	6e e4       	ldi	r22, 0x4E	; 78
-  d4:	ba d0       	rcall	.+372    	; 0x24a <I2C_SendByteByADDR>
-  d6:	85 e8       	ldi	r24, 0x85	; 133
-  d8:	8a 95       	dec	r24
-  da:	f1 f7       	brne	.-4      	; 0xd8 <sendhalfbyte+0x3a>
-  dc:	00 00       	nop
-  de:	cf 91       	pop	r28
-  e0:	08 95       	ret
+  b0:	85 e8       	ldi	r24, 0x85	; 133
+  b2:	8a 95       	dec	r24
+  b4:	f1 f7       	brne	.-4      	; 0xb2 <sendhalfbyte+0x14>
+  b6:	00 00       	nop
+	_delay_us(50);
+	I2C_SendByteByADDR(portlcd|c,0b01001110);
+  b8:	c2 95       	swap	r28
+  ba:	c0 7f       	andi	r28, 0xF0	; 240
+  bc:	80 91 88 00 	lds	r24, 0x0088	; 0x800088 <__data_end>
+  c0:	6e e4       	ldi	r22, 0x4E	; 78
+  c2:	8c 2b       	or	r24, r28
+  c4:	c1 d0       	rcall	.+386    	; 0x248 <I2C_SendByteByADDR>
+	e0; //выключаем линию Е
+  c6:	80 91 88 00 	lds	r24, 0x0088	; 0x800088 <__data_end>
+  ca:	8b 7f       	andi	r24, 0xFB	; 251
+  cc:	80 93 88 00 	sts	0x0088, r24	; 0x800088 <__data_end>
+  d0:	6e e4       	ldi	r22, 0x4E	; 78
+  d2:	ba d0       	rcall	.+372    	; 0x248 <I2C_SendByteByADDR>
+  d4:	85 e8       	ldi	r24, 0x85	; 133
+  d6:	8a 95       	dec	r24
+  d8:	f1 f7       	brne	.-4      	; 0xd6 <sendhalfbyte+0x38>
+  da:	00 00       	nop
+	_delay_us(50);
+}
+  dc:	cf 91       	pop	r28
+  de:	08 95       	ret
 
-000000e2 <sendbyte>:
-  e2:	cf 93       	push	r28
-  e4:	c8 2f       	mov	r28, r24
-  e6:	61 11       	cpse	r22, r1
-  e8:	08 c0       	rjmp	.+16     	; 0xfa <sendbyte+0x18>
-  ea:	80 91 88 00 	lds	r24, 0x0088
-  ee:	8e 7f       	andi	r24, 0xFE	; 254
-  f0:	80 93 88 00 	sts	0x0088, r24
-  f4:	6e e4       	ldi	r22, 0x4E	; 78
-  f6:	a9 d0       	rcall	.+338    	; 0x24a <I2C_SendByteByADDR>
-  f8:	07 c0       	rjmp	.+14     	; 0x108 <sendbyte+0x26>
-  fa:	80 91 88 00 	lds	r24, 0x0088
-  fe:	81 60       	ori	r24, 0x01	; 1
- 100:	80 93 88 00 	sts	0x0088, r24
- 104:	6e e4       	ldi	r22, 0x4E	; 78
- 106:	a1 d0       	rcall	.+322    	; 0x24a <I2C_SendByteByADDR>
- 108:	8c 2f       	mov	r24, r28
- 10a:	82 95       	swap	r24
- 10c:	8f 70       	andi	r24, 0x0F	; 15
- 10e:	c7 df       	rcall	.-114    	; 0x9e <sendhalfbyte>
- 110:	8c 2f       	mov	r24, r28
- 112:	c5 df       	rcall	.-118    	; 0x9e <sendhalfbyte>
- 114:	cf 91       	pop	r28
- 116:	08 95       	ret
+000000e0 <sendbyte>:
+//----------------------------------------
+void sendbyte(unsigned char c, unsigned char mode)
+{
+  e0:	cf 93       	push	r28
+  e2:	c8 2f       	mov	r28, r24
+	if (mode==0) rs0;
+  e4:	61 11       	cpse	r22, r1
+  e6:	08 c0       	rjmp	.+16     	; 0xf8 <sendbyte+0x18>
+  e8:	80 91 88 00 	lds	r24, 0x0088	; 0x800088 <__data_end>
+  ec:	8e 7f       	andi	r24, 0xFE	; 254
+  ee:	80 93 88 00 	sts	0x0088, r24	; 0x800088 <__data_end>
+  f2:	6e e4       	ldi	r22, 0x4E	; 78
+  f4:	a9 d0       	rcall	.+338    	; 0x248 <I2C_SendByteByADDR>
+  f6:	07 c0       	rjmp	.+14     	; 0x106 <sendbyte+0x26>
+	else         rs1;
+  f8:	80 91 88 00 	lds	r24, 0x0088	; 0x800088 <__data_end>
+  fc:	81 60       	ori	r24, 0x01	; 1
+  fe:	80 93 88 00 	sts	0x0088, r24	; 0x800088 <__data_end>
+ 102:	6e e4       	ldi	r22, 0x4E	; 78
+ 104:	a1 d0       	rcall	.+322    	; 0x248 <I2C_SendByteByADDR>
+	unsigned char hc=0;
+	hc=c>>4;
+	sendhalfbyte(hc); sendhalfbyte(c);
+ 106:	8c 2f       	mov	r24, r28
+ 108:	82 95       	swap	r24
+ 10a:	8f 70       	andi	r24, 0x0F	; 15
+ 10c:	c8 df       	rcall	.-112    	; 0x9e <sendhalfbyte>
+ 10e:	8c 2f       	mov	r24, r28
+ 110:	c6 df       	rcall	.-116    	; 0x9e <sendhalfbyte>
+}
+ 112:	cf 91       	pop	r28
+ 114:	08 95       	ret
 
-00000118 <sendcharlcd>:
- 118:	61 e0       	ldi	r22, 0x01	; 1
- 11a:	e3 df       	rcall	.-58     	; 0xe2 <sendbyte>
- 11c:	08 95       	ret
+00000116 <sendcharlcd>:
+//----------------------------------------
+void sendcharlcd(unsigned char c)
+{
+	sendbyte(c,1);
+ 116:	61 e0       	ldi	r22, 0x01	; 1
+ 118:	e3 df       	rcall	.-58     	; 0xe0 <sendbyte>
+ 11a:	08 95       	ret
 
-0000011e <setpos>:
- 11e:	61 30       	cpi	r22, 0x01	; 1
- 120:	71 05       	cpc	r23, r1
- 122:	61 f0       	breq	.+24     	; 0x13c <setpos+0x1e>
- 124:	38 f0       	brcs	.+14     	; 0x134 <setpos+0x16>
- 126:	62 30       	cpi	r22, 0x02	; 2
- 128:	71 05       	cpc	r23, r1
- 12a:	69 f0       	breq	.+26     	; 0x146 <setpos+0x28>
- 12c:	63 30       	cpi	r22, 0x03	; 3
- 12e:	71 05       	cpc	r23, r1
- 130:	79 f0       	breq	.+30     	; 0x150 <setpos+0x32>
- 132:	08 95       	ret
- 134:	60 e0       	ldi	r22, 0x00	; 0
- 136:	80 68       	ori	r24, 0x80	; 128
- 138:	d4 df       	rcall	.-88     	; 0xe2 <sendbyte>
- 13a:	08 95       	ret
- 13c:	80 5c       	subi	r24, 0xC0	; 192
- 13e:	60 e0       	ldi	r22, 0x00	; 0
- 140:	80 68       	ori	r24, 0x80	; 128
- 142:	cf df       	rcall	.-98     	; 0xe2 <sendbyte>
- 144:	08 95       	ret
- 146:	8c 5e       	subi	r24, 0xEC	; 236
- 148:	60 e0       	ldi	r22, 0x00	; 0
- 14a:	80 68       	ori	r24, 0x80	; 128
- 14c:	ca df       	rcall	.-108    	; 0xe2 <sendbyte>
- 14e:	08 95       	ret
- 150:	8c 5a       	subi	r24, 0xAC	; 172
- 152:	60 e0       	ldi	r22, 0x00	; 0
- 154:	80 68       	ori	r24, 0x80	; 128
- 156:	c5 df       	rcall	.-118    	; 0xe2 <sendbyte>
- 158:	08 95       	ret
+0000011c <setpos>:
+}
+//----------------------------------------
+void setpos(unsigned char x, unsigned y)
+{
+	switch(y)
+ 11c:	61 30       	cpi	r22, 0x01	; 1
+ 11e:	71 05       	cpc	r23, r1
+ 120:	61 f0       	breq	.+24     	; 0x13a <setpos+0x1e>
+ 122:	38 f0       	brcs	.+14     	; 0x132 <setpos+0x16>
+ 124:	62 30       	cpi	r22, 0x02	; 2
+ 126:	71 05       	cpc	r23, r1
+ 128:	69 f0       	breq	.+26     	; 0x144 <setpos+0x28>
+ 12a:	63 30       	cpi	r22, 0x03	; 3
+ 12c:	71 05       	cpc	r23, r1
+ 12e:	79 f0       	breq	.+30     	; 0x14e <setpos+0x32>
+ 130:	08 95       	ret
+	{
+		case 0:
+			sendbyte(x|0x80,0);
+ 132:	60 e0       	ldi	r22, 0x00	; 0
+ 134:	80 68       	ori	r24, 0x80	; 128
+ 136:	d4 df       	rcall	.-88     	; 0xe0 <sendbyte>
+			break;
+ 138:	08 95       	ret
+		case 1:
+			sendbyte((0x40+x)|0x80,0);
+ 13a:	80 5c       	subi	r24, 0xC0	; 192
+ 13c:	60 e0       	ldi	r22, 0x00	; 0
+ 13e:	80 68       	ori	r24, 0x80	; 128
+ 140:	cf df       	rcall	.-98     	; 0xe0 <sendbyte>
+			break;
+ 142:	08 95       	ret
+		case 2:
+			sendbyte((0x14+x)|0x80,0);
+ 144:	8c 5e       	subi	r24, 0xEC	; 236
+ 146:	60 e0       	ldi	r22, 0x00	; 0
+ 148:	80 68       	ori	r24, 0x80	; 128
+ 14a:	ca df       	rcall	.-108    	; 0xe0 <sendbyte>
+			break;
+ 14c:	08 95       	ret
+		case 3:
+			sendbyte((0x54+x)|0x80,0);
+ 14e:	8c 5a       	subi	r24, 0xAC	; 172
+ 150:	60 e0       	ldi	r22, 0x00	; 0
+ 152:	80 68       	ori	r24, 0x80	; 128
+ 154:	c5 df       	rcall	.-118    	; 0xe0 <sendbyte>
+ 156:	08 95       	ret
 
-0000015a <LCD_ini>:
+00000158 <LCD_ini>:
 	#else
 		//round up by default
 		__ticks_dc = (uint32_t)(ceil(fabs(__tmp)));
 	#endif
 
 	__builtin_avr_delay_cycles(__ticks_dc);
- 15a:	8f e2       	ldi	r24, 0x2F	; 47
- 15c:	95 e7       	ldi	r25, 0x75	; 117
- 15e:	01 97       	sbiw	r24, 0x01	; 1
- 160:	f1 f7       	brne	.-4      	; 0x15e <LCD_ini+0x4>
- 162:	00 c0       	rjmp	.+0      	; 0x164 <LCD_ini+0xa>
- 164:	00 00       	nop
- 166:	83 e0       	ldi	r24, 0x03	; 3
- 168:	9a df       	rcall	.-204    	; 0x9e <sendhalfbyte>
- 16a:	8f e3       	ldi	r24, 0x3F	; 63
- 16c:	9f e1       	ldi	r25, 0x1F	; 31
- 16e:	01 97       	sbiw	r24, 0x01	; 1
- 170:	f1 f7       	brne	.-4      	; 0x16e <LCD_ini+0x14>
- 172:	00 c0       	rjmp	.+0      	; 0x174 <LCD_ini+0x1a>
- 174:	00 00       	nop
- 176:	83 e0       	ldi	r24, 0x03	; 3
- 178:	92 df       	rcall	.-220    	; 0x9e <sendhalfbyte>
+ 158:	8f e2       	ldi	r24, 0x2F	; 47
+ 15a:	95 e7       	ldi	r25, 0x75	; 117
+ 15c:	01 97       	sbiw	r24, 0x01	; 1
+ 15e:	f1 f7       	brne	.-4      	; 0x15c <LCD_ini+0x4>
+ 160:	00 c0       	rjmp	.+0      	; 0x162 <LCD_ini+0xa>
+ 162:	00 00       	nop
+}
+//----------------------------------------
+void LCD_ini(void)
+{
+	_delay_ms(15); //Ждем 15 мс (стр 45)
+	sendhalfbyte(0b00000011);
+ 164:	83 e0       	ldi	r24, 0x03	; 3
+ 166:	9b df       	rcall	.-202    	; 0x9e <sendhalfbyte>
+ 168:	8f e3       	ldi	r24, 0x3F	; 63
+ 16a:	9f e1       	ldi	r25, 0x1F	; 31
+ 16c:	01 97       	sbiw	r24, 0x01	; 1
+ 16e:	f1 f7       	brne	.-4      	; 0x16c <LCD_ini+0x14>
+ 170:	00 c0       	rjmp	.+0      	; 0x172 <LCD_ini+0x1a>
+ 172:	00 00       	nop
+	_delay_ms(4);
+	sendhalfbyte(0b00000011);
+ 174:	83 e0       	ldi	r24, 0x03	; 3
+ 176:	93 df       	rcall	.-218    	; 0x9e <sendhalfbyte>
 	#else
 		//round up by default
 		__ticks_dc = (uint32_t)(ceil(fabs(__tmp)));
 	#endif
 
 	__builtin_avr_delay_cycles(__ticks_dc);
- 17a:	87 ec       	ldi	r24, 0xC7	; 199
- 17c:	90 e0       	ldi	r25, 0x00	; 0
- 17e:	01 97       	sbiw	r24, 0x01	; 1
- 180:	f1 f7       	brne	.-4      	; 0x17e <LCD_ini+0x24>
- 182:	00 c0       	rjmp	.+0      	; 0x184 <LCD_ini+0x2a>
- 184:	00 00       	nop
- 186:	83 e0       	ldi	r24, 0x03	; 3
- 188:	8a df       	rcall	.-236    	; 0x9e <sendhalfbyte>
+ 178:	87 ec       	ldi	r24, 0xC7	; 199
+ 17a:	90 e0       	ldi	r25, 0x00	; 0
+ 17c:	01 97       	sbiw	r24, 0x01	; 1
+ 17e:	f1 f7       	brne	.-4      	; 0x17c <LCD_ini+0x24>
+ 180:	00 c0       	rjmp	.+0      	; 0x182 <LCD_ini+0x2a>
+ 182:	00 00       	nop
+	_delay_us(100);
+	sendhalfbyte(0b00000011);
+ 184:	83 e0       	ldi	r24, 0x03	; 3
+ 186:	8b df       	rcall	.-234    	; 0x9e <sendhalfbyte>
 	#else
 		//round up by default
 		__ticks_dc = (uint32_t)(ceil(fabs(__tmp)));
 	#endif
 
 	__builtin_avr_delay_cycles(__ticks_dc);
- 18a:	8f ec       	ldi	r24, 0xCF	; 207
- 18c:	97 e0       	ldi	r25, 0x07	; 7
- 18e:	01 97       	sbiw	r24, 0x01	; 1
- 190:	f1 f7       	brne	.-4      	; 0x18e <LCD_ini+0x34>
- 192:	00 c0       	rjmp	.+0      	; 0x194 <LCD_ini+0x3a>
- 194:	00 00       	nop
- 196:	82 e0       	ldi	r24, 0x02	; 2
- 198:	82 df       	rcall	.-252    	; 0x9e <sendhalfbyte>
- 19a:	8f ec       	ldi	r24, 0xCF	; 207
- 19c:	97 e0       	ldi	r25, 0x07	; 7
- 19e:	01 97       	sbiw	r24, 0x01	; 1
- 1a0:	f1 f7       	brne	.-4      	; 0x19e <LCD_ini+0x44>
- 1a2:	00 c0       	rjmp	.+0      	; 0x1a4 <LCD_ini+0x4a>
- 1a4:	00 00       	nop
- 1a6:	60 e0       	ldi	r22, 0x00	; 0
- 1a8:	88 e2       	ldi	r24, 0x28	; 40
- 1aa:	9b df       	rcall	.-202    	; 0xe2 <sendbyte>
- 1ac:	8f ec       	ldi	r24, 0xCF	; 207
- 1ae:	97 e0       	ldi	r25, 0x07	; 7
- 1b0:	01 97       	sbiw	r24, 0x01	; 1
- 1b2:	f1 f7       	brne	.-4      	; 0x1b0 <LCD_ini+0x56>
- 1b4:	00 c0       	rjmp	.+0      	; 0x1b6 <LCD_ini+0x5c>
- 1b6:	00 00       	nop
- 1b8:	60 e0       	ldi	r22, 0x00	; 0
- 1ba:	8c e0       	ldi	r24, 0x0C	; 12
- 1bc:	92 df       	rcall	.-220    	; 0xe2 <sendbyte>
- 1be:	8f ec       	ldi	r24, 0xCF	; 207
- 1c0:	97 e0       	ldi	r25, 0x07	; 7
- 1c2:	01 97       	sbiw	r24, 0x01	; 1
- 1c4:	f1 f7       	brne	.-4      	; 0x1c2 <LCD_ini+0x68>
- 1c6:	00 c0       	rjmp	.+0      	; 0x1c8 <LCD_ini+0x6e>
- 1c8:	00 00       	nop
- 1ca:	60 e0       	ldi	r22, 0x00	; 0
- 1cc:	86 e0       	ldi	r24, 0x06	; 6
- 1ce:	89 df       	rcall	.-238    	; 0xe2 <sendbyte>
- 1d0:	8f ec       	ldi	r24, 0xCF	; 207
- 1d2:	97 e0       	ldi	r25, 0x07	; 7
- 1d4:	01 97       	sbiw	r24, 0x01	; 1
- 1d6:	f1 f7       	brne	.-4      	; 0x1d4 <LCD_ini+0x7a>
- 1d8:	00 c0       	rjmp	.+0      	; 0x1da <LCD_ini+0x80>
- 1da:	00 00       	nop
- 1dc:	80 91 88 00 	lds	r24, 0x0088
- 1e0:	88 60       	ori	r24, 0x08	; 8
- 1e2:	80 93 88 00 	sts	0x0088, r24
- 1e6:	6e e4       	ldi	r22, 0x4E	; 78
- 1e8:	30 d0       	rcall	.+96     	; 0x24a <I2C_SendByteByADDR>
- 1ea:	80 91 88 00 	lds	r24, 0x0088
- 1ee:	8d 7f       	andi	r24, 0xFD	; 253
- 1f0:	80 93 88 00 	sts	0x0088, r24
- 1f4:	6e e4       	ldi	r22, 0x4E	; 78
- 1f6:	29 d0       	rcall	.+82     	; 0x24a <I2C_SendByteByADDR>
- 1f8:	08 95       	ret
+ 188:	8f ec       	ldi	r24, 0xCF	; 207
+ 18a:	97 e0       	ldi	r25, 0x07	; 7
+ 18c:	01 97       	sbiw	r24, 0x01	; 1
+ 18e:	f1 f7       	brne	.-4      	; 0x18c <LCD_ini+0x34>
+ 190:	00 c0       	rjmp	.+0      	; 0x192 <LCD_ini+0x3a>
+ 192:	00 00       	nop
+	_delay_ms(1);
+	sendhalfbyte(0b00000010);
+ 194:	82 e0       	ldi	r24, 0x02	; 2
+ 196:	83 df       	rcall	.-250    	; 0x9e <sendhalfbyte>
+ 198:	8f ec       	ldi	r24, 0xCF	; 207
+ 19a:	97 e0       	ldi	r25, 0x07	; 7
+ 19c:	01 97       	sbiw	r24, 0x01	; 1
+ 19e:	f1 f7       	brne	.-4      	; 0x19c <LCD_ini+0x44>
+ 1a0:	00 c0       	rjmp	.+0      	; 0x1a2 <LCD_ini+0x4a>
+ 1a2:	00 00       	nop
+	_delay_ms(1);
+	sendbyte(0b00101000, 0); //4бит-режим (DL=0) и 2 линии (N=1)
+ 1a4:	60 e0       	ldi	r22, 0x00	; 0
+ 1a6:	88 e2       	ldi	r24, 0x28	; 40
+ 1a8:	9b df       	rcall	.-202    	; 0xe0 <sendbyte>
+ 1aa:	8f ec       	ldi	r24, 0xCF	; 207
+ 1ac:	97 e0       	ldi	r25, 0x07	; 7
+ 1ae:	01 97       	sbiw	r24, 0x01	; 1
+ 1b0:	f1 f7       	brne	.-4      	; 0x1ae <LCD_ini+0x56>
+ 1b2:	00 c0       	rjmp	.+0      	; 0x1b4 <LCD_ini+0x5c>
+ 1b4:	00 00       	nop
+	_delay_ms(1);
+	sendbyte(0b00001100, 0); //включаем изображение на дисплее (D=1), курсоры никакие не включаем (C=0, B=0)
+ 1b6:	60 e0       	ldi	r22, 0x00	; 0
+ 1b8:	8c e0       	ldi	r24, 0x0C	; 12
+ 1ba:	92 df       	rcall	.-220    	; 0xe0 <sendbyte>
+ 1bc:	8f ec       	ldi	r24, 0xCF	; 207
+ 1be:	97 e0       	ldi	r25, 0x07	; 7
+ 1c0:	01 97       	sbiw	r24, 0x01	; 1
+ 1c2:	f1 f7       	brne	.-4      	; 0x1c0 <LCD_ini+0x68>
+ 1c4:	00 c0       	rjmp	.+0      	; 0x1c6 <LCD_ini+0x6e>
+ 1c6:	00 00       	nop
+	_delay_ms(1);
+	sendbyte(0b00000110, 0); //курсор (хоть он у нас и невидимый) будет двигаться влево
+ 1c8:	60 e0       	ldi	r22, 0x00	; 0
+ 1ca:	86 e0       	ldi	r24, 0x06	; 6
+ 1cc:	89 df       	rcall	.-238    	; 0xe0 <sendbyte>
+ 1ce:	8f ec       	ldi	r24, 0xCF	; 207
+ 1d0:	97 e0       	ldi	r25, 0x07	; 7
+ 1d2:	01 97       	sbiw	r24, 0x01	; 1
+ 1d4:	f1 f7       	brne	.-4      	; 0x1d2 <LCD_ini+0x7a>
+ 1d6:	00 c0       	rjmp	.+0      	; 0x1d8 <LCD_ini+0x80>
+ 1d8:	00 00       	nop
+	_delay_ms(1);
+	setled();//подсветка
+ 1da:	80 91 88 00 	lds	r24, 0x0088	; 0x800088 <__data_end>
+ 1de:	88 60       	ori	r24, 0x08	; 8
+ 1e0:	80 93 88 00 	sts	0x0088, r24	; 0x800088 <__data_end>
+ 1e4:	6e e4       	ldi	r22, 0x4E	; 78
+ 1e6:	30 d0       	rcall	.+96     	; 0x248 <I2C_SendByteByADDR>
+	setwrite();//запись
+ 1e8:	80 91 88 00 	lds	r24, 0x0088	; 0x800088 <__data_end>
+ 1ec:	8d 7f       	andi	r24, 0xFD	; 253
+ 1ee:	80 93 88 00 	sts	0x0088, r24	; 0x800088 <__data_end>
+ 1f2:	6e e4       	ldi	r22, 0x4E	; 78
+ 1f4:	29 d0       	rcall	.+82     	; 0x248 <I2C_SendByteByADDR>
+ 1f6:	08 95       	ret
 
-000001fa <clearlcd>:
- 1fa:	60 e0       	ldi	r22, 0x00	; 0
- 1fc:	81 e0       	ldi	r24, 0x01	; 1
- 1fe:	71 df       	rcall	.-286    	; 0xe2 <sendbyte>
+000001f8 <clearlcd>:
+}
+//----------------------------------------
+void clearlcd(void)
+{
+	sendbyte(0b00000001, 0);
+ 1f8:	60 e0       	ldi	r22, 0x00	; 0
+ 1fa:	81 e0       	ldi	r24, 0x01	; 1
+ 1fc:	71 df       	rcall	.-286    	; 0xe0 <sendbyte>
 	#else
 		//round up by default
 		__ticks_dc = (uint32_t)(ceil(fabs(__tmp)));
 	#endif
 
 	__builtin_avr_delay_cycles(__ticks_dc);
- 200:	87 eb       	ldi	r24, 0xB7	; 183
- 202:	9b e0       	ldi	r25, 0x0B	; 11
- 204:	01 97       	sbiw	r24, 0x01	; 1
- 206:	f1 f7       	brne	.-4      	; 0x204 <clearlcd+0xa>
- 208:	00 c0       	rjmp	.+0      	; 0x20a <clearlcd+0x10>
- 20a:	00 00       	nop
- 20c:	08 95       	ret
+ 1fe:	87 eb       	ldi	r24, 0xB7	; 183
+ 200:	9b e0       	ldi	r25, 0x0B	; 11
+ 202:	01 97       	sbiw	r24, 0x01	; 1
+ 204:	f1 f7       	brne	.-4      	; 0x202 <__EEPROM_REGION_LENGTH__+0x2>
+ 206:	00 c0       	rjmp	.+0      	; 0x208 <__EEPROM_REGION_LENGTH__+0x8>
+ 208:	00 00       	nop
+ 20a:	08 95       	ret
 
-0000020e <str_lcd>:
- 20e:	cf 93       	push	r28
- 210:	df 93       	push	r29
- 212:	ec 01       	movw	r28, r24
- 214:	88 81       	ld	r24, Y
- 216:	88 23       	and	r24, r24
- 218:	29 f0       	breq	.+10     	; 0x224 <str_lcd+0x16>
- 21a:	21 96       	adiw	r28, 0x01	; 1
- 21c:	7d df       	rcall	.-262    	; 0x118 <sendcharlcd>
- 21e:	89 91       	ld	r24, Y+
- 220:	81 11       	cpse	r24, r1
- 222:	fc cf       	rjmp	.-8      	; 0x21c <str_lcd+0xe>
- 224:	df 91       	pop	r29
- 226:	cf 91       	pop	r28
- 228:	08 95       	ret
+0000020c <str_lcd>:
+	_delay_us(1500);
+}
+//----------------------------------------
+void str_lcd (char str1[])
+{
+ 20c:	cf 93       	push	r28
+ 20e:	df 93       	push	r29
+ 210:	ec 01       	movw	r28, r24
+	wchar_t n;
+	for(n=0;str1[n]!='\0';n++)
+ 212:	88 81       	ld	r24, Y
+ 214:	88 23       	and	r24, r24
+ 216:	29 f0       	breq	.+10     	; 0x222 <str_lcd+0x16>
+ 218:	21 96       	adiw	r28, 0x01	; 1
+	sendcharlcd(str1[n]);
+ 21a:	7d df       	rcall	.-262    	; 0x116 <sendcharlcd>
+}
+//----------------------------------------
+void str_lcd (char str1[])
+{
+	wchar_t n;
+	for(n=0;str1[n]!='\0';n++)
+ 21c:	89 91       	ld	r24, Y+
+ 21e:	81 11       	cpse	r24, r1
+ 220:	fc cf       	rjmp	.-8      	; 0x21a <str_lcd+0xe>
+	sendcharlcd(str1[n]);
+}
+ 222:	df 91       	pop	r29
+ 224:	cf 91       	pop	r28
+ 226:	08 95       	ret
 
-0000022a <I2C_Init>:
- 22a:	80 e2       	ldi	r24, 0x20	; 32
- 22c:	80 b9       	out	0x00, r24	; 0
- 22e:	08 95       	ret
+00000228 <I2C_Init>:
+	while (!(TWCR & (1<<TWINT)));//подождем пока установится TWIN
+}
 
-00000230 <I2C_StartCondition>:
- 230:	84 ea       	ldi	r24, 0xA4	; 164
- 232:	86 bf       	out	0x36, r24	; 54
- 234:	06 b6       	in	r0, 0x36	; 54
- 236:	07 fe       	sbrs	r0, 7
- 238:	fd cf       	rjmp	.-6      	; 0x234 <I2C_StartCondition+0x4>
- 23a:	08 95       	ret
+void I2C_StopCondition(void)
+{
+	TWCR = (1<<TWINT)|(1<<TWSTO)|(1<<TWEN);
+ 228:	80 e2       	ldi	r24, 0x20	; 32
+ 22a:	80 b9       	out	0x00, r24	; 0
+ 22c:	08 95       	ret
 
-0000023c <I2C_SendByte>:
- 23c:	83 b9       	out	0x03, r24	; 3
- 23e:	84 e8       	ldi	r24, 0x84	; 132
- 240:	86 bf       	out	0x36, r24	; 54
- 242:	06 b6       	in	r0, 0x36	; 54
- 244:	07 fe       	sbrs	r0, 7
- 246:	fd cf       	rjmp	.-6      	; 0x242 <I2C_SendByte+0x6>
- 248:	08 95       	ret
+0000022e <I2C_StartCondition>:
+ 22e:	84 ea       	ldi	r24, 0xA4	; 164
+ 230:	86 bf       	out	0x36, r24	; 54
+ 232:	06 b6       	in	r0, 0x36	; 54
+ 234:	07 fe       	sbrs	r0, 7
+ 236:	fd cf       	rjmp	.-6      	; 0x232 <I2C_StartCondition+0x4>
+ 238:	08 95       	ret
 
-0000024a <I2C_SendByteByADDR>:
- 24a:	cf 93       	push	r28
- 24c:	df 93       	push	r29
- 24e:	c8 2f       	mov	r28, r24
- 250:	d6 2f       	mov	r29, r22
- 252:	ee df       	rcall	.-36     	; 0x230 <I2C_StartCondition>
- 254:	8d 2f       	mov	r24, r29
- 256:	f2 df       	rcall	.-28     	; 0x23c <I2C_SendByte>
- 258:	8c 2f       	mov	r24, r28
- 25a:	f0 df       	rcall	.-32     	; 0x23c <I2C_SendByte>
- 25c:	84 e9       	ldi	r24, 0x94	; 148
- 25e:	86 bf       	out	0x36, r24	; 54
- 260:	df 91       	pop	r29
- 262:	cf 91       	pop	r28
- 264:	08 95       	ret
+0000023a <I2C_SendByte>:
+}
 
-00000266 <_exit>:
- 266:	f8 94       	cli
+void I2C_SendByte(unsigned char c)
+{
+	TWDR = c;//запишем байт в регистр данных
+ 23a:	83 b9       	out	0x03, r24	; 3
+	TWCR = (1<<TWINT)|(1<<TWEN);//включим передачу байта
+ 23c:	84 e8       	ldi	r24, 0x84	; 132
+ 23e:	86 bf       	out	0x36, r24	; 54
+	while (!(TWCR & (1<<TWINT)));//подождем пока установится TWIN
+ 240:	06 b6       	in	r0, 0x36	; 54
+ 242:	07 fe       	sbrs	r0, 7
+ 244:	fd cf       	rjmp	.-6      	; 0x240 <I2C_SendByte+0x6>
+}
+ 246:	08 95       	ret
 
-00000268 <__stop_program>:
- 268:	ff cf       	rjmp	.-2      	; 0x268 <__stop_program>
+00000248 <I2C_SendByteByADDR>:
+
+void I2C_SendByteByADDR(unsigned char c,unsigned char addr)
+{
+ 248:	cf 93       	push	r28
+ 24a:	df 93       	push	r29
+ 24c:	c8 2f       	mov	r28, r24
+ 24e:	d6 2f       	mov	r29, r22
+	I2C_StartCondition(); // Отправим условие START
+ 250:	ee df       	rcall	.-36     	; 0x22e <I2C_StartCondition>
+	I2C_SendByte(addr); // Отправим в шину адрес устройства + бит чтения-записи
+ 252:	8d 2f       	mov	r24, r29
+ 254:	f2 df       	rcall	.-28     	; 0x23a <I2C_SendByte>
+	I2C_SendByte(c);// Отправим байт данных
+ 256:	8c 2f       	mov	r24, r28
+ 258:	f0 df       	rcall	.-32     	; 0x23a <I2C_SendByte>
+	while (!(TWCR & (1<<TWINT)));//подождем пока установится TWIN
+}
+
+void I2C_StopCondition(void)
+{
+	TWCR = (1<<TWINT)|(1<<TWSTO)|(1<<TWEN);
+ 25a:	84 e9       	ldi	r24, 0x94	; 148
+ 25c:	86 bf       	out	0x36, r24	; 54
+{
+	I2C_StartCondition(); // Отправим условие START
+	I2C_SendByte(addr); // Отправим в шину адрес устройства + бит чтения-записи
+	I2C_SendByte(c);// Отправим байт данных
+	I2C_StopCondition();// Отправим условие STOP
+}
+ 25e:	df 91       	pop	r29
+ 260:	cf 91       	pop	r28
+ 262:	08 95       	ret
+
+00000264 <_exit>:
+ 264:	f8 94       	cli
+
+00000266 <__stop_program>:
+ 266:	ff cf       	rjmp	.-2      	; 0x266 <__stop_program>
