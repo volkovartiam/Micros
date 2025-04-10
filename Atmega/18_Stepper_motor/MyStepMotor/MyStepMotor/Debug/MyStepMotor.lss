@@ -1,0 +1,392 @@
+
+MyStepMotor.elf:     file format elf32-avr
+
+Sections:
+Idx Name          Size      VMA       LMA       File off  Algn
+  0 .text         00000176  00000000  00000000  00000054  2**1
+                  CONTENTS, ALLOC, LOAD, READONLY, CODE
+  1 .comment      00000030  00000000  00000000  000001ca  2**0
+                  CONTENTS, READONLY
+  2 .debug_aranges 00000090  00000000  00000000  000001fa  2**0
+                  CONTENTS, READONLY, DEBUGGING
+  3 .debug_info   000005a2  00000000  00000000  0000028a  2**0
+                  CONTENTS, READONLY, DEBUGGING
+  4 .debug_abbrev 00000206  00000000  00000000  0000082c  2**0
+                  CONTENTS, READONLY, DEBUGGING
+  5 .debug_line   00000392  00000000  00000000  00000a32  2**0
+                  CONTENTS, READONLY, DEBUGGING
+  6 .debug_frame  000000e8  00000000  00000000  00000dc4  2**2
+                  CONTENTS, READONLY, DEBUGGING
+  7 .debug_str    000001d6  00000000  00000000  00000eac  2**0
+                  CONTENTS, READONLY, DEBUGGING
+  8 .debug_loc    00000063  00000000  00000000  00001082  2**0
+                  CONTENTS, READONLY, DEBUGGING
+  9 .debug_ranges 00000088  00000000  00000000  000010e5  2**0
+                  CONTENTS, READONLY, DEBUGGING
+
+Disassembly of section .text:
+
+00000000 <__vectors>:
+   0:	12 c0       	rjmp	.+36     	; 0x26 <__ctors_end>
+   2:	19 c0       	rjmp	.+50     	; 0x36 <__bad_interrupt>
+   4:	18 c0       	rjmp	.+48     	; 0x36 <__bad_interrupt>
+   6:	17 c0       	rjmp	.+46     	; 0x36 <__bad_interrupt>
+   8:	16 c0       	rjmp	.+44     	; 0x36 <__bad_interrupt>
+   a:	15 c0       	rjmp	.+42     	; 0x36 <__bad_interrupt>
+   c:	14 c0       	rjmp	.+40     	; 0x36 <__bad_interrupt>
+   e:	13 c0       	rjmp	.+38     	; 0x36 <__bad_interrupt>
+  10:	12 c0       	rjmp	.+36     	; 0x36 <__bad_interrupt>
+  12:	11 c0       	rjmp	.+34     	; 0x36 <__bad_interrupt>
+  14:	10 c0       	rjmp	.+32     	; 0x36 <__bad_interrupt>
+  16:	0f c0       	rjmp	.+30     	; 0x36 <__bad_interrupt>
+  18:	0e c0       	rjmp	.+28     	; 0x36 <__bad_interrupt>
+  1a:	0d c0       	rjmp	.+26     	; 0x36 <__bad_interrupt>
+  1c:	0c c0       	rjmp	.+24     	; 0x36 <__bad_interrupt>
+  1e:	0b c0       	rjmp	.+22     	; 0x36 <__bad_interrupt>
+  20:	0a c0       	rjmp	.+20     	; 0x36 <__bad_interrupt>
+  22:	09 c0       	rjmp	.+18     	; 0x36 <__bad_interrupt>
+  24:	08 c0       	rjmp	.+16     	; 0x36 <__bad_interrupt>
+
+00000026 <__ctors_end>:
+  26:	11 24       	eor	r1, r1
+  28:	1f be       	out	0x3f, r1	; 63
+  2a:	cf e5       	ldi	r28, 0x5F	; 95
+  2c:	d4 e0       	ldi	r29, 0x04	; 4
+  2e:	de bf       	out	0x3e, r29	; 62
+  30:	cd bf       	out	0x3d, r28	; 61
+  32:	02 d0       	rcall	.+4      	; 0x38 <main>
+  34:	9e c0       	rjmp	.+316    	; 0x172 <_exit>
+
+00000036 <__bad_interrupt>:
+  36:	e4 cf       	rjmp	.-56     	; 0x0 <__vectors>
+
+00000038 <main>:
+#include "main.h"
+
+int main(void)
+{
+	int i = 0;
+	SM_ini();
+  38:	2b d0       	rcall	.+86     	; 0x90 <SM_ini>
+    while(1)
+    {
+		for (i=0;i<=512;i++)
+  3a:	c0 e0       	ldi	r28, 0x00	; 0
+  3c:	d0 e0       	ldi	r29, 0x00	; 0
+	#else
+		//round up by default
+		__ticks_dc = (uint32_t)(ceil(fabs(__tmp)));
+	#endif
+
+	__builtin_avr_delay_cycles(__ticks_dc);
+  3e:	ee 24       	eor	r14, r14
+  40:	e3 94       	inc	r14
+  42:	68 94       	set
+  44:	ff 24       	eor	r15, r15
+  46:	f1 f8       	bld	r15, 1
+  48:	00 e0       	ldi	r16, 0x00	; 0
+  4a:	10 e0       	ldi	r17, 0x00	; 0
+  4c:	02 c0       	rjmp	.+4      	; 0x52 <__SREG__+0x13>
+		{
+			SM_forvard();
+  4e:	7f d0       	rcall	.+254    	; 0x14e <SM_forvard>
+{
+	int i = 0;
+	SM_ini();
+    while(1)
+    {
+		for (i=0;i<=512;i++)
+  50:	21 96       	adiw	r28, 0x01	; 1
+  52:	c1 30       	cpi	r28, 0x01	; 1
+  54:	22 e0       	ldi	r18, 0x02	; 2
+  56:	d2 07       	cpc	r29, r18
+  58:	d4 f3       	brlt	.-12     	; 0x4e <__SREG__+0xf>
+  5a:	8f ef       	ldi	r24, 0xFF	; 255
+  5c:	92 e5       	ldi	r25, 0x52	; 82
+  5e:	27 e0       	ldi	r18, 0x07	; 7
+  60:	81 50       	subi	r24, 0x01	; 1
+  62:	90 40       	sbci	r25, 0x00	; 0
+  64:	20 40       	sbci	r18, 0x00	; 0
+  66:	e1 f7       	brne	.-8      	; 0x60 <__SREG__+0x21>
+  68:	00 c0       	rjmp	.+0      	; 0x6a <__SREG__+0x2b>
+  6a:	00 00       	nop
+  6c:	ce 2d       	mov	r28, r14
+  6e:	df 2d       	mov	r29, r15
+			SM_forvard();
+		}
+		_delay_ms(300);
+		for (i=0;i<=512;i++)
+		{
+			SM_back();
+  70:	77 d0       	rcall	.+238    	; 0x160 <SM_back>
+  72:	21 97       	sbiw	r28, 0x01	; 1
+		for (i=0;i<=512;i++)
+		{
+			SM_forvard();
+		}
+		_delay_ms(300);
+		for (i=0;i<=512;i++)
+  74:	20 97       	sbiw	r28, 0x00	; 0
+  76:	e1 f7       	brne	.-8      	; 0x70 <__SREG__+0x31>
+  78:	2f ef       	ldi	r18, 0xFF	; 255
+  7a:	82 e5       	ldi	r24, 0x52	; 82
+  7c:	97 e0       	ldi	r25, 0x07	; 7
+  7e:	21 50       	subi	r18, 0x01	; 1
+  80:	80 40       	sbci	r24, 0x00	; 0
+  82:	90 40       	sbci	r25, 0x00	; 0
+  84:	e1 f7       	brne	.-8      	; 0x7e <__SREG__+0x3f>
+  86:	00 c0       	rjmp	.+0      	; 0x88 <__SREG__+0x49>
+  88:	00 00       	nop
+{
+	int i = 0;
+	SM_ini();
+    while(1)
+    {
+		for (i=0;i<=512;i++)
+  8a:	c0 2f       	mov	r28, r16
+  8c:	d1 2f       	mov	r29, r17
+  8e:	e1 cf       	rjmp	.-62     	; 0x52 <__SREG__+0x13>
+
+00000090 <SM_ini>:
+
+#define SM_delay _delay_ms(5)
+
+void SM_ini(void)
+{
+	SM_ddr |= (1<<IN4)|(1<<IN3)|(1<<IN2)|(1<<IN1);
+  90:	84 b3       	in	r24, 0x14	; 20
+  92:	8f 60       	ori	r24, 0x0F	; 15
+  94:	84 bb       	out	0x14, r24	; 20
+	SM_port &= ~((1<<IN4)|(1<<IN3)|(1<<IN2)|(1<<IN1));
+  96:	85 b3       	in	r24, 0x15	; 21
+  98:	80 7f       	andi	r24, 0xF0	; 240
+  9a:	85 bb       	out	0x15, r24	; 21
+  9c:	08 95       	ret
+
+0000009e <SM_set1>:
+}
+
+void SM_set1(void)
+{
+	SM_port |= 1<<IN1;
+  9e:	a8 9a       	sbi	0x15, 0	; 21
+	SM_port &= ~(1<<IN2);
+  a0:	a9 98       	cbi	0x15, 1	; 21
+	SM_port &= ~(1<<IN3);
+  a2:	aa 98       	cbi	0x15, 2	; 21
+	SM_port &= ~(1<<IN4);
+  a4:	ab 98       	cbi	0x15, 3	; 21
+  a6:	8f e0       	ldi	r24, 0x0F	; 15
+  a8:	97 e2       	ldi	r25, 0x27	; 39
+  aa:	01 97       	sbiw	r24, 0x01	; 1
+  ac:	f1 f7       	brne	.-4      	; 0xaa <SM_set1+0xc>
+  ae:	00 c0       	rjmp	.+0      	; 0xb0 <SM_set1+0x12>
+  b0:	00 00       	nop
+  b2:	08 95       	ret
+
+000000b4 <SM_set2>:
+	SM_delay;
+}
+
+void SM_set2(void)
+{
+	SM_port |= 1<<IN1;
+  b4:	a8 9a       	sbi	0x15, 0	; 21
+	SM_port |= 1<<IN4;
+  b6:	ab 9a       	sbi	0x15, 3	; 21
+	SM_port &= ~(1<<IN2);
+  b8:	a9 98       	cbi	0x15, 1	; 21
+	SM_port &= ~(1<<IN3);
+  ba:	aa 98       	cbi	0x15, 2	; 21
+  bc:	8f e0       	ldi	r24, 0x0F	; 15
+  be:	97 e2       	ldi	r25, 0x27	; 39
+  c0:	01 97       	sbiw	r24, 0x01	; 1
+  c2:	f1 f7       	brne	.-4      	; 0xc0 <SM_set2+0xc>
+  c4:	00 c0       	rjmp	.+0      	; 0xc6 <SM_set2+0x12>
+  c6:	00 00       	nop
+  c8:	08 95       	ret
+
+000000ca <SM_set3>:
+	SM_delay;
+}
+
+void SM_set3(void)
+{
+	SM_port |= 1<<IN4;
+  ca:	ab 9a       	sbi	0x15, 3	; 21
+	SM_port &= ~(1<<IN1);
+  cc:	a8 98       	cbi	0x15, 0	; 21
+	SM_port &= ~(1<<IN2);
+  ce:	a9 98       	cbi	0x15, 1	; 21
+	SM_port &= ~(1<<IN3);
+  d0:	aa 98       	cbi	0x15, 2	; 21
+  d2:	8f e0       	ldi	r24, 0x0F	; 15
+  d4:	97 e2       	ldi	r25, 0x27	; 39
+  d6:	01 97       	sbiw	r24, 0x01	; 1
+  d8:	f1 f7       	brne	.-4      	; 0xd6 <SM_set3+0xc>
+  da:	00 c0       	rjmp	.+0      	; 0xdc <SM_set3+0x12>
+  dc:	00 00       	nop
+  de:	08 95       	ret
+
+000000e0 <SM_set4>:
+	SM_delay;
+}
+
+void SM_set4(void)
+{
+	SM_port |= 1<<IN4;
+  e0:	ab 9a       	sbi	0x15, 3	; 21
+	SM_port |= 1<<IN3;
+  e2:	aa 9a       	sbi	0x15, 2	; 21
+	SM_port &= ~(1<<IN1);
+  e4:	a8 98       	cbi	0x15, 0	; 21
+	SM_port &= ~(1<<IN2);
+  e6:	a9 98       	cbi	0x15, 1	; 21
+  e8:	8f e0       	ldi	r24, 0x0F	; 15
+  ea:	97 e2       	ldi	r25, 0x27	; 39
+  ec:	01 97       	sbiw	r24, 0x01	; 1
+  ee:	f1 f7       	brne	.-4      	; 0xec <SM_set4+0xc>
+  f0:	00 c0       	rjmp	.+0      	; 0xf2 <SM_set4+0x12>
+  f2:	00 00       	nop
+  f4:	08 95       	ret
+
+000000f6 <SM_set5>:
+	SM_delay;
+}
+
+void SM_set5(void)
+{
+	SM_port |= 1<<IN3;
+  f6:	aa 9a       	sbi	0x15, 2	; 21
+	SM_port &= ~(1<<IN1);
+  f8:	a8 98       	cbi	0x15, 0	; 21
+	SM_port &= ~(1<<IN2);
+  fa:	a9 98       	cbi	0x15, 1	; 21
+	SM_port &= ~(1<<IN4);
+  fc:	ab 98       	cbi	0x15, 3	; 21
+  fe:	8f e0       	ldi	r24, 0x0F	; 15
+ 100:	97 e2       	ldi	r25, 0x27	; 39
+ 102:	01 97       	sbiw	r24, 0x01	; 1
+ 104:	f1 f7       	brne	.-4      	; 0x102 <SM_set5+0xc>
+ 106:	00 c0       	rjmp	.+0      	; 0x108 <SM_set5+0x12>
+ 108:	00 00       	nop
+ 10a:	08 95       	ret
+
+0000010c <SM_set6>:
+	SM_delay;
+}
+
+void SM_set6(void)
+{
+	SM_port |= 1<<IN3;
+ 10c:	aa 9a       	sbi	0x15, 2	; 21
+	SM_port |= 1<<IN2;
+ 10e:	a9 9a       	sbi	0x15, 1	; 21
+	SM_port &= ~(1<<IN1);
+ 110:	a8 98       	cbi	0x15, 0	; 21
+	SM_port &= ~(1<<IN4);
+ 112:	ab 98       	cbi	0x15, 3	; 21
+ 114:	8f e0       	ldi	r24, 0x0F	; 15
+ 116:	97 e2       	ldi	r25, 0x27	; 39
+ 118:	01 97       	sbiw	r24, 0x01	; 1
+ 11a:	f1 f7       	brne	.-4      	; 0x118 <SM_set6+0xc>
+ 11c:	00 c0       	rjmp	.+0      	; 0x11e <SM_set6+0x12>
+ 11e:	00 00       	nop
+ 120:	08 95       	ret
+
+00000122 <SM_set7>:
+	SM_delay;
+}
+
+void SM_set7(void)
+{
+	SM_port |= 1<<IN2;
+ 122:	a9 9a       	sbi	0x15, 1	; 21
+	SM_port &= ~(1<<IN1);
+ 124:	a8 98       	cbi	0x15, 0	; 21
+	SM_port &= ~(1<<IN3);
+ 126:	aa 98       	cbi	0x15, 2	; 21
+	SM_port &= ~(1<<IN4);
+ 128:	ab 98       	cbi	0x15, 3	; 21
+ 12a:	8f e0       	ldi	r24, 0x0F	; 15
+ 12c:	97 e2       	ldi	r25, 0x27	; 39
+ 12e:	01 97       	sbiw	r24, 0x01	; 1
+ 130:	f1 f7       	brne	.-4      	; 0x12e <SM_set7+0xc>
+ 132:	00 c0       	rjmp	.+0      	; 0x134 <SM_set7+0x12>
+ 134:	00 00       	nop
+ 136:	08 95       	ret
+
+00000138 <SM_set8>:
+	SM_delay;
+}
+
+void SM_set8(void)
+{
+	SM_port |= 1<<IN2;
+ 138:	a9 9a       	sbi	0x15, 1	; 21
+	SM_port |= 1<<IN1;
+ 13a:	a8 9a       	sbi	0x15, 0	; 21
+	SM_port &= ~(1<<IN3);
+ 13c:	aa 98       	cbi	0x15, 2	; 21
+	SM_port &= ~(1<<IN4);
+ 13e:	ab 98       	cbi	0x15, 3	; 21
+ 140:	8f e0       	ldi	r24, 0x0F	; 15
+ 142:	97 e2       	ldi	r25, 0x27	; 39
+ 144:	01 97       	sbiw	r24, 0x01	; 1
+ 146:	f1 f7       	brne	.-4      	; 0x144 <SM_set8+0xc>
+ 148:	00 c0       	rjmp	.+0      	; 0x14a <SM_set8+0x12>
+ 14a:	00 00       	nop
+ 14c:	08 95       	ret
+
+0000014e <SM_forvard>:
+	SM_delay;
+}
+
+void SM_forvard(void)
+{
+	SM_set1();
+ 14e:	a7 df       	rcall	.-178    	; 0x9e <SM_set1>
+	SM_set2();
+ 150:	b1 df       	rcall	.-158    	; 0xb4 <SM_set2>
+	SM_set3();
+ 152:	bb df       	rcall	.-138    	; 0xca <SM_set3>
+	SM_set4();
+ 154:	c5 df       	rcall	.-118    	; 0xe0 <SM_set4>
+	SM_set5();
+ 156:	cf df       	rcall	.-98     	; 0xf6 <SM_set5>
+	SM_set6();
+ 158:	d9 df       	rcall	.-78     	; 0x10c <SM_set6>
+	SM_set7();
+ 15a:	e3 df       	rcall	.-58     	; 0x122 <SM_set7>
+	SM_set8();
+ 15c:	ed df       	rcall	.-38     	; 0x138 <SM_set8>
+ 15e:	08 95       	ret
+
+00000160 <SM_back>:
+}
+
+void SM_back(void)
+{
+	SM_set8();
+ 160:	eb df       	rcall	.-42     	; 0x138 <SM_set8>
+	SM_set7();
+ 162:	df df       	rcall	.-66     	; 0x122 <SM_set7>
+	SM_set6();
+ 164:	d3 df       	rcall	.-90     	; 0x10c <SM_set6>
+	SM_set5();
+ 166:	c7 df       	rcall	.-114    	; 0xf6 <SM_set5>
+	SM_set4();
+ 168:	bb df       	rcall	.-138    	; 0xe0 <SM_set4>
+	SM_set3();
+ 16a:	af df       	rcall	.-162    	; 0xca <SM_set3>
+	SM_set2();
+ 16c:	a3 df       	rcall	.-186    	; 0xb4 <SM_set2>
+	SM_set1();
+ 16e:	97 df       	rcall	.-210    	; 0x9e <SM_set1>
+ 170:	08 95       	ret
+
+00000172 <_exit>:
+ 172:	f8 94       	cli
+
+00000174 <__stop_program>:
+ 174:	ff cf       	rjmp	.-2      	; 0x174 <__stop_program>
