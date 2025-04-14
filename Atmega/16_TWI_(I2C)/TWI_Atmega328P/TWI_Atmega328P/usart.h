@@ -32,7 +32,7 @@
 
 void USART_Init(void);
 uint8_t USART_ReceivePolling(void);
-void USART_TransmitPolling(uint8_t DataByte);
+void USART_Transmit(uint8_t DataByte);
 
 
 #endif /* USART_H_ */

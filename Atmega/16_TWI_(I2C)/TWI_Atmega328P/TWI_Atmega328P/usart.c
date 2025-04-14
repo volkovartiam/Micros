@@ -29,7 +29,7 @@ uint8_t USART_ReceivePolling()
 	return DataByte;
 }
 
-void USART_TransmitPolling(uint8_t DataByte)
+void USART_Transmit(uint8_t DataByte)
 {
 	while (( UCSR0A & (1<<UDRE0)) == 0) {}; // Do nothing until UDR is ready
 	UDR0 = DataByte;

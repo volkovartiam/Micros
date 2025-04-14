@@ -1,3 +1,10 @@
+/*
+ * TWI_Atmega328P.c
+ *
+ * Created: 14.04.2025 20:45:30
+ * Author : Artem
+ */ 
+
 #include "main.h"
 
 unsigned char bt[32];
@@ -15,7 +22,9 @@ int main(void)
 		I2C device found at address 0x50 !
 		I2C device found at address 0x68 !
 	*/
-	I2C_SendByte(0x50);//передаем адрес устройства и бит записи (0)
+	I2C_SendByte(0b10100000);//передаем адрес устройства и бит записи (0)
+//	I2C_SendByte(0x50);//передаем адрес устройства и бит записи (0)
+
 	USART_Transmit(TWSR);//читаем статусный регистр
 	I2C_SendByte(0);//передаем старшую часть адреса ячейки памяти
 	USART_Transmit(TWSR);//читаем статусный регистр
