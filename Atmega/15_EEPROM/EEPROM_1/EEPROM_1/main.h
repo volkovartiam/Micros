@@ -5,11 +5,9 @@
  *  Author: 589
  */ 
 
-
 #ifndef MAIN_H_
 #define MAIN_H_
 
-#define F_CPU 16000000UL
 
 #include <avr/io.h>
 #include <avr/interrupt.h>
@@ -19,5 +17,6 @@
 
 #include "eeprom.h"
 
+#define F_CPU 16000000UL
 
 #endif /* MAIN_H_ */

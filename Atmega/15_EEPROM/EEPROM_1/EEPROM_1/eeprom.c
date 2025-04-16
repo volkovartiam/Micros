@@ -7,6 +7,63 @@
 
 #include "eeprom.h"
 
+// EEPM - EEPROM Programming Mode Bits
+#define ERASE_ONLY (0<<EEPM1)|(1<<EEPM0)
+#define WRITE_ONLY (1<<EEPM1)|(0<<EEPM0)
+#define ERASE_AND_WRITE (0<<EEPM1)|(0<<EEPM0)
+#define PROGRAMMING_MODE ERASE_AND_WRITE
+
+#define READY_INTERRUPT (1<<EERI)
+
+#define MASTER_WRITE_ENABLE (1<<EEMPE)
+#define MASTER_WRITE_DISABLE (0<<EEMPE)
+
+#define WRITE_ENABLE (1<<EEPE)
+#define WRITE_DISABLE (0<<EEPE)
+
+#define READ_ENABLE (1<<EERE)
+#define READ_DISABLE (0<<EERE)
+
+#define WAIT_COMPLETION_WRITE (EECR & (1<<EEPE) )
+
+
+void EE_write_data_by_address(unsigned char ucData, unsigned int uiAddress)
+{
+	while(WAIT_COMPLETION_WRITE){}	/* Wait for completion of previous write */	
+	
+	EEDR = ucData;
+	EEAR = uiAddress;
+	/*
+	Фрагмент кода не работает
+	EECR |= (PROGRAMMING_MODE|MASTER_WRITE_ENABLE|WRITE_ENABLE);
+	*/
+	
+	/**/
+	EECR |=  PROGRAMMING_MODE;	
+	EECR |=  MASTER_WRITE_ENABLE;
+	EECR |=  WRITE_ENABLE;
+	/**/
+}
+
+
+void EE_erase_by_address(unsigned int uiAddress)
+{
+	while(WAIT_COMPLETION_WRITE){}	/* Wait for completion of previous write */
+	
+	//EEDR = 0x00;
+	EEAR = uiAddress;
+	
+	EECR |=  ERASE_ONLY;
+	EECR |=  MASTER_WRITE_ENABLE;
+	EECR |=  WRITE_ENABLE;
+
+}
+
+
+
+
+
+
 void EEPROM_write(unsigned int uiAddress, unsigned char ucData)
 {
 	/* Wait for completion of previous write */
