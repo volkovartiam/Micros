@@ -12,7 +12,7 @@ unsigned char bt[32];
 int main(void)
 {
 	int i=0;
-	USART_Init();
+	//USART_Init();
 	I2C_Init();
 	
 	//Чтение

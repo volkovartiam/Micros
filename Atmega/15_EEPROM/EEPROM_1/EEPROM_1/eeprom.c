@@ -56,8 +56,21 @@ void EE_erase_by_address(unsigned int uiAddress)
 	EECR |=  ERASE_ONLY;
 	EECR |=  MASTER_WRITE_ENABLE;
 	EECR |=  WRITE_ENABLE;
-
 }
+
+
+/*
+При необходимости можно добавить проверки вхождения адреса в интервал
+*/
+unsigned char EE_read_by_address(unsigned int uiAddress)
+{
+	while(WAIT_COMPLETION_WRITE) {}				
+
+	EEAR = uiAddress;		//Устанавливаем адрес
+	EECR |= READ_ENABLE;	//Запускаем операцию считывания из памяти в регистр данных
+	return EEDR;			//Возвращаем результат
+}
+
 
 
 

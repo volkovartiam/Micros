@@ -18,6 +18,7 @@ unsigned char EEPROM_read(unsigned int uiAddress);					//читаем
 
 void EE_write_data_by_address(unsigned char ucData, unsigned int uiAddress);
 void EE_erase_by_address(unsigned int uiAddress);
+unsigned char EE_read_by_address(unsigned int uiAddress);
 
 /*
 void EEPROM_write_word(unsigned int uiAddress, uint16_t ucData); //пишем 2х-байтовую величину

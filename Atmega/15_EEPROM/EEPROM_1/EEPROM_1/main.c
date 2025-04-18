@@ -10,12 +10,23 @@
 
 int main(void)
 {
-    /* Replace with your application code */
+
+	EE_write_data_by_address(0x01, 0);
+	EE_write_data_by_address(0x02, 1);
+	EE_write_data_by_address(0x03, 2);
+
+	unsigned char readed = EE_read_by_address(0);
+
+	if(readed == 0x01){
+		EE_write_data_by_address(0x05, 5);	
+	}else{
+		EE_write_data_by_address(0x25, 5);
+	}
+
     while (1) 
     {
-		EE_write_data_by_address(0x77, 0);
-		EE_write_data_by_address(0x88, 1);
-		EE_write_data_by_address(0x99, 2);
+
+		
 		
 		/*
 		EE_erase_by_address(0);
