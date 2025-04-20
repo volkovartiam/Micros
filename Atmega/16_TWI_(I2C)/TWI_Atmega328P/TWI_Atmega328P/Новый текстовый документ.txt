@@ -1,2 +1,0 @@
-		I2C device found at address 0x50 !
-		I2C device found at address 0x68 !
