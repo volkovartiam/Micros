@@ -1,11 +1,14 @@
 ﻿#include "eepromext.h"
 
 #define I2C_ADDRESS (0x50 << 1)
+//#define I2C_ADDRESS (0x << 1)
+
 #define READ (1 << 1)
 #define WRITE (0 << 1)
 #define I2C_ADDRESS_WITH_READ I2C_ADDRESS|READ
 #define I2C_ADDRESS_WITH_WRITE I2C_ADDRESS|WRITE
 
+unsigned char err1 = 20;
 
 int EE_Write_Byte_Data(unsigned char data, unsigned char first_address, unsigned char second_address)
 {
@@ -36,11 +39,21 @@ unsigned char EE_ReadByte_Data(unsigned char first_address, unsigned char second
 	I2C_Send_Data(second_address);
 	
 	I2C_Start();
-	I2C_Start();
 	I2C_Send_Data(I2C_ADDRESS_WITH_READ);
-	unsigned char readed = I2C_Read_Data();
+	
+	TWCR = (1<<TWINT)|(1<<TWEN)|(1<<TWEA);//включим прием данных
+	while(!(TWCR & (1<<TWINT)));//подождем пока установится TWIN
+
+		
+	if ((TWSR & 0xF8) != TWI_DATA_RECEIVED_ACK_NOT_RETURNED) err1=1;
+	else err1=0;
+	
+
+	
+	
+	//unsigned char readed = I2C_Read_Data();
 	I2C_Stop();
-	return readed;
+	return TWDR;
 
 }
 

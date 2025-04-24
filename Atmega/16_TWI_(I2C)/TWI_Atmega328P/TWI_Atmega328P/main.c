@@ -7,6 +7,8 @@
 
 #include "main.h"
 
+extern err1;
+
 /*
 Для работы с мс/х AT24C32 в одном байте требуется передать адресс и бит чтения/записи
 */
@@ -30,11 +32,12 @@ int main(void)
 	I2C_Stop();			
 	*/
 	
-	EE_Write_Byte_Data(0x5, 0x00, 0x00);
+	EE_Write_Byte_Data(0x07, 0x01, 0x00);
 	//EE_ReadByte();
 	
-	EE_ReadByte_Data(0x00, 0x00);
-	
+	unsigned char readed = EE_ReadByte_Data(0x01, 0x00);
+	USART_Transmit(readed);
+	USART_Transmit(err1);
 	
     while(1)
     {
