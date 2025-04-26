@@ -1,99 +1,114 @@
 ﻿#include "lcd.h"
 
-//----------------------------------------
-void sendhalfbyte(unsigned char c)
+#define RS_PORT PORTB
+#define RS_PIN PORTB0
+#define rs1  RS_PORT|=(1<<RS_PIN)
+#define rs0  RS_PORT &= ~(1<<RS_PIN)
+
+/*
+#define E_PORT PORTB
+#define E_PIN PORTB1
+#define e1  RS_PORT|=(1<<E_PIN)
+#define e0  RS_PORT &= ~(1<<E_PIN)
+*/
+
+#define e1 PORTB|=0b00000010 // установка линии E в 1
+#define e0 PORTB&=0b11111101 // установка линии E в 0
+
+#define DB_PORT PORTD
+#define DB_PORT_CLEAR DB_PORT &= 0b00001111
+#define DB7_DB4_INIT 0b0011
+
+#define COMMAND_MODE 0
+#define DATA_MODE 1
+
+#define NO_DELAY 0
+#define DELAY_1_ms 1
+
+
+
+
+
+void LCD_init(void)
 {
-	e0;					//выключаем линию Е
-	_delay_us(1);
-	c<<=4;
-	e1;					//включаем линию Е
-	_delay_us(1);
-	PORTD&=0b00001111;  //стираем информацию на входах DB4-DB7, остальное не трогаем
-	PORTD|=c;
-	e0;					//выключаем линию Е
-	_delay_us(100);
+	rs0; 
+	_delay_ms(15);						// wait time > 15 ms  
+	send_half_byte(DB7_DB4_INIT); 		
+	_delay_ms(4.1);						// wait time > 4.1 ms 
+	send_half_byte(DB7_DB4_INIT);
+	_delay_us(100);						// wait time > 100 us  
+	send_half_byte(DB7_DB4_INIT);
+
+	send_half_byte_with_delay(0b0010);				// page 14
+	send_half_byte_with_delay(0b0010);				// page 14
+	send_byte_with_delay(0b00001100, COMMAND_MODE);	// Set display (D) cursor(C) and blinking of cursor(B) on/off	(datasheet page 9)
+	send_byte_with_delay(0b00000110, COMMAND_MODE);	// Assign cursor moving direction and enable the shift of entire display
+	
+	send_byte_with_delay(0b10000000, COMMAND_MODE);	// Clear Display
 }
 
-//----------------------------------------
-void sendbyte(unsigned char c, unsigned char mode)
+
+void send_half_byte(uint8_t data_DB)
 {
-	if (mode==0) rs0;
-	else         rs1;
-	unsigned char hc=0;
-	hc=c>>4;
-	sendhalfbyte(hc); sendhalfbyte(c);
+	data_DB<<=4;
+	e1;	
+	_delay_us(50);					
+	DB_PORT_CLEAR;		
+	DB_PORT |= data_DB;
+	e0;	
+	_delay_us(50);	
 }
-//----------------------------------------
-void sendchar(unsigned char c)
+
+
+void send_half_byte_with_delay(uint8_t data_DB)
 {
-	sendbyte(c,1);
+	send_half_byte(data_DB);
+	_delay_ms(1);	
 }
-//----------------------------------------
+
+void send_byte_with_delay(uint8_t data_DB, uint8_t mode)
+{
+	if(mode==COMMAND_MODE){
+		rs0;
+	}
+	else{
+		rs1;
+	}       
+	uint8_t temp=0;
+	temp=data_DB>>4;
+	send_half_byte_with_delay(temp); 
+	send_half_byte_with_delay(data_DB);
+}
+
+
+void send_char(char c)
+{
+	send_byte_with_delay(c, DATA_MODE);
+}
+
+
+/*
 void setpos(unsigned char x, unsigned y)
 {
 	char adress;
-	adress=(0x40*y+x)|0x80;  //0b10000000;
-	sendbyte(adress, 0);
+	adress=(0x40*y+x)|0b10000000;
+	send_byte_with_delay(adress, 0);
 }
-//----------------------------------------
-void LCD_ini(void)
-{
-	/*
-	_delay_ms(15); //Ждем 15 мс (стр 45)
-	sendhalfbyte(0b00000011);
-	_delay_ms(4);
-	sendhalfbyte(0b00000011);
-	_delay_us(100);
-	sendhalfbyte(0b00000011);
-	_delay_ms(1);
-	sendhalfbyte(0b00000010);
-	_delay_ms(1);
-	
-	sendbyte(0b00101000, 0); //4бит-режим (DL=0) и 2 линии (N=1)
-	_delay_ms(1);
-	sendbyte(0b00001100, 0); //включаем изображение на дисплее (D=1), курсоры никакие не включаем (C=0, B=0)
-	_delay_ms(1);
-	sendbyte(0b00000110, 0); //курсор (хоть он у нас и невидимый) будет двигаться влево
-	_delay_ms(1);
-	*/
-	
-	_delay_us(50000); //Ждем 15 мс (стр 45)
-	rs0;
-	e0;
-	
-	sendhalfbyte(0b00000011);
-	_delay_us(4500);
-	sendhalfbyte(0b00000011);
-	_delay_us(4500);
-	sendhalfbyte(0b00000011);
-	_delay_us(150);
-	sendhalfbyte(0b00000010);
-	_delay_us(150);
-		
-	/**/	
-	sendbyte(0b00101000, 0); //4бит-режим (DL=0) и 2 линии (N=1)
-	_delay_us(4500);
-	sendbyte(0b00001100, 0); //включаем изображение на дисплее (D=1), курсоры никакие не включаем (C=0, B=0)
-	_delay_us(150);
-	sendbyte(0b00000110, 0); //курсор (хоть он у нас и невидимый) будет двигаться влево
-	_delay_us(150);
-	
-	sendbyte(0b00000001, 0);
-	/**/
-	
-	
-}
-//----------------------------------------
+*/
+
+
 void clearlcd()
 {
-	sendbyte(0b00000001, 0);
+	send_byte_with_delay(0b10000000, COMMAND_MODE);	// Clear Display
 	_delay_us(2000);
 }
-//----------------------------------------
-void str_lcd (char str1[])
+
+
+void str_lcd(char string[])
 {  
-	char n;
-	for(n=0;str1[n]!='\0';n++)
-	sendchar((unsigned char)str1[n]);
+	for(char n=0; string[n] != '\0'; n++){
+		send_char(string[n]);
+	}
 }
-//----------------------------------------
+
+
