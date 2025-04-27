@@ -5,15 +5,16 @@
 #define rs1  RS_PORT|=(1<<RS_PIN)
 #define rs0  RS_PORT &= ~(1<<RS_PIN)
 
-/*
+
 #define E_PORT PORTB
 #define E_PIN PORTB1
 #define e1  RS_PORT|=(1<<E_PIN)
 #define e0  RS_PORT &= ~(1<<E_PIN)
-*/
 
+/*
 #define e1 PORTB|=0b00000010 // установка линии E в 1
 #define e0 PORTB&=0b11111101 // установка линии E в 0
+*/
 
 #define DB_PORT PORTD
 #define DB_PORT_CLEAR DB_PORT &= 0b00001111
@@ -24,9 +25,6 @@
 
 #define NO_DELAY 0
 #define DELAY_1_ms 1
-
-
-
 
 
 void LCD_init(void)
@@ -87,20 +85,31 @@ void send_char(char c)
 }
 
 
-/*
-void setpos(unsigned char x, unsigned y)
+void set_pos(uint8_t x, uint8_t y)
 {
-	char adress;
-	adress=(0x40*y+x)|0b10000000;
-	send_byte_with_delay(adress, 0);
+	if(x > 16){
+		x = 16;
+	}
+	if(x < 0){
+		x = 0;
+	}
+	
+	if(y > 2){
+		y = 1;
+	}
+	if(y < 0){
+		y = 0;
+	}
+	uint8_t adress= (0x40*y+x)|0b10000000;
+	send_byte_with_delay(adress, COMMAND_MODE);
 }
-*/
 
 
 void clearlcd()
 {
+	rs0;
 	send_byte_with_delay(0b10000000, COMMAND_MODE);	// Clear Display
-	_delay_us(2000);
+	_delay_ms(2);
 }
 
 

@@ -21,23 +21,32 @@ int main(void)
 	port_init(); 
 	LCD_init(); 
 	
-	//setpos(8,0);
+	set_pos(8,0);
 	send_char('0');
 	send_char('1');
 	send_char('3');
-	_delay_ms(9000);
-	clearlcd();
 	
-	/*	
+	set_pos(0,1);
+	send_char('5');
+	send_char('6');
+	send_char('7');
+	
+	_delay_ms(9000);
+	//set_pos(0,0);
+	//set_pos(0,1);
+
+	//clearlcd();
+	
+	/**/	
 	while(1)
 	{
 		str_lcd("abc");
 		_delay_ms(5000);
-		clearlcd();
-		str_lcd("012");
-		_delay_ms(5000);
+		//clearlcd();
+		//str_lcd("01234");
+		//_delay_ms(9000);
 		clearlcd();
 	}
-	*/
+	/**/
 	
 }
