@@ -4,7 +4,7 @@
     <SchemaVersion>2.0</SchemaVersion>
     <ProjectVersion>7.0</ProjectVersion>
     <ToolchainName>com.Atmel.AVRGCC8.C</ToolchainName>
-    <ProjectGuid>{13fd9880-43d8-424d-902d-298c3d4d7b41}</ProjectGuid>
+    <ProjectGuid>{1145b491-4748-4cc9-a5ee-21836a825cd0}</ProjectGuid>
     <avrdevice>ATmega8A</avrdevice>
     <avrdeviceseries>none</avrdeviceseries>
     <OutputType>Executable</OutputType>
@@ -12,9 +12,9 @@
     <OutputFileName>$(MSBuildProjectName)</OutputFileName>
     <OutputFileExtension>.elf</OutputFileExtension>
     <OutputDirectory>$(MSBuildProjectDirectory)\$(Configuration)</OutputDirectory>
-    <AssemblyName>MYSPI595</AssemblyName>
-    <Name>MYSPI595</Name>
-    <RootNamespace>MYSPI595</RootNamespace>
+    <AssemblyName>MyADCISRLCD</AssemblyName>
+    <Name>MyADCISRLCD</Name>
+    <RootNamespace>MyADCISRLCD</RootNamespace>
     <ToolchainFlavour>Native</ToolchainFlavour>
     <KeepTimersRunning>true</KeepTimersRunning>
     <OverrideVtor>false</OverrideVtor>
@@ -129,10 +129,22 @@
     </ToolchainSettings>
   </PropertyGroup>
   <ItemGroup>
+    <Compile Include="adc.c">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="adc.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="lcd.c">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="lcd.h">
+      <SubType>compile</SubType>
+    </Compile>
     <Compile Include="main.h">
       <SubType>compile</SubType>
     </Compile>
-    <Compile Include="MYSPI595.c">
+    <Compile Include="MyADCISRLCD.c">
       <SubType>compile</SubType>
     </Compile>
   </ItemGroup>
