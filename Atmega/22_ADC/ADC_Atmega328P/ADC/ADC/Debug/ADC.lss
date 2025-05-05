@@ -11,21 +11,21 @@ Idx Name          Size      VMA       LMA       File off  Algn
                   CONTENTS, READONLY
   3 .note.gnu.avr.deviceinfo 00000040  00000000  00000000  00000198  2**2
                   CONTENTS, READONLY
-  4 .debug_aranges 00000060  00000000  00000000  000001d8  2**0
+  4 .debug_aranges 00000068  00000000  00000000  000001d8  2**0
                   CONTENTS, READONLY, DEBUGGING
-  5 .debug_info   0000092e  00000000  00000000  00000238  2**0
+  5 .debug_info   00000945  00000000  00000000  00000240  2**0
                   CONTENTS, READONLY, DEBUGGING
-  6 .debug_abbrev 000007be  00000000  00000000  00000b66  2**0
+  6 .debug_abbrev 000007b1  00000000  00000000  00000b85  2**0
                   CONTENTS, READONLY, DEBUGGING
-  7 .debug_line   000003c4  00000000  00000000  00001324  2**0
+  7 .debug_line   000003e1  00000000  00000000  00001336  2**0
                   CONTENTS, READONLY, DEBUGGING
-  8 .debug_frame  00000088  00000000  00000000  000016e8  2**2
+  8 .debug_frame  00000098  00000000  00000000  00001718  2**2
                   CONTENTS, READONLY, DEBUGGING
-  9 .debug_str    000003f2  00000000  00000000  00001770  2**0
+  9 .debug_str    00000406  00000000  00000000  000017b0  2**0
                   CONTENTS, READONLY, DEBUGGING
- 10 .debug_loc    0000004e  00000000  00000000  00001b62  2**0
+ 10 .debug_loc    0000004e  00000000  00000000  00001bb6  2**0
                   CONTENTS, READONLY, DEBUGGING
- 11 .debug_ranges 00000040  00000000  00000000  00001bb0  2**0
+ 11 .debug_ranges 00000048  00000000  00000000  00001c04  2**0
                   CONTENTS, READONLY, DEBUGGING
 
 Disassembly of section .text:
@@ -72,28 +72,27 @@ Disassembly of section .text:
   7c:	0c 94 00 00 	jmp	0	; 0x0 <__vectors>
 
 00000080 <ADC_Init>:
-	USART_Transmit(0x0a);//переход на новую строку
-}
 
-void ADC_Init(void)
+void ADC_Init_Temp(void)
 {
-	ADCSRA |= (1<<ADEN) // Разрешение использования АЦП
+	ADCSRA |= (1<<ADEN)| 						// Разрешение использования АЦП
+			  DIV_Factor_128;					//Делитель 128 = 64 кГц
+	ADMUX |= Internal_1_1_V|ADC8_TEMP;			//Внутренний Источник ОН 2,56в, вход ADC0
   80:	ea e7       	ldi	r30, 0x7A	; 122
   82:	f0 e0       	ldi	r31, 0x00	; 0
   84:	80 81       	ld	r24, Z
   86:	87 68       	ori	r24, 0x87	; 135
   88:	80 83       	st	Z, r24
-	|(1<<ADPS2)|(1<<ADPS1)|(1<<ADPS0);//Делитель 128 = 64 кГц
-	ADMUX |= (1<<REFS1)|(1<<REFS0);		//Внутренний Источник ОН 2,56в, вход ADC0
   8a:	ec e7       	ldi	r30, 0x7C	; 124
   8c:	f0 e0       	ldi	r31, 0x00	; 0
   8e:	80 81       	ld	r24, Z
-  90:	80 6c       	ori	r24, 0xC0	; 192
+  90:	80 64       	ori	r24, 0x40	; 64
   92:	80 83       	st	Z, r24
   94:	08 95       	ret
 
 00000096 <ADC_convert>:
-}
+
+
 
 int ADC_convert(void)
 {
@@ -124,16 +123,16 @@ int main(void)
   b6:	0e 94 72 00 	call	0xe4	; 0xe4 <USART_Init>
 	ADC_Init();
   ba:	0e 94 40 00 	call	0x80	; 0x80 <ADC_Init>
-	
 	int adc_value = 0;
+	int adch_value = 0;
 
     while (1) 
     {
 		adc_value = ADC_convert();
   be:	0e 94 4b 00 	call	0x96	; 0x96 <ADC_convert>
   c2:	c8 2f       	mov	r28, r24
-		int hc = adc_value>>8;
-		USART_Transmit(hc);
+		adch_value = adc_value>>8;
+		USART_Transmit(adch_value);
   c4:	89 2f       	mov	r24, r25
   c6:	0e 94 81 00 	call	0x102	; 0x102 <USART_Transmit>
 		USART_Transmit(adc_value);		
