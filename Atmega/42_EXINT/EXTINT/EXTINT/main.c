@@ -51,47 +51,42 @@ Bits 7:0 – PCINT[7:0]?Pin Change Enable Mask
 #define INT0_Falling (1<<ISC01)|(0<<ISC00)
 #define INT0_Rising (1<<ISC01)|(1<<ISC00)
 
+#define INT0_Enable (1<<INT0)
+#define INT1_Enable (1<<INT1)
 
+#define LED_PIN (1<<PORTB5)
 
-
-void port_ini(void)
+void port_init(void)
 {
-	//Включим ножку светодиода на выход
-	DDRB |= 0b00100000;
-	//Включим ножки INT0 и INT1 (PD2 и PD3)  на вход
-	DDRD &= ~(0b00001100);
-	//Подтянем резистор на ножках INT0 и INT1 (PD2 и PD3) к питанию
-	PORTD |= 0b00001100;
+	DDRB |= LED_PIN;						//Включим ножку светодиода на выход					//0b00100000
+	DDRD &= ~((1<<PORTD2)|(1<<PORTD3));		//Включим ножки INT0 и INT1 (PD2 и PD3)  на вход	//(0b00001100);   
+	PORTD |= (1<<PORTD2)|(1<<PORTD3);		//Подтянем резистор на ножках INT0 и INT1 (PD2 и PD3) к питанию	//0b00001100;
 }
-//-----------------------------------------------------
-void int_ini(void)
+
+void interrupt_init(void)
 {
-	//включим прерывания INT0 и INT1 по нисходящему фронту
-	EICRA|=(1<<ISC11)|(1<<ISC01);
-	//разрешим внешние прерывания INT0 и INT1
-	EIMSK|=(1<<INT1)|(1<<INT0);
+	EICRA|= INT0_Falling|INT1_Falling;
+	EIMSK|= INT0_Enable|INT1_Enable;
 }
-//-----------------------------------------------------
+
 ISR(INT0_vect)
 {
-	PORTB |= 0b00100000;
+	PORTB |= LED_PIN;
 }
-//-----------------------------------------------------
+
 ISR(INT1_vect)
 {
-	PORTB &= ~(0b00100000);
+	PORTB &= ~(LED_PIN);
 }
-//-----------------------------------------------------
 
 
 int main(void)
 {
-	port_ini();
-	int_ini();
+	port_init();
+	interrupt_init();
 	sei();
 	while (1)
 	{
 	}
 }
-//----------------------------
 

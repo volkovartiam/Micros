@@ -17,15 +17,15 @@ Idx Name          Size      VMA       LMA       File off  Algn
                   CONTENTS, READONLY, DEBUGGING
   6 .debug_abbrev 00000633  00000000  00000000  000008df  2**0
                   CONTENTS, READONLY, DEBUGGING
-  7 .debug_line   0000025b  00000000  00000000  00000f12  2**0
+  7 .debug_line   00000141  00000000  00000000  00000f12  2**0
                   CONTENTS, READONLY, DEBUGGING
-  8 .debug_frame  00000084  00000000  00000000  00001170  2**2
+  8 .debug_frame  00000084  00000000  00000000  00001054  2**2
                   CONTENTS, READONLY, DEBUGGING
-  9 .debug_str    0000035f  00000000  00000000  000011f4  2**0
+  9 .debug_str    0000036c  00000000  00000000  000010d8  2**0
                   CONTENTS, READONLY, DEBUGGING
- 10 .debug_loc    00000078  00000000  00000000  00001553  2**0
+ 10 .debug_loc    00000078  00000000  00000000  00001444  2**0
                   CONTENTS, READONLY, DEBUGGING
- 11 .debug_ranges 00000030  00000000  00000000  000015cb  2**0
+ 11 .debug_ranges 00000030  00000000  00000000  000014bc  2**0
                   CONTENTS, READONLY, DEBUGGING
 
 Disassembly of section .text:
@@ -71,42 +71,38 @@ Disassembly of section .text:
 0000007c <__bad_interrupt>:
   7c:	0c 94 00 00 	jmp	0	; 0x0 <__vectors>
 
-00000080 <port_ini>:
+00000080 <port_init>:
 
+#define LED_PIN (1<<PORTB5)
 
-void port_ini(void)
+void port_init(void)
 {
-	//Включим ножку светодиода на выход
-	DDRB |= 0b00100000;
+	DDRB |= LED_PIN;						//Включим ножку светодиода на выход					//0b00100000
   80:	84 b1       	in	r24, 0x04	; 4
   82:	80 62       	ori	r24, 0x20	; 32
   84:	84 b9       	out	0x04, r24	; 4
-	//Включим ножки INT0 и INT1 (PD2 и PD3)  на вход
-	DDRD &= ~(0b00001100);
+	DDRD &= ~((1<<PORTD2)|(1<<PORTD3));		//Включим ножки INT0 и INT1 (PD2 и PD3)  на вход	//(0b00001100);   
   86:	8a b1       	in	r24, 0x0a	; 10
   88:	83 7f       	andi	r24, 0xF3	; 243
   8a:	8a b9       	out	0x0a, r24	; 10
-	//Подтянем резистор на ножках INT0 и INT1 (PD2 и PD3) к питанию
-	PORTD |= 0b00001100;
+	PORTD |= (1<<PORTD2)|(1<<PORTD3);		//Подтянем резистор на ножках INT0 и INT1 (PD2 и PD3) к питанию	//0b00001100;
   8c:	8b b1       	in	r24, 0x0b	; 11
   8e:	8c 60       	ori	r24, 0x0C	; 12
   90:	8b b9       	out	0x0b, r24	; 11
   92:	08 95       	ret
 
-00000094 <int_ini>:
+00000094 <interrupt_init>:
 }
-//-----------------------------------------------------
-void int_ini(void)
+
+void interrupt_init(void)
 {
-	//включим прерывания INT0 и INT1 по нисходящему фронту
-	EICRA|=(1<<ISC11)|(1<<ISC01);
+	EICRA|= INT0_Falling|INT1_Falling;
   94:	e9 e6       	ldi	r30, 0x69	; 105
   96:	f0 e0       	ldi	r31, 0x00	; 0
   98:	80 81       	ld	r24, Z
   9a:	8a 60       	ori	r24, 0x0A	; 10
   9c:	80 83       	st	Z, r24
-	//разрешим внешние прерывания INT0 и INT1
-	EIMSK|=(1<<INT1)|(1<<INT0);
+	EIMSK|= INT0_Enable|INT1_Enable;
   9e:	8d b3       	in	r24, 0x1d	; 29
   a0:	83 60       	ori	r24, 0x03	; 3
   a2:	8d bb       	out	0x1d, r24	; 29
@@ -114,7 +110,7 @@ void int_ini(void)
 
 000000a6 <__vector_1>:
 }
-//-----------------------------------------------------
+
 ISR(INT0_vect)
 {
   a6:	1f 92       	push	r1
@@ -123,7 +119,7 @@ ISR(INT0_vect)
   ac:	0f 92       	push	r0
   ae:	11 24       	eor	r1, r1
   b0:	8f 93       	push	r24
-	PORTB |= 0b00100000;
+	PORTB |= LED_PIN;
   b2:	85 b1       	in	r24, 0x05	; 5
   b4:	80 62       	ori	r24, 0x20	; 32
   b6:	85 b9       	out	0x05, r24	; 5
@@ -136,7 +132,7 @@ ISR(INT0_vect)
   c2:	18 95       	reti
 
 000000c4 <__vector_2>:
-//-----------------------------------------------------
+
 ISR(INT1_vect)
 {
   c4:	1f 92       	push	r1
@@ -145,7 +141,7 @@ ISR(INT1_vect)
   ca:	0f 92       	push	r0
   cc:	11 24       	eor	r1, r1
   ce:	8f 93       	push	r24
-	PORTB &= ~(0b00100000);
+	PORTB &= ~(LED_PIN);
   d0:	85 b1       	in	r24, 0x05	; 5
   d2:	8f 7d       	andi	r24, 0xDF	; 223
   d4:	85 b9       	out	0x05, r24	; 5
@@ -158,15 +154,14 @@ ISR(INT1_vect)
   e0:	18 95       	reti
 
 000000e2 <main>:
-//-----------------------------------------------------
 
 
 int main(void)
 {
-	port_ini();
-  e2:	0e 94 40 00 	call	0x80	; 0x80 <port_ini>
-	int_ini();
-  e6:	0e 94 4a 00 	call	0x94	; 0x94 <int_ini>
+	port_init();
+  e2:	0e 94 40 00 	call	0x80	; 0x80 <port_init>
+	interrupt_init();
+  e6:	0e 94 4a 00 	call	0x94	; 0x94 <interrupt_init>
 	sei();
   ea:	78 94       	sei
   ec:	ff cf       	rjmp	.-2      	; 0xec <main+0xa>
