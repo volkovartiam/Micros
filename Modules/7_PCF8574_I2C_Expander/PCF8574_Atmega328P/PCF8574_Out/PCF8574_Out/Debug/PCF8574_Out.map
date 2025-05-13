@@ -10,6 +10,9 @@ Discarded input sections
  .text          0x00000000        0x0 main.o
  .data          0x00000000        0x0 main.o
  .bss           0x00000000        0x0 main.o
+ .text          0x00000000        0x0 PCF8574.o
+ .data          0x00000000        0x0 PCF8574.o
+ .bss           0x00000000        0x0 PCF8574.o
  .text          0x00000000        0x0 twi.o
  .data          0x00000000        0x0 twi.o
  .bss           0x00000000        0x0 twi.o
@@ -54,6 +57,7 @@ Linker script and memory map
 Address of section .data set to 0x800100
 LOAD C:/Program Files (x86)/Atmel/Studio/7.0/Packs/Atmel/ATmega_DFP/2.1.506/gcc/dev/atmega328p/avr5/crtatmega328p.o
 LOAD main.o
+LOAD PCF8574.o
 LOAD twi.o
 LOAD usart.o
 START GROUP
@@ -165,7 +169,7 @@ END GROUP
 .rela.plt
  *(.rela.plt)
 
-.text           0x00000000      0x18a
+.text           0x00000000      0x138
  *(.vectors)
  .vectors       0x00000000       0x68 C:/Program Files (x86)/Atmel/Studio/7.0/Packs/Atmel/ATmega_DFP/2.1.506/gcc/dev/atmega328p/avr5/crtatmega328p.o
                 0x00000000                __vector_default
@@ -248,37 +252,40 @@ END GROUP
                 0x0000007c                __vector_20
                 0x00000080                . = ALIGN (0x2)
  *(.text.*)
- .text.main     0x00000080       0x7c main.o
+ .text.main     0x00000080        0xa main.o
                 0x00000080                main
+ .text.send_data_PCF8574
+                0x0000008a       0x20 PCF8574.o
+                0x0000008a                send_data_PCF8574
  .text.init_telemetry
-                0x000000fc        0x6 twi.o
-                0x000000fc                init_telemetry
+                0x000000aa        0x6 twi.o
+                0x000000aa                init_telemetry
  .text.send_telemetry
-                0x00000102        0x6 twi.o
-                0x00000102                send_telemetry
+                0x000000b0        0x6 twi.o
+                0x000000b0                send_telemetry
  .text.I2C_Init
-                0x00000108       0x14 twi.o
-                0x00000108                I2C_Init
+                0x000000b6       0x14 twi.o
+                0x000000b6                I2C_Init
  .text.I2C_Start
-                0x0000011c       0x18 twi.o
-                0x0000011c                I2C_Start
+                0x000000ca       0x18 twi.o
+                0x000000ca                I2C_Start
  .text.I2C_Stop
-                0x00000134       0x10 twi.o
-                0x00000134                I2C_Stop
+                0x000000e2       0x10 twi.o
+                0x000000e2                I2C_Stop
  .text.I2C_Send_Data
-                0x00000144       0x1c twi.o
-                0x00000144                I2C_Send_Data
+                0x000000f2       0x1c twi.o
+                0x000000f2                I2C_Send_Data
  .text.USART_Init
-                0x00000160       0x18 usart.o
-                0x00000160                USART_Init
+                0x0000010e       0x18 usart.o
+                0x0000010e                USART_Init
  .text.USART_Transmit
-                0x00000178        0xe usart.o
-                0x00000178                USART_Transmit
-                0x00000186                . = ALIGN (0x2)
+                0x00000126        0xe usart.o
+                0x00000126                USART_Transmit
+                0x00000134                . = ALIGN (0x2)
  *(.fini9)
- .fini9         0x00000186        0x0 c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/avr5\libgcc.a(_exit.o)
-                0x00000186                _exit
-                0x00000186                exit
+ .fini9         0x00000134        0x0 c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/avr5\libgcc.a(_exit.o)
+                0x00000134                _exit
+                0x00000134                exit
  *(.fini9)
  *(.fini8)
  *(.fini8)
@@ -297,11 +304,11 @@ END GROUP
  *(.fini1)
  *(.fini1)
  *(.fini0)
- .fini0         0x00000186        0x4 c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/avr5\libgcc.a(_exit.o)
+ .fini0         0x00000134        0x4 c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/avr5\libgcc.a(_exit.o)
  *(.fini0)
-                0x0000018a                _etext = .
+                0x00000138                _etext = .
 
-.data           0x00800100        0x0 load address 0x0000018a
+.data           0x00800100        0x0 load address 0x00000138
                 [!provide]                PROVIDE (__data_start, .)
  *(.data)
  *(.data*)
@@ -319,8 +326,8 @@ END GROUP
  *(.bss*)
  *(COMMON)
                 [!provide]                PROVIDE (__bss_end, .)
-                0x0000018a                __data_load_start = LOADADDR (.data)
-                0x0000018a                __data_load_end = (__data_load_start + SIZEOF (.data))
+                0x00000138                __data_load_start = LOADADDR (.data)
+                0x00000138                __data_load_end = (__data_load_start + SIZEOF (.data))
 
 .noinit         0x00800100        0x0
                 [!provide]                PROVIDE (__noinit_start, .)
@@ -370,6 +377,7 @@ END GROUP
  *(.comment)
  .comment       0x00000000       0x30 main.o
                                  0x31 (size before relaxing)
+ .comment       0x00000030       0x31 PCF8574.o
  .comment       0x00000030       0x31 twi.o
  .comment       0x00000030       0x31 usart.o
 
@@ -393,59 +401,67 @@ END GROUP
 .debug_sfnames
  *(.debug_sfnames)
 
-.debug_aranges  0x00000000       0xa0
+.debug_aranges  0x00000000       0xc0
  *(.debug_aranges)
  .debug_aranges
                 0x00000000       0x20 main.o
  .debug_aranges
-                0x00000020       0x50 twi.o
+                0x00000020       0x20 PCF8574.o
  .debug_aranges
-                0x00000070       0x30 usart.o
+                0x00000040       0x50 twi.o
+ .debug_aranges
+                0x00000090       0x30 usart.o
 
 .debug_pubnames
  *(.debug_pubnames)
 
-.debug_info     0x00000000      0xaf4
+.debug_info     0x00000000      0xa53
  *(.debug_info .gnu.linkonce.wi.*)
  .debug_info    0x00000000      0x5f4 C:/Program Files (x86)/Atmel/Studio/7.0/Packs/Atmel/ATmega_DFP/2.1.506/gcc/dev/atmega328p/avr5/crtatmega328p.o
- .debug_info    0x000005f4      0x269 main.o
- .debug_info    0x0000085d      0x1bd twi.o
- .debug_info    0x00000a1a       0xda usart.o
+ .debug_info    0x000005f4       0xbe main.o
+ .debug_info    0x000006b2      0x10a PCF8574.o
+ .debug_info    0x000007bc      0x1bd twi.o
+ .debug_info    0x00000979       0xda usart.o
 
-.debug_abbrev   0x00000000      0x822
+.debug_abbrev   0x00000000      0x80e
  *(.debug_abbrev)
  .debug_abbrev  0x00000000      0x5a2 C:/Program Files (x86)/Atmel/Studio/7.0/Packs/Atmel/ATmega_DFP/2.1.506/gcc/dev/atmega328p/avr5/crtatmega328p.o
- .debug_abbrev  0x000005a2      0x12b main.o
- .debug_abbrev  0x000006cd       0xb2 twi.o
- .debug_abbrev  0x0000077f       0xa3 usart.o
+ .debug_abbrev  0x000005a2       0x8c main.o
+ .debug_abbrev  0x0000062e       0x8b PCF8574.o
+ .debug_abbrev  0x000006b9       0xb2 twi.o
+ .debug_abbrev  0x0000076b       0xa3 usart.o
 
-.debug_line     0x00000000      0x552
+.debug_line     0x00000000      0x457
  *(.debug_line .debug_line.* .debug_line_end)
  .debug_line    0x00000000      0x134 C:/Program Files (x86)/Atmel/Studio/7.0/Packs/Atmel/ATmega_DFP/2.1.506/gcc/dev/atmega328p/avr5/crtatmega328p.o
- .debug_line    0x00000134      0x1a3 main.o
- .debug_line    0x000002d7      0x181 twi.o
- .debug_line    0x00000458       0xfa usart.o
+ .debug_line    0x00000134       0x3f main.o
+ .debug_line    0x00000173       0x69 PCF8574.o
+ .debug_line    0x000001dc      0x181 twi.o
+ .debug_line    0x0000035d       0xfa usart.o
 
-.debug_frame    0x00000000       0xf8
+.debug_frame    0x00000000      0x124
  *(.debug_frame)
  .debug_frame   0x00000000       0x24 main.o
- .debug_frame   0x00000024       0x90 twi.o
- .debug_frame   0x000000b4       0x44 usart.o
+ .debug_frame   0x00000024       0x2c PCF8574.o
+ .debug_frame   0x00000050       0x90 twi.o
+ .debug_frame   0x000000e0       0x44 usart.o
 
-.debug_str      0x00000000      0x45a
+.debug_str      0x00000000      0x430
  *(.debug_str)
  .debug_str     0x00000000      0x208 C:/Program Files (x86)/Atmel/Studio/7.0/Packs/Atmel/ATmega_DFP/2.1.506/gcc/dev/atmega328p/avr5/crtatmega328p.o
- .debug_str     0x00000208      0x1c9 main.o
-                                0x202 (size before relaxing)
- .debug_str     0x000003d1       0x5e twi.o
+ .debug_str     0x00000208      0x166 main.o
+                                0x19f (size before relaxing)
+ .debug_str     0x0000036e       0x3e PCF8574.o
+                                0x1cc (size before relaxing)
+ .debug_str     0x000003ac       0x59 twi.o
                                 0x204 (size before relaxing)
- .debug_str     0x0000042f       0x2b usart.o
+ .debug_str     0x00000405       0x2b usart.o
                                 0x1ce (size before relaxing)
 
-.debug_loc      0x00000000      0x131
+.debug_loc      0x00000000       0xcb
  *(.debug_loc)
- .debug_loc     0x00000000       0xb4 main.o
- .debug_loc     0x000000b4       0x7d twi.o
+ .debug_loc     0x00000000       0x4e PCF8574.o
+ .debug_loc     0x0000004e       0x7d twi.o
 
 .debug_macinfo
  *(.debug_macinfo)
@@ -465,11 +481,12 @@ END GROUP
 .debug_pubtypes
  *(.debug_pubtypes)
 
-.debug_ranges   0x00000000       0x70
+.debug_ranges   0x00000000       0x80
  *(.debug_ranges)
  .debug_ranges  0x00000000       0x10 main.o
- .debug_ranges  0x00000010       0x40 twi.o
- .debug_ranges  0x00000050       0x20 usart.o
+ .debug_ranges  0x00000010       0x10 PCF8574.o
+ .debug_ranges  0x00000020       0x40 twi.o
+ .debug_ranges  0x00000060       0x20 usart.o
 
 .debug_macro
  *(.debug_macro)

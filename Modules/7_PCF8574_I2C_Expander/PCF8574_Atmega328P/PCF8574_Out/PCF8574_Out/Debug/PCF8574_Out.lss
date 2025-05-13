@@ -3,29 +3,29 @@ PCF8574_Out.elf:     file format elf32-avr
 
 Sections:
 Idx Name          Size      VMA       LMA       File off  Algn
-  0 .data         00000000  00800100  00800100  000001de  2**0
+  0 .data         00000000  00800100  00800100  0000018c  2**0
                   CONTENTS, ALLOC, LOAD, DATA
-  1 .text         0000018a  00000000  00000000  00000054  2**1
+  1 .text         00000138  00000000  00000000  00000054  2**1
                   CONTENTS, ALLOC, LOAD, READONLY, CODE
-  2 .comment      00000030  00000000  00000000  000001de  2**0
+  2 .comment      00000030  00000000  00000000  0000018c  2**0
                   CONTENTS, READONLY
-  3 .note.gnu.avr.deviceinfo 00000040  00000000  00000000  00000210  2**2
+  3 .note.gnu.avr.deviceinfo 00000040  00000000  00000000  000001bc  2**2
                   CONTENTS, READONLY
-  4 .debug_aranges 000000a0  00000000  00000000  00000250  2**0
+  4 .debug_aranges 000000c0  00000000  00000000  000001fc  2**0
                   CONTENTS, READONLY, DEBUGGING
-  5 .debug_info   00000af4  00000000  00000000  000002f0  2**0
+  5 .debug_info   00000a53  00000000  00000000  000002bc  2**0
                   CONTENTS, READONLY, DEBUGGING
-  6 .debug_abbrev 00000822  00000000  00000000  00000de4  2**0
+  6 .debug_abbrev 0000080e  00000000  00000000  00000d0f  2**0
                   CONTENTS, READONLY, DEBUGGING
-  7 .debug_line   00000552  00000000  00000000  00001606  2**0
+  7 .debug_line   00000457  00000000  00000000  0000151d  2**0
                   CONTENTS, READONLY, DEBUGGING
-  8 .debug_frame  000000f8  00000000  00000000  00001b58  2**2
+  8 .debug_frame  00000124  00000000  00000000  00001974  2**2
                   CONTENTS, READONLY, DEBUGGING
-  9 .debug_str    0000045a  00000000  00000000  00001c50  2**0
+  9 .debug_str    00000430  00000000  00000000  00001a98  2**0
                   CONTENTS, READONLY, DEBUGGING
- 10 .debug_loc    00000131  00000000  00000000  000020aa  2**0
+ 10 .debug_loc    000000cb  00000000  00000000  00001ec8  2**0
                   CONTENTS, READONLY, DEBUGGING
- 11 .debug_ranges 00000070  00000000  00000000  000021db  2**0
+ 11 .debug_ranges 00000080  00000000  00000000  00001f93  2**0
                   CONTENTS, READONLY, DEBUGGING
 
 Disassembly of section .text:
@@ -66,215 +66,165 @@ Disassembly of section .text:
   70:	de bf       	out	0x3e, r29	; 62
   72:	cd bf       	out	0x3d, r28	; 61
   74:	0e 94 40 00 	call	0x80	; 0x80 <main>
-  78:	0c 94 c3 00 	jmp	0x186	; 0x186 <_exit>
+  78:	0c 94 9a 00 	jmp	0x134	; 0x134 <_exit>
 
 0000007c <__bad_interrupt>:
   7c:	0c 94 00 00 	jmp	0	; 0x0 <__vectors>
 
 00000080 <main>:
-#define I2C_PCF_ADDRESS_WITH_READ I2C_PCF_ADDRESS|READ
-#define I2C_PCF_ADDRESS_WITH_WRITE I2C_PCF_ADDRESS|WRITE
+	I2C_Stop();
+	_delay_ms(1000);
+	*/	
+		
+	//setAddressPCF8574();
+	send_data_PCF8574(0b01010101);
+  80:	85 e5       	ldi	r24, 0x55	; 85
+  82:	90 e0       	ldi	r25, 0x00	; 0
+  84:	0e 94 45 00 	call	0x8a	; 0x8a <send_data_PCF8574>
+  88:	ff cf       	rjmp	.-2      	; 0x88 <main+0x8>
 
-int main(void)
-{
+0000008a <send_data_PCF8574>:
+void setAddressPCF8574(unsigned char address){
+	#define PCF8574_ADDRESS address;
+}
+*/
+
+void send_data_PCF8574(unsigned char data){
+  8a:	cf 93       	push	r28
+  8c:	c8 2f       	mov	r28, r24
 	I2C_Init();
-  80:	0e 94 84 00 	call	0x108	; 0x108 <I2C_Init>
+  8e:	0e 94 5b 00 	call	0xb6	; 0xb6 <I2C_Init>
 	I2C_Start();
-  84:	0e 94 8e 00 	call	0x11c	; 0x11c <I2C_Start>
+  92:	0e 94 65 00 	call	0xca	; 0xca <I2C_Start>
 	I2C_Send_Data(I2C_PCF_ADDRESS_WITH_WRITE);
-  88:	80 e4       	ldi	r24, 0x40	; 64
-  8a:	0e 94 a2 00 	call	0x144	; 0x144 <I2C_Send_Data>
-	I2C_Send_Data(0b11110011);
-  8e:	83 ef       	ldi	r24, 0xF3	; 243
-  90:	0e 94 a2 00 	call	0x144	; 0x144 <I2C_Send_Data>
-	#else
-		//round up by default
-		__ticks_dc = (uint32_t)(ceil(fabs(__tmp)));
-	#endif
-
-	__builtin_avr_delay_cycles(__ticks_dc);
-  94:	2f ef       	ldi	r18, 0xFF	; 255
-  96:	83 ed       	ldi	r24, 0xD3	; 211
-  98:	90 e3       	ldi	r25, 0x30	; 48
-  9a:	21 50       	subi	r18, 0x01	; 1
-  9c:	80 40       	sbci	r24, 0x00	; 0
-  9e:	90 40       	sbci	r25, 0x00	; 0
-  a0:	e1 f7       	brne	.-8      	; 0x9a <main+0x1a>
-  a2:	00 c0       	rjmp	.+0      	; 0xa4 <main+0x24>
-  a4:	00 00       	nop
-	_delay_ms(1000);
-	I2C_Send_Data(0b00001111);
-  a6:	8f e0       	ldi	r24, 0x0F	; 15
-  a8:	0e 94 a2 00 	call	0x144	; 0x144 <I2C_Send_Data>
+  96:	80 e4       	ldi	r24, 0x40	; 64
+  98:	0e 94 79 00 	call	0xf2	; 0xf2 <I2C_Send_Data>
+	I2C_Send_Data(data);
+  9c:	8c 2f       	mov	r24, r28
+  9e:	0e 94 79 00 	call	0xf2	; 0xf2 <I2C_Send_Data>
 	I2C_Stop();
-  ac:	0e 94 9a 00 	call	0x134	; 0x134 <I2C_Stop>
-  b0:	2f ef       	ldi	r18, 0xFF	; 255
-  b2:	83 ed       	ldi	r24, 0xD3	; 211
-  b4:	90 e3       	ldi	r25, 0x30	; 48
-  b6:	21 50       	subi	r18, 0x01	; 1
-  b8:	80 40       	sbci	r24, 0x00	; 0
-  ba:	90 40       	sbci	r25, 0x00	; 0
-  bc:	e1 f7       	brne	.-8      	; 0xb6 <main+0x36>
-  be:	00 c0       	rjmp	.+0      	; 0xc0 <main+0x40>
-  c0:	00 00       	nop
-	_delay_ms(1000);
-		
-    while(1)
-    {
-		for(int i = 0; i<0xFF; i++){
-  c2:	c0 e0       	ldi	r28, 0x00	; 0
-  c4:	d0 e0       	ldi	r29, 0x00	; 0
-  c6:	16 c0       	rjmp	.+44     	; 0xf4 <main+0x74>
-			I2C_Init();
-  c8:	0e 94 84 00 	call	0x108	; 0x108 <I2C_Init>
-			I2C_Start();
-  cc:	0e 94 8e 00 	call	0x11c	; 0x11c <I2C_Start>
-			I2C_Send_Data(I2C_PCF_ADDRESS_WITH_WRITE);
-  d0:	80 e4       	ldi	r24, 0x40	; 64
-  d2:	0e 94 a2 00 	call	0x144	; 0x144 <I2C_Send_Data>
-			I2C_Send_Data(i);
-  d6:	8c 2f       	mov	r24, r28
-  d8:	0e 94 a2 00 	call	0x144	; 0x144 <I2C_Send_Data>
-			I2C_Stop();
-  dc:	0e 94 9a 00 	call	0x134	; 0x134 <I2C_Stop>
-  e0:	2f ef       	ldi	r18, 0xFF	; 255
-  e2:	81 ee       	ldi	r24, 0xE1	; 225
-  e4:	94 e0       	ldi	r25, 0x04	; 4
-  e6:	21 50       	subi	r18, 0x01	; 1
-  e8:	80 40       	sbci	r24, 0x00	; 0
-  ea:	90 40       	sbci	r25, 0x00	; 0
-  ec:	e1 f7       	brne	.-8      	; 0xe6 <main+0x66>
-  ee:	00 c0       	rjmp	.+0      	; 0xf0 <main+0x70>
-  f0:	00 00       	nop
-	I2C_Stop();
-	_delay_ms(1000);
-		
-    while(1)
-    {
-		for(int i = 0; i<0xFF; i++){
-  f2:	21 96       	adiw	r28, 0x01	; 1
-  f4:	cf 3f       	cpi	r28, 0xFF	; 255
-  f6:	d1 05       	cpc	r29, r1
-  f8:	3c f3       	brlt	.-50     	; 0xc8 <main+0x48>
-  fa:	e3 cf       	rjmp	.-58     	; 0xc2 <main+0x42>
+  a2:	0e 94 71 00 	call	0xe2	; 0xe2 <I2C_Stop>
+}
+  a6:	cf 91       	pop	r28
+  a8:	08 95       	ret
 
-000000fc <init_telemetry>:
+000000aa <init_telemetry>:
 }
 
 
 void init_telemetry()
 {
 	USART_Init();
-  fc:	0e 94 b0 00 	call	0x160	; 0x160 <USART_Init>
- 100:	08 95       	ret
+  aa:	0e 94 87 00 	call	0x10e	; 0x10e <USART_Init>
+  ae:	08 95       	ret
 
-00000102 <send_telemetry>:
+000000b0 <send_telemetry>:
 }
 
 void send_telemetry(uint8_t data)
 {
 	USART_Transmit(data);
- 102:	0e 94 bc 00 	call	0x178	; 0x178 <USART_Transmit>
- 106:	08 95       	ret
+  b0:	0e 94 93 00 	call	0x126	; 0x126 <USART_Transmit>
+  b4:	08 95       	ret
 
-00000108 <I2C_Init>:
+000000b6 <I2C_Init>:
 ﻿#include "twi.h"
 
 
 void I2C_Init(void)
 {
 	TWBR = BIT_RATE;
- 108:	8e e0       	ldi	r24, 0x0E	; 14
- 10a:	80 93 b8 00 	sts	0x00B8, r24	; 0x8000b8 <__TEXT_REGION_LENGTH__+0x7f80b8>
+  b6:	8e e0       	ldi	r24, 0x0E	; 14
+  b8:	80 93 b8 00 	sts	0x00B8, r24	; 0x8000b8 <__TEXT_REGION_LENGTH__+0x7f80b8>
 	init_telemetry();
- 10e:	0e 94 7e 00 	call	0xfc	; 0xfc <init_telemetry>
+  bc:	0e 94 55 00 	call	0xaa	; 0xaa <init_telemetry>
 	send_telemetry(I2C_STATUS);
- 112:	80 91 b9 00 	lds	r24, 0x00B9	; 0x8000b9 <__TEXT_REGION_LENGTH__+0x7f80b9>
- 116:	0e 94 81 00 	call	0x102	; 0x102 <send_telemetry>
- 11a:	08 95       	ret
+  c0:	80 91 b9 00 	lds	r24, 0x00B9	; 0x8000b9 <__TEXT_REGION_LENGTH__+0x7f80b9>
+  c4:	0e 94 58 00 	call	0xb0	; 0xb0 <send_telemetry>
+  c8:	08 95       	ret
 
-0000011c <I2C_Start>:
+000000ca <I2C_Start>:
 }
 
 
 void I2C_Start(void)
 {
 	TWCR = TWI_Interrupt_Flag|TWI_START_Condition|TWI_Enable;
- 11c:	84 ea       	ldi	r24, 0xA4	; 164
- 11e:	80 93 bc 00 	sts	0x00BC, r24	; 0x8000bc <__TEXT_REGION_LENGTH__+0x7f80bc>
+  ca:	84 ea       	ldi	r24, 0xA4	; 164
+  cc:	80 93 bc 00 	sts	0x00BC, r24	; 0x8000bc <__TEXT_REGION_LENGTH__+0x7f80bc>
 	while(WAIT_UNTIL_TWINT_SET){}
- 122:	80 91 bc 00 	lds	r24, 0x00BC	; 0x8000bc <__TEXT_REGION_LENGTH__+0x7f80bc>
- 126:	88 23       	and	r24, r24
- 128:	e4 f7       	brge	.-8      	; 0x122 <I2C_Start+0x6>
+  d0:	80 91 bc 00 	lds	r24, 0x00BC	; 0x8000bc <__TEXT_REGION_LENGTH__+0x7f80bc>
+  d4:	88 23       	and	r24, r24
+  d6:	e4 f7       	brge	.-8      	; 0xd0 <I2C_Start+0x6>
 	send_telemetry(I2C_STATUS);
- 12a:	80 91 b9 00 	lds	r24, 0x00B9	; 0x8000b9 <__TEXT_REGION_LENGTH__+0x7f80b9>
- 12e:	0e 94 81 00 	call	0x102	; 0x102 <send_telemetry>
- 132:	08 95       	ret
+  d8:	80 91 b9 00 	lds	r24, 0x00B9	; 0x8000b9 <__TEXT_REGION_LENGTH__+0x7f80b9>
+  dc:	0e 94 58 00 	call	0xb0	; 0xb0 <send_telemetry>
+  e0:	08 95       	ret
 
-00000134 <I2C_Stop>:
+000000e2 <I2C_Stop>:
 }
 
 
 void I2C_Stop(void)
 {
 	TWCR = TWI_Interrupt_Flag|TWI_STOP_Condition|TWI_Enable;
- 134:	84 e9       	ldi	r24, 0x94	; 148
- 136:	80 93 bc 00 	sts	0x00BC, r24	; 0x8000bc <__TEXT_REGION_LENGTH__+0x7f80bc>
+  e2:	84 e9       	ldi	r24, 0x94	; 148
+  e4:	80 93 bc 00 	sts	0x00BC, r24	; 0x8000bc <__TEXT_REGION_LENGTH__+0x7f80bc>
 	send_telemetry(I2C_STATUS);
- 13a:	80 91 b9 00 	lds	r24, 0x00B9	; 0x8000b9 <__TEXT_REGION_LENGTH__+0x7f80b9>
- 13e:	0e 94 81 00 	call	0x102	; 0x102 <send_telemetry>
- 142:	08 95       	ret
+  e8:	80 91 b9 00 	lds	r24, 0x00B9	; 0x8000b9 <__TEXT_REGION_LENGTH__+0x7f80b9>
+  ec:	0e 94 58 00 	call	0xb0	; 0xb0 <send_telemetry>
+  f0:	08 95       	ret
 
-00000144 <I2C_Send_Data>:
+000000f2 <I2C_Send_Data>:
 }
 
 
 void I2C_Send_Data(unsigned char data)
 {
 	TWDR = data;					
- 144:	80 93 bb 00 	sts	0x00BB, r24	; 0x8000bb <__TEXT_REGION_LENGTH__+0x7f80bb>
+  f2:	80 93 bb 00 	sts	0x00BB, r24	; 0x8000bb <__TEXT_REGION_LENGTH__+0x7f80bb>
 	TWCR = TWI_Interrupt_Flag|TWI_Enable;
- 148:	84 e8       	ldi	r24, 0x84	; 132
- 14a:	80 93 bc 00 	sts	0x00BC, r24	; 0x8000bc <__TEXT_REGION_LENGTH__+0x7f80bc>
+  f6:	84 e8       	ldi	r24, 0x84	; 132
+  f8:	80 93 bc 00 	sts	0x00BC, r24	; 0x8000bc <__TEXT_REGION_LENGTH__+0x7f80bc>
 	while(WAIT_UNTIL_TWINT_SET){}
- 14e:	80 91 bc 00 	lds	r24, 0x00BC	; 0x8000bc <__TEXT_REGION_LENGTH__+0x7f80bc>
- 152:	88 23       	and	r24, r24
- 154:	e4 f7       	brge	.-8      	; 0x14e <I2C_Send_Data+0xa>
+  fc:	80 91 bc 00 	lds	r24, 0x00BC	; 0x8000bc <__TEXT_REGION_LENGTH__+0x7f80bc>
+ 100:	88 23       	and	r24, r24
+ 102:	e4 f7       	brge	.-8      	; 0xfc <I2C_Send_Data+0xa>
 	send_telemetry(I2C_STATUS);
- 156:	80 91 b9 00 	lds	r24, 0x00B9	; 0x8000b9 <__TEXT_REGION_LENGTH__+0x7f80b9>
- 15a:	0e 94 81 00 	call	0x102	; 0x102 <send_telemetry>
- 15e:	08 95       	ret
+ 104:	80 91 b9 00 	lds	r24, 0x00B9	; 0x8000b9 <__TEXT_REGION_LENGTH__+0x7f80b9>
+ 108:	0e 94 58 00 	call	0xb0	; 0xb0 <send_telemetry>
+ 10c:	08 95       	ret
 
-00000160 <USART_Init>:
+0000010e <USART_Init>:
 {
 	uint8_t DataByte;
 	while (( UCSR0A & (1<<RXC0)) == 0) {}; // Do nothing until data have been received
 	DataByte = UDR0 ;
 	return DataByte;
 }
- 160:	10 92 c5 00 	sts	0x00C5, r1	; 0x8000c5 <__TEXT_REGION_LENGTH__+0x7f80c5>
- 164:	87 e6       	ldi	r24, 0x67	; 103
- 166:	80 93 c4 00 	sts	0x00C4, r24	; 0x8000c4 <__TEXT_REGION_LENGTH__+0x7f80c4>
- 16a:	86 e0       	ldi	r24, 0x06	; 6
- 16c:	80 93 c2 00 	sts	0x00C2, r24	; 0x8000c2 <__TEXT_REGION_LENGTH__+0x7f80c2>
- 170:	88 e1       	ldi	r24, 0x18	; 24
- 172:	80 93 c1 00 	sts	0x00C1, r24	; 0x8000c1 <__TEXT_REGION_LENGTH__+0x7f80c1>
- 176:	08 95       	ret
+ 10e:	10 92 c5 00 	sts	0x00C5, r1	; 0x8000c5 <__TEXT_REGION_LENGTH__+0x7f80c5>
+ 112:	87 e6       	ldi	r24, 0x67	; 103
+ 114:	80 93 c4 00 	sts	0x00C4, r24	; 0x8000c4 <__TEXT_REGION_LENGTH__+0x7f80c4>
+ 118:	86 e0       	ldi	r24, 0x06	; 6
+ 11a:	80 93 c2 00 	sts	0x00C2, r24	; 0x8000c2 <__TEXT_REGION_LENGTH__+0x7f80c2>
+ 11e:	88 e1       	ldi	r24, 0x18	; 24
+ 120:	80 93 c1 00 	sts	0x00C1, r24	; 0x8000c1 <__TEXT_REGION_LENGTH__+0x7f80c1>
+ 124:	08 95       	ret
 
-00000178 <USART_Transmit>:
+00000126 <USART_Transmit>:
 
 void USART_Transmit(uint8_t data)
 {
 	while (( UCSR0A & (1<<UDRE0)) == 0) {}; // Do nothing until UDR is ready
- 178:	90 91 c0 00 	lds	r25, 0x00C0	; 0x8000c0 <__TEXT_REGION_LENGTH__+0x7f80c0>
- 17c:	95 ff       	sbrs	r25, 5
- 17e:	fc cf       	rjmp	.-8      	; 0x178 <USART_Transmit>
+ 126:	90 91 c0 00 	lds	r25, 0x00C0	; 0x8000c0 <__TEXT_REGION_LENGTH__+0x7f80c0>
+ 12a:	95 ff       	sbrs	r25, 5
+ 12c:	fc cf       	rjmp	.-8      	; 0x126 <USART_Transmit>
 	UDR0 = data;
- 180:	80 93 c6 00 	sts	0x00C6, r24	; 0x8000c6 <__TEXT_REGION_LENGTH__+0x7f80c6>
- 184:	08 95       	ret
+ 12e:	80 93 c6 00 	sts	0x00C6, r24	; 0x8000c6 <__TEXT_REGION_LENGTH__+0x7f80c6>
+ 132:	08 95       	ret
 
-00000186 <_exit>:
- 186:	f8 94       	cli
+00000134 <_exit>:
+ 134:	f8 94       	cli
 
-00000188 <__stop_program>:
- 188:	ff cf       	rjmp	.-2      	; 0x188 <__stop_program>
+00000136 <__stop_program>:
+ 136:	ff cf       	rjmp	.-2      	; 0x136 <__stop_program>

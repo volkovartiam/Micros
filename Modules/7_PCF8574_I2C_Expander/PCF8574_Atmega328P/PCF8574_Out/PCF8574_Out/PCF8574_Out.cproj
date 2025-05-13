@@ -126,6 +126,12 @@
     <Compile Include="main.h">
       <SubType>compile</SubType>
     </Compile>
+    <Compile Include="PCF8574.c">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="PCF8574.h">
+      <SubType>compile</SubType>
+    </Compile>
     <Compile Include="twi.c">
       <SubType>compile</SubType>
     </Compile>
