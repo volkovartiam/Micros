@@ -21,3 +21,5 @@ https://veyselgokdemir.com/2018/02/03/1-how-to-use-hal-library-i2c-functions/
 
 PCF8574 – расширитель портов. Позволяет увеличить количество портов ввода-вывода, связываясь с Ардуино через I2C. Требуется библиотека Adafruit_PCF8574.
 
+
+https://robotchip.ru/uvelichenie-portov-vvoda-vyvoda-na-arduino-pcf8574/?ysclid=manhpckklk11900940

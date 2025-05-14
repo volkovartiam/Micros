@@ -13,7 +13,7 @@ void setAddressPCF8574(unsigned char address){
 }
 */
 
-void send_data_PCF8574(unsigned char data){
+void set_output_PCF8574(unsigned char data){
 	I2C_Init();
 	I2C_Start();
 	I2C_Send_Data(I2C_PCF_ADDRESS_WITH_WRITE);
@@ -21,3 +21,16 @@ void send_data_PCF8574(unsigned char data){
 	I2C_Stop();
 }
 
+unsigned char get_input_PCF8574(){
+	unsigned char dataFromInput = 0;
+	I2C_Init();
+	I2C_Start();
+	
+	I2C_Send_Data(I2C_PCF_ADDRESS_WITH_WRITE);
+	I2C_Send_Data(1);
+	
+	I2C_Send_Data(I2C_PCF_ADDRESS_WITH_READ);
+	dataFromInput = I2C_Read_Data();
+	I2C_Stop();
+	return dataFromInput;
+}
