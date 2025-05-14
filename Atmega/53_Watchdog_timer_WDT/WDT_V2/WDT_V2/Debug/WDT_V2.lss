@@ -1,33 +1,33 @@
 
-WDT.elf:     file format elf32-avr
+WDT_V2.elf:     file format elf32-avr
 
 Sections:
 Idx Name          Size      VMA       LMA       File off  Algn
-  0 .data         00000000  00800100  00800100  000002a6  2**0
+  0 .data         00000000  00800100  00800100  000002b8  2**0
                   CONTENTS, ALLOC, LOAD, DATA
-  1 .text         00000232  00000000  00000000  00000074  2**1
+  1 .text         00000244  00000000  00000000  00000074  2**1
                   CONTENTS, ALLOC, LOAD, READONLY, CODE
-  2 .bss          00000001  00800100  00800100  000002a6  2**0
+  2 .bss          00000001  00800100  00800100  000002b8  2**0
                   ALLOC
-  3 .comment      00000030  00000000  00000000  000002a6  2**0
+  3 .comment      00000030  00000000  00000000  000002b8  2**0
                   CONTENTS, READONLY
-  4 .note.gnu.avr.deviceinfo 00000040  00000000  00000000  000002d8  2**2
+  4 .note.gnu.avr.deviceinfo 00000040  00000000  00000000  000002e8  2**2
                   CONTENTS, READONLY
-  5 .debug_aranges 00000030  00000000  00000000  00000318  2**0
+  5 .debug_aranges 00000048  00000000  00000000  00000328  2**0
                   CONTENTS, READONLY, DEBUGGING
-  6 .debug_info   00000700  00000000  00000000  00000348  2**0
+  6 .debug_info   0000075e  00000000  00000000  00000370  2**0
                   CONTENTS, READONLY, DEBUGGING
-  7 .debug_abbrev 00000660  00000000  00000000  00000a48  2**0
+  7 .debug_abbrev 00000683  00000000  00000000  00000ace  2**0
                   CONTENTS, READONLY, DEBUGGING
-  8 .debug_line   00000388  00000000  00000000  000010a8  2**0
+  8 .debug_line   000003cd  00000000  00000000  00001151  2**0
                   CONTENTS, READONLY, DEBUGGING
-  9 .debug_frame  00000088  00000000  00000000  00001430  2**2
+  9 .debug_frame  000000b8  00000000  00000000  00001520  2**2
                   CONTENTS, READONLY, DEBUGGING
- 10 .debug_str    00000380  00000000  00000000  000014b8  2**0
+ 10 .debug_str    000003b1  00000000  00000000  000015d8  2**0
                   CONTENTS, READONLY, DEBUGGING
- 11 .debug_loc    000000d3  00000000  00000000  00001838  2**0
+ 11 .debug_loc    000000d3  00000000  00000000  00001989  2**0
                   CONTENTS, READONLY, DEBUGGING
- 12 .debug_ranges 00000020  00000000  00000000  0000190b  2**0
+ 12 .debug_ranges 00000038  00000000  00000000  00001a5c  2**0
                   CONTENTS, READONLY, DEBUGGING
 
 Disassembly of section .text:
@@ -91,16 +91,16 @@ Disassembly of section .text:
   92:	a1 30       	cpi	r26, 0x01	; 1
   94:	b2 07       	cpc	r27, r18
   96:	e1 f7       	brne	.-8      	; 0x90 <.do_clear_bss_loop>
-  98:	0e 94 d8 00 	call	0x1b0	; 0x1b0 <main>
-  9c:	0c 94 17 01 	jmp	0x22e	; 0x22e <_exit>
+  98:	0e 94 08 01 	call	0x210	; 0x210 <main>
+  9c:	0c 94 20 01 	jmp	0x240	; 0x240 <_exit>
 
 000000a0 <__bad_interrupt>:
   a0:	0c 94 00 00 	jmp	0	; 0x0 <__vectors>
 
 000000a4 <__vector_1>:
-#define LED10_OFF() PORTB&=~(0b00010000);
 
 unsigned char tim1_count=0;
+
 
 ISR(INT0_vect)
 {
@@ -130,6 +130,7 @@ ISR(INT0_vect)
 
 000000ce <__vector_11>:
 
+
 ISR(TIMER1_COMPA_vect)
 {
   ce:	1f 92       	push	r1
@@ -154,7 +155,7 @@ ISR(TIMER1_COMPA_vect)
   f4:	fc 01       	movw	r30, r24
   f6:	ec 5c       	subi	r30, 0xCC	; 204
   f8:	ff 4f       	sbci	r31, 0xFF	; 255
-  fa:	0c 94 11 01 	jmp	0x222	; 0x222 <__tablejump2__>
+  fa:	0c 94 1a 01 	jmp	0x234	; 0x234 <__tablejump2__>
 	{
 		case 0:
 		LED10_OFF();
@@ -293,98 +294,126 @@ ISR(TIMER1_COMPA_vect)
  1ac:	1f 90       	pop	r1
  1ae:	18 95       	reti
 
-000001b0 <main>:
+000001b0 <init_ports>:
 
 
-int main(void)
+void init_ports()
 {
-	DDRD |= 0b11111000;
+	DDRD &=	~PORTD_INT0_PIN;
  1b0:	8a b1       	in	r24, 0x0a	; 10
- 1b2:	88 6f       	ori	r24, 0xF8	; 248
+ 1b2:	8b 7f       	andi	r24, 0xFB	; 251
  1b4:	8a b9       	out	0x0a, r24	; 10
-	DDRD &= ~(0b00000100);		//INT0
+	DDRD |=	PORTD_OUT_PINS;		
  1b6:	8a b1       	in	r24, 0x0a	; 10
- 1b8:	8b 7f       	andi	r24, 0xFB	; 251
+ 1b8:	88 6f       	ori	r24, 0xF8	; 248
  1ba:	8a b9       	out	0x0a, r24	; 10
-	PORTD &= ~(0b11111000);
+	PORTD &= ~PORTD_INT0_PIN;
  1bc:	8b b1       	in	r24, 0x0b	; 11
- 1be:	87 70       	andi	r24, 0x07	; 7
+ 1be:	8b 7f       	andi	r24, 0xFB	; 251
  1c0:	8b b9       	out	0x0b, r24	; 11
-	PORTD |= 0b00000100;		//PD2 PULL UP
+	PORTD |= PORTD_INT0_PIN;	
  1c2:	8b b1       	in	r24, 0x0b	; 11
  1c4:	84 60       	ori	r24, 0x04	; 4
  1c6:	8b b9       	out	0x0b, r24	; 11
 	
-	DDRB |= 0b00011111;
+	DDRB |= PORTB_OUT_PINS;
  1c8:	84 b1       	in	r24, 0x04	; 4
  1ca:	8f 61       	ori	r24, 0x1F	; 31
  1cc:	84 b9       	out	0x04, r24	; 4
-	PORTB &= ~(0b00011111);
+	PORTB &= ~PORTB_OUT_PINS;
  1ce:	85 b1       	in	r24, 0x05	; 5
- 1d0:	80 7e       	andi	r24, 0xE0	; 224
+ 1d0:	8e 7f       	andi	r24, 0xFE	; 254
  1d2:	85 b9       	out	0x05, r24	; 5
-	
+ 1d4:	08 95       	ret
+
+000001d6 <init_timer_1>:
+}
+
+
+void init_timer_1()
+{
 	TCCR1B |= (1<<WGM12);		//CTC (Clear Timer on Compare match)
- 1d4:	e1 e8       	ldi	r30, 0x81	; 129
- 1d6:	f0 e0       	ldi	r31, 0x00	; 0
- 1d8:	80 81       	ld	r24, Z
- 1da:	88 60       	ori	r24, 0x08	; 8
- 1dc:	80 83       	st	Z, r24
+ 1d6:	e1 e8       	ldi	r30, 0x81	; 129
+ 1d8:	f0 e0       	ldi	r31, 0x00	; 0
+ 1da:	80 81       	ld	r24, Z
+ 1dc:	88 60       	ori	r24, 0x08	; 8
+ 1de:	80 83       	st	Z, r24
 	TIMSK1 |= (1<<OCIE1A);		//Output Compare A Match Interrupt Enable
- 1de:	af e6       	ldi	r26, 0x6F	; 111
- 1e0:	b0 e0       	ldi	r27, 0x00	; 0
- 1e2:	8c 91       	ld	r24, X
- 1e4:	82 60       	ori	r24, 0x02	; 2
- 1e6:	8c 93       	st	X, r24
+ 1e0:	af e6       	ldi	r26, 0x6F	; 111
+ 1e2:	b0 e0       	ldi	r27, 0x00	; 0
+ 1e4:	8c 91       	ld	r24, X
+ 1e6:	82 60       	ori	r24, 0x02	; 2
+ 1e8:	8c 93       	st	X, r24
 	OCR1AH = 0b01111010;		//compare value
- 1e8:	8a e7       	ldi	r24, 0x7A	; 122
- 1ea:	80 93 89 00 	sts	0x0089, r24	; 0x800089 <__TEXT_REGION_LENGTH__+0x7f8089>
+ 1ea:	8a e7       	ldi	r24, 0x7A	; 122
+ 1ec:	80 93 89 00 	sts	0x0089, r24	; 0x800089 <__TEXT_REGION_LENGTH__+0x7f8089>
 	OCR1AL = 0b00010010;
- 1ee:	82 e1       	ldi	r24, 0x12	; 18
- 1f0:	80 93 88 00 	sts	0x0088, r24	; 0x800088 <__TEXT_REGION_LENGTH__+0x7f8088>
+ 1f0:	82 e1       	ldi	r24, 0x12	; 18
+ 1f2:	80 93 88 00 	sts	0x0088, r24	; 0x800088 <__TEXT_REGION_LENGTH__+0x7f8088>
 	TCCR1B |= (1<<CS12);		//div 256
- 1f4:	80 81       	ld	r24, Z
- 1f6:	84 60       	ori	r24, 0x04	; 4
- 1f8:	80 83       	st	Z, r24
+ 1f6:	80 81       	ld	r24, Z
+ 1f8:	84 60       	ori	r24, 0x04	; 4
+ 1fa:	80 83       	st	Z, r24
+ 1fc:	08 95       	ret
+
+000001fe <init_ext_interrupt>:
+}
+
+
+void init_ext_interrupt()
+{
 	EICRA |= (1<<ISC01);		//falling eddge
- 1fa:	e9 e6       	ldi	r30, 0x69	; 105
- 1fc:	f0 e0       	ldi	r31, 0x00	; 0
- 1fe:	80 81       	ld	r24, Z
- 200:	82 60       	ori	r24, 0x02	; 2
- 202:	80 83       	st	Z, r24
+ 1fe:	e9 e6       	ldi	r30, 0x69	; 105
+ 200:	f0 e0       	ldi	r31, 0x00	; 0
+ 202:	80 81       	ld	r24, Z
+ 204:	82 60       	ori	r24, 0x02	; 2
+ 206:	80 83       	st	Z, r24
 	EIMSK |= (1<<INT0);			//EXT INT
- 204:	8d b3       	in	r24, 0x1d	; 29
- 206:	81 60       	ori	r24, 0x01	; 1
- 208:	8d bb       	out	0x1d, r24	; 29
+ 208:	8d b3       	in	r24, 0x1d	; 29
+ 20a:	81 60       	ori	r24, 0x01	; 1
+ 20c:	8d bb       	out	0x1d, r24	; 29
+ 20e:	08 95       	ret
+
+00000210 <main>:
+}
+
+int main(void)
+{
+	init_ports();
+ 210:	0e 94 d8 00 	call	0x1b0	; 0x1b0 <init_ports>
+	init_timer_1();
+ 214:	0e 94 eb 00 	call	0x1d6	; 0x1d6 <init_timer_1>
+	init_ext_interrupt();
+ 218:	0e 94 ff 00 	call	0x1fe	; 0x1fe <init_ext_interrupt>
 	
 	sei();
- 20a:	78 94       	sei
+ 21c:	78 94       	sei
 				: "r0"
 		);
 	}
 	else
 	{
 		__asm__ __volatile__ (
- 20c:	98 e2       	ldi	r25, 0x28	; 40
- 20e:	88 e1       	ldi	r24, 0x18	; 24
- 210:	0f b6       	in	r0, 0x3f	; 63
- 212:	f8 94       	cli
- 214:	a8 95       	wdr
- 216:	80 93 60 00 	sts	0x0060, r24	; 0x800060 <__TEXT_REGION_LENGTH__+0x7f8060>
- 21a:	0f be       	out	0x3f, r0	; 63
- 21c:	90 93 60 00 	sts	0x0060, r25	; 0x800060 <__TEXT_REGION_LENGTH__+0x7f8060>
- 220:	ff cf       	rjmp	.-2      	; 0x220 <main+0x70>
+ 21e:	98 e2       	ldi	r25, 0x28	; 40
+ 220:	88 e1       	ldi	r24, 0x18	; 24
+ 222:	0f b6       	in	r0, 0x3f	; 63
+ 224:	f8 94       	cli
+ 226:	a8 95       	wdr
+ 228:	80 93 60 00 	sts	0x0060, r24	; 0x800060 <__TEXT_REGION_LENGTH__+0x7f8060>
+ 22c:	0f be       	out	0x3f, r0	; 63
+ 22e:	90 93 60 00 	sts	0x0060, r25	; 0x800060 <__TEXT_REGION_LENGTH__+0x7f8060>
+ 232:	ff cf       	rjmp	.-2      	; 0x232 <main+0x22>
 
-00000222 <__tablejump2__>:
- 222:	ee 0f       	add	r30, r30
- 224:	ff 1f       	adc	r31, r31
- 226:	05 90       	lpm	r0, Z+
- 228:	f4 91       	lpm	r31, Z
- 22a:	e0 2d       	mov	r30, r0
- 22c:	09 94       	ijmp
+00000234 <__tablejump2__>:
+ 234:	ee 0f       	add	r30, r30
+ 236:	ff 1f       	adc	r31, r31
+ 238:	05 90       	lpm	r0, Z+
+ 23a:	f4 91       	lpm	r31, Z
+ 23c:	e0 2d       	mov	r30, r0
+ 23e:	09 94       	ijmp
 
-0000022e <_exit>:
- 22e:	f8 94       	cli
+00000240 <_exit>:
+ 240:	f8 94       	cli
 
-00000230 <__stop_program>:
- 230:	ff cf       	rjmp	.-2      	; 0x230 <__stop_program>
+00000242 <__stop_program>:
+ 242:	ff cf       	rjmp	.-2      	; 0x242 <__stop_program>

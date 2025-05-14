@@ -49,7 +49,7 @@ ISR(TIMER1_COMPA_vect)
 		LED2_ON();
 		break;
 		case 2:
-		wdt_reset();
+		//wdt_reset();
 		LED2_OFF();
 		LED3_ON();
 		break;
@@ -62,7 +62,7 @@ ISR(TIMER1_COMPA_vect)
 		LED5_ON();
 		break;
 		case 5:
-		wdt_reset();
+		//wdt_reset();
 		LED5_OFF();
 		LED6_ON();
 		break;
@@ -75,7 +75,7 @@ ISR(TIMER1_COMPA_vect)
 		LED8_ON();
 		break;
 		case 8:
-		wdt_reset();
+		//wdt_reset();
 		LED8_OFF();
 		LED9_ON();
 		break;
@@ -84,8 +84,11 @@ ISR(TIMER1_COMPA_vect)
 		LED10_ON();
 		break;
 	}
+	
 	tim1_count++;
-	if(tim1_count>9) tim1_count=0;
+	if(tim1_count>9) {
+		tim1_count=0;
+	}
 }
 
 
@@ -108,8 +111,10 @@ int main(void)
 	EIMSK |= (1<<INT0);			//EXT INT
 	
 	sei();
-	tim1_count=0;
-	wdt_enable(WDTO_2S);
+	//tim1_count=0;
+	//wdt_enable(WDTO_2S);
+	wdt_enable(WDTO_4S);
+
 	
 	while (1)
 	{
