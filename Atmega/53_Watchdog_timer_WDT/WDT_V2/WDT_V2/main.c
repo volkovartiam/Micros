@@ -73,6 +73,7 @@ ISR(TIMER1_COMPA_vect)
 		break;
 		case 2:
 		//wdt_reset();
+		asm("WDR");
 		LED2_OFF();
 		LED3_ON();
 		break;
@@ -152,11 +153,34 @@ int main(void)
 	sei();
 	
 	//tim1_count=0;
+	
+	
 	//wdt_enable(WDTO_2S);
-	wdt_enable(WDTO_4S);
-
+	//wdt_enable(WDTO_4S);
+	
+	//WDTCSR |= (1<<WDCE)|(1<<WDE)|(1<<WDP2)|(1<<WDP1)|(1<<WDP0);					// Постоянный RESET
+	//WDTCSR |= (1<<WDCE)|(1<<WDE)|(1<<WDIE)|(1<<WDP3)|(0<<WDP2)|(0<<WDP1)|(0<<WDP0);	// Гаснет один светодиод, перезагрузки не происходит
+	/*
+	cli();
+	asm("WDR");
+	WDTCSR |= (1<<WDCE)|(1<<WDE);
+	WDTCSR |= (1<<WDE)|(1<<WDIE)|(0<<WDP3)|(1<<WDP2)|(1<<WDP1)|(1<<WDP0);
+	sei();
+	*/
+	
+	/**/
+	cli();
+	//MCUSR |= (1<<WDRF);
+	asm("WDR");
+	WDTCSR |= (1<<WDCE)|(1<<WDE);	
+	WDTCSR = (1<<WDE)|(1<<WDIE)|(0<<WDP3)|(1<<WDP2)|(1<<WDP1)|(1<<WDP0);	// |=  и = дают разные результаты
+	sei();
+	/**/
 	
 	while (1)
 	{
 	}
 }
+
+	
+
