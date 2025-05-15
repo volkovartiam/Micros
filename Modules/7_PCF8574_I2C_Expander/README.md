@@ -23,3 +23,5 @@ PCF8574 – расширитель портов. Позволяет увелич
 
 
 https://robotchip.ru/uvelichenie-portov-vvoda-vyvoda-na-arduino-pcf8574/?ysclid=manhpckklk11900940
+https://radioparty.ru/prog-avr/program-c/552-lesson-pcf8574?ysclid=maovsjrzoq121360130
+https://count-zero.ru/2017/pcf8574/

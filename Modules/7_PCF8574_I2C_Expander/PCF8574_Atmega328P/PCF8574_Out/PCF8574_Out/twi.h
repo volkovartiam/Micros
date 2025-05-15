@@ -51,7 +51,7 @@ void I2C_Init(void);
 void I2C_Start(void);
 void I2C_Stop(void);
 void I2C_Send_Data(unsigned char data);
-unsigned char I2C_Read_Data(void);
+unsigned char I2C_Read_Data(uint8_t END);
 
 void send_telemetry(uint8_t data);
 void init_telemetry(void);
