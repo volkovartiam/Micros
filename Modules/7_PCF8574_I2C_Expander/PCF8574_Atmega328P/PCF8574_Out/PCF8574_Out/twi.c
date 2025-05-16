@@ -35,7 +35,7 @@ void I2C_Send_Data(unsigned char data)
 
 unsigned char I2C_Read_Data(uint8_t END)
 {
-	if(END){
+	if(END == 1){
 		TWCR = (1<<TWINT)|(1<<TWEN);
 	} else{
 		TWCR = TWI_Interrupt_Flag|TWI_Enable|TWI_Enable_Acknowledge;

@@ -60,9 +60,9 @@ void set_output_PCF8574(unsigned char data){
 unsigned char get_input_PCF8574(){
 	unsigned char dataFromInput = 0;
 	I2C_Init();
-	I2C_Start();
-		
+	I2C_Start();	
 	I2C_Send_Data(I2C_PCF_ADDRESS_WITH_READ);
+	//I2C_Send_Data(0x00);
 	dataFromInput = I2C_Read_Data(0);
 	I2C_Stop();
 	return dataFromInput;

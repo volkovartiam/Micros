@@ -32,7 +32,7 @@ int main(void)
 	PORTB |= (1<<PORTB5);
 	_delay_ms(2000);
 	*/
-	init_int();
+	//init_int();
 	
 	
     while(1)
