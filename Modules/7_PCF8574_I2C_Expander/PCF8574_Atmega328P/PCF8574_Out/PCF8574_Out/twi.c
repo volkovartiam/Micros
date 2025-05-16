@@ -33,8 +33,12 @@ void I2C_Send_Data(unsigned char data)
 }
 
 
+char err1=0;// сюда вернем ошибку
+#define TW_MR_DATA_ASK 0x50 // Ведущий принял данные и передал подтверждение
+
 unsigned char I2C_Read_Data(uint8_t END)
 {
+	/*
 	if(END == 1){
 		TWCR = (1<<TWINT)|(1<<TWEN);
 	} else{
@@ -43,6 +47,15 @@ unsigned char I2C_Read_Data(uint8_t END)
 	while(WAIT_UNTIL_TWINT_SET){}		
 	send_telemetry(TWDR);							
 	return TWDR;
+	*/
+	
+	err1=0;
+	TWCR = (1<<TWINT)|(1<<TWEN)|(1<<TWEA);//включим прием данных
+	while(!(TWCR & (1<<TWINT)));//подождем пока установится TWIN
+	if ((TWSR & 0xF8) != TW_MR_DATA_ASK)  err1=1;
+	else err1=0;
+	return TWDR;
+		
 }
 
 
