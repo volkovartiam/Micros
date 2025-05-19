@@ -55,6 +55,8 @@ void set_output_PCF8574(unsigned char data){
 }
 
 
+#define READ_END    0x01
+
 unsigned char get_input_PCF8574(){
 	unsigned char dataFromInput = 0;
 	I2C_Init();
