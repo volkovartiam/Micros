@@ -1,0 +1,70 @@
+REGISTERS FROM "CPU" item in Microchip Studio  
+
+GPIOR0 - General Purpuse I/O Register 0
+GPIOR1 - General Purpuse I/O Register 1
+GPIOR2 - General Purpuse I/O Register 2
+
+
+SMCR - Sleep Mode Control Register
+SM2...SM0 - Sleep Mode Selects Bits
+000 Idle
+001 ADC noise reduction
+010 Power-down
+011 Power-save
+100 Reserved
+101 Reserved
+110 Standby 
+111 External standby
+SE - Sleep Enable
+
+
+MCUSR – MCU Status Register		- регистр статуса микроконтроллера
+WDRF: Watchdog System Reset Flag	- флаг сброса сторожевого таймера
+BORF: Brown-out Reset Flag		- флаг сброса супервизором питания
+EXTRF: External Reset Flag		- флаг внешнего сброса
+PORF: Power-on Reset Flag		- флаг сброса при подаче питания
+ 
+ 
+MCUCR – MCU Control Register
+BODS - BOD sleep
+BODSE - BOD sleep enable
+
+
+PRR - Power Reduction Register
+PRTWI - Power Reduction TWI
+PRTIM2 - Power Reduction Timer/Counter2
+PRTIM0 - Power Reduction Timer/Counter0
+PRTIM1 - Power Reduction Timer/Counter1
+PRSPI - Power Reduction Serial Peripheral Interface
+PRUSART0 - Power Reduction USART0
+PRADC - Power Reduction ADC
+
+
+SPMCSR - Store Program MEmory Control and Status Register
+SPMIE - SPM Interrupt Enable
+RWWSB - Read-While-Write Section Busy
+RWWSRE - Read-While-Write Section Read Enable
+BLBSET - Boot Lock Bit Set
+PGWRT - Page Write
+PGERS - Page Erase
+SELFPRGEN - Self Programming Enable
+
+
+SP - Stack pointer
+
+
+SREG - Status Register
+I - Global Interrupt Enable
+T - Bit Copy Storage
+H - Half Carry Flag
+S - Sign Bit
+V - Two's Complement Overflow Flag
+N - Negative Flag
+Z - Zero Flag
+C - Carry Flag
+
+
+CLKPR - Clock Prescaler Register
+CLKPCE: Clock Prescaler Change Enable
+CLKPS3..0: Clock Prescaler Select Bits 3 - 0
+
