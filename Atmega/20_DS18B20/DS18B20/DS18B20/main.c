@@ -18,16 +18,18 @@ void port_ini(void)
 
 int main(void)
 {
+
 	unsigned int tt=0; //переменная для хранения температуры
-	
+	/*
 	port_ini(); //Инициализируем порты
 	I2C_Init(); //Инициализируем шину I2C
 	LCD_ini();  //Инициализируем дисплей
 	clearlcd(); //Очистим дисплей
-
+	*/
 	USART_Init();
-	char LocalData;
 
+	char LocalData;
+	
 	//Устанавливаем время
 	// 	I2C_StartCondition();
 	// 	I2C_SendByte(0b11010000);
@@ -40,9 +42,10 @@ int main(void)
 	// 	I2C_SendByte(RTC_ConvertFromBinDec(1)); //месяц
 	// 	I2C_SendByte(RTC_ConvertFromBinDec(16)); //год
 	//	I2C_StopCondition();
-	
+
 	while(1)
 	{
+		/*
 		//Читаем времени
 		I2C_SendByteByADDR(0,0b11010000);	//переходим на адрес 0
 		_delay_ms(200);
@@ -95,11 +98,20 @@ int main(void)
 		sendcharlcd('C');
 		
 		//LocalData = USART_ReceivePolling();
-		USART_TransmitPolling(LocalData);
-		USART_TransmitPolling('O');
-		USART_TransmitPolling('K');
-		USART_TransmitPolling(0x0d);//переход в начало строки
-		USART_TransmitPolling(0x0a);//переход на новую строку
+		//USART_Transmit(LocalData);
+		
+		tt = converttemp(dt_check()); //измеряем температуру
+		USART_Transmit(tt/10);
+		USART_Transmit(tt%10);
+		_delay_ms(200);
+		*/
+		
+		USART_Transmit('O');
+		USART_Transmit('K');
+		
+		
+		USART_Transmit(0x0d);//переход в начало строки
+		USART_Transmit(0x0a);//переход на новую строку
 		
 	}
 }
