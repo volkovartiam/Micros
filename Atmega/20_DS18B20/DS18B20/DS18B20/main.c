@@ -14,6 +14,10 @@ void port_ini(void)
 	PORTD=0x00;
 	//DDRD=0xFF;
 	DDRD=0b11111100;
+	
+	PORTB=0x00;
+	DDRB=0b11111110;
+	//DDRTEMP |= 1<<0;
 }
 
 int main(void)
@@ -21,12 +25,13 @@ int main(void)
 
 	unsigned int tt=0; //переменна€ дл€ хранени€ температуры
 	/*
-	port_ini(); //»нициализируем порты
+
 	I2C_Init(); //»нициализируем шину I2C
 	LCD_ini();  //»нициализируем дисплей
 	clearlcd(); //ќчистим дисплей
 	*/
 	USART_Init();
+	port_ini(); //»нициализируем порты
 
 	char LocalData;
 	
@@ -106,12 +111,27 @@ int main(void)
 		_delay_ms(200);
 		*/
 		
-		USART_Transmit('O');
-		USART_Transmit('K');
+		/*
+		char test = dt_testdevice();	
+		if(test == 1){
+			USART_Transmit('O');
+			USART_Transmit('K');
+			USART_Transmit(0x0d);	//переход в начало строки
+			USART_Transmit(0x0a);	//переход на новую строку
+		} else {
+			USART_Transmit('N');
+			USART_Transmit('O');
+			USART_Transmit(0x0d);	//переход в начало строки
+			USART_Transmit(0x0a);	//переход на новую строку	
+		}
+		*/
 		
+		unsigned int tt = dt_check();
+		unsigned int tt_temporary = tt;
+		USART_Transmit(tt_temporary>>8);
+		USART_Transmit(tt);
 		
-		USART_Transmit(0x0d);//переход в начало строки
-		USART_Transmit(0x0a);//переход на новую строку
+		_delay_ms(500);
 		
 	}
 }
