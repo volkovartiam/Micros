@@ -3,29 +3,29 @@ SoftSPI.elf:     file format elf32-avr
 
 Sections:
 Idx Name          Size      VMA       LMA       File off  Algn
-  0 .data         00000000  00800100  00800100  000001a6  2**0
+  0 .data         00000000  00800100  00800100  0000022e  2**0
                   CONTENTS, ALLOC, LOAD, DATA
-  1 .text         00000152  00000000  00000000  00000054  2**1
+  1 .text         000001da  00000000  00000000  00000054  2**1
                   CONTENTS, ALLOC, LOAD, READONLY, CODE
-  2 .comment      00000030  00000000  00000000  000001a6  2**0
+  2 .comment      00000030  00000000  00000000  0000022e  2**0
                   CONTENTS, READONLY
-  3 .note.gnu.avr.deviceinfo 00000040  00000000  00000000  000001d8  2**2
+  3 .note.gnu.avr.deviceinfo 00000040  00000000  00000000  00000260  2**2
                   CONTENTS, READONLY
-  4 .debug_aranges 00000038  00000000  00000000  00000218  2**0
+  4 .debug_aranges 00000068  00000000  00000000  000002a0  2**0
                   CONTENTS, READONLY, DEBUGGING
-  5 .debug_info   0000095f  00000000  00000000  00000250  2**0
+  5 .debug_info   00000b48  00000000  00000000  00000308  2**0
                   CONTENTS, READONLY, DEBUGGING
-  6 .debug_abbrev 0000070c  00000000  00000000  00000baf  2**0
+  6 .debug_abbrev 000007ff  00000000  00000000  00000e50  2**0
                   CONTENTS, READONLY, DEBUGGING
-  7 .debug_line   00000389  00000000  00000000  000012bb  2**0
+  7 .debug_line   000004fe  00000000  00000000  0000164f  2**0
                   CONTENTS, READONLY, DEBUGGING
-  8 .debug_frame  00000054  00000000  00000000  00001644  2**2
+  8 .debug_frame  00000098  00000000  00000000  00001b50  2**2
                   CONTENTS, READONLY, DEBUGGING
-  9 .debug_str    000003bd  00000000  00000000  00001698  2**0
+  9 .debug_str    000003ff  00000000  00000000  00001be8  2**0
                   CONTENTS, READONLY, DEBUGGING
- 10 .debug_loc    00000245  00000000  00000000  00001a55  2**0
+ 10 .debug_loc    00000348  00000000  00000000  00001fe7  2**0
                   CONTENTS, READONLY, DEBUGGING
- 11 .debug_ranges 00000028  00000000  00000000  00001c9a  2**0
+ 11 .debug_ranges 00000060  00000000  00000000  0000232f  2**0
                   CONTENTS, READONLY, DEBUGGING
 
 Disassembly of section .text:
@@ -65,46 +65,43 @@ Disassembly of section .text:
   6e:	d8 e0       	ldi	r29, 0x08	; 8
   70:	de bf       	out	0x3e, r29	; 62
   72:	cd bf       	out	0x3d, r28	; 61
-  74:	0e 94 71 00 	call	0xe2	; 0xe2 <main>
-  78:	0c 94 a7 00 	jmp	0x14e	; 0x14e <_exit>
+  74:	0e 94 86 00 	call	0x10c	; 0x10c <main>
+  78:	0c 94 eb 00 	jmp	0x1d6	; 0x1d6 <_exit>
 
 0000007c <__bad_interrupt>:
   7c:	0c 94 00 00 	jmp	0	; 0x0 <__vectors>
 
-00000080 <SPI_wr>:
+00000080 <SPI_write>:
+
 #define SPI_time 1
 
-// пишем байт в шину
-void SPI_wr(char byte) {
-	char i;							// счетчик для цикла
-	for (i=0; i<8; i++) {			// цикл на 8 бит
+
+void SPI_write(char byte) {
+	for (char i=0; i<8; i++) {		// цикл на 8 бит
   80:	20 e0       	ldi	r18, 0x00	; 0
-  82:	13 c0       	rjmp	.+38     	; 0xaa <SPI_wr+0x2a>
+  82:	13 c0       	rjmp	.+38     	; 0xaa <SPI_write+0x2a>
 		_delay_us(SPI_time/2);		// формируем половину паузы
-		if (byte & 0x80) {
+		if (byte & (1<<7) ) {		// проверяется старший байт
   84:	88 23       	and	r24, r24
-  86:	24 f4       	brge	.+8      	; 0x90 <SPI_wr+0x10>
-			//spi_di=1;				// выставляем один бит
-			SPI_PORT |= spi_di;
-  88:	9b b1       	in	r25, 0x0b	; 11
-  8a:	90 64       	ori	r25, 0x40	; 64
-  8c:	9b b9       	out	0x0b, r25	; 11
-  8e:	02 c0       	rjmp	.+4      	; 0x94 <SPI_wr+0x14>
+  86:	24 f4       	brge	.+8      	; 0x90 <SPI_write+0x10>
+			HIGH(MOSI);
+  88:	95 b1       	in	r25, 0x05	; 5
+  8a:	94 60       	ori	r25, 0x04	; 4
+  8c:	95 b9       	out	0x05, r25	; 5
+  8e:	02 c0       	rjmp	.+4      	; 0x94 <SPI_write+0x14>
 		} 
 		else {
-			//spi_di=0;
-			SPI_PORT &= !spi_di;
-  90:	9b b1       	in	r25, 0x0b	; 11
-  92:	1b b8       	out	0x0b, r1	; 11
+			LOW(MOSI);
+  90:	95 b1       	in	r25, 0x05	; 5
+  92:	15 b8       	out	0x05, r1	; 5
 		}	
 		byte<<=1;                   // двигаем байт
   94:	88 0f       	add	r24, r24
 		_delay_us(SPI_time/2);		// завершаем паузу
-		//spi_clk = 1;				// тактовый фронт
-		SPI_PORT |= spi_clk;
-  96:	9b b1       	in	r25, 0x0b	; 11
-  98:	90 68       	ori	r25, 0x80	; 128
-  9a:	9b b9       	out	0x0b, r25	; 11
+		HIGH(SCK);
+  96:	95 b1       	in	r25, 0x05	; 5
+  98:	92 60       	ori	r25, 0x02	; 2
+  9a:	95 b9       	out	0x05, r25	; 5
 	#else
 		//round up by default
 		__ticks_dc = (uint32_t)(ceil(fabs(__tmp)));
@@ -113,166 +110,298 @@ void SPI_wr(char byte) {
 	__builtin_avr_delay_cycles(__ticks_dc);
   9c:	95 e0       	ldi	r25, 0x05	; 5
   9e:	9a 95       	dec	r25
-  a0:	f1 f7       	brne	.-4      	; 0x9e <SPI_wr+0x1e>
+  a0:	f1 f7       	brne	.-4      	; 0x9e <SPI_write+0x1e>
   a2:	00 00       	nop
 		_delay_us(SPI_time);		// формируем импульс
-		//spi_clk = 0;				// тактовый спад
-		SPI_PORT &= !spi_clk;
-  a4:	9b b1       	in	r25, 0x0b	; 11
-  a6:	1b b8       	out	0x0b, r1	; 11
+		LOW(SCK);
+  a4:	95 b1       	in	r25, 0x05	; 5
+  a6:	15 b8       	out	0x05, r1	; 5
+
 #define SPI_time 1
 
-// пишем байт в шину
-void SPI_wr(char byte) {
-	char i;							// счетчик для цикла
-	for (i=0; i<8; i++) {			// цикл на 8 бит
+
+void SPI_write(char byte) {
+	for (char i=0; i<8; i++) {		// цикл на 8 бит
   a8:	2f 5f       	subi	r18, 0xFF	; 255
   aa:	28 30       	cpi	r18, 0x08	; 8
-  ac:	58 f3       	brcs	.-42     	; 0x84 <SPI_wr+0x4>
-		SPI_PORT |= spi_clk;
+  ac:	58 f3       	brcs	.-42     	; 0x84 <SPI_write+0x4>
+		_delay_us(SPI_time/2);		// завершаем паузу
+		HIGH(SCK);
 		_delay_us(SPI_time);		// формируем импульс
-		//spi_clk = 0;				// тактовый спад
-		SPI_PORT &= !spi_clk;
+		LOW(SCK);
 	}
 }
   ae:	08 95       	ret
 
-000000b0 <spi_go>:
-  b0:	85 e0       	ldi	r24, 0x05	; 5
-  b2:	8a 95       	dec	r24
-  b4:	f1 f7       	brne	.-4      	; 0xb2 <spi_go+0x2>
-  b6:	00 00       	nop
-// начинаем общение
-void spi_go() {
-	_delay_us(SPI_time);
-	//spi_clk=0;
-	//spi_cs =0;
-	SPI_PORT &= !spi_clk;
-  b8:	8b b1       	in	r24, 0x0b	; 11
-  ba:	1b b8       	out	0x0b, r1	; 11
-	SPI_PORT &= !spi_cs;
-  bc:	8b b1       	in	r24, 0x0b	; 11
-  be:	1b b8       	out	0x0b, r1	; 11
-  c0:	85 e0       	ldi	r24, 0x05	; 5
-  c2:	8a 95       	dec	r24
-  c4:	f1 f7       	brne	.-4      	; 0xc2 <spi_go+0x12>
-  c6:	00 00       	nop
-  c8:	08 95       	ret
+000000b0 <SPI_read>:
 
-000000ca <spi_end>:
-  ca:	85 e0       	ldi	r24, 0x05	; 5
-  cc:	8a 95       	dec	r24
-  ce:	f1 f7       	brne	.-4      	; 0xcc <spi_end+0x2>
-  d0:	00 00       	nop
-*/
-// заканчиваем общение
-void spi_end() {
-	_delay_us(SPI_time);
-	//spi_cs = 1;
-	SPI_PORT |= spi_cs;
-  d2:	8b b1       	in	r24, 0x0b	; 11
-  d4:	80 61       	ori	r24, 0x10	; 16
-  d6:	8b b9       	out	0x0b, r24	; 11
-  d8:	85 e0       	ldi	r24, 0x05	; 5
-  da:	8a 95       	dec	r24
-  dc:	f1 f7       	brne	.-4      	; 0xda <spi_end+0x10>
-  de:	00 00       	nop
-  e0:	08 95       	ret
 
-000000e2 <main>:
+unsigned char SPI_read() {
+	char byte=0;					// переменные для счетчика и байта
+	for (char i=0; i<8; i++) {		
+  b0:	90 e0       	ldi	r25, 0x00	; 0
+	}
+}
+
+
+unsigned char SPI_read() {
+	char byte=0;					// переменные для счетчика и байта
+  b2:	80 e0       	ldi	r24, 0x00	; 0
+	for (char i=0; i<8; i++) {		
+  b4:	0f c0       	rjmp	.+30     	; 0xd4 <SPI_read+0x24>
+  b6:	25 e0       	ldi	r18, 0x05	; 5
+  b8:	2a 95       	dec	r18
+  ba:	f1 f7       	brne	.-4      	; 0xb8 <SPI_read+0x8>
+  bc:	00 00       	nop
+		_delay_us(SPI_time);		// формируем паузу
+		HIGH(SCK);
+  be:	25 b1       	in	r18, 0x05	; 5
+  c0:	22 60       	ori	r18, 0x02	; 2
+  c2:	25 b9       	out	0x05, r18	; 5
+		_delay_us(SPI_time/2);		// половина импульса
+		if (SPI_PIN & MISO){
+  c4:	1b 99       	sbic	0x03, 3	; 3
+			byte++;					// читаем бит и записываем его
+  c6:	8f 5f       	subi	r24, 0xFF	; 255
+		}
+		if (i!=7) {
+  c8:	97 30       	cpi	r25, 0x07	; 7
+  ca:	09 f0       	breq	.+2      	; 0xce <SPI_read+0x1e>
+			byte<<=1;				// двигаем байт
+  cc:	88 0f       	add	r24, r24
+		}
+		_delay_us(SPI_time/2);		// завершаем импульс
+		LOW(SCK);
+  ce:	25 b1       	in	r18, 0x05	; 5
+  d0:	15 b8       	out	0x05, r1	; 5
+}
+
+
+unsigned char SPI_read() {
+	char byte=0;					// переменные для счетчика и байта
+	for (char i=0; i<8; i++) {		
+  d2:	9f 5f       	subi	r25, 0xFF	; 255
+  d4:	98 30       	cpi	r25, 0x08	; 8
+  d6:	78 f3       	brcs	.-34     	; 0xb6 <SPI_read+0x6>
+		}
+		_delay_us(SPI_time/2);		// завершаем импульс
+		LOW(SCK);
+	}
+	return byte;					// вернули, что прочли
+}
+  d8:	08 95       	ret
+
+000000da <SPI_start>:
+  da:	85 e0       	ldi	r24, 0x05	; 5
+  dc:	8a 95       	dec	r24
+  de:	f1 f7       	brne	.-4      	; 0xdc <SPI_start+0x2>
+  e0:	00 00       	nop
+
+
+void SPI_start() {
+	_delay_us(SPI_time);
+	LOW(SCK);
+  e2:	85 b1       	in	r24, 0x05	; 5
+  e4:	15 b8       	out	0x05, r1	; 5
+	LOW(CS);
+  e6:	85 b1       	in	r24, 0x05	; 5
+  e8:	15 b8       	out	0x05, r1	; 5
+  ea:	85 e0       	ldi	r24, 0x05	; 5
+  ec:	8a 95       	dec	r24
+  ee:	f1 f7       	brne	.-4      	; 0xec <SPI_start+0x12>
+  f0:	00 00       	nop
+  f2:	08 95       	ret
+
+000000f4 <SPI_stop>:
+  f4:	85 e0       	ldi	r24, 0x05	; 5
+  f6:	8a 95       	dec	r24
+  f8:	f1 f7       	brne	.-4      	; 0xf6 <SPI_stop+0x2>
+  fa:	00 00       	nop
+}
+
+
+void SPI_stop() {
+	_delay_us(SPI_time);
+	HIGH(CS);
+  fc:	85 b1       	in	r24, 0x05	; 5
+  fe:	81 60       	ori	r24, 0x01	; 1
+ 100:	85 b9       	out	0x05, r24	; 5
+ 102:	85 e0       	ldi	r24, 0x05	; 5
+ 104:	8a 95       	dec	r24
+ 106:	f1 f7       	brne	.-4      	; 0x104 <SPI_stop+0x10>
+ 108:	00 00       	nop
+ 10a:	08 95       	ret
+
+0000010c <main>:
 
 
 int main(void)
 {
 	/**/
 	DDRB |= (1<<PORTB5);		// для тестовой лампочки
-  e2:	84 b1       	in	r24, 0x04	; 4
-  e4:	80 62       	ori	r24, 0x20	; 32
-  e6:	84 b9       	out	0x04, r24	; 4
+ 10c:	84 b1       	in	r24, 0x04	; 4
+ 10e:	80 62       	ori	r24, 0x20	; 32
+ 110:	84 b9       	out	0x04, r24	; 4
 	PORTB |= (1 << PORTB5);
-  e8:	85 b1       	in	r24, 0x05	; 5
-  ea:	80 62       	ori	r24, 0x20	; 32
-  ec:	85 b9       	out	0x05, r24	; 5
+ 112:	85 b1       	in	r24, 0x05	; 5
+ 114:	80 62       	ori	r24, 0x20	; 32
+ 116:	85 b9       	out	0x05, r24	; 5
 	#else
 		//round up by default
 		__ticks_dc = (uint32_t)(ceil(fabs(__tmp)));
 	#endif
 
 	__builtin_avr_delay_cycles(__ticks_dc);
-  ee:	2f ef       	ldi	r18, 0xFF	; 255
-  f0:	81 ee       	ldi	r24, 0xE1	; 225
-  f2:	94 e0       	ldi	r25, 0x04	; 4
-  f4:	21 50       	subi	r18, 0x01	; 1
-  f6:	80 40       	sbci	r24, 0x00	; 0
-  f8:	90 40       	sbci	r25, 0x00	; 0
-  fa:	e1 f7       	brne	.-8      	; 0xf4 <main+0x12>
-  fc:	00 c0       	rjmp	.+0      	; 0xfe <main+0x1c>
-  fe:	00 00       	nop
+ 118:	2f ef       	ldi	r18, 0xFF	; 255
+ 11a:	81 ee       	ldi	r24, 0xE1	; 225
+ 11c:	94 e0       	ldi	r25, 0x04	; 4
+ 11e:	21 50       	subi	r18, 0x01	; 1
+ 120:	80 40       	sbci	r24, 0x00	; 0
+ 122:	90 40       	sbci	r25, 0x00	; 0
+ 124:	e1 f7       	brne	.-8      	; 0x11e <main+0x12>
+ 126:	00 c0       	rjmp	.+0      	; 0x128 <main+0x1c>
+ 128:	00 00       	nop
 	_delay_ms(100);				// ждем устаканивания питания
 	PORTB &= !(1 << PORTB5);	
- 100:	85 b1       	in	r24, 0x05	; 5
- 102:	15 b8       	out	0x05, r1	; 5
-
+ 12a:	85 b1       	in	r24, 0x05	; 5
+ 12c:	15 b8       	out	0x05, r1	; 5
+ 12e:	2f ef       	ldi	r18, 0xFF	; 255
+ 130:	81 ee       	ldi	r24, 0xE1	; 225
+ 132:	94 e0       	ldi	r25, 0x04	; 4
+ 134:	21 50       	subi	r18, 0x01	; 1
+ 136:	80 40       	sbci	r24, 0x00	; 0
+ 138:	90 40       	sbci	r25, 0x00	; 0
+ 13a:	e1 f7       	brne	.-8      	; 0x134 <main+0x28>
+ 13c:	00 c0       	rjmp	.+0      	; 0x13e <main+0x32>
+ 13e:	00 00       	nop
+	_delay_ms(100);	
 	
-	SPI_PORT_DDR |= DDR_spi_cs|DDR_spi_do|DDR_spi_di|DDR_spi_clk;
- 104:	8a b1       	in	r24, 0x0a	; 10
- 106:	80 6f       	ori	r24, 0xF0	; 240
- 108:	8a b9       	out	0x0a, r24	; 10
-	SPI_PORT |= spi_cs|spi_do|spi_di|spi_clk;
- 10a:	8b b1       	in	r24, 0x0b	; 11
- 10c:	80 6f       	ori	r24, 0xF0	; 240
- 10e:	8b b9       	out	0x0b, r24	; 11
-		 char t=0;
-		 _delay_us(100); // ждем немного
-		 PORTB.5=0; // гасим тестовую лампочку
-		 // читаем ID микросхемы памяти
-		 */
-		 spi_go();		//SPI_wr(0x90); SPI_wr(0x00); SPI_wr(0x00); SPI_wr(0x00);
- 110:	0e 94 58 00 	call	0xb0	; 0xb0 <spi_go>
-		 SPI_wr(0x01);
- 114:	81 e0       	ldi	r24, 0x01	; 1
- 116:	0e 94 40 00 	call	0x80	; 0x80 <SPI_wr>
-		 spi_end();
- 11a:	0e 94 65 00 	call	0xca	; 0xca <spi_end>
-		 if (SPI_rd()==0x13) t++; // сразу сравниваем с нужным
-		 spi_end();
-		 if (t==2) PORTB.5=1;  // включаем тестовую лампочку
-		 */
+	
+	SPI_PIN |= (1<<MISO_pin);
+ 140:	83 b1       	in	r24, 0x03	; 3
+ 142:	88 60       	ori	r24, 0x08	; 8
+ 144:	83 b9       	out	0x03, r24	; 3
+	SPI_DDR &= ~(1<<MISO_pin);
+ 146:	84 b1       	in	r24, 0x04	; 4
+ 148:	87 7f       	andi	r24, 0xF7	; 247
+ 14a:	84 b9       	out	0x04, r24	; 4
+	SPI_DDR |= CS|MOSI|SCK;
+ 14c:	84 b1       	in	r24, 0x04	; 4
+ 14e:	87 60       	ori	r24, 0x07	; 7
+ 150:	84 b9       	out	0x04, r24	; 4
+	SPI_PORT |= CS|MOSI|SCK;
+ 152:	85 b1       	in	r24, 0x05	; 5
+ 154:	87 60       	ori	r24, 0x07	; 7
+ 156:	85 b9       	out	0x05, r24	; 5
+		
+	USART_Init(BAUD_9600);
+ 158:	87 e6       	ldi	r24, 0x67	; 103
+ 15a:	90 e0       	ldi	r25, 0x00	; 0
+ 15c:	0e 94 d5 00 	call	0x1aa	; 0x1aa <USART_Init>
+
+		
+	while(1) {
 		 
 		 for(int i = 0; i < 255; i++){
- 11e:	c0 e0       	ldi	r28, 0x00	; 0
- 120:	d0 e0       	ldi	r29, 0x00	; 0
- 122:	11 c0       	rjmp	.+34     	; 0x146 <main+0x64>
-			spi_go();		//SPI_wr(0x90); SPI_wr(0x00); SPI_wr(0x00); SPI_wr(0x00);
- 124:	0e 94 58 00 	call	0xb0	; 0xb0 <spi_go>
-			SPI_wr(i);
- 128:	8c 2f       	mov	r24, r28
- 12a:	0e 94 40 00 	call	0x80	; 0x80 <SPI_wr>
-			spi_end();
- 12e:	0e 94 65 00 	call	0xca	; 0xca <spi_end>
- 132:	2f ef       	ldi	r18, 0xFF	; 255
- 134:	81 ee       	ldi	r24, 0xE1	; 225
- 136:	94 e0       	ldi	r25, 0x04	; 4
- 138:	21 50       	subi	r18, 0x01	; 1
- 13a:	80 40       	sbci	r24, 0x00	; 0
- 13c:	90 40       	sbci	r25, 0x00	; 0
- 13e:	e1 f7       	brne	.-8      	; 0x138 <main+0x56>
- 140:	00 c0       	rjmp	.+0      	; 0x142 <main+0x60>
- 142:	00 00       	nop
-		 if (SPI_rd()==0x13) t++; // сразу сравниваем с нужным
-		 spi_end();
-		 if (t==2) PORTB.5=1;  // включаем тестовую лампочку
-		 */
+ 160:	c0 e0       	ldi	r28, 0x00	; 0
+ 162:	d0 e0       	ldi	r29, 0x00	; 0
+ 164:	11 c0       	rjmp	.+34     	; 0x188 <main+0x7c>
+			SPI_start();		
+ 166:	0e 94 6d 00 	call	0xda	; 0xda <SPI_start>
+			SPI_write(i);
+ 16a:	8c 2f       	mov	r24, r28
+ 16c:	0e 94 40 00 	call	0x80	; 0x80 <SPI_write>
+			SPI_stop();
+ 170:	0e 94 7a 00 	call	0xf4	; 0xf4 <SPI_stop>
+ 174:	2f ef       	ldi	r18, 0xFF	; 255
+ 176:	81 ee       	ldi	r24, 0xE1	; 225
+ 178:	94 e0       	ldi	r25, 0x04	; 4
+ 17a:	21 50       	subi	r18, 0x01	; 1
+ 17c:	80 40       	sbci	r24, 0x00	; 0
+ 17e:	90 40       	sbci	r25, 0x00	; 0
+ 180:	e1 f7       	brne	.-8      	; 0x17a <main+0x6e>
+ 182:	00 c0       	rjmp	.+0      	; 0x184 <main+0x78>
+ 184:	00 00       	nop
+	USART_Init(BAUD_9600);
+
+		
+	while(1) {
 		 
 		 for(int i = 0; i < 255; i++){
- 144:	21 96       	adiw	r28, 0x01	; 1
- 146:	cf 3f       	cpi	r28, 0xFF	; 255
- 148:	d1 05       	cpc	r29, r1
- 14a:	64 f3       	brlt	.-40     	; 0x124 <main+0x42>
- 14c:	e1 cf       	rjmp	.-62     	; 0x110 <main+0x2e>
+ 186:	21 96       	adiw	r28, 0x01	; 1
+ 188:	cf 3f       	cpi	r28, 0xFF	; 255
+ 18a:	d1 05       	cpc	r29, r1
+ 18c:	64 f3       	brlt	.-40     	; 0x166 <main+0x5a>
+			SPI_write(i);
+			SPI_stop();
+			_delay_ms(100);
+		 }
 
-0000014e <_exit>:
- 14e:	f8 94       	cli
+		 char x = SPI_read();
+ 18e:	0e 94 58 00 	call	0xb0	; 0xb0 <SPI_read>
+		 USART_Transmit(x);
+ 192:	0e 94 e4 00 	call	0x1c8	; 0x1c8 <USART_Transmit>
+ 196:	2f ef       	ldi	r18, 0xFF	; 255
+ 198:	81 ee       	ldi	r24, 0xE1	; 225
+ 19a:	94 e0       	ldi	r25, 0x04	; 4
+ 19c:	21 50       	subi	r18, 0x01	; 1
+ 19e:	80 40       	sbci	r24, 0x00	; 0
+ 1a0:	90 40       	sbci	r25, 0x00	; 0
+ 1a2:	e1 f7       	brne	.-8      	; 0x19c <main+0x90>
+ 1a4:	00 c0       	rjmp	.+0      	; 0x1a6 <main+0x9a>
+ 1a6:	00 00       	nop
+ 1a8:	db cf       	rjmp	.-74     	; 0x160 <main+0x54>
 
-00000150 <__stop_program>:
- 150:	ff cf       	rjmp	.-2      	; 0x150 <__stop_program>
+000001aa <USART_Init>:
+#include "usart.h"
+
+void USART_Init(unsigned int speed)
+{
+	//Регистр UBRR0 задает скорость передачи данных 
+	UBRR0H = (unsigned char)(speed>>8);
+ 1aa:	90 93 c5 00 	sts	0x00C5, r25	; 0x8000c5 <__TEXT_REGION_LENGTH__+0x7f80c5>
+	UBRR0L = (unsigned char)speed;
+ 1ae:	80 93 c4 00 	sts	0x00C4, r24	; 0x8000c4 <__TEXT_REGION_LENGTH__+0x7f80c4>
+	//TXEN0 - разрешение передачи данных
+	//UCSZ02 - бит задающий количество передваемых бит в кадре (совместно с UCSZ00, UCSZ01)
+	//RXB80 - для получения 9-го бита
+	//TXB80 - для передачи 9-го бита
+
+	UCSR0B |=(1<<RXCIE0)|(1<<RXEN0)|(1<<TXEN0);	//Включаем прием и передачу по USART
+ 1b2:	e1 ec       	ldi	r30, 0xC1	; 193
+ 1b4:	f0 e0       	ldi	r31, 0x00	; 0
+ 1b6:	80 81       	ld	r24, Z
+ 1b8:	88 69       	ori	r24, 0x98	; 152
+ 1ba:	80 83       	st	Z, r24
+	//USBS0 - задает количество стоп битов один/два
+	//UCSZ00  
+	//UCSZ01 - бит задающий количество передваемых бит в кадре
+	//UCPOL0 - бит полярности падающий/восходящий
+	
+	UCSR0C |= (1<<UPM01)|(1<<UPM00)|(1<<UCSZ01);
+ 1bc:	e2 ec       	ldi	r30, 0xC2	; 194
+ 1be:	f0 e0       	ldi	r31, 0x00	; 0
+ 1c0:	80 81       	ld	r24, Z
+ 1c2:	84 63       	ori	r24, 0x34	; 52
+ 1c4:	80 83       	st	Z, r24
+ 1c6:	08 95       	ret
+
+000001c8 <USART_Transmit>:
+	
+}
+
+void USART_Transmit( unsigned char data ) //Функция отправки данных
+{
+	while ( !(UCSR0A & (1<<UDRE0)) ); //Ожидание опустошения буфера приема
+ 1c8:	90 91 c0 00 	lds	r25, 0x00C0	; 0x8000c0 <__TEXT_REGION_LENGTH__+0x7f80c0>
+ 1cc:	95 ff       	sbrs	r25, 5
+ 1ce:	fc cf       	rjmp	.-8      	; 0x1c8 <USART_Transmit>
+	UDR0 = data; //Начало передачи данных
+ 1d0:	80 93 c6 00 	sts	0x00C6, r24	; 0x8000c6 <__TEXT_REGION_LENGTH__+0x7f80c6>
+ 1d4:	08 95       	ret
+
+000001d6 <_exit>:
+ 1d6:	f8 94       	cli
+
+000001d8 <__stop_program>:
+ 1d8:	ff cf       	rjmp	.-2      	; 0x1d8 <__stop_program>
