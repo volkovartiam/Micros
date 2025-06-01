@@ -12,6 +12,23 @@
 
 #define F_CPU = 12000000L
 
+/*
+#ifdef SIMULATING
+#define _delay_ms(n) (void)0
+#else
+#define _delay_ms(n) _delay_ms(n)
+#endif
+*/
+
+
+#define SIMULATING
+#if defined(SIMULATING) 
+#define DELAY_MS(n)    do {} while (0)
+#else 
+#define DELAY_MS(n)    _delay_ms(n) 
+#endif 
+
+
 void segchar(unsigned char seg);
 void showDigits(void);
 
@@ -34,7 +51,7 @@ void segchar(unsigned char seg){
 void showDigits(void){
 	for (int i = 0; i < 10; i++){
 		segchar(i);
-		_delay_ms(500);
+		DELAY_MS(500);
 	}
 }
 
