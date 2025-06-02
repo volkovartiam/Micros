@@ -10,15 +10,20 @@
 #define MAIN_H_
 
 //#define F_CPU 16000000L
-
 #include <util/delay.h>
 #include "GPIO.h"
-
+#include "Segments.h"
 #define F_CPU 16000000L
 
+/*
+ Code for skip delays in debug mode
+*/
+#define SIMULATING
+#if defined(SIMULATING)
+#define DELAY_MS(n)    do {} while (0)
+#else
+#define _delay_ms(n)    _delay_ms(n)
+#endif
 
-void gpioSetSEGMode(uint8_t port, uint8_t pin);
-
-void gpioSetSEG(uint8_t port, uint8_t pin);
 
 #endif /* MAIN_H_ */ 

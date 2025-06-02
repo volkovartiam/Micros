@@ -54,7 +54,7 @@ int main(void)
 	
 	while (1)
 	{
-		for(char i = 0; i<=7; i++){
+		for(char i = 0; i<=0; i++){
 			PORTD = (1<<i);
 			PORTD = ~PORTD;
 			_delay_ms(delay);

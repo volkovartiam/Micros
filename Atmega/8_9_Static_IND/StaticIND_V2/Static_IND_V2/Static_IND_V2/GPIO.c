@@ -5,83 +5,53 @@
  *  Author: Artem
  */ 
 
-
 #include "GPIO.h"
 
-void gpioSetPinMode(uint8_t port, uint8_t pin, uint8_t mode, uint8_t initialValue) {
+
+void gpioInitPinModeAndValue(uint8_t port, uint8_t pin, uint8_t mode, uint8_t initValue) {
+	
 	switch(port) {
 		case PB:
-		if(mode == MODE_INPUT) {
-			DDRB = DDRB & (~(1 << pin));
-			} else {
-			DDRB = DDRB | (1 << pin);
-		}
-		if(initialValue) {
-			PORTB = PORTB | (1 << pin);
-			} else {
-			PORTB = PORTB & (~(1 << pin));
-		}
-		return;
+			if(mode == MODE_INPUT) {
+				DDRB = DDRB & (~(1 << pin));
+				} else {
+				DDRB = DDRB | (1 << pin);
+			}
+			if(initValue) {
+				PORTB = PORTB | (1 << pin);
+				} else {
+				PORTB = PORTB & (~(1 << pin));
+			}
+			return;
+
 		case PC:
-		if(mode == MODE_INPUT) {
-			DDRC = DDRC & (~(1 << pin));
+			if(mode == MODE_INPUT) {
+				DDRC = DDRC & (~(1 << pin));
 			} else {
-			DDRC = DDRC | (1 << pin);
-		}
-		if(initialValue) {
-			PORTC = PORTC | (1 << pin);
-			} else {
-			PORTC = PORTC & (~(1 << pin));
-		}
-		return;
+				DDRC = DDRC | (1 << pin);
+			}
+			if(initValue) {
+				PORTC = PORTC | (1 << pin);
+				} else {
+				PORTC = PORTC & (~(1 << pin));
+			}
+			return;
+
 		case PD:
-		if(mode == MODE_INPUT) {
-			DDRD = DDRD & (~(1 << pin));
-			} else {
-			DDRD = DDRD | (1 << pin);
-		}
-		if(initialValue) {
-			PORTD = PORTD | (1 << pin);
-			} else {
-			PORTD = PORTD & (~(1 << pin));
-		}
+			if(mode == MODE_INPUT) {
+				DDRD = DDRD & (~(1 << pin));
+				} else {
+				DDRD = DDRD | (1 << pin);
+			}
+			if(initValue) {
+				PORTD = PORTD | (1 << pin);
+				} else {
+				PORTD = PORTD & (~(1 << pin));
+			}
 		return;
 	}
 }
 
-
-
-void gpioSetPinModeNew(uint8_t port, uint8_t pin, uint8_t mode, uint8_t initialValue) {
-	uint8_t DDR = 0;
-	uint8_t PORT = 0;
-
-	if(mode == MODE_INPUT) {
-		DDR = DDR & (~(1 << pin));
-		} else {
-		DDR = DDR | (1 << pin);
-	}
-	if(initialValue) {
-		PORT = PORT | (1 << pin);
-		} else {
-		PORT = PORT & (~(1 << pin));
-	}
-
-	switch(port) {
-		case PB:
-			DDRB = DDRB | DDR;
-			PORTB = PORTB | PORT;
-			return;
-		case PC:
-			DDRC = DDRC | DDR;
-			PORTC = PORTC | PORT;
-			return;
-		case PD:
-			DDRD =DDRD | DDR;
-			PORTD = PORTD | PORT;
-			return;
-	}
-
-}
 
 uint8_t gpioReadPin(uint8_t port, uint8_t pin) {
 	switch(port) {
