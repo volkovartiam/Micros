@@ -9,19 +9,22 @@
 
 int main(void)
 {
-
-	//show_segments_in_portD();
+	/*	
+	show_segments_in_portD();
+	init_seg();
+	*/
 	
+	//struct Segment segment;
 	init_struct_default_segments();
-	//init_seg();
+	init_seg_struct();
 
     while (1) 
     {
 		
-		//showDigits();
-		/**/
+		/*
+		showDigits();
 		for (int i = 0; i < 10; i++){
-			segchar(i);
+			show_digit(i);
 			_delay_ms(500);
 		}
 		/**/	

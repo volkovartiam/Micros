@@ -25,6 +25,9 @@
 #define HIGH      1
 #define LOW       0
 
+#define TRUE 1
+#define FALSE 0
+
 #define PIN0_OUT    0x01	//or (1<<0)
 #define PIN1_OUT    0x02	//or (1<<1)
 #define PIN2_OUT    0x04	//or (1<<2)
