@@ -79,6 +79,7 @@ void showDigits(){
 }
 
 
+/*
 struct Segment {
 	uint8_t _pin_A;
 	uint8_t _pin_B;
@@ -99,8 +100,10 @@ struct Segment {
 	uint8_t _PORT_DP;
 };
 
+
+
 struct Segment def_seg;
-/**/
+
 void init_struct_default_segments(){
 	
 	def_seg._pin_A = pin_A;
@@ -121,7 +124,7 @@ void init_struct_default_segments(){
 	def_seg._PORT_G = PORT_G;
 	def_seg._PORT_DP = PORT_DP;
 }
-/**/
+*/
 
 //void init_seg_struct(struct Segment& def_seg){
 //void init_seg_struct(struct Segment def_seg){
@@ -131,6 +134,7 @@ void init_seg_struct(){
 	
 	#define set_struct(PORT, PIN) gpioInitPinModeAndValue( PORT,  PIN,  MODE_OUTPUT,  LOW )
 	
+	/*
 	set_struct(def_seg._PORT_A,  def_seg._pin_A);
 	set_struct(def_seg._PORT_B,  def_seg._pin_B);
 	set_struct(def_seg._PORT_C,  def_seg._pin_C);
@@ -139,7 +143,7 @@ void init_seg_struct(){
 	set_struct(def_seg._PORT_F,  def_seg._pin_F);
 	set_struct(def_seg._PORT_G,  def_seg._pin_G);
 	set_struct(def_seg._PORT_DP,  def_seg._pin_DP);
-
+	*/
 
 	/*
 	gpioInitPinModeAndValue(def_seg._PORT_A,  def_seg._pin_A,  MODE_OUTPUT,  INIT_STATE);
