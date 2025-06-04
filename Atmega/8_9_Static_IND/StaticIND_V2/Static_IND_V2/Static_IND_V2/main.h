@@ -13,6 +13,7 @@
 #include <util/delay.h>
 #include "GPIO.h"
 #include "Segments.h"
+#include "SegmentStruct.h"
 #define F_CPU 16000000L
 
 /*

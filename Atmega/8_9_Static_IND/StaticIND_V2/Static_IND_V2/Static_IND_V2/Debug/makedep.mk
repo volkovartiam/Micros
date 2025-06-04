@@ -8,3 +8,5 @@ GPIO.c
 
 main.c
 
+SegmentStruct.c
+

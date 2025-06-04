@@ -1,13 +1,13 @@
 /*
- * _7Seg.h
+ * SegmentStruct.h
  *
  * Created: 02.06.2025 20:40:09
  *  Author: Artem
  */ 
 
 
-#ifndef SEGMENTS_H_
-#define SEGMENTS_H_
+#ifndef SEGMENTSTRUCT_H_
+#define SEGMENTSTRUCT_H_
 
 #include "GPIO.h"
 
@@ -32,8 +32,30 @@
 #define PORT_G PD
 #define PORT_DP PD
 
+struct Segment {
+	uint8_t _pin_A;
+	uint8_t _pin_B;
+	uint8_t _pin_C;
+	uint8_t _pin_D;
+	uint8_t _pin_E;
+	uint8_t _pin_F;
+	uint8_t _pin_G;
+	uint8_t _pin_DP;
+	
+	uint8_t _PORT_A;
+	uint8_t _PORT_B;
+	uint8_t _PORT_C;
+	uint8_t _PORT_D;
+	uint8_t _PORT_E;
+	uint8_t _PORT_F;
+	uint8_t _PORT_G;
+	uint8_t _PORT_DP;
+};
+
+
 #define INIT_STATE HIGH	// or LOW
 
+/*
 #define A(Z)     gpioSetPin(PORT_A, pin_A, (Z) )
 #define B(Z)     gpioSetPin(PORT_B, pin_B, (Z) )
 #define C(Z)	 gpioSetPin(PORT_C, pin_C, (Z) )
@@ -52,5 +74,10 @@
 #define set_G 	 gpioInitPinModeAndValue(PORT_G, pin_G, MODE_OUTPUT, INIT_STATE);
 #define set_DP 	 gpioInitPinModeAndValue(PORT_DP, pin_DP, MODE_OUTPUT, INIT_STATE);
 
+#define set_Anode_Or_Cathode setCommonAnode()
 
-#endif /* SEGMENTS_H_ */
+void setCommonAnode();
+*/
+
+
+#endif /* SEGMENTSTRUCT_H_ */
