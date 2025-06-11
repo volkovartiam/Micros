@@ -1,0 +1,4 @@
+
+
+The Home Assistant Community Store (HACS) is a custom integration that provides a UI to manage custom elements in Home Assistant.
+https://hacs.xyz/
