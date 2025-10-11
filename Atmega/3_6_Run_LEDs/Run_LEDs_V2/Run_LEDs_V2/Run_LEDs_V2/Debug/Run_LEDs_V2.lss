@@ -123,7 +123,7 @@ Disassembly of section .text:
 	
 	while (1)
 	{
-		for(char i = 0; i<=0; i++){
+		for(char i = 0; i<=7; i++){
   ba:	20 e0       	ldi	r18, 0x00	; 0
   bc:	38 c0       	rjmp	.+112    	; 0x12e <main+0xae>
 			PORTD = (1<<i);
@@ -197,10 +197,10 @@ Disassembly of section .text:
 	
 	while (1)
 	{
-		for(char i = 0; i<=0; i++){
+		for(char i = 0; i<=7; i++){
  12c:	2f 5f       	subi	r18, 0xFF	; 255
- 12e:	22 23       	and	r18, r18
- 130:	31 f2       	breq	.-116    	; 0xbe <main+0x3e>
+ 12e:	28 30       	cpi	r18, 0x08	; 8
+ 130:	30 f2       	brcs	.-116    	; 0xbe <main+0x3e>
  132:	c3 cf       	rjmp	.-122    	; 0xba <main+0x3a>
 
 00000134 <_exit>:

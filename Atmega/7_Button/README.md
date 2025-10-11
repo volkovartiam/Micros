@@ -12,5 +12,5 @@
 [digilent](https://digilent.com/reference/learn/microprocessor/tutorials/debouncing-via-software/start?srsltid=AfmBOoqd9Ezfz4mstvP-od0PFKH0nby56toXLT_JUqMfk_bvApbaPyJJ)<br>
 [instructables](https://www.instructables.com/Beginning-Microcontrollers-Part-9-Button-and-Softw/)<br>
 [docs.arduino](https://docs.arduino.cc/built-in-examples/digital/Debounce/#code)<br>
-
+[vpayaem](https://vpayaem.ru/inf_drebezg1.html)<br>
 

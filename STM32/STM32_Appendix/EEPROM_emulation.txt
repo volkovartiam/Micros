@@ -1,0 +1,13 @@
+https://github.com/nimaltd/ee
+https://github.com/microtechnics-main/stm32-eeprom-emulation/blob/main/Modules/Eeprom/eeprom.c
+https://github.com/brendena/ee/blob/master/ee.h
+
+https://www.youtube.com/watch?v=bwaqZqbpwjs
+TeraHertz
+
+https://www.youtube.com/watch?v=lajk3CExezk
+Brenden Adamczak
+
+https://www.youtube.com/watch?v=d8I74SJVc8E
+https://www.youtube.com/watch?v=vYp4SFYMKfQ
+Electrogravity
