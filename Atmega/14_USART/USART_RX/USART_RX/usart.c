@@ -10,6 +10,7 @@
 
 void USART_Init(unsigned char baud)
 {
+	cli();
 	UBRR0H = (unsigned char)(baud>>8);
 	UBRR0L = (unsigned char)baud;
 	
